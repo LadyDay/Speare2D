@@ -16,6 +16,8 @@
 		3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D171BD52E0400502BF0 /* LaunchScreen.storyboard */; };
 		3DC44D241BD52E0400502BF0 /* Speare2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D231BD52E0400502BF0 /* Speare2DTests.swift */; };
 		3DC44D2F1BD52E0400502BF0 /* Speare2DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */; };
+		BEFF042C1BD53F03009686FE /* StartView.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEFF042B1BD53F03009686FE /* StartView.sks */; settings = {ASSET_TAGS = (); }; };
+		BEFF042E1BD53F4D009686FE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF042D1BD53F4D009686FE /* StartView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		3DC44D2A1BD52E0400502BF0 /* Speare2DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Speare2DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speare2DUITests.swift; sourceTree = "<group>"; };
 		3DC44D301BD52E0400502BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEFF042B1BD53F03009686FE /* StartView.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartView.sks; sourceTree = "<group>"; };
+		BEFF042D1BD53F4D009686FE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 			children = (
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
 				3DC44D0C1BD52E0400502BF0 /* GameScene.sks */,
+				BEFF042B1BD53F03009686FE /* StartView.sks */,
+				BEFF042D1BD53F4D009686FE /* StartView.swift */,
 				3DC44D0E1BD52E0400502BF0 /* GameScene.swift */,
 				3DC44D101BD52E0400502BF0 /* GameViewController.swift */,
 				3DC44D121BD52E0400502BF0 /* Main.storyboard */,
@@ -241,6 +247,7 @@
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
+				BEFF042C1BD53F03009686FE /* StartView.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +275,7 @@
 				3DC44D0F1BD52E0400502BF0 /* GameScene.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */,
+				BEFF042E1BD53F4D009686FE /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +504,7 @@
 				3DC44D351BD52E0400502BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DC44D361BD52E0400502BF0 /* Build configuration list for PBXNativeTarget "Speare2DTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +513,7 @@
 				3DC44D381BD52E0400502BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DC44D391BD52E0400502BF0 /* Build configuration list for PBXNativeTarget "Speare2DUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +522,7 @@
 				3DC44D3B1BD52E0400502BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
