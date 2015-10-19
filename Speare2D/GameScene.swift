@@ -12,7 +12,9 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        //let light_1 = self.
+        let light_1 : SKLightNode = self.childNodeWithName("light_1") as! SKLightNode
+        light_1.lightColor = UIColor.redColor()
+        light_1.falloff = 5
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
