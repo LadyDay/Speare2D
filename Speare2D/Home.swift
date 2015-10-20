@@ -18,6 +18,7 @@ class Home: SKScene {
        /* Called when a touch begins */
         
         for touch in touches {
+            /*
             let boy: SKSpriteNode = self.childNodeWithName("boy") as! SKSpriteNode
             
             let currentLocation = touch.locationInNode(self)
@@ -25,7 +26,18 @@ class Home: SKScene {
             let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
             let moveToPoint = SKAction.moveTo(currentLocation, duration: duration)
             boy.runAction(moveToPoint)
-        }
+            */
+            let location = touch.locationInNode(self)
+                for node in self.nodesAtPoint(location){
+                    if(node.name == "start"){
+                        animationDoor(self.childNodeWithName("leftDoor") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoor") as! SKSpriteNode)
+                    }
+                }
+            }
+    }
+    
+    func animationDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
+        
     }
     
     func makeDuration(currentLocation : CGPoint, pastLocation: CGPoint) -> NSTimeInterval{
@@ -33,6 +45,10 @@ class Home: SKScene {
         let hipotenusa = sqrt(catetos)
 
         return hipotenusa.native as NSTimeInterval //Double(hipotenusa)
+    }
+    
+    func turnOnLights(){
+        let num1 = random()
     }
    
     override func update(currentTime: CFTimeInterval) {
