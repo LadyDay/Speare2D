@@ -20,18 +20,19 @@ class Home: SKScene {
         for touch in touches {
             let boy: SKSpriteNode = self.childNodeWithName("boy") as! SKSpriteNode
             
-            let location = touch.locationInNode(self)
-            let duration : NSTimeInterval = makeDuration(location)
-            let moveToPoint = SKAction.moveTo(location, duration: duration)
+            let currentLocation = touch.locationInNode(self)
+            let pastLocation = boy.position
+            let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
+            let moveToPoint = SKAction.moveTo(currentLocation, duration: duration)
             boy.runAction(moveToPoint)
         }
     }
     
-    func makeDuration(location : CGPoint) -> NSTimeInterval{
-        let catetos = pow(location.x, 2) + pow(location.y, 2)
-        let hipotenusa = pow(catetos, 1/2) //sqrt(catetos)
+    func makeDuration(currentLocation : CGPoint, pastLocation: CGPoint) -> NSTimeInterval{
+        let catetos:CGFloat = pow(abs(currentLocation.x - pastLocation.x), 2) + pow(abs(currentLocation.y - pastLocation.y), 2)
+        let hipotenusa = sqrt(catetos)
 
-        return Double(hipotenusa)
+        return hipotenusa.native as NSTimeInterval //Double(hipotenusa)
     }
    
     override func update(currentTime: CFTimeInterval) {
