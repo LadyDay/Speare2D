@@ -20,26 +20,27 @@ class Home: SKScene {
        /* Called when a touch begins */
         
         for touch in touches {
-            /*
-            let boy: SKSpriteNode = self.childNodeWithName("boy") as! SKSpriteNode
-            
-            let currentLocation = touch.locationInNode(self)
-            let pastLocation = boy.position
-            let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
-            let moveToPoint = SKAction.moveTo(currentLocation, duration: duration)
-            boy.runAction(moveToPoint)
-            */
             let location = touch.locationInNode(self)
-                for node in self.nodesAtPoint(location){
-                    if(node.name == "start"){
-                        animationDoor(self.childNodeWithName("leftDoor") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoor") as! SKSpriteNode)
+            for node in self.nodesAtPoint(location){
+                switch node.name!{
+                    case "start":
+                        //chama a animação para a porta
                         //Muda cena para StartScene
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         self.gameScene = StartScene(fileNamed: "StartScene")
                         self.view?.presentScene(self.gameScene!, transition: fadeScene)
-                    }
+                        break
+                    case "options":
+                        //chama a animação para a porta
+                            break
+                    case "info":
+                        //chama a animação para a bilheteria
+                        break
+                    default:
+                        break
                 }
             }
+        }
     }
     
     func animationDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
@@ -55,6 +56,15 @@ class Home: SKScene {
     
     func turnOnLights(){
         let num1 = random()
+    }
+    
+    func moveBoy(touch: UITouch){
+        let boy: SKSpriteNode = self.childNodeWithName("boy") as! SKSpriteNode
+        let currentLocation = touch.locationInNode(self)
+        let pastLocation = boy.position
+        let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
+        let moveToPoint = SKAction.moveTo(currentLocation, duration: duration)
+        boy.runAction(moveToPoint)
     }
    
     override func update(currentTime: CFTimeInterval) {
