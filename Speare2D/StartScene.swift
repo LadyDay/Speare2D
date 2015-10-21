@@ -11,6 +11,9 @@ import SpriteKit
 
 class StartScene: SKScene {
     var gameScene: SKScene!
+    var locationTouch: CGPoint!
+    var mainCharacter: SKNode!
+    //var camera: SKNode!
     //var nodeTouched: SKNode!
     
     /* Setup your scene here */
@@ -19,13 +22,11 @@ class StartScene: SKScene {
         border.friction = 0.2
         
         self.physicsBody = border
-        let firefox =  childNodeWithName("FirefoxNode") as! SKSpriteNode
-        firefox.physicsBody?.mass = 30.0
+        mainCharacter =  childNodeWithName("FirefoxNode") as! SKSpriteNode
+        mainCharacter.physicsBody?.mass = 30.0
         
         //let floor = childNodeWithName("FloorNode") as! SKSpriteNode
-        
-        
-        
+        //camera = childNodeWithName("CameraNode")
         
     }
     
@@ -33,17 +34,17 @@ class StartScene: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         let touchObj = touches.first as UITouch!
-        let locationTouch = touchObj.locationInNode(self)
-        let firefox = childNodeWithName("FirefoxNode") as! SKSpriteNode
+        locationTouch = touchObj.locationInNode(self)
+        //let firefox = childNodeWithName("FirefoxNode") as! SKSpriteNode
         let nodeTouched = nodeAtPoint(locationTouch)
         
         //Rapousa vai andar até onde tocar
-        let moveFirefox = SKAction .moveToX(locationTouch.x, duration: 1.0)
+        let moveMainCharacter = SKAction .moveToX(locationTouch.x, duration: 1.0)
         
         if nodeTouched.name == "Tutorial" {
             print("Espelho 1")
             //Rapousa anda até lá
-            firefox.runAction(moveFirefox, completion: {
+            mainCharacter.runAction(moveMainCharacter, completion: {
                 //Muda cena para Opção1
                 let fadeScene = SKTransition.fadeWithDuration(1.5)
                 self.gameScene = TutorialScene(fileNamed: "TutorialScene")
@@ -52,7 +53,7 @@ class StartScene: SKScene {
         } else if nodeTouched.name == "Option2"{
             print("Objeto 2")
             //Rapousa anda até lá
-            firefox.runAction(moveFirefox, completion: {
+            mainCharacter.runAction(moveMainCharacter, completion: {
                 //Muda cena para Opção2
                 //let fadeScene = SKTransition.fadeWithDuration(1.5)
                 //self.gameScene = OptionTwo(fileNamed: "OptionTwo")
@@ -61,14 +62,14 @@ class StartScene: SKScene {
         } else if nodeTouched.name == "Option3"{
             print("Objeto 3")
             //Rapousa anda até lá
-            firefox.runAction(moveFirefox, completion: {
+            mainCharacter.runAction(moveMainCharacter, completion: {
                 //Muda cena para Opção3
                 //let fadeScene = SKTransition.fadeWithDuration(1.5)
                 //self.gameScene = OptionThree(fileNamed: "OptionThree")
                 //self.view?.presentScene(self.gameScene!, transition: fadeScene)
             })
         } else {
-            firefox.runAction(moveFirefox)
+            mainCharacter.runAction(moveMainCharacter)
         }
         
     }
@@ -77,4 +78,10 @@ class StartScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         
     }
+    
+    override func didSimulatePhysics() {
+        //<#code#>
+    }
+    
+    
 }
