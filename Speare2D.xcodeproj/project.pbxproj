@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D0545331BD7C44600D1DC0A /* Inventory.sks */; settings = {ASSET_TAGS = (); }; };
+		3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0545351BD7C45500D1DC0A /* Inventory.swift */; settings = {ASSET_TAGS = (); }; };
 		3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */; };
 		3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D0C1BD52E0400502BF0 /* Home.sks */; };
 		3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0E1BD52E0400502BF0 /* Home.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0545331BD7C44600D1DC0A /* Inventory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Inventory.sks; sourceTree = "<group>"; };
+		3D0545351BD7C45500D1DC0A /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		3DC44D071BD52E0300502BF0 /* Speare2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speare2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DC44D0C1BD52E0400502BF0 /* Home.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Home.sks; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
 				BE7597E61BD73661005608E1 /* StartScene.swift */,
 				BE7597E81BD73683005608E1 /* StartScene.sks */,
+				3D0545331BD7C44600D1DC0A /* Inventory.sks */,
+				3D0545351BD7C45500D1DC0A /* Inventory.swift */,
 				BE7597F91BD78833005608E1 /* TutorialScene.swift */,
 				BE7597F71BD78826005608E1 /* TutorialScene.sks */,
 				3DC44D0E1BD52E0400502BF0 /* Home.swift */,
@@ -281,6 +287,7 @@
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				BE7597F31BD736C0005608E1 /* q3.png in Resources */,
 				BE7597EB1BD736A8005608E1 /* firefox.atlas in Resources */,
+				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
 				BE7597F11BD736C0005608E1 /* q1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */,
 				3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */,
