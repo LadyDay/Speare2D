@@ -81,7 +81,7 @@ class Home: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        if(self.timeLight==20){
+        if(self.timeLight==3){
             self.turnOnLights()
             self.timeLight = 0
         }else{
