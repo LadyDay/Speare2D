@@ -16,8 +16,15 @@
 		3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D171BD52E0400502BF0 /* LaunchScreen.storyboard */; };
 		3DC44D241BD52E0400502BF0 /* Speare2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D231BD52E0400502BF0 /* Speare2DTests.swift */; };
 		3DC44D2F1BD52E0400502BF0 /* Speare2DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */; };
-		BEFF042C1BD53F03009686FE /* StartView.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEFF042B1BD53F03009686FE /* StartView.sks */; settings = {ASSET_TAGS = (); }; };
-		BEFF042E1BD53F4D009686FE /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF042D1BD53F4D009686FE /* StartView.swift */; settings = {ASSET_TAGS = (); }; };
+		BE7597E71BD73661005608E1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597E61BD73661005608E1 /* StartScene.swift */; settings = {ASSET_TAGS = (); }; };
+		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; settings = {ASSET_TAGS = (); }; };
+		BE7597EB1BD736A8005608E1 /* firefox.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE7597EA1BD736A8005608E1 /* firefox.atlas */; settings = {ASSET_TAGS = (); }; };
+		BE7597F01BD736C0005608E1 /* cenario1.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7597EC1BD736C0005608E1 /* cenario1.png */; settings = {ASSET_TAGS = (); }; };
+		BE7597F11BD736C0005608E1 /* q1.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7597ED1BD736C0005608E1 /* q1.png */; settings = {ASSET_TAGS = (); }; };
+		BE7597F21BD736C0005608E1 /* q2.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7597EE1BD736C0005608E1 /* q2.png */; settings = {ASSET_TAGS = (); }; };
+		BE7597F31BD736C0005608E1 /* q3.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7597EF1BD736C0005608E1 /* q3.png */; settings = {ASSET_TAGS = (); }; };
+		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; settings = {ASSET_TAGS = (); }; };
+		BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597F91BD78833005608E1 /* TutorialScene.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +60,15 @@
 		3DC44D2A1BD52E0400502BF0 /* Speare2DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Speare2DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speare2DUITests.swift; sourceTree = "<group>"; };
 		3DC44D301BD52E0400502BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BEFF042B1BD53F03009686FE /* StartView.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartView.sks; sourceTree = "<group>"; };
-		BEFF042D1BD53F4D009686FE /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		BE7597E61BD73661005608E1 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
+		BE7597E81BD73683005608E1 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
+		BE7597EA1BD736A8005608E1 /* firefox.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = firefox.atlas; sourceTree = "<group>"; };
+		BE7597EC1BD736C0005608E1 /* cenario1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cenario1.png; sourceTree = "<group>"; };
+		BE7597ED1BD736C0005608E1 /* q1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = q1.png; sourceTree = "<group>"; };
+		BE7597EE1BD736C0005608E1 /* q2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = q2.png; sourceTree = "<group>"; };
+		BE7597EF1BD736C0005608E1 /* q3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = q3.png; sourceTree = "<group>"; };
+		BE7597F71BD78826005608E1 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
+		BE7597F91BD78833005608E1 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,14 +119,18 @@
 		3DC44D091BD52E0300502BF0 /* Speare2D */ = {
 			isa = PBXGroup;
 			children = (
+				BE7597EA1BD736A8005608E1 /* firefox.atlas */,
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
-				BEFF042B1BD53F03009686FE /* StartView.sks */,
-				BEFF042D1BD53F4D009686FE /* StartView.swift */,
 				3DC44D0C1BD52E0400502BF0 /* Home.sks */,
+				BE7597E61BD73661005608E1 /* StartScene.swift */,
+				BE7597F71BD78826005608E1 /* TutorialScene.sks */,
+				BE7597F91BD78833005608E1 /* TutorialScene.swift */,
+				BE7597E81BD73683005608E1 /* StartScene.sks */,
 				3DC44D0E1BD52E0400502BF0 /* Home.swift */,
 				3DC44D101BD52E0400502BF0 /* GameViewController.swift */,
 				3DC44D121BD52E0400502BF0 /* Main.storyboard */,
 				3DC44D151BD52E0400502BF0 /* Assets.xcassets */,
+				BE7597F41BD736C8005608E1 /* Images */,
 				3DC44D171BD52E0400502BF0 /* LaunchScreen.storyboard */,
 				3DC44D1A1BD52E0400502BF0 /* Info.plist */,
 			);
@@ -135,6 +153,17 @@
 				3DC44D301BD52E0400502BF0 /* Info.plist */,
 			);
 			path = Speare2DUITests;
+			sourceTree = "<group>";
+		};
+		BE7597F41BD736C8005608E1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BE7597EC1BD736C0005608E1 /* cenario1.png */,
+				BE7597ED1BD736C0005608E1 /* q1.png */,
+				BE7597EE1BD736C0005608E1 /* q2.png */,
+				BE7597EF1BD736C0005608E1 /* q3.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,7 +233,6 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = DALRD2YRNJ;
 					};
 					3DC44D1E1BD52E0400502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -243,11 +271,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE7597F21BD736C0005608E1 /* q2.png in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
+				BE7597F01BD736C0005608E1 /* cenario1.png in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
+				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
+				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
-				BEFF042C1BD53F03009686FE /* StartView.sks in Resources */,
+				BE7597F31BD736C0005608E1 /* q3.png in Resources */,
+				BE7597EB1BD736A8005608E1 /* firefox.atlas in Resources */,
+				BE7597F11BD736C0005608E1 /* q1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +309,8 @@
 				3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */,
-				BEFF042E1BD53F4D009686FE /* StartView.swift in Sources */,
+				BE7597E71BD73661005608E1 /* StartScene.swift in Sources */,
+				BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,10 +452,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.dkrs.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -428,10 +466,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.dkrs.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

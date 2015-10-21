@@ -10,6 +10,8 @@ import SpriteKit
 
 class Home: SKScene {
     
+    var gameScene: SKScene!
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
     }
@@ -31,6 +33,10 @@ class Home: SKScene {
                 for node in self.nodesAtPoint(location){
                     if(node.name == "start"){
                         animationDoor(self.childNodeWithName("leftDoor") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoor") as! SKSpriteNode)
+                        //Muda cena para StartScene
+                        let fadeScene = SKTransition.fadeWithDuration(1.5)
+                        self.gameScene = StartScene(fileNamed: "StartScene")
+                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
                     }
                 }
             }
