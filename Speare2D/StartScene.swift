@@ -18,15 +18,19 @@ class StartScene: SKScene {
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
-        let border = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        border.friction = 0.2
+        //let border = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        //border.friction = 0.2
         
-        self.physicsBody = border
+        //self.physicsBody = border
         mainCharacter =  childNodeWithName("FirefoxNode") as! SKSpriteNode
         mainCharacter.physicsBody?.mass = 30.0
         
         //let floor = childNodeWithName("FloorNode") as! SKSpriteNode
         //camera = childNodeWithName("CameraNode")
+        
+        let cameraNode = SKCameraNode()
+        self.addChild(cameraNode)
+        self.camera = cameraNode
         
     }
     
@@ -76,6 +80,14 @@ class StartScene: SKScene {
     
     /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
+        
+        if mainCharacter.position.x < 40.0 {
+            self.camera?.position = CGPoint(x: 40, y: 387.942)
+        } else if mainCharacter.position.x > 1080.0 {
+            self.camera?.position = CGPoint(x: 1080.0, y: 387.942)
+        } else {
+            self.camera?.position = CGPoint(x: mainCharacter.position.x, y: 387.942)
+        }
         
     }
     
