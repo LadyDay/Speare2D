@@ -11,6 +11,7 @@ import SpriteKit
 class Home: SKScene {
     
     var gameScene: SKScene!
+    var timeLight: Int = 0
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -55,7 +56,18 @@ class Home: SKScene {
     }
     
     func turnOnLights(){
-        let num1 = random()
+        let num = arc4random_uniform(3)
+        print("\(num)")
+        
+        for(var i = 0; i<15; i++){
+            let light = self.childNodeWithName("light\(i)") as! SKLightNode
+            light.enabled = false
+        }
+        
+        for(var i = num; i<15; i = i + 3){
+            let light = self.childNodeWithName("light\(i)") as! SKLightNode
+            light.enabled = true
+        }
     }
     
     func moveBoy(touch: UITouch){
@@ -69,5 +81,12 @@ class Home: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if(self.timeLight==20){
+            self.turnOnLights()
+            self.timeLight = 0
+        }else{
+            self.timeLight = self.timeLight+1
+        }
+        
     }
 }
