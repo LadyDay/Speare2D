@@ -15,7 +15,7 @@ class TutorialScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown")
+        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.view?.addGestureRecognizer(swipeDown)
         /*
