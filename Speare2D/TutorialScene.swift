@@ -26,10 +26,12 @@ class TutorialScene: SKScene {
     }
     
     func swipeDown(sender: UISwipeGestureRecognizer){
-        let nodeTest = self.nodeAtPoint(sender.locationInView(self.view))
-        if(nodeTest.name=="viewCloset"){
-            self.gameScene = Inventory(fileNamed: "Inventory")
-            self.view?.presentScene(self.gameScene!)
+        for nodeTest in self.nodesAtPoint(sender.locationInView(self.view)){
+            print("\(nodeTest.name)")
+            if(nodeTest.name=="viewCloset"){
+                self.gameScene = Inventory(fileNamed: "Inventory")
+                self.view?.presentScene(self.gameScene!)
+            }
         }
     }
     
