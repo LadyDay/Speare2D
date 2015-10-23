@@ -13,34 +13,57 @@ class StartScene: SKScene {
     var gameScene: SKScene!
     var locationTouch: CGPoint!
     var mainCharacter: SKNode!
-    //var camera: SKNode!
-    //var nodeTouched: SKNode!
+    let alexTextureAtlas = SKTextureAtlas(named: "Alex.atlas")
+    var alexSpriteArray = Array<SKTexture>()
+    
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
         //let border = SKPhysicsBody(edgeLoopFromRect: self.frame)
         //border.friction = 0.2
-        
         //self.physicsBody = border
-        mainCharacter =  childNodeWithName("mainCharacter") as! SKSpriteNode
-        mainCharacter.physicsBody?.mass = 30.0
-        
-        //let floor = childNodeWithName("FloorNode") as! SKSpriteNode
-        //camera = childNodeWithName("CameraNode")
         
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
         
+        mainCharacter =  childNodeWithName("mainCharacter") as! SKSpriteNode
+        mainCharacter.physicsBody?.mass = 30.0
+        
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite2_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite3_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite4_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite5_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite6_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite7_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite8_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
+        
     }
     
     func moveMainCharacter(touch: UITouch) -> SKAction {
-        let mainCharacter: SKSpriteNode = self.childNodeWithName("mainCharacter") as! SKSpriteNode
+        //let mainCharacter: SKSpriteNode = self.childNodeWithName("mainCharacter") as! SKSpriteNode
+        //mainCharacter = SKSpriteNode(texture: alexSpriteArray[0])
         let currentLocation = touch.locationInNode(self)
         let pastLocation = mainCharacter.position
+        
         let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
         let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
-        return moveToPoint
+        let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.05)
+        walkingAlexAction.duration = 1
+        let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
+        let group = SKAction.group([walkingAlexAction, direction, moveToPoint])
+        return group
+    }
+    
+    func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{
+        //let xVar: Int
+        if (currentLocation.x - pastLocation.x) > 0 {
+            return 1.0
+        } else {
+            return -1.0
+        }
     }
     
     func makeDuration(currentLocation : CGPoint, pastLocation: CGPoint) -> NSTimeInterval{
@@ -81,13 +104,15 @@ class StartScene: SKScene {
                     break
                     
                 default:
-                    mainCharacter.runAction(self.moveMainCharacter(touch))
+                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                        //mainCharacter = SKSpriteNode(texture:self.alexSpriteArray[0])
+                    })
                     break
                 }
             }
         }
     }
-
+    
     /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
         

@@ -27,6 +27,7 @@
 		BE7597F31BD736C0005608E1 /* q3.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7597EF1BD736C0005608E1 /* q3.png */; settings = {ASSET_TAGS = (); }; };
 		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; settings = {ASSET_TAGS = (); }; };
 		BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597F91BD78833005608E1 /* TutorialScene.swift */; settings = {ASSET_TAGS = (); }; };
+		BEE1F33A1BDA7E19002D63D8 /* Alex.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEE1F3391BDA7E19002D63D8 /* Alex.atlas */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		BE7597EF1BD736C0005608E1 /* q3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = q3.png; sourceTree = "<group>"; };
 		BE7597F71BD78826005608E1 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
 		BE7597F91BD78833005608E1 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		BEE1F3391BDA7E19002D63D8 /* Alex.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alex.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 		3DC44D091BD52E0300502BF0 /* Speare2D */ = {
 			isa = PBXGroup;
 			children = (
+				BEE1F3391BDA7E19002D63D8 /* Alex.atlas */,
 				BE7597EA1BD736A8005608E1 /* firefox.atlas */,
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
 				BE7597E61BD73661005608E1 /* StartScene.swift */,
@@ -284,6 +287,7 @@
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
+				BEE1F33A1BDA7E19002D63D8 /* Alex.atlas in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				BE7597F31BD736C0005608E1 /* q3.png in Resources */,
 				BE7597EB1BD736A8005608E1 /* firefox.atlas in Resources */,
