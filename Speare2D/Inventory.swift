@@ -14,17 +14,6 @@ class Inventory: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp")
-        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-        self.view!.addGestureRecognizer(swipeUp)
-    }
-    
-    func swipeUp(sender: UISwipeGestureRecognizer){
-        let nodeTest = self.nodeAtPoint(sender.locationInView(self.view))
-        if(nodeTest.name=="viewCloset"){
-            self.gameScene = TutorialScene(fileNamed: "TutorialScene")
-            self.view?.presentScene(self.gameScene!)
-        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -36,7 +25,9 @@ class Inventory: SKScene {
             
             self.clearLots()
             
-            node.color = UIColor.blackColor()
+            if(!(node.name=="closet")){
+                node.color = UIColor.blackColor()
+            }
             
         }
     }
