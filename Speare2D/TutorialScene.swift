@@ -11,6 +11,7 @@ import SpriteKit
 class TutorialScene: SKScene {
     
     var viewInventory: SKView!
+    var inventoryPresent: Bool = false
     var gameScene: SKScene!
     var locationTouch: CGPoint!
     var mainCharacter: SKNode!
@@ -22,6 +23,10 @@ class TutorialScene: SKScene {
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.view?.addGestureRecognizer(swipeDown)
+        
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
+        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+        self.view?.addGestureRecognizer(swipeUp)
         
         mainCharacter =  childNodeWithName("mainCharacter") as! SKSpriteNode
         mainCharacter.physicsBody?.mass = 30.0
@@ -44,6 +49,7 @@ class TutorialScene: SKScene {
             if(sender.locationInView(self.view).y < 350){
                 self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
                 self.view?.addSubview(viewInventory as UIView)
+                inventoryPresent = true
                 
                 let transition = SKTransition.crossFadeWithDuration(2)
                 self.gameScene = Inventory(fileNamed: "Inventory")
@@ -57,16 +63,16 @@ class TutorialScene: SKScene {
     func moveMainCharacter(touch: UITouch) -> SKAction {
         //let mainCharacter: SKSpriteNode = self.childNodeWithName("mainCharacter") as! SKSpriteNode
         //mainCharacter = SKSpriteNode(texture: alexSpriteArray[0])
-        let currentLocation = touch.locationInNode(self)
-        let pastLocation = mainCharacter.position
+            let currentLocation = touch.locationInNode(self)
+            let pastLocation = mainCharacter.position
         
-        let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
-        let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
-        let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.05)
-        walkingAlexAction.duration = 1
-        let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
-        let group = SKAction.group([walkingAlexAction, direction, moveToPoint])
-        return group
+            let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
+            let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
+            let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.05)
+            walkingAlexAction.duration = 1
+            let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
+            let group = SKAction.group([walkingAlexAction, direction, moveToPoint])
+            return group
     }
     
     func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{
@@ -88,6 +94,7 @@ class TutorialScene: SKScene {
     func swipeUp(sender: UISwipeGestureRecognizer){
         //if(sender.locationInView(self.view).y < 150){
             viewInventory.removeFromSuperview()
+            inventoryPresent = false
         //}
     }
     
@@ -121,9 +128,11 @@ class TutorialScene: SKScene {
                     break
                     
                 default:
-                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                    if(inventoryPresent==false){
+                        mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
                         //mainCharacter = SKSpriteNode(texture:self.alexSpriteArray[0])
-                    })
+                        })
+                    }
                     break
                 }
             }
