@@ -116,10 +116,10 @@ class StartScene: SKScene {
     /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
         
-        if mainCharacter.position.x < 40.0 {
-            self.camera?.position = CGPoint(x: 40, y: 387.942)
-        } else if mainCharacter.position.x > 1080.0 {
-            self.camera?.position = CGPoint(x: 1080.0, y: 387.942)
+        if mainCharacter.position.x < 476.0 {
+            self.camera?.position = CGPoint(x: 476, y: 387.942)
+        } else if mainCharacter.position.x > 545.0 {
+            self.camera?.position = CGPoint(x: 545.0, y: 387.942)
         } else {
             self.camera?.position = CGPoint(x: mainCharacter.position.x, y: 387.942)
         }

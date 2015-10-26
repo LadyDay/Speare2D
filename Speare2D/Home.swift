@@ -21,6 +21,7 @@ class Home: SKScene {
        /* Called when a touch begins */
         
         for touch in touches {
+            //let emitterNode = childNodeWithName("EmitterNode1") as! SKEmitterNode
             let location = touch.locationInNode(self)
             for node in self.nodesAtPoint(location){
                 switch node.name!{
@@ -38,6 +39,7 @@ class Home: SKScene {
                         //chama a animação para a bilheteria
                         break
                     default:
+                        //emitterNode.position = location
                         break
                 }
             }
