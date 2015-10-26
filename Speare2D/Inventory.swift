@@ -42,7 +42,7 @@ class Inventory: SKScene {
     }
     
     func clearLots(){
-        for(var i = 0; i<10; i++){
+        for(var i = 0; i<7; i++){
             let lot = self.childNodeWithName("lot\(i)") as! SKSpriteNode
             lot.color = UIColor.redColor()
         }
