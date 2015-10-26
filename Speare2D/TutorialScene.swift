@@ -15,9 +15,6 @@ class TutorialScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
-        self.viewInventory.tag = 13
-        
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.view?.addGestureRecognizer(swipeDown)
@@ -28,6 +25,9 @@ class TutorialScene: SKScene {
     }
     
     func swipeDown(sender: UISwipeGestureRecognizer){
+        
+        self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
+        
         self.view?.addSubview(viewInventory as UIView)
         //for nodeTest in self.nodesAtPoint(sender.locationInView(self.view)){
           //  print("\(nodeTest.name)")
