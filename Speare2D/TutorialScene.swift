@@ -16,9 +16,15 @@ class TutorialScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
+        self.viewInventory.tag = 13
+        
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.view?.addGestureRecognizer(swipeDown)
+        
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
+        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+        self.view!.addGestureRecognizer(swipeUp)
     }
     
     func swipeDown(sender: UISwipeGestureRecognizer){
@@ -26,11 +32,15 @@ class TutorialScene: SKScene {
         //for nodeTest in self.nodesAtPoint(sender.locationInView(self.view)){
           //  print("\(nodeTest.name)")
             //if(nodeTest.name=="viewCloset"){
-                let transition = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 2)
+                let transition = SKTransition.crossFadeWithDuration(2)
                 self.gameScene = Inventory(fileNamed: "Inventory")
                 viewInventory.presentScene(gameScene, transition: transition)
             //}
         //}
+    }
+    
+    func swipeUp(sender: UISwipeGestureRecognizer){
+        viewInventory.removeFromSuperview()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

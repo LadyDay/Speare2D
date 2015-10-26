@@ -14,9 +14,6 @@ class Inventory: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp")
-        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-        self.view!.addGestureRecognizer(swipeUp)
     }
     
     func swipeUp(sender: UISwipeGestureRecognizer){
