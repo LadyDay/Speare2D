@@ -13,7 +13,7 @@ class StartScene: SKScene {
     var gameScene: SKScene!
     var locationTouch: CGPoint!
     var mainCharacter: SKNode!
-    let alexTextureAtlas = SKTextureAtlas(named: "Alex.atlas")
+    let alexTextureAtlas = SKTextureAtlas(named: "Alex128.atlas")
     var alexSpriteArray = Array<SKTexture>()
     
     
@@ -77,7 +77,7 @@ class StartScene: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         for touch in touches {
-            let location = touch.locationInNode(self)
+            var location = touch.locationInNode(self)
             for nodeTouched in self.nodesAtPoint(location){
                 switch nodeTouched.name!{
                 case "tutorial":
@@ -100,6 +100,17 @@ class StartScene: SKScene {
                     //chama a animação para a bilheteria
                     mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
                         //Muda cena para Opção3
+                    })
+                    break
+                    
+                case "exitNode":
+                    //chama a animação para a bilheteria
+                    location = CGPoint(x: -70, y: 300)
+                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                        //Volta ao menu
+                        let fadeScene = SKTransition.fadeWithDuration(1.5)
+                        self.gameScene = Home(fileNamed: "Home")
+                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
                     })
                     break
                     
