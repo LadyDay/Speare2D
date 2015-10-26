@@ -46,7 +46,7 @@ class TutorialScene: SKScene {
         
         //for nodeTest in self.nodesAtPoint(sender.locationInView(self.view)){
             //if(nodeTest.name=="viewCloset"){
-            if(sender.locationInView(self.view).y < 350){
+            if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){
                 self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
                 self.view?.addSubview(viewInventory as UIView)
                 inventoryPresent = true
@@ -92,10 +92,10 @@ class TutorialScene: SKScene {
     }
     
     func swipeUp(sender: UISwipeGestureRecognizer){
-        //if(sender.locationInView(self.view).y < 150){
+        if(inventoryPresent==true){
             viewInventory.removeFromSuperview()
             inventoryPresent = false
-        //}
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
