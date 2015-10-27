@@ -43,21 +43,19 @@ class TutorialScene: SKScene {
     }
     
     func swipeDown(sender: UISwipeGestureRecognizer){
-        
-        //for nodeTest in self.nodesAtPoint(sender.locationInView(self.view)){
-            //if(nodeTest.name=="viewCloset"){
-            if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){
-                self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
-                self.view?.addSubview(viewInventory as UIView)
-                inventoryPresent = true
+        /* Function to display the inventory */
+        if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){
+            self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
+            self.view?.addSubview(viewInventory as UIView)
+            inventoryPresent = true
                 
-                let transition = SKTransition.crossFadeWithDuration(2)
-                self.gameScene = Inventory(fileNamed: "Inventory")
-                viewInventory.presentScene(gameScene, transition: transition)
-            }
-            //}
-        //}
-        
+            let transition = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 5)
+            self.gameScene = Inventory(fileNamed: "Inventory")
+            viewInventory.presentScene(gameScene, transition: transition)
+        }else{
+            /* Function to use swipe on the main chaacter */
+            
+        }
     }
     
     func moveMainCharacter(touch: UITouch) -> SKAction {
@@ -98,7 +96,7 @@ class TutorialScene: SKScene {
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         for touch in touches {
             let location = touch.locationInNode(self)
