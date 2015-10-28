@@ -16,6 +16,7 @@ class StartScene: SKScene {
     
     func setupAlex(){
         mainCharacter.position = CGPoint(x:76, y:210)
+        mainCharacter.zPosition = 100.0
         addChild(mainCharacter)
     }
     

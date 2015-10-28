@@ -18,6 +18,7 @@ class TutorialScene: SKScene {
     
     func setupAlex(){
         mainCharacter.position = CGPoint(x:167, y:243)
+        mainCharacter.zPosition = 100.0
         addChild(mainCharacter)
     }
     
