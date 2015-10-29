@@ -14,9 +14,13 @@ class TutorialScene: SKScene {
     var inventoryPresent: Bool = false
     var gameScene: SKScene!
     var locationTouch: CGPoint!
-    var mainCharacter: SKNode!
-    let alexTextureAtlas = SKTextureAtlas(named: "Alex128.atlas")
-    var alexSpriteArray = Array<SKTexture>()
+    var mainCharacter: Alex = Alex()
+    
+    func setupAlex(){
+        mainCharacter.position = CGPoint(x:167, y:243)
+        mainCharacter.zPosition = 100.0
+        addChild(mainCharacter)
+    }
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -27,19 +31,7 @@ class TutorialScene: SKScene {
         let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
         swipeUp.direction = UISwipeGestureRecognizerDirection.Up
         self.view?.addGestureRecognizer(swipeUp)
-        
-        mainCharacter =  childNodeWithName("mainCharacter") as! SKSpriteNode
-        mainCharacter.physicsBody?.mass = 30.0
-        
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite2_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite3_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite4_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite5_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite6_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite7_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite8_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
+        setupAlex()
     }
     
     func swipeDown(sender: UISwipeGestureRecognizer){
@@ -58,37 +50,6 @@ class TutorialScene: SKScene {
         }
     }
     
-    func moveMainCharacter(touch: UITouch) -> SKAction {
-        //let mainCharacter: SKSpriteNode = self.childNodeWithName("mainCharacter") as! SKSpriteNode
-        //mainCharacter = SKSpriteNode(texture: alexSpriteArray[0])
-            let currentLocation = touch.locationInNode(self)
-            let pastLocation = mainCharacter.position
-        
-            let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
-            let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
-            let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.05)
-            walkingAlexAction.duration = 1
-            let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
-            let group = SKAction.group([walkingAlexAction, direction, moveToPoint])
-            return group
-    }
-    
-    func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{
-        //let xVar: Int
-        if (currentLocation.x - pastLocation.x) > 0 {
-            return 1.0
-        } else {
-            return -1.0
-        }
-    }
-    
-    func makeDuration(currentLocation : CGPoint, pastLocation: CGPoint) -> NSTimeInterval{
-        let catetos:CGFloat = pow(abs(currentLocation.x - pastLocation.x), 2) + pow(abs(currentLocation.y - pastLocation.y), 2)
-        let hipotenusa = sqrt(catetos)
-        
-        return hipotenusa.native as NSTimeInterval //Double(hipotenusa)
-    }
-    
     func swipeUp(sender: UISwipeGestureRecognizer){
         if(inventoryPresent==true){
             viewInventory.removeFromSuperview()
@@ -103,7 +64,7 @@ class TutorialScene: SKScene {
             for nodeTouched in self.nodesAtPoint(location){
                 switch nodeTouched.name!{
                 case "hortaNode":
-                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
                         //Muda cena para Opção1
                         let fadeScene = SKTransition.crossFadeWithDuration(1.5)
                         self.gameScene = FarmScene(fileNamed: "FarmScene")
@@ -113,21 +74,21 @@ class TutorialScene: SKScene {
                     
                 case "option2":
 //                    //chama a animação para a porta
-//                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+//                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
 //                        //Muda cena para Opção3
 //                    })
                     break
                     
                 case "option3":
 //                    //chama a animação para a bilheteria
-//                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+//                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
 //                        //Muda cena para Opção3
 //                    })
                     break
                     
                 default:
                     if(inventoryPresent==false){
-                        mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //mainCharacter = SKSpriteNode(texture:self.alexSpriteArray[0])
                         })
                     }

@@ -12,65 +12,22 @@ import SpriteKit
 class StartScene: SKScene {
     var gameScene: SKScene!
     var locationTouch: CGPoint!
-    var mainCharacter: SKNode!
-    let alexTextureAtlas = SKTextureAtlas(named: "Alex128.atlas")
-    var alexSpriteArray = Array<SKTexture>()
+    var mainCharacter: Alex = Alex ()
     
+    func setupAlex(){
+        mainCharacter.position = CGPoint(x:76, y:210)
+        mainCharacter.zPosition = 100.0
+        addChild(mainCharacter)
+    }
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
-        //let border = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        //border.friction = 0.2
-        //self.physicsBody = border
+        
+        setupAlex()
         
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
-        
-        mainCharacter =  childNodeWithName("mainCharacter") as! SKSpriteNode
-        mainCharacter.physicsBody?.mass = 30.0
-        
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite2_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite3_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite4_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite5_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite6_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite7_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite8_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
-        
-    }
-    
-    func moveMainCharacter(touch: UITouch) -> SKAction {
-        //let mainCharacter: SKSpriteNode = self.childNodeWithName("mainCharacter") as! SKSpriteNode
-        //mainCharacter = SKSpriteNode(texture: alexSpriteArray[0])
-        let currentLocation = touch.locationInNode(self)
-        let pastLocation = mainCharacter.position
-        
-        let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
-        let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
-        let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.05)
-        walkingAlexAction.duration = 1
-        let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
-        let group = SKAction.group([walkingAlexAction, direction, moveToPoint])
-        return group
-    }
-    
-    func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{
-        //let xVar: Int
-        if (currentLocation.x - pastLocation.x) > 0 {
-            return 1.0
-        } else {
-            return -1.0
-        }
-    }
-    
-    func makeDuration(currentLocation : CGPoint, pastLocation: CGPoint) -> NSTimeInterval{
-        let catetos:CGFloat = pow(abs(currentLocation.x - pastLocation.x), 2) + pow(abs(currentLocation.y - pastLocation.y), 2)
-        let hipotenusa = sqrt(catetos)
-        
-        return hipotenusa.native as NSTimeInterval //Double(hipotenusa)
     }
     
     /* Called when a touch begins */
@@ -81,7 +38,7 @@ class StartScene: SKScene {
             for nodeTouched in self.nodesAtPoint(location){
                 switch nodeTouched.name!{
                 case "tutorial":
-                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Muda cena para Opção1
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         self.gameScene = TutorialScene(fileNamed: "TutorialScene")
@@ -91,14 +48,14 @@ class StartScene: SKScene {
                     
                 case "option2":
                     //chama a animação para a porta
-                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Muda cena para Opção3
                     })
                     break
                     
                 case "option3":
                     //chama a animação para a bilheteria
-                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Muda cena para Opção3
                     })
                     break
@@ -106,7 +63,7 @@ class StartScene: SKScene {
                 case "exitNode":
                     //chama a animação para a bilheteria
                     location = CGPoint(x: -70, y: 300)
-                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Volta ao menu
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         self.gameScene = Home(fileNamed: "Home")
@@ -115,7 +72,7 @@ class StartScene: SKScene {
                     break
                     
                 default:
-                    mainCharacter.runAction(self.moveMainCharacter(touch), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //mainCharacter = SKSpriteNode(texture:self.alexSpriteArray[0])
                     })
                     break

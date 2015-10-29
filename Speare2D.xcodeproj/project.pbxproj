@@ -26,6 +26,7 @@
 		BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */; settings = {ASSET_TAGS = (); }; };
 		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; settings = {ASSET_TAGS = (); }; };
 		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; settings = {ASSET_TAGS = (); }; };
+		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; settings = {ASSET_TAGS = (); }; };
 		BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178B1BDD4B28009365CE /* OptionsScene.sks */; settings = {ASSET_TAGS = (); }; };
 		BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */; settings = {ASSET_TAGS = (); }; };
 		BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178F1BDD4B7D009365CE /* InfoScene.sks */; settings = {ASSET_TAGS = (); }; };
@@ -75,6 +76,7 @@
 		BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alex128.atlas; sourceTree = "<group>"; };
 		BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
+		BED4D90D1BE10E6800F8B35A /* Alex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alex.swift; sourceTree = "<group>"; };
 		BEE8178B1BDD4B28009365CE /* OptionsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionsScene.sks; sourceTree = "<group>"; };
 		BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
 		BEE8178F1BDD4B7D009365CE /* InfoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InfoScene.sks; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				3D0545331BD7C44600D1DC0A /* Inventory.sks */,
 				3D0545351BD7C45500D1DC0A /* Inventory.swift */,
+				BED4D90D1BE10E6800F8B35A /* Alex.swift */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */,
 				BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */,
 				3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */,
+				BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
 				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
