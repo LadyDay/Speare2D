@@ -20,6 +20,7 @@ class TutorialScene: SKScene {
         mainCharacter.position = CGPoint(x:167, y:243)
         mainCharacter.zPosition = 100.0
         addChild(mainCharacter)
+        
     }
     
     override func didMoveToView(view: SKView) {

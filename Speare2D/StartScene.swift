@@ -36,7 +36,8 @@ class StartScene: SKScene {
         for touch in touches {
             var location = touch.locationInNode(self)
             for nodeTouched in self.nodesAtPoint(location){
-                switch nodeTouched.name!{
+                guard let nome = nodeTouched.name else {continue ;}
+                switch nome{
                 case "tutorial":
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Muda cena para Opção1
