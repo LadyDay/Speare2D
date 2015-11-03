@@ -63,8 +63,8 @@ class Alex: SKSpriteNode {
         
         let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
         let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
-        let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.05)
-        walkingAlexAction.duration = 1
+        let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.08)
+        walkingAlexAction.duration = duration
         let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
         let group = SKAction.group([walkingAlexAction, direction, moveToPoint])
         return group
