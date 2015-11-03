@@ -13,21 +13,22 @@ class Alex: SKSpriteNode {
     var gameScene: SKScene!
     var locationTouch: CGPoint!
     var mainCharacter: SKNode!
-    let alexTextureAtlas = SKTextureAtlas(named: "Alex128.atlas")
+    let alexTextureAtlas = SKTextureAtlas(named: "Alex1024.atlas")
     var alexSpriteArray = Array<SKTexture>()
     
     init() {
-        let texture = SKTexture(imageNamed: "Alex_Sprite1_128x255")
+        let texture = SKTexture(imageNamed: "Alex_Sprite1_1024x2040")
         
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite2_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite3_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite4_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite5_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite6_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite7_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite8_128x255"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_128x255"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite2_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite3_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite4_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite5_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite6_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite7_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite8_1024x2040"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_1024x2040"))
+        
         
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
         animate()
@@ -72,9 +73,9 @@ class Alex: SKSpriteNode {
     func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{
         //let xVar: Int
         if (currentLocation.x - pastLocation.x) > 0 {
-            return 1.0
+            return 0.1
         } else {
-            return -1.0
+            return -0.1
         }
     }
     
