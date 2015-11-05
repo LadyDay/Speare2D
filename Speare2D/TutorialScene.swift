@@ -85,10 +85,21 @@ class TutorialScene: SKScene {
                     
                     //Tentando 
                 case "redNode":
-                    //                    //chama a animação para a porta
-                    //mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                    //                        //Muda cena para Opção3
-                    //})
+                    //inventário
+                    //vai até o objeto
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
+                        //Muda cena para Opção1
+                        let redNode = self.childNodeWithName("redNode")
+                        //let fadeScene = SKTransition.crossFadeWithDuration(1.5)
+                        let rotateAction = SKAction.rotateByAngle(3.14, duration: 1.0)
+                        redNode!.runAction(rotateAction)
+                        //redNode!.removeFromParent()
+                        //Inventory.addRedNode(<#T##Inventory#>)
+                        
+                        
+                    })
+                    
+                    
                     break
                     
                 case "option3":

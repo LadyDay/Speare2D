@@ -39,6 +39,13 @@ class Inventory: SKScene {
         }
     }
     
+    func addRedNode(){
+        let redSquareNode = SKSpriteNode(color: SKColor.redColor(), size: CGSizeMake(50, 50))
+        redSquareNode.position = CGPoint(x: 75, y: 75)
+        
+        self.addChild(redSquareNode)
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
