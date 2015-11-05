@@ -12,9 +12,22 @@ class Home: SKScene {
     
     var gameScene: SKScene!
     var timeLight: Int = 0
+    var backgroundMusic: SKAudioNode!
+    var applauseEffect: SKAudioNode!
+    let pauseAction = SKAction.pause()
+    let stopAction = SKAction.stop()
+   
+    
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        backgroundMusic = SKAudioNode(fileNamed: "backgroundMusic.mp3")
+        backgroundMusic.autoplayLooped = true
+        addChild(backgroundMusic)
+        
+        applauseEffect = SKAudioNode(fileNamed: "applause.wav")
+        
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -28,12 +41,20 @@ class Home: SKScene {
                     case "start":
                         //chama a animação para a porta
                         //Muda cena para StartScene
-                        let fadeScene = SKTransition.fadeWithDuration(1.5)
-                        self.gameScene = StartScene(fileNamed: "StartScene")
-                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
+
+                        //backgroundMusic.removeFromParent()
+                        runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: false), completion:{
+                            let fadeScene = SKTransition.fadeWithDuration(1.5)
+                            self.gameScene = StartScene(fileNamed: "StartScene")
+                            self.view?.presentScene(self.gameScene!, transition: fadeScene)
+                        })
+
                         break
                     case "options":
                         //chama a animação para a porta
+                        //backgroundMusic.runAction(stopAction)
+                         backgroundMusic.removeFromParent()
+                        
                             break
                     case "info":
                         //chama a animação para a bilheteria

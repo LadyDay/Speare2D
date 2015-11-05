@@ -76,14 +76,29 @@ class TutorialScene: SKScene {
                     break
                     
                 case "option2":
-//                    //chama a animação para a porta
-//                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-//                        //Muda cena para Opção3
-//                    })
+                    //chama a animação para o objeto
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
+                    //Muda cena para Opção3
+                        
+                    })
+                    break
+                    
+                    //Tentando 
+                case "redNode":
+                    //                    //chama a animação para a porta
+                    //mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
+                    //                        //Muda cena para Opção3
+                    //})
                     break
                     
                 case "option3":
-//                    //chama a animação para a bilheteria
+                    //vai até o objeto
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
+                        //Muda cena para Opção1
+                        let fadeScene = SKTransition.crossFadeWithDuration(1.5)
+                        self.gameScene = FarmScene(fileNamed: "FarmScene")
+                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
+                    })
 //                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
 //                        //Muda cena para Opção3
 //                    })

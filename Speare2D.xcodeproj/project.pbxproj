@@ -27,6 +27,8 @@
 		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; settings = {ASSET_TAGS = (); }; };
 		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; settings = {ASSET_TAGS = (); }; };
 		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; settings = {ASSET_TAGS = (); }; };
+		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; settings = {ASSET_TAGS = (); }; };
+		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; settings = {ASSET_TAGS = (); }; };
 		BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178B1BDD4B28009365CE /* OptionsScene.sks */; settings = {ASSET_TAGS = (); }; };
 		BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */; settings = {ASSET_TAGS = (); }; };
 		BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178F1BDD4B7D009365CE /* InfoScene.sks */; settings = {ASSET_TAGS = (); }; };
@@ -77,6 +79,8 @@
 		BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		BED4D90D1BE10E6800F8B35A /* Alex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alex.swift; sourceTree = "<group>"; };
+		BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backgroundMusic.mp3; path = ../backgroundMusic.mp3; sourceTree = "<group>"; };
+		BED4D9101BEB665A00F8B35A /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = applause.wav; path = ../applause.wav; sourceTree = "<group>"; };
 		BEE8178B1BDD4B28009365CE /* OptionsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionsScene.sks; sourceTree = "<group>"; };
 		BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
 		BEE8178F1BDD4B7D009365CE /* InfoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InfoScene.sks; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 		BEE817891BDD49EA009365CE /* GameMenu */ = {
 			isa = PBXGroup;
 			children = (
+				BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */,
+				BED4D9101BEB665A00F8B35A /* applause.wav */,
 				3DC44D0C1BD52E0400502BF0 /* Home.sks */,
 				3DC44D0E1BD52E0400502BF0 /* Home.swift */,
 				BEE8178A1BDD4A28009365CE /* Options */,
@@ -344,6 +350,8 @@
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BE89CC4D1BDE497E0063B3A9 /* Alex1024.atlas in Resources */,
 				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
+				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
+				BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
 				BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */,
