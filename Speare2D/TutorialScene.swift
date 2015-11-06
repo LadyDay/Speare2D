@@ -28,9 +28,12 @@ class TutorialScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        //Make in inventory for the scene
         self.inventory = Inventory(fileNamed: "Inventory")
+        //clear the inventory (textures and colors)
         self.inventory.firstFunc()
         
+        //Add swipe in the view (self.view)
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.view?.addGestureRecognizer(swipeDown)
@@ -38,12 +41,14 @@ class TutorialScene: SKScene {
         let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
         swipeUp.direction = UISwipeGestureRecognizerDirection.Up
         self.view?.addGestureRecognizer(swipeUp)
+        
+        //call function setupAlex
         setupAlex()
     }
     
     func swipeDown(sender: UISwipeGestureRecognizer){
         /* Function to display the inventory */
-        if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){
+        if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){ //limits the recognition area swipe
             self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
             self.view?.addSubview(viewInventory as UIView)
             inventoryPresent = true
@@ -87,12 +92,12 @@ class TutorialScene: SKScene {
                     break
                     
                     //Tentando 
-                case "redNode":
+                case "chave":
                     //inventário
                     //vai até o objeto
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
                         //Muda cena para Opção1
-                        let redNode = self.childNodeWithName("redNode") as! SKSpriteNode
+                        let redNode = self.childNodeWithName("chave") as! SKSpriteNode
                         //let fadeScene = SKTransition.crossFadeWithDuration(1.5)
                         let rotateAction = SKAction.rotateByAngle(3.14, duration: 1.0)
                         redNode.runAction(rotateAction)
