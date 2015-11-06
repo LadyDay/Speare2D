@@ -10,6 +10,7 @@ import SpriteKit
 
 class TutorialScene: SKScene {
     
+    var inventory: Inventory!
     var viewInventory: SKView!
     var inventoryPresent: Bool = false
     var gameScene: SKScene!
@@ -27,6 +28,9 @@ class TutorialScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.inventory = Inventory(fileNamed: "Inventory")
+        self.inventory.firstFunc()
+        
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.view?.addGestureRecognizer(swipeDown)
@@ -45,8 +49,7 @@ class TutorialScene: SKScene {
             inventoryPresent = true
                 
             let transition = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 5)
-            self.gameScene = Inventory(fileNamed: "Inventory")
-            viewInventory.presentScene(gameScene, transition: transition)
+            viewInventory.presentScene(inventory, transition: transition)
         }else{
             /* Function to use swipe on the main chaacter */
             
@@ -89,14 +92,13 @@ class TutorialScene: SKScene {
                     //vai até o objeto
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
                         //Muda cena para Opção1
-                        let redNode = self.childNodeWithName("redNode")
+                        let redNode = self.childNodeWithName("redNode") as! SKSpriteNode
                         //let fadeScene = SKTransition.crossFadeWithDuration(1.5)
                         let rotateAction = SKAction.rotateByAngle(3.14, duration: 1.0)
-                        redNode!.runAction(rotateAction)
+                        redNode.runAction(rotateAction)
                         //redNode!.removeFromParent()
-                        //Inventory.addRedNode(<#T##Inventory#>)
-                        
-                        
+                        self.inventory.guardingObject(redNode)
+                        redNode.removeFromParent()
                     })
                     
                     

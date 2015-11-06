@@ -9,11 +9,12 @@
 import SpriteKit
 
 class Inventory: SKScene {
-    
+
     var gameScene: SKScene!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -31,6 +32,13 @@ class Inventory: SKScene {
         }
     }
     
+    func firstFunc(){
+            for(var i = 0; i<7; i++){
+                let lot = self.childNodeWithName("lot\(i)") as! SKSpriteNode
+                lot.texture = nil
+            }
+    }
+    
     func clearLots(){
         for(var i = 0; i<7; i++){
             let lot = self.childNodeWithName("lot\(i)") as! SKSpriteNode
@@ -42,8 +50,8 @@ class Inventory: SKScene {
         var completed: Bool = false
         for(var i = 0; i<7 && completed==false; i++){
             let lot = self.childNodeWithName("lot\(i)") as! SKSpriteNode
-            if(lot.color.isEqual(UIColor.clearColor())){
-                lot.color = object.color
+            if(lot.texture == nil){
+                lot.texture = object.texture
                 completed = true
             }
         }
