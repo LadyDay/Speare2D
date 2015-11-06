@@ -70,19 +70,23 @@ class TutorialScene: SKScene {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
+        
         for touch in touches {
             let location = touch.locationInNode(self)
+            
             for nodeTouched in self.nodesAtPoint(location){
+                
                 switch nodeTouched.name!{
                 case "hortaNode":
+                    //changes the scene for the garden
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
-                        //Muda cena para Opção1
                         let fadeScene = SKTransition.crossFadeWithDuration(1.5)
                         self.gameScene = FarmScene(fileNamed: "FarmScene")
                         self.view?.presentScene(self.gameScene!, transition: fadeScene)
                     })
                     break
                     
+                //PRA QUE ISSO?
                 case "option2":
                     //chama a animação para o objeto
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
@@ -93,22 +97,20 @@ class TutorialScene: SKScene {
                     
                     //Tentando 
                 case "chave":
-                    //inventário
-                    //vai até o objeto
+                    
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
-                        //Muda cena para Opção1
                         let redNode = self.childNodeWithName("chave") as! SKSpriteNode
-                        //let fadeScene = SKTransition.crossFadeWithDuration(1.5)
-                        let rotateAction = SKAction.rotateByAngle(3.14, duration: 1.0)
-                        redNode.runAction(rotateAction)
-                        //redNode!.removeFromParent()
+                        //the animation mainCharacter guarding the object - HERE
+                        
+                        //guarding the object in the inventory
                         self.inventory.guardingObject(redNode)
                         redNode.removeFromParent()
                     })
                     
                     
                     break
-                    
+                
+                //PRA QUE ISSO?
                 case "option3":
                     //vai até o objeto
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
@@ -124,15 +126,13 @@ class TutorialScene: SKScene {
                     
                 default:
                     if(inventoryPresent==false){
-                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                        //mainCharacter = SKSpriteNode(texture:self.alexSpriteArray[0])
-                        })
+                        //mainCharacter walks
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {})
                     }
                     break
                 }
             }
         }
-
     }
     
     /* Called before each frame is rendered */
