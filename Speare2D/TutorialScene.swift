@@ -28,6 +28,8 @@ class TutorialScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        mainCharacter.name = "Alex"
+        
         //Make in inventory for the scene
         self.inventory = Inventory(fileNamed: "Inventory")
         //clear the inventory (textures and colors)
@@ -45,7 +47,8 @@ class TutorialScene: SKScene {
         //call function setupAlex
         setupAlex()
     }
-    
+
+/*SWIPE's FUCTION */
     func swipeDown(sender: UISwipeGestureRecognizer){
         /* Function to display the inventory */
         if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){ //limits the recognition area swipe
@@ -68,6 +71,7 @@ class TutorialScene: SKScene {
         }
     }
     
+/*TOUCH's FUCTION */
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
@@ -76,60 +80,32 @@ class TutorialScene: SKScene {
             
             for nodeTouched in self.nodesAtPoint(location){
                 
-                switch nodeTouched.name!{
-                case "hortaNode":
-                    //changes the scene for the garden
+                if(nodeTouched.name == nil){
+                    //pega qualquer objeto da tela, que seja um skspritenode sem nome
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
-                        let fadeScene = SKTransition.crossFadeWithDuration(1.5)
-                        self.gameScene = FarmScene(fileNamed: "FarmScene")
-                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
-                    })
-                    break
-                    
-                //PRA QUE ISSO?
-                case "option2":
-                    //chama a animação para o objeto
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                    //Muda cena para Opção3
-                        
-                    })
-                    break
-                    
-                    //Tentando 
-                case "chave":
-                    
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
-                        let redNode = self.childNodeWithName("chave") as! SKSpriteNode
-                        //the animation mainCharacter guarding the object - HERE
-                        
                         //guarding the object in the inventory
-                        self.inventory.guardingObject(redNode)
-                        redNode.removeFromParent()
+                        self.inventory.guardingObject(nodeTouched as! SKSpriteNode)
+                        nodeTouched.removeFromParent()
                     })
                     
-                    
-                    break
-                
-                //PRA QUE ISSO?
-                case "option3":
-                    //vai até o objeto
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
-                        //Muda cena para Opção1
-                        let fadeScene = SKTransition.crossFadeWithDuration(1.5)
-                        self.gameScene = FarmScene(fileNamed: "FarmScene")
-                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
-                    })
-//                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-//                        //Muda cena para Opção3
-//                    })
-                    break
-                    
-                default:
-                    if(inventoryPresent==false){
-                        //mainCharacter walks
-                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {})
+                }else{
+                    switch nodeTouched.name!{
+                    case "hortaNode":
+                        //changes the scene for the garden
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
+                            let fadeScene = SKTransition.crossFadeWithDuration(1.5)
+                            self.gameScene = FarmScene(fileNamed: "FarmScene")
+                            self.view?.presentScene(self.gameScene!, transition: fadeScene)
+                        })
+                        break
+                        
+                    default:
+                        if(inventoryPresent==false){
+                            //mainCharacter walks
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {})
+                        }
+                        break
                     }
-                    break
                 }
             }
         }
