@@ -18,7 +18,7 @@ class SceneBase: SKScene {
     //mainCharacter
     var mainCharacter: Alex = Alex()
     
-    /*SWIPE's FUCTION */
+    /*SWIPE's FUNCTION */
     func addSwipes(view: UIView){
         //Add swipe in the view (self.view)
         let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
@@ -51,5 +51,22 @@ class SceneBase: SKScene {
             inventoryPresent = false
         }
     }
-
+    
+    /* ANOTHER FUNCTION */
+    func moveInfo(gameScene: SceneBase){
+        gameScene.mainCharacter = self.mainCharacter
+        gameScene.inventory = self.inventory
+        self.inventory.removeFromParent()
+        self.mainCharacter.removeFromParent()
+    }
+    
+    //function for catch object in view
+    func catchObject(gameScene: SceneBase, location: CGPoint, object: SKNode){
+        //pega qualquer objeto da tela, que seja um skspritenode sem nome
+        gameScene.mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
+            //guarding the object in the inventory
+            self.inventory.guardingObject(object as! SKSpriteNode)
+            object.removeFromParent()
+        })
+    }
 }
