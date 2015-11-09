@@ -87,6 +87,9 @@ class TutorialScene: SKScene {
                             let fadeScene = SKTransition.crossFadeWithDuration(1.5)
                             let gameScene = FarmScene(fileNamed: "FarmScene")
                             gameScene!.mainCharacter = self.mainCharacter
+                            gameScene!.inventory = self.inventory
+                            self.inventory.removeFromParent()
+                            self.mainCharacter.removeFromParent()
                             self.view?.presentScene(gameScene!, transition: fadeScene)
                         })
                         break
