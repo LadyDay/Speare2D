@@ -10,7 +10,7 @@ import SpriteKit
 
 class Alex: SKSpriteNode {
     
-    let alexTextureAtlas = SKTextureAtlas(named: "Alex1024.atlas")
+    let alexTextureAtlas = SKTextureAtlas(named: "AlexCorrendo.atlas")
     var alexSpriteArray = Array<SKTexture>()
     var waitingAlexSpriteArray = Array<SKTexture>()
     
