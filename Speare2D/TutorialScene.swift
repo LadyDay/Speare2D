@@ -13,18 +13,8 @@ class TutorialScene: SKScene {
     var inventory: Inventory!
     var viewInventory: SKView!
     var inventoryPresent: Bool = false
-    var gameScene: SKScene!
     var locationTouch: CGPoint!
     var mainCharacter: Alex = Alex()
-    
-    func setupAlex(){
-        mainCharacter.position = CGPoint(x:167, y:243)
-        mainCharacter.zPosition = 100.0
-        mainCharacter.xScale = 0.1
-        mainCharacter.yScale = 0.1
-        addChild(mainCharacter)
-        
-    }
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -45,7 +35,8 @@ class TutorialScene: SKScene {
         self.view?.addGestureRecognizer(swipeUp)
         
         //call function setupAlex
-        setupAlex()
+        self.mainCharacter.setupAlex()
+        addChild(mainCharacter)
     }
 
 /*SWIPE's FUCTION */
@@ -94,8 +85,9 @@ class TutorialScene: SKScene {
                         //changes the scene for the garden
                         mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
                             let fadeScene = SKTransition.crossFadeWithDuration(1.5)
-                            self.gameScene = FarmScene(fileNamed: "FarmScene")
-                            self.view?.presentScene(self.gameScene!, transition: fadeScene)
+                            let gameScene = FarmScene(fileNamed: "FarmScene")
+                            gameScene!.mainCharacter = self.mainCharacter
+                            self.view?.presentScene(gameScene!, transition: fadeScene)
                         })
                         break
                         

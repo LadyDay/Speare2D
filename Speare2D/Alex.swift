@@ -10,9 +10,7 @@ import SpriteKit
 
 class Alex: SKSpriteNode {
     
-    var gameScene: SKScene!
-    var locationTouch: CGPoint!
-    var mainCharacter: SKNode!
+    //var mainCharacter: SKNode!
     let alexTextureAtlas = SKTextureAtlas(named: "Alex1024.atlas")
     var alexSpriteArray = Array<SKTexture>()
     
@@ -54,6 +52,13 @@ class Alex: SKSpriteNode {
     
     func crouch(){
         
+    }
+    
+    func setupAlex(){
+        self.position = CGPoint(x:167, y:243)
+        self.zPosition = 100.0
+        self.xScale = 0.1
+        self.yScale = 0.1
     }
     
     func walk(inicialLocation: CGPoint, touchLocation: CGPoint ) -> SKAction {
