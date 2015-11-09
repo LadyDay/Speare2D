@@ -10,10 +10,7 @@ import SpriteKit
 
 class Alex: SKSpriteNode {
     
-    var gameScene: SKScene!
-    var locationTouch: CGPoint!
-    var mainCharacter: SKNode!
-    let alexTextureAtlas = SKTextureAtlas(named: "AlexCorrendo.atlas")
+    let alexTextureAtlas = SKTextureAtlas(named: "Alex1024.atlas")
     var alexSpriteArray = Array<SKTexture>()
     var waitingAlexSpriteArray = Array<SKTexture>()
     
