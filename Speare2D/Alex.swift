@@ -13,6 +13,8 @@ class Alex: SKSpriteNode {
     let alexTextureAtlas = SKTextureAtlas(named: "AlexCorrendo.atlas")
     var alexSpriteArray = Array<SKTexture>()
     var waitingAlexSpriteArray = Array<SKTexture>()
+    var waitingAlexSpriteArray2 = Array<SKTexture>()
+    var scaleAlex: CGFloat = 0.3
     
     init() {
         let texture = SKTexture(imageNamed: "Alex_Sprite_Princ1_400x708")
@@ -49,10 +51,18 @@ class Alex: SKSpriteNode {
         
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ2_400x708"))
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
-        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
-        let playerAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray, timePerFrame: 0.5))
+        
+        let playerAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray, timePerFrame: 0.2))
+//        waitingAlexSpriteArray2.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+//        waitingAlexSpriteArray2.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ2_400x708"))
+//        let playerAnimation2 = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray2, timePerFrame: 0.1))
+//        let waitingAnimation = SKAction.group([playerAnimation, playerAnimation2])
         self.runAction(playerAnimation)
     }
     
@@ -66,10 +76,10 @@ class Alex: SKSpriteNode {
     }
     
     func setupAlex(){
-        self.position = CGPoint(x:167, y:243)
+        self.position = CGPoint(x:167, y:200)
         self.zPosition = 100.0
-        self.xScale = 0.1
-        self.yScale = 0.1
+        self.xScale = scaleAlex
+        self.yScale = scaleAlex
     }
     
     func walk(inicialLocation: CGPoint, touchLocation: CGPoint ) -> SKAction {
@@ -89,9 +99,9 @@ class Alex: SKSpriteNode {
     func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{
         //let xVar: Int
         if (currentLocation.x - pastLocation.x) > 0 {
-            return 0.1
+            return scaleAlex
         } else {
-            return -0.1
+            return -scaleAlex
         }
     }
     
