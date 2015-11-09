@@ -55,7 +55,7 @@ class Alex: SKSpriteNode {
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ2_400x708"))
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
-        let playerAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray, timePerFrame: 0.1))
+        let playerAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray, timePerFrame: 0.5))
         self.runAction(playerAnimation)
     }
     
