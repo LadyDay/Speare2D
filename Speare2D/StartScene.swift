@@ -9,23 +9,13 @@
 import UIKit
 import SpriteKit
 
-class StartScene: SKScene {
-    var gameScene: SKScene!
-    var locationTouch: CGPoint!
-    var mainCharacter: Alex = Alex ()
-    
-    func setupAlex(){
-        mainCharacter.position = CGPoint(x:76, y:210)
-        mainCharacter.zPosition = 100.0
-        mainCharacter.xScale = 0.1
-        mainCharacter.yScale = 0.1
-        addChild(mainCharacter)
-    }
+class StartScene: SceneDefault {
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
         
-        setupAlex()
+        mainCharacter.setupAlex()
+        addChild(mainCharacter)
         
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
@@ -44,8 +34,8 @@ class StartScene: SKScene {
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Muda cena para Opção1
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
-                        self.gameScene = TutorialScene(fileNamed: "TutorialScene")
-                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
+                        let gameScene = TutorialScene(fileNamed: "TutorialScene")
+                        self.view?.presentScene(gameScene!, transition: fadeScene)
                     })
                     break
                     
@@ -69,8 +59,8 @@ class StartScene: SKScene {
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Volta ao menu
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
-                        self.gameScene = Home(fileNamed: "Home")
-                        self.view?.presentScene(self.gameScene!, transition: fadeScene)
+                        let gameScene = Home(fileNamed: "Home")
+                        self.view?.presentScene(gameScene!, transition: fadeScene)
                     })
                     break
                     
@@ -96,10 +86,5 @@ class StartScene: SKScene {
         }
         
     }
-    
-    override func didSimulatePhysics() {
-        //<#code#>
-    }
-    
     
 }

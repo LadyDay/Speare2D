@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D0545331BD7C44600D1DC0A /* Inventory.sks */; };
 		3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0545351BD7C45500D1DC0A /* Inventory.swift */; };
-		3D5E38591BF0D7B100D59321 /* SceneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E38581BF0D7B100D59321 /* SceneBase.swift */; };
+		3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */; };
+		3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E385A1BF1279A00D59321 /* SceneDefault.swift */; };
 		3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */; };
 		3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D0C1BD52E0400502BF0 /* Home.sks */; };
 		3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0E1BD52E0400502BF0 /* Home.swift */; };
@@ -19,22 +20,22 @@
 		3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D171BD52E0400502BF0 /* LaunchScreen.storyboard */; };
 		3DC44D241BD52E0400502BF0 /* Speare2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D231BD52E0400502BF0 /* Speare2DTests.swift */; };
 		3DC44D2F1BD52E0400502BF0 /* Speare2DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */; };
-		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; settings = {ASSET_TAGS = (); }; };
-		BE7597E71BD73661005608E1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597E61BD73661005608E1 /* StartScene.swift */; settings = {ASSET_TAGS = (); }; };
-		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; settings = {ASSET_TAGS = (); }; };
-		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; settings = {ASSET_TAGS = (); }; };
-		BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597F91BD78833005608E1 /* TutorialScene.swift */; settings = {ASSET_TAGS = (); }; };
-		BE89CC4D1BDE497E0063B3A9 /* Alex1024.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4B1BDE497E0063B3A9 /* Alex1024.atlas */; settings = {ASSET_TAGS = (); }; };
-		BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */; settings = {ASSET_TAGS = (); }; };
-		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; settings = {ASSET_TAGS = (); }; };
-		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; settings = {ASSET_TAGS = (); }; };
-		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; settings = {ASSET_TAGS = (); }; };
-		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; settings = {ASSET_TAGS = (); }; };
-		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; settings = {ASSET_TAGS = (); }; };
-		BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178B1BDD4B28009365CE /* OptionsScene.sks */; settings = {ASSET_TAGS = (); }; };
-		BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */; settings = {ASSET_TAGS = (); }; };
-		BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178F1BDD4B7D009365CE /* InfoScene.sks */; settings = {ASSET_TAGS = (); }; };
-		BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE817911BDD4BA6009365CE /* InfoScene.swift */; settings = {ASSET_TAGS = (); }; };
+		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; };
+		BE7597E71BD73661005608E1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597E61BD73661005608E1 /* StartScene.swift */; };
+		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; };
+		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; };
+		BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597F91BD78833005608E1 /* TutorialScene.swift */; };
+		BE89CC4D1BDE497E0063B3A9 /* Alex1024.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4B1BDE497E0063B3A9 /* Alex1024.atlas */; };
+		BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */; };
+		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; };
+		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; };
+		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; };
+		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; };
+		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; };
+		BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178B1BDD4B28009365CE /* OptionsScene.sks */; };
+		BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */; };
+		BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178F1BDD4B7D009365CE /* InfoScene.sks */; };
+		BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE817911BDD4BA6009365CE /* InfoScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,8 @@
 /* Begin PBXFileReference section */
 		3D0545331BD7C44600D1DC0A /* Inventory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Inventory.sks; sourceTree = "<group>"; };
 		3D0545351BD7C45500D1DC0A /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		3D5E38581BF0D7B100D59321 /* SceneBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBase.swift; sourceTree = "<group>"; };
+		3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneGameBase.swift; sourceTree = "<group>"; };
+		3D5E385A1BF1279A00D59321 /* SceneDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDefault.swift; sourceTree = "<group>"; };
 		3DC44D071BD52E0300502BF0 /* Speare2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speare2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DC44D0C1BD52E0400502BF0 /* Home.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Home.sks; sourceTree = "<group>"; };
@@ -220,7 +222,8 @@
 			children = (
 				3D0545331BD7C44600D1DC0A /* Inventory.sks */,
 				3D0545351BD7C45500D1DC0A /* Inventory.swift */,
-				3D5E38581BF0D7B100D59321 /* SceneBase.swift */,
+				3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */,
+				3D5E385A1BF1279A00D59321 /* SceneDefault.swift */,
 				BED4D90D1BE10E6800F8B35A /* Alex.swift */,
 			);
 			name = Assets;
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */,
 				3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */,
 				BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */,
 				3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */,
@@ -395,7 +399,7 @@
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
 				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
-				3D5E38591BF0D7B100D59321 /* SceneBase.swift in Sources */,
+				3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */,
 				3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */,
 				BE7597E71BD73661005608E1 /* StartScene.swift in Sources */,
 				BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */,

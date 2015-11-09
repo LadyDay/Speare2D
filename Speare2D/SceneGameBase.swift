@@ -8,15 +8,7 @@
 
 import SpriteKit
 
-class SceneBase: SKScene {
-    
-    //inventory
-    var inventory: Inventory!
-    var viewInventory: SKView!
-    var inventoryPresent: Bool = false
-    
-    //mainCharacter
-    var mainCharacter: Alex = Alex()
+class SceneGameBase: SceneDefault {
     
     /*SWIPE's FUNCTION */
     func addSwipes(view: UIView){
@@ -52,16 +44,8 @@ class SceneBase: SKScene {
         }
     }
     
-    /* ANOTHER FUNCTION */
-    func moveInfo(gameScene: SceneBase){
-        gameScene.mainCharacter = self.mainCharacter
-        gameScene.inventory = self.inventory
-        self.inventory.removeFromParent()
-        self.mainCharacter.removeFromParent()
-    }
-    
     //function for catch object in view
-    func catchObject(gameScene: SceneBase, location: CGPoint, object: SKNode){
+    func catchObject(gameScene: SceneGameBase, location: CGPoint, object: SKNode){
         //pega qualquer objeto da tela, que seja um skspritenode sem nome
         gameScene.mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
             //guarding the object in the inventory

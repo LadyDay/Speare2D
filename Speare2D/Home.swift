@@ -8,17 +8,10 @@
     
 import SpriteKit
 
-class Home: SKScene {
+class Home: SceneDefault {
     
-    var gameScene: SKScene!
     var timeLight: Int = 0
-    var backgroundMusic: SKAudioNode!
-    var applauseEffect: SKAudioNode!
-    let pauseAction = SKAction.pause()
-    let stopAction = SKAction.stop()
-   
-    
-    
+
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         backgroundMusic = SKAudioNode(fileNamed: "backgroundMusic.mp3")
@@ -26,8 +19,6 @@ class Home: SKScene {
         addChild(backgroundMusic)
         
         applauseEffect = SKAudioNode(fileNamed: "applause.wav")
-        
-
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -40,27 +31,26 @@ class Home: SKScene {
                 switch node.name!{
                     case "start":
                         //chama a animação para a porta
-                        //Muda cena para StartScene
 
-                        //backgroundMusic.removeFromParent()
                         runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: false), completion:{
                             let fadeScene = SKTransition.fadeWithDuration(1.5)
-                            self.gameScene = StartScene(fileNamed: "StartScene")
-                            self.view?.presentScene(self.gameScene!, transition: fadeScene)
+                            let gameScene = StartScene(fileNamed: "StartScene")
+                            self.view?.presentScene(gameScene!, transition: fadeScene)
                         })
 
                         break
+                    
                     case "options":
                         //chama a animação para a porta
-                        //backgroundMusic.runAction(stopAction)
                          backgroundMusic.removeFromParent()
                         
-                            break
+                        break
+                    
                     case "info":
                         //chama a animação para a bilheteria
                         break
+                    
                     default:
-                        //emitterNode.position = location
                         break
                 }
             }
@@ -69,13 +59,6 @@ class Home: SKScene {
     
     func animationDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
         
-    }
-    
-    func makeDuration(currentLocation : CGPoint, pastLocation: CGPoint) -> NSTimeInterval{
-        let catetos:CGFloat = pow(abs(currentLocation.x - pastLocation.x), 2) + pow(abs(currentLocation.y - pastLocation.y), 2)
-        let hipotenusa = sqrt(catetos)
-
-        return hipotenusa.native as NSTimeInterval //Double(hipotenusa)
     }
     
     func turnOnLights(){
@@ -91,15 +74,6 @@ class Home: SKScene {
             let light = self.childNodeWithName("light\(i)") as! SKLightNode
             light.enabled = true
         }
-    }
-    
-    func moveBoy(touch: UITouch){
-        let boy: SKSpriteNode = self.childNodeWithName("boy") as! SKSpriteNode
-        let currentLocation = touch.locationInNode(self)
-        let pastLocation = boy.position
-        let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
-        let moveToPoint = SKAction.moveTo(currentLocation, duration: duration)
-        boy.runAction(moveToPoint)
     }
    
     override func update(currentTime: CFTimeInterval) {
