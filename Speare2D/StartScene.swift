@@ -35,6 +35,8 @@ class StartScene: SceneDefault {
                         //Muda cena para Opção1
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         let gameScene = TutorialScene(fileNamed: "TutorialScene")
+                        gameScene!.mainCharacter = self.mainCharacter
+                        self.mainCharacter.removeFromParent()
                         self.view?.presentScene(gameScene!, transition: fadeScene)
                     })
                     break
