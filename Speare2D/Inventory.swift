@@ -61,9 +61,20 @@ class Inventory: SKScene {
             let lot = self.childNodeWithName("lot\(i)") as! SKSpriteNode
             if(lot.texture == nil){
                 lot.texture = object.texture
-                lot.xScale = lot.texture!.size().width/lot.size.width
-                lot.yScale = lot.texture!.size().height/lot.size.height
-                completed = true
+                if(object.texture!.size().width > lot.size.width || object.texture!.size().height > lot.size.height){
+                    lot.xScale = lot.size.width/lot.texture!.size().width
+                    lot.yScale = lot.size.height/lot.texture!.size().height
+                    if(lot.xScale > lot.yScale){
+                        lot.yScale = lot.xScale
+                    }else{
+                        lot.xScale = lot.yScale
+                    }
+                    completed = true
+                }else{
+                    lot.xScale = lot.texture!.size().width/lot.size.width
+                    lot.yScale = lot.texture!.size().height/lot.size.height
+                    completed = true
+                }
             }
         }
     }

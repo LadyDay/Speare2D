@@ -68,6 +68,13 @@ class Alex: SKSpriteNode {
         
     }
     
+    func setupAlex(){
+        self.position = CGPoint(x:167, y:243)
+        self.zPosition = 100.0
+        self.xScale = 0.1
+        self.yScale = 0.1
+    }
+    
     func walk(inicialLocation: CGPoint, touchLocation: CGPoint ) -> SKAction {
         
         let currentLocation = touchLocation
