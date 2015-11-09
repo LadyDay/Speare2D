@@ -8,13 +8,7 @@
 
 import SpriteKit
 
-class TutorialScene: SKScene {
-    
-    var inventory: Inventory!
-    var viewInventory: SKView!
-    var inventoryPresent: Bool = false
-    var locationTouch: CGPoint!
-    var mainCharacter: Alex = Alex()
+class TutorialScene: SceneBase {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -25,41 +19,12 @@ class TutorialScene: SKScene {
         //clear the inventory (textures and colors)
         self.inventory.firstFunc()
         
-        //Add swipe in the view (self.view)
-        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
-        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-        self.view?.addGestureRecognizer(swipeDown)
-        
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
-        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-        self.view?.addGestureRecognizer(swipeUp)
+        //Add swipes
+        self.addSwipes(self.view!)
         
         //call function setupAlex
         self.mainCharacter.setupAlex()
         addChild(mainCharacter)
-    }
-
-/*SWIPE's FUCTION */
-    func swipeDown(sender: UISwipeGestureRecognizer){
-        /* Function to display the inventory */
-        if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){ //limits the recognition area swipe
-            self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
-            self.view?.addSubview(viewInventory as UIView)
-            inventoryPresent = true
-                
-            let transition = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 5)
-            viewInventory.presentScene(inventory, transition: transition)
-        }else{
-            /* Function to use swipe on the main chaacter */
-            
-        }
-    }
-    
-    func swipeUp(sender: UISwipeGestureRecognizer){
-        if(inventoryPresent==true){
-            viewInventory.removeFromSuperview()
-            inventoryPresent = false
-        }
     }
     
 /*TOUCH's FUCTION */
