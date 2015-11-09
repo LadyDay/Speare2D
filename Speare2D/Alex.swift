@@ -13,25 +13,35 @@ class Alex: SKSpriteNode {
     var gameScene: SKScene!
     var locationTouch: CGPoint!
     var mainCharacter: SKNode!
-    let alexTextureAtlas = SKTextureAtlas(named: "Alex1024.atlas")
+    let alexTextureAtlas = SKTextureAtlas(named: "AlexCorrendo.atlas")
     var alexSpriteArray = Array<SKTexture>()
+    var waitingAlexSpriteArray = Array<SKTexture>()
     
     init() {
-        let texture = SKTexture(imageNamed: "Alex_Sprite1_1024x2040")
-        
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite2_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite3_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite4_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite5_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite6_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite7_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite8_1024x2040"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite1_1024x2040"))
-        
-        
+        let texture = SKTexture(imageNamed: "Alex_Sprite_Princ1_400x708")
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
+        //animate()
+        
+        
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr1_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr2_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr3_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr4_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr5_400x708"))
+        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr6_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr7_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr8_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr9_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr10_400x708"))
+        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr11_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        
+        
+        
         animate()
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,12 +49,14 @@ class Alex: SKSpriteNode {
     }
     
     private func animate(){
-        //        var playerTextures:[SKTexture] = []
-        //        for i in 1...2 {
-        //            playerTextures.append(SKTexture(imageNamed: "player\(i)"))
-        //        }
-        //        let playerAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(playerTextures, timePerFrame: 0.1))
-        //        self.runAction(playerAnimation)
+        
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ2_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        let playerAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray, timePerFrame: 0.1))
+        self.runAction(playerAnimation)
     }
     
     
