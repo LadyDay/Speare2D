@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class TutorialScene: SceneBase {
+class TutorialScene: SceneGameBase {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */

@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class FarmScene: SceneBase {
+class FarmScene: SceneGameBase {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */

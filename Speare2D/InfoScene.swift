@@ -9,25 +9,21 @@
 import UIKit
 import SpriteKit
 
-class InfoScene: SKScene {
+class InfoScene: SceneDefault {
 
-
-/* Setup your scene here */
-override func didMoveToView(view: SKView) {
-
-
-    }
-
-override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-
-    
-    }
-    
-override func update(currentTime: CFTimeInterval) {
-
+    /* Setup your scene here */
+    override func didMoveToView(view: SKView) {
         
     }
     
-
+    /* Called when a touch begins */
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+    }
+    
+    /* Called before each frame is rendered */
+    override func update(currentTime: CFTimeInterval) {
+        
+    }
 
 }

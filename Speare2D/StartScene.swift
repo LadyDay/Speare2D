@@ -9,9 +9,7 @@
 import UIKit
 import SpriteKit
 
-class StartScene: SKScene {
-    
-    var mainCharacter: Alex = Alex ()
+class StartScene: SceneDefault {
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
@@ -40,20 +38,6 @@ class StartScene: SKScene {
                         gameScene!.mainCharacter = self.mainCharacter
                         self.mainCharacter.removeFromParent()
                         self.view?.presentScene(gameScene!, transition: fadeScene)
-                    })
-                    break
-                    
-                case "option2":
-                    //chama a animação para a porta
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                        //Muda cena para Opção3
-                    })
-                    break
-                    
-                case "option3":
-                    //chama a animação para a bilheteria
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                        //Muda cena para Opção3
                     })
                     break
                     
@@ -90,10 +74,5 @@ class StartScene: SKScene {
         }
         
     }
-    
-    override func didSimulatePhysics() {
-        //<#code#>
-    }
-    
     
 }
