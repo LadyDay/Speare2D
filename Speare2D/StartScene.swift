@@ -41,20 +41,6 @@ class StartScene: SceneDefault {
                     })
                     break
                     
-                case "option2":
-                    //chama a animação para a porta
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                        //Muda cena para Opção3
-                    })
-                    break
-                    
-                case "option3":
-                    //chama a animação para a bilheteria
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                        //Muda cena para Opção3
-                    })
-                    break
-                    
                 case "exitNode":
                     //chama a animação para a bilheteria
                     location = CGPoint(x: -70, y: 300)
