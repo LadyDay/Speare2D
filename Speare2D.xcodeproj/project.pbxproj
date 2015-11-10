@@ -12,6 +12,10 @@
 		3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */; };
 		3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E385A1BF1279A00D59321 /* SceneDefault.swift */; };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */; };
+>>>>>>> origin/master
 =======
 		3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */; };
 >>>>>>> origin/master
@@ -366,8 +370,11 @@
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				BEE817901BDD4B7D009365CE /* OptionScene.sks in Resources */,
 =======
+=======
+>>>>>>> origin/master
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
 >>>>>>> origin/master
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
