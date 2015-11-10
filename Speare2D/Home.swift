@@ -11,6 +11,7 @@ import SpriteKit
 class Home: SceneDefault {
     
     var timeLight: Int = 0
+    var cameraHome: SKCameraNode!
     var doorLeftSpriteArray = Array<SKTexture>()
     let doorLeftTextureAtlas = SKTextureAtlas(named: "DoorOpened.atlas")
     var doorRightSpriteArray = Array<SKTexture>()
@@ -18,6 +19,8 @@ class Home: SceneDefault {
 
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        cameraHome = self.childNodeWithName("cameraHome") as! SKCameraNode
+        
         self.initTexturesDoor()
         
         backgroundMusic = SKAudioNode(fileNamed: "backgroundMusic.mp3")
@@ -38,13 +41,16 @@ class Home: SceneDefault {
                     case "start":
                         //chama a animação para a porta
                         self.animationDoor(self.childNodeWithName("leftDoorStart") as! SKSpriteNode)
-                        //chama o zoom de tela
-                        runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: true), completion:{
-                            //chama a transição de cena
+                        
+                        //chama a transição
+                        let action1 = self.centerOnNode(self.childNodeWithName("viewStart")!)
+                        let action2 = SKAction.runBlock({
                             let fadeScene = SKTransition.fadeWithDuration(1.5)
                             let gameScene = StartScene(fileNamed: "StartScene")
                             self.view?.presentScene(gameScene!, transition: fadeScene)
                         })
+                        cameraHome.runAction(SKAction.sequence([action1,action2]))
+
                         break
                     
                     case "options":
@@ -67,10 +73,10 @@ class Home: SceneDefault {
     }
     
     func animationDoor(leftDoor: SKSpriteNode){
-
         let playerAnimationDoorLeft = SKAction.repeatAction(SKAction.animateWithTextures(doorLeftSpriteArray, timePerFrame: 0.1), count: 1)
         //let playerAnimationDoorRight = SKAction.repeatAction(SKAction.animateWithTextures(waitingDoorLeftSpriteArray, timePerFrame: 0.2), count: 1)
         leftDoor.runAction(playerAnimationDoorLeft)
+        self.runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: false))
     }
     
     func initTexturesDoor(){
@@ -114,6 +120,12 @@ class Home: SceneDefault {
             let light = self.childNodeWithName("light\(i)") as! SKLightNode
             light.enabled = true
         }
+    }
+    
+    func centerOnNode(node:SKNode) -> SKAction {
+        let moveCamera = SKAction.moveTo(node.position, duration: 2.5)
+        let zoomCamera = SKAction.scaleTo(0.5, duration: 2.5)
+        return SKAction.group([moveCamera, zoomCamera])
     }
    
     override func update(currentTime: CFTimeInterval) {
