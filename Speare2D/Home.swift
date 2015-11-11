@@ -13,9 +13,9 @@ class Home: SceneDefault {
     var timeLight: Int = 0
     var cameraHome: SKCameraNode!
     var doorLeftSpriteArray = Array<SKTexture>()
-    let doorLeftTextureAtlas = SKTextureAtlas(named: "DoorOpened.atlas")
+    let doorLeftTextureAtlas = SKTextureAtlas(named: "portaEsquerda.atlas")
     var doorRightSpriteArray = Array<SKTexture>()
-    let doorRightTextureAtlas = SKTextureAtlas(named: "DoorOpened.atlas")
+    let doorRightTextureAtlas = SKTextureAtlas(named: "portaDireita.atlas")
 
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -48,12 +48,12 @@ class Home: SceneDefault {
                 switch node.name!{
                     case "start":
                         //chama a animação para a porta
-                        self.animationDoor(self.childNodeWithName("leftDoorStart") as! SKSpriteNode)
+                        self.animationDoor(self.childNodeWithName("leftDoorStart") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorStart") as! SKSpriteNode)
                         
                         //chama a transição
                         let action1 = self.centerOnNode(self.childNodeWithName("viewStart")!)
                         let action2 = SKAction.runBlock({
-                            let fadeScene = SKTransition.fadeWithDuration(1.5)
+                            let fadeScene = SKTransition.fadeWithDuration(1.0)
                             let gameScene = StartScene(fileNamed: "StartScene")
                             self.view?.presentScene(gameScene!, transition: fadeScene)
                         })
@@ -63,12 +63,12 @@ class Home: SceneDefault {
                     
                     case "options":
                         //chama a animação para a porta
-                        self.animationDoor(self.childNodeWithName("leftDoorOptions") as! SKSpriteNode)
+                        self.animationDoor(self.childNodeWithName("leftDoorOptions") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorOptions") as! SKSpriteNode)
                         
                         //chama a transição
                         let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
                         let action2 = SKAction.runBlock({
-                            let fadeScene = SKTransition.fadeWithDuration(1.5)
+                            let fadeScene = SKTransition.fadeWithDuration(1.0)
                             let gameScene = OptionsScene(fileNamed: "OptionsScene")
                             self.view?.presentScene(gameScene!, transition: fadeScene)
                             self.backgroundMusic.removeFromParent()
@@ -88,39 +88,19 @@ class Home: SceneDefault {
         }
     }
     
-    func animationDoor(leftDoor: SKSpriteNode){
-        let playerAnimationDoorLeft = SKAction.repeatAction(SKAction.animateWithTextures(doorLeftSpriteArray, timePerFrame: 0.1), count: 1)
-        //let playerAnimationDoorRight = SKAction.repeatAction(SKAction.animateWithTextures(waitingDoorLeftSpriteArray, timePerFrame: 0.2), count: 1)
+    func animationDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
+        let playerAnimationDoorLeft = SKAction.repeatAction(SKAction.animateWithTextures(doorLeftSpriteArray, timePerFrame: 0.06), count: 1)
+        let playerAnimationDoorRight = SKAction.repeatAction(SKAction.animateWithTextures(doorRightSpriteArray, timePerFrame: 0.06), count: 1)
         leftDoor.runAction(playerAnimationDoorLeft)
+        rightDoor.runAction(playerAnimationDoorRight)
         self.runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: false))
     }
     
     func initTexturesDoor(){
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-01"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-02"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-03"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-04"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-05"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-06"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-07"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-08"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-09"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-10"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-11"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-12"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-13"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-14"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-15"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-16"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-17"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-18"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-19"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-20"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-21"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-22"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-23"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-24"))
-        doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("sprites-25"))
+        for(var i = 1; i<26; i++){
+            doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("leftDoor\(i)"))
+            doorRightSpriteArray.append(doorRightTextureAtlas.textureNamed("rightDoor\(i)"))
+        }
     }
     
     func turnOnLights(){
@@ -139,8 +119,8 @@ class Home: SceneDefault {
     }
     
     func centerOnNode(node:SKNode) -> SKAction {
-        let moveCamera = SKAction.moveTo(node.position, duration: 2.5)
-        let zoomCamera = SKAction.scaleTo(0.5, duration: 2.5)
+        let moveCamera = SKAction.moveTo(node.position, duration: 1.5)
+        let zoomCamera = SKAction.scaleTo(0.5, duration: 1.5)
         return SKAction.group([moveCamera, zoomCamera])
     }
    
