@@ -19,6 +19,14 @@ class Home: SceneDefault {
 
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        /* Setup your scene here */
+        
+        bgMusicVolume = 0.7
+        effectsVolume = 0.7
+        let defaultVolume = OptionsScene(fileNamed: "OptionsScene")
+        defaultVolume?.bgMusicVolume = self.bgMusicVolume
+        
+        musicBgConfiguration("backgroundMusic.mp3")
         cameraHome = self.childNodeWithName("cameraHome") as! SKCameraNode
         
         self.initTexturesDoor()
@@ -27,7 +35,7 @@ class Home: SceneDefault {
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
         
-        applauseEffect = SKAudioNode(fileNamed: "applause.wav")
+        //effectsMusic = SKAudioNode(fileNamed: "applause.wav")
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
