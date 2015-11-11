@@ -12,6 +12,8 @@
 		3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */; };
 		3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E385A1BF1279A00D59321 /* SceneDefault.swift */; };
 		3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */; };
+		3D5E38611BF3846100D59321 /* porta direita in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E38601BF3846100D59321 /* porta direita */; };
+		3D5E38651BF3849100D59321 /* porta esquerda in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E38641BF3849100D59321 /* porta esquerda */; };
 		3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */; };
 		3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D0C1BD52E0400502BF0 /* Home.sks */; };
 		3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0E1BD52E0400502BF0 /* Home.swift */; };
@@ -62,6 +64,8 @@
 		3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneGameBase.swift; sourceTree = "<group>"; };
 		3D5E385A1BF1279A00D59321 /* SceneDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDefault.swift; sourceTree = "<group>"; };
 		3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DoorOpened.atlas; sourceTree = "<group>"; };
+		3D5E38601BF3846100D59321 /* porta direita */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "porta direita"; sourceTree = "<group>"; };
+		3D5E38641BF3849100D59321 /* porta esquerda */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "porta esquerda"; sourceTree = "<group>"; };
 		3DC44D071BD52E0300502BF0 /* Speare2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speare2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DC44D0C1BD52E0400502BF0 /* Home.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Home.sks; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3D5E38641BF3849100D59321 /* porta esquerda */,
+				3D5E38601BF3846100D59321 /* porta direita */,
 				3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */,
 				BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */,
 				BE89CC4B1BDE497E0063B3A9 /* Alex1024.atlas */,
@@ -355,7 +361,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5E38611BF3846100D59321 /* porta direita in Resources */,
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
+				3D5E38651BF3849100D59321 /* porta esquerda in Resources */,
 				3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,

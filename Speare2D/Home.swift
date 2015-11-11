@@ -64,9 +64,17 @@ class Home: SceneDefault {
                     case "options":
                         //chama a animação para a porta
                         self.animationDoor(self.childNodeWithName("leftDoorOptions") as! SKSpriteNode)
-                        runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: true), completion:{
+                        
+                        //chama a transição
+                        let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
+                        let action2 = SKAction.runBlock({
+                            let fadeScene = SKTransition.fadeWithDuration(1.5)
+                            let gameScene = OptionsScene(fileNamed: "OptionsScene")
+                            self.view?.presentScene(gameScene!, transition: fadeScene)
                             self.backgroundMusic.removeFromParent()
                         })
+                        cameraHome.runAction(SKAction.sequence([action1,action2]))
+                        
                         break
                     
                     case "info":
