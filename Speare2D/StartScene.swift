@@ -23,15 +23,15 @@ class StartScene: SceneDefault {
     }
     
     /* Called when a touch begins */
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        for touch in touches {
+        if let touch = touches.first {
             var location = touch.locationInNode(self)
             for nodeTouched in self.nodesAtPoint(location){
                 guard let nome = nodeTouched.name else {continue ;}
                 switch nome{
                 case "tutorial":
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position), completion: {
                         //Muda cena para Opção1
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         let gameScene = TutorialScene(fileNamed: "TutorialScene")
@@ -53,9 +53,10 @@ class StartScene: SceneDefault {
                     break
                     
                 default:
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
-                        //mainCharacter = SKSpriteNode(texture:self.alexSpriteArray[0])
-                    })
+                    if location.y<200 {
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
+                        })
+                    }
                     break
                 }
             }

@@ -38,7 +38,7 @@ class FarmScene: SceneGameBase {
                     switch nodeTouched.name!{
                         
                     default:
-                        if(inventoryPresent==false){
+                        if(inventoryPresent==false && location.y<200){
                             //mainCharacter walks
                             mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {})
                         }
