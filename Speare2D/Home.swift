@@ -10,7 +10,6 @@ import SpriteKit
 
 class Home: SceneDefault {
     
-    var timeLight: Int = 0
     var cameraHome: SKCameraNode!
     var doorLeftSpriteArray = Array<SKTexture>()
     let doorLeftTextureAtlas = SKTextureAtlas(named: "portaEsquerda.atlas")
@@ -102,21 +101,7 @@ class Home: SceneDefault {
             doorRightSpriteArray.append(doorRightTextureAtlas.textureNamed("rightDoor\(i)"))
         }
     }
-    
-    func turnOnLights(){
-        let num = arc4random_uniform(3)
-        print("\(num)")
-        
-        for(var i = 0; i<15; i++){
-            let light = self.childNodeWithName("light\(i)") as! SKLightNode
-            light.enabled = false
-        }
-        
-        for(var i = num; i<15; i = i + 3){
-            let light = self.childNodeWithName("light\(i)") as! SKLightNode
-            light.enabled = true
-        }
-    }
+
     
     func centerOnNode(node:SKNode) -> SKAction {
         let moveCamera = SKAction.moveTo(node.position, duration: 1.5)
@@ -126,12 +111,6 @@ class Home: SceneDefault {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        if(self.timeLight==3){
-            self.turnOnLights()
-            self.timeLight = 0
-        }else{
-            self.timeLight = self.timeLight+1
-        }
         
     }
 }

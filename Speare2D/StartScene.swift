@@ -24,8 +24,9 @@ class StartScene: SceneDefault {
     
     /* Called when a touch begins */
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        if let touch = touches.first {
+        if(!self.touchRuning){
+            touchRuning = true
+        if let touch = touches.first{
             var location = touch.locationInNode(self)
             for nodeTouched in self.nodesAtPoint(location){
                 guard let nome = nodeTouched.name else {continue ;}
@@ -33,6 +34,7 @@ class StartScene: SceneDefault {
                 case "tutorial":
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position), completion: {
                         //Muda cena para Opção1
+                        self.touchRuning = false
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         let gameScene = TutorialScene(fileNamed: "TutorialScene")
                         gameScene!.mainCharacter = self.mainCharacter
@@ -46,6 +48,7 @@ class StartScene: SceneDefault {
                     location = CGPoint(x: -70, y: 300)
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
                         //Volta ao menu
+                        self.touchRuning = false
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         let gameScene = Home(fileNamed: "Home")
                         self.view?.presentScene(gameScene!, transition: fadeScene)
@@ -55,11 +58,15 @@ class StartScene: SceneDefault {
                 default:
                     if location.y<200 {
                         mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
+                            self.touchRuning = false
                         })
+                    }else{
+                        self.touchRuning = false
                     }
                     break
                 }
             }
+        }
         }
     }
     

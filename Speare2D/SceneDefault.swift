@@ -10,6 +10,9 @@ import SpriteKit
 
 class SceneDefault: SKScene {
     
+    //flag
+    var touchRuning: Bool = false
+    
     //inventory
     var inventory: Inventory!
     var viewInventory: SKView!

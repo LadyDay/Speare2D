@@ -9,7 +9,7 @@
 import SpriteKit
 
 class Alex: SKSpriteNode {
-    
+
     let alexTextureAtlas = SKTextureAtlas(named: "AlexCorrendo.atlas")
     var alexSpriteArray = Array<SKTexture>()
     var waitingAlexSpriteArray = Array<SKTexture>()
@@ -83,6 +83,8 @@ class Alex: SKSpriteNode {
     }
     
     func walk(inicialLocation: CGPoint, touchLocation: CGPoint ) -> SKAction {
+        
+        self.removeActionForKey("andando")
         
         let currentLocation = touchLocation
         let pastLocation = inicialLocation
