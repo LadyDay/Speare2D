@@ -12,6 +12,7 @@ class SceneDefault: SKScene {
     
     //flag
     var touchRuning: Bool = false
+    var firstAcess: Bool = true
     
     //inventory
     var inventory: Inventory!

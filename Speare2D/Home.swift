@@ -19,9 +19,11 @@ class Home: SceneDefault {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         /* Setup your scene here */
-        
-        bgMusicVolume = 0.7
-        effectsVolume = 0.7
+        if(self.firstAcess){
+            bgMusicVolume = 0.7
+            effectsVolume = 0.7
+        }
+        self.firstAcess = false
         let defaultVolume = OptionsScene(fileNamed: "OptionsScene")
         defaultVolume?.bgMusicVolume = self.bgMusicVolume
         
@@ -40,10 +42,13 @@ class Home: SceneDefault {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
         
-        for touch in touches {
+        if(!self.touchRuning){
+            self.touchRuning = true
+        if let touch = touches.first {
             //let emitterNode = childNodeWithName("EmitterNode1") as! SKEmitterNode
             let location = touch.locationInNode(self)
-            for node in self.nodesAtPoint(location){
+            //for node in self.nodesAtPoint(location){
+            if let node: SKNode = self.nodeAtPoint(location){
                 switch node.name!{
                     case "start":
                         //chama a animação para a porta
@@ -52,8 +57,10 @@ class Home: SceneDefault {
                         //chama a transição
                         let action1 = self.centerOnNode(self.childNodeWithName("viewStart")!)
                         let action2 = SKAction.runBlock({
+                            self.touchRuning = false
                             let fadeScene = SKTransition.fadeWithDuration(1.0)
                             let gameScene = StartScene(fileNamed: "StartScene")
+                            gameScene?.bgMusicVolume = self.bgMusicVolume
                             self.view?.presentScene(gameScene!, transition: fadeScene)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
@@ -67,6 +74,7 @@ class Home: SceneDefault {
                         //chama a transição
                         let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
                         let action2 = SKAction.runBlock({
+                            self.touchRuning = false
                             let fadeScene = SKTransition.fadeWithDuration(1.0)
                             let gameScene = OptionsScene(fileNamed: "OptionsScene")
                             self.view?.presentScene(gameScene!, transition: fadeScene)
@@ -78,12 +86,15 @@ class Home: SceneDefault {
                     
                     case "info":
                         //chama a animação para a bilheteria
+                        self.touchRuning = false
                         break
                     
                     default:
+                        self.touchRuning = false
                         break
                 }
             }
+        }
         }
     }
     

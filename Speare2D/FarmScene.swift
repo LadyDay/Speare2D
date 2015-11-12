@@ -36,8 +36,6 @@ class FarmScene: SceneGameBase {
             
                 if(nodeTouched.name == nil){
                     self.catchObject(self, location: location, object: nodeTouched)
-                    //ajeitar treta
-                    self.touchRuning = false
                     
                 }else{
                     switch nodeTouched.name!{

@@ -51,6 +51,7 @@ class SceneGameBase: SceneDefault {
             //guarding the object in the inventory
             self.inventory.guardingObject(object as! SKSpriteNode)
             object.removeFromParent()
+            self.touchRuning = false
         })
     }
 }
