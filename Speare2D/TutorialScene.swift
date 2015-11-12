@@ -31,6 +31,8 @@ class TutorialScene: SceneGameBase {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
+        if(!self.touchRuning){
+            self.touchRuning = true
         for touch in touches {
             let location = touch.locationInNode(self)
             
@@ -38,12 +40,14 @@ class TutorialScene: SceneGameBase {
                 
                 if(nodeTouched.name == nil){
                     self.catchObject(self, location: location, object: nodeTouched)
+                    self.touchRuning = false
                     
                 }else{
                     switch nodeTouched.name!{
                     case "hortaNode":
                         //changes the scene for the garden
                         mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location), completion: {
+                            self.touchRuning = false
                             let fadeScene = SKTransition.crossFadeWithDuration(1.5)
                             let gameScene = FarmScene(fileNamed: "FarmScene")
                             self.moveInfo(gameScene!)
@@ -52,14 +56,19 @@ class TutorialScene: SceneGameBase {
                         break
                         
                     default:
-                        if(inventoryPresent==false){
+                        if(inventoryPresent==false && location.y<200){
                             //mainCharacter walks
-                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {})
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
+                                self.touchRuning = false
+                            })
+                        }else{
+                            self.touchRuning = false
                         }
                         break
                     }
                 }
             }
+        }
         }
     }
     

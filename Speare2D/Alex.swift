@@ -9,7 +9,7 @@
 import SpriteKit
 
 class Alex: SKSpriteNode {
-    
+
     let alexTextureAtlas = SKTextureAtlas(named: "AlexCorrendo.atlas")
     var alexSpriteArray = Array<SKTexture>()
     var waitingAlexSpriteArray = Array<SKTexture>()
@@ -34,7 +34,7 @@ class Alex: SKSpriteNode {
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr9_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr10_400x708"))
         //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr11_400x708"))
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
         
         
         
@@ -84,15 +84,19 @@ class Alex: SKSpriteNode {
     
     func walk(inicialLocation: CGPoint, touchLocation: CGPoint ) -> SKAction {
         
+        self.removeActionForKey("andando")
+        
         let currentLocation = touchLocation
         let pastLocation = inicialLocation
         
         let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
         let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
-        let walkingAlexAction = SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.08)
-        walkingAlexAction.duration = duration
+        
+        let walkingAlexAction = SKAction.repeatActionForever(SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.08, resize: true, restore: true))
         let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
-        let group = SKAction.group([walkingAlexAction, direction, moveToPoint])
+        let sequence = SKAction.sequence([SKAction.group([direction, moveToPoint]), SKAction.runBlock({self.removeActionForKey("andando")})])
+        let group = SKAction.group([sequence, SKAction.runBlock({self.runAction(walkingAlexAction, withKey: "andando")})])
+        
         return group
     }
     
