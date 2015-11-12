@@ -22,7 +22,7 @@ class Alex: SKSpriteNode {
         //animate()
         
         
-        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr1_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr2_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr3_400x708"))
@@ -82,12 +82,22 @@ class Alex: SKSpriteNode {
         self.yScale = scaleAlex
     }
     
-    func walk(inicialLocation: CGPoint, touchLocation: CGPoint ) -> SKAction {
+    func walk(inicialLocation: CGPoint, touchLocation: CGPoint, objectPresent: Bool, objectSize: CGSize?) -> SKAction {
         
         self.removeActionForKey("andando")
         
-        let currentLocation = touchLocation
         let pastLocation = inicialLocation
+        var currentLocation: CGPoint
+        
+        if(objectPresent){
+            if(inicialLocation.x < touchLocation.x){
+                currentLocation = CGPointMake(touchLocation.x - self.frame.size.width/2 - (objectSize?.width)!/2, touchLocation.y)
+            }else{
+                currentLocation = CGPointMake(touchLocation.x + self.frame.size.width/2 + (objectSize?.width)!/2, touchLocation.y)
+            }
+        }else{
+            currentLocation = touchLocation
+        }
         
         let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
         let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)

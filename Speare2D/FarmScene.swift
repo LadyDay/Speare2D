@@ -28,11 +28,12 @@ class FarmScene: SceneGameBase {
         
         if(!self.touchRuning){
             self.touchRuning = true
-        for touch in touches {
+        if let touch = touches.first{
             let location = touch.locationInNode(self)
             
-            for nodeTouched in self.nodesAtPoint(location){
-                
+            //for nodeTouched in self.nodesAtPoint(location){
+            if let nodeTouched: SKNode = self.nodeAtPoint(location){
+            
                 if(nodeTouched.name == nil){
                     self.catchObject(self, location: location, object: nodeTouched)
                     //ajeitar treta
@@ -44,9 +45,11 @@ class FarmScene: SceneGameBase {
                     default:
                         if(inventoryPresent==false && location.y<200){
                             //mainCharacter walks
-                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self)), completion: {
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), objectPresent: false, objectSize: nil), completion: {
                                 self.touchRuning = false
                             })
+                        }else{
+                            self.touchRuning = false
                         }
                         break
                     }
