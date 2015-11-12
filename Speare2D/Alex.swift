@@ -82,7 +82,7 @@ class Alex: SKSpriteNode {
         self.yScale = scaleAlex
     }
     
-    func walk(inicialLocation: CGPoint, touchLocation: CGPoint, objectPresent: Bool, objectSize: CGSize?) -> SKAction {
+    func walk(inicialLocation: CGPoint, touchLocation: CGPoint, tamSize: CGFloat, objectPresent: Bool, objectSize: CGSize?) -> SKAction {
         
         self.removeActionForKey("andando")
         
@@ -96,7 +96,13 @@ class Alex: SKSpriteNode {
                 currentLocation = CGPointMake(touchLocation.x + self.frame.size.width/2 + (objectSize?.width)!/2, touchLocation.y)
             }
         }else{
-            currentLocation = touchLocation
+            if(touchLocation.x < self.frame.size.width/2 + 10){
+                currentLocation = CGPointMake(self.frame.size.width/2 + 10, touchLocation.y)
+            }else if(touchLocation.x > tamSize - self.frame.size.width/2 - 10){
+                currentLocation = CGPointMake(tamSize - self.frame.size.width/2 - 10, touchLocation.y)
+            }else{
+                currentLocation = touchLocation
+            }
         }
         
         let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400

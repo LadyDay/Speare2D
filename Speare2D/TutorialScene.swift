@@ -47,7 +47,7 @@ class TutorialScene: SceneGameBase {
                     switch nodeTouched.name!{
                     case "hortaNode":
                         //changes the scene for the garden
-                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location, objectPresent: false, objectSize: nil), completion: {
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
                             let fadeScene = SKTransition.crossFadeWithDuration(1.5)
                             let gameScene = FarmScene(fileNamed: "FarmScene")
@@ -59,7 +59,7 @@ class TutorialScene: SceneGameBase {
                     default:
                         if(inventoryPresent==false && location.y<200){
                             //mainCharacter walks
-                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), objectPresent: false, objectSize: nil), completion: {
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                 self.touchRuning = false
                             })
                         }else{

@@ -29,7 +29,7 @@ class StartScene: SceneDefault {
                 guard let nome = nodeTouched.name else {continue ;}
                 switch nome{
                 case "tutorial":
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, objectPresent: false, objectSize: nil), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                         //Muda cena para Opção1
                         self.touchRuning = false
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
@@ -43,7 +43,7 @@ class StartScene: SceneDefault {
                 case "exitNode":
                     //chama a animação para a bilheteria
                     location = CGPoint(x: -70, y: 300)
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), objectPresent: false, objectSize: nil), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                         //Volta ao menu
                         self.touchRuning = false
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
@@ -54,7 +54,7 @@ class StartScene: SceneDefault {
                     
                 default:
                     if location.y<200 {
-                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), objectPresent: false, objectSize: nil), completion: {
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
                         })
                     }else{
