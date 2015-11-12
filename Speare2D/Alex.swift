@@ -28,7 +28,7 @@ class Alex: SKSpriteNode {
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr3_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr4_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr5_400x708"))
-        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr6_400x708"))
+        alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr6_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr7_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr8_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr9_400x708"))
