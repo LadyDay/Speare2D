@@ -16,10 +16,7 @@ class StartScene: SceneDefault {
         
         mainCharacter.setupAlex()
         addChild(mainCharacter)
-        
-        let cameraNode = SKCameraNode()
-        self.addChild(cameraNode)
-        self.camera = cameraNode
+        setCamera()
     }
     
     /* Called when a touch begins */
@@ -72,15 +69,7 @@ class StartScene: SceneDefault {
     
     /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
-        
-        if mainCharacter.position.x < 476.0 {
-            self.camera?.position = CGPoint(x: 476, y: 387.942)
-        } else if mainCharacter.position.x > 545.0 {
-            self.camera?.position = CGPoint(x: 545.0, y: 387.942)
-        } else {
-            self.camera?.position = CGPoint(x: mainCharacter.position.x, y: 387.942)
-        }
-        
+        updateCamera()
     }
     
 }

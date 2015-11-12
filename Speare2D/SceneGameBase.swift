@@ -54,4 +54,5 @@ class SceneGameBase: SceneDefault {
             self.touchRuning = false
         })
     }
+    
 }

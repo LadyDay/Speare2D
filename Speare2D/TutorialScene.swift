@@ -25,6 +25,7 @@ class TutorialScene: SceneGameBase {
         //call function setupAlex
         self.mainCharacter.setupAlex()
         addChild(mainCharacter)
+        setCamera()
     }
     
 /*TOUCH's FUCTION */
@@ -72,9 +73,9 @@ class TutorialScene: SceneGameBase {
         }
     }
     
-    /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
-        
+        /* Called before each frame is rendered */
+        updateCamera()
     }
     
 }

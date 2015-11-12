@@ -20,6 +20,7 @@ class FarmScene: SceneGameBase {
         //call function setupAlex
         self.mainCharacter.setupAlex()
         addChild(self.mainCharacter)
+        setCamera()
     }
     
 /*TOUCH's FUCTION */
@@ -60,6 +61,6 @@ class FarmScene: SceneGameBase {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        
+        updateCamera()
     }
 }
