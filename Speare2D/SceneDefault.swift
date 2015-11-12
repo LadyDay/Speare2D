@@ -26,6 +26,8 @@ class SceneDefault: SKScene {
     var bgMusicVolume: Float!
     var effectsMusic: SKAudioNode = SKAudioNode(fileNamed: "effectsound.aiff")
     var effectsVolume: Float!
+    var voiceSound: SKAudioNode = SKAudioNode(fileNamed: "effectsound.aiff")
+    var voiceVolume: Float!
     let pauseAction = SKAction.pause()
     let stopAction = SKAction.stop()
     

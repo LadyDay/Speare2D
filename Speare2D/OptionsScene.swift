@@ -12,21 +12,24 @@ import SpriteKit
 class OptionsScene: SceneDefault {
     var optionView: SKView!
     
-    let switchSubtitles = UISwitch(frame:CGRectMake(525, 440, 0, 0))
+    let switchSubtitles = UISwitch(frame:CGRectMake(525, 500, 0, 0))
     let bgMusicSlider = UISlider(frame:CGRectMake(580, 200, 280, 20))
     let effectsSlider = UISlider(frame:CGRectMake(580, 300, 280, 20))
-    let backButton = UIButton(frame: CGRectMake(500, 400, 100, 50))
+    let voiceSlider = UISlider(frame:CGRectMake(580, 400, 280, 20))
+    let backButton = UIButton(frame: CGRectMake(500, 600, 100, 50))
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
         
         bgMusicVolume = 0.7
         effectsVolume = 0.7
+        voiceVolume = 0.7
         musicBgConfiguration("backgroundMusic.mp3")
         
         
         addSlider(bgMusicSlider, volume: bgMusicVolume)
         addSlider(effectsSlider, volume: effectsVolume)
+        addSlider(voiceSlider, volume: voiceVolume)
         addSwitch(switchSubtitles, beginsOn: true)
         addButton(backButton)
         

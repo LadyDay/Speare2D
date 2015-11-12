@@ -23,6 +23,7 @@
 		3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D171BD52E0400502BF0 /* LaunchScreen.storyboard */; };
 		3DC44D241BD52E0400502BF0 /* Speare2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D231BD52E0400502BF0 /* Speare2DTests.swift */; };
 		3DC44D2F1BD52E0400502BF0 /* Speare2DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */; };
+		BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE005A211BF4C39B00C0B265 /* effectsound.aiff */; };
 		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; };
 		BE7597E71BD73661005608E1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597E61BD73661005608E1 /* StartScene.swift */; };
 		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; };
@@ -81,6 +82,7 @@
 		3DC44D2A1BD52E0400502BF0 /* Speare2DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Speare2DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speare2DUITests.swift; sourceTree = "<group>"; };
 		3DC44D301BD52E0400502BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE005A211BF4C39B00C0B265 /* effectsound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = effectsound.aiff; sourceTree = "<group>"; };
 		BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AlexCorrendo.atlas; sourceTree = "<group>"; };
 		BE7597E61BD73661005608E1 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		BE7597E81BD73683005608E1 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		BEE817891BDD49EA009365CE /* GameMenu */ = {
 			isa = PBXGroup;
 			children = (
+				BE005A211BF4C39B00C0B265 /* effectsound.aiff */,
 				BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */,
 				BED4D9101BEB665A00F8B35A /* applause.wav */,
 				3DC44D0C1BD52E0400502BF0 /* Home.sks */,
@@ -371,6 +374,7 @@
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BE89CC4D1BDE497E0063B3A9 /* Alex1024.atlas in Resources */,
 				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
+				BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */,
 				BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */,
 				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
 				BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */,
