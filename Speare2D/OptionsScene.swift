@@ -21,9 +21,6 @@ class OptionsScene: SceneDefault {
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
         
-        bgMusicVolume = 0.7
-        effectsVolume = 0.7
-        voiceVolume = 0.7
         musicBgConfiguration("backgroundMusic.mp3")
         
         
@@ -64,10 +61,13 @@ class OptionsScene: SceneDefault {
         //print("bgMusicSlider.layer: \(bgMusicSlider.layer) - value: \(bgMusicSlider.value) ")
         if sender.layer == bgMusicSlider.layer {
             backgroundMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            bgMusicVolume = sender.value
+            self.bgMusicVolume = sender.value
         } else if sender.layer == effectsSlider.layer {
             //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            effectsVolume = sender.value
+            self.effectsVolume = sender.value
+        } else if sender.layer == voiceSlider.layer {
+            //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
+            self.voiceVolume = sender.value
         }
         
     }
@@ -106,6 +106,12 @@ class OptionsScene: SceneDefault {
         //var btnsendtag:UIButton = sender
         if sender.tag == 22 {
             print("Button tapped tag 22")
+            let fadeScene = SKTransition.fadeWithDuration(1.0)
+            let gameScene = Home(fileNamed: "Home")
+            gameScene?.bgMusicVolume = self.bgMusicVolume
+            gameScene?.effectsVolume = self.effectsVolume
+            gameScene?.voiceVolume = self.voiceVolume
+            self.view?.presentScene(gameScene!, transition: fadeScene)
         }
     }
     

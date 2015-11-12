@@ -32,16 +32,6 @@ class SceneDefault: SKScene {
     let pauseAction = SKAction.pause()
     let stopAction = SKAction.stop()
     
-    //    struct Volume{
-    //        var bgMusicVolume: Float = 0.7
-    //        var effectsVolume: Float = 0.7
-    //
-    //        init(bgMusicVolume: Float, effectsVolume: Float) {
-    //            self.bgMusicVolume = bgMusicVolume
-    //            self.effectsVolume = effectsVolume
-    //        }
-    //    }
-    
     /* ANOTHER FUNCTION */
     func moveInfo(gameScene: SceneDefault){
         gameScene.mainCharacter = self.mainCharacter
@@ -56,7 +46,7 @@ class SceneDefault: SKScene {
         backgroundMusic = SKAudioNode(fileNamed: fileString)
         backgroundMusic.autoplayLooped = true
         self.addChild(backgroundMusic)
-        backgroundMusic.runAction(SKAction.changeVolumeTo(bgMusicVolume, duration: 0))
+        backgroundMusic.runAction(SKAction.changeVolumeTo(self.bgMusicVolume, duration: 0))
         
         
     }

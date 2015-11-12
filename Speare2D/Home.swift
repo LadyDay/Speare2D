@@ -20,23 +20,18 @@ class Home: SceneDefault {
         /* Setup your scene here */
         /* Setup your scene here */
         if(self.firstAcess){
-            bgMusicVolume = 0.7
-            effectsVolume = 0.7
+            self.bgMusicVolume = 0.7
+            self.effectsVolume = 0.7
+            self.voiceVolume = 0.7
         }
         self.firstAcess = false
-        let defaultVolume = OptionsScene(fileNamed: "OptionsScene")
-        defaultVolume?.bgMusicVolume = self.bgMusicVolume
+        
+        print("volume bg: \(self.bgMusicVolume)")
         
         musicBgConfiguration("backgroundMusic.mp3")
         cameraHome = self.childNodeWithName("cameraHome") as! SKCameraNode
         
         self.initTexturesDoor()
-        
-        backgroundMusic = SKAudioNode(fileNamed: "backgroundMusic.mp3")
-        backgroundMusic.autoplayLooped = true
-        addChild(backgroundMusic)
-        
-        //effectsMusic = SKAudioNode(fileNamed: "applause.wav")
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -61,6 +56,8 @@ class Home: SceneDefault {
                             let fadeScene = SKTransition.fadeWithDuration(1.0)
                             let gameScene = StartScene(fileNamed: "StartScene")
                             gameScene?.bgMusicVolume = self.bgMusicVolume
+                            gameScene?.effectsVolume = self.effectsVolume
+                            gameScene?.voiceVolume = self.voiceVolume
                             self.view?.presentScene(gameScene!, transition: fadeScene)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
@@ -77,6 +74,9 @@ class Home: SceneDefault {
                             self.touchRuning = false
                             let fadeScene = SKTransition.fadeWithDuration(1.0)
                             let gameScene = OptionsScene(fileNamed: "OptionsScene")
+                            gameScene?.bgMusicVolume = self.bgMusicVolume
+                            gameScene?.effectsVolume = self.effectsVolume
+                            gameScene?.voiceVolume = self.voiceVolume
                             self.view?.presentScene(gameScene!, transition: fadeScene)
                             self.backgroundMusic.removeFromParent()
                         })
