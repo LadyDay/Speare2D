@@ -38,7 +38,7 @@ class SceneDefault: SKScene {
     let backButtonSound: String = "Botaoboltar.mp3"
     let homeBGmusic: String = "Murmurinho teatro.mp3"
     let openingDoorEffect: String = "Porta abrindo.mp3"
-    let startBGmusic: String = "Seleção de fases - teste.mp3"
+    let startBGmusic: String = "SelecaoDeFases-teste.mp3"
     let transitionSound1: String = "Transicao.mp3"
     let trafficSound: String = "Transito1.mp3"
     let trafficSound2: String = "Transito2.mp3"
