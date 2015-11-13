@@ -63,10 +63,7 @@ class Home: SceneDefault {
                         let action1 = self.centerOnNode(self.childNodeWithName("viewStart")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
-                            let fadeScene = SKTransition.fadeWithDuration(1.0)
-                            let gameScene = StartScene(fileNamed: "StartScene")
-                            gameScene?.bgMusicVolume = self.bgMusicVolume
-                            self.view?.presentScene(gameScene!, transition: fadeScene)
+                            self.transitionNextScene(StartScene(fileNamed: "StartScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
 
@@ -80,10 +77,7 @@ class Home: SceneDefault {
                         let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
-                            let fadeScene = SKTransition.fadeWithDuration(1.0)
-                            let gameScene = OptionsScene(fileNamed: "OptionsScene")
-                            self.view?.presentScene(gameScene!, transition: fadeScene)
-                            self.backgroundMusic.removeFromParent()
+                            self.transitionNextScene(OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         

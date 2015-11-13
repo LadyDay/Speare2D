@@ -55,4 +55,8 @@ class SceneGameBase: SceneDefault {
         })
     }
     
+    override func moveInfo(gameScene: SceneDefault) {
+        gameScene.inventory = self.inventory
+        self.inventory.removeFromParent()
+    }
 }

@@ -13,14 +13,7 @@ class FarmScene: SceneGameBase {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        
-        //Add swipes
-        self.addSwipes(self.view!)
-        
-        //call function setupAlex
-        self.mainCharacter.setupAlex()
-        addChild(self.mainCharacter)
-        setCamera()
+
     }
     
 /*TOUCH's FUCTION */

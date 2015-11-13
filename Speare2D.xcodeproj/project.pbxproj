@@ -14,7 +14,7 @@
 		3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */; };
 		3D5E38681BF393A500D59321 /* portaDireita.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E38661BF393A500D59321 /* portaDireita.atlas */; };
 		3D5E38691BF393A500D59321 /* portaEsquerda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E38671BF393A500D59321 /* portaEsquerda.atlas */; };
-		3D5E386B1BF5382F00D59321 /* theaterBased.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E386A1BF5382F00D59321 /* theaterBased.sks */; };
+		3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E386A1BF5382F00D59321 /* TheaterBased.sks */; };
 		3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */; };
 		3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D0C1BD52E0400502BF0 /* Home.sks */; };
 		3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0E1BD52E0400502BF0 /* Home.swift */; };
@@ -24,6 +24,7 @@
 		3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D171BD52E0400502BF0 /* LaunchScreen.storyboard */; };
 		3DC44D241BD52E0400502BF0 /* Speare2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D231BD52E0400502BF0 /* Speare2DTests.swift */; };
 		3DC44D2F1BD52E0400502BF0 /* Speare2DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */; };
+		3DD58CB21BF6007F007E337B /* TheaterBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD58CB11BF6007F007E337B /* TheaterBased.swift */; };
 		BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE005A211BF4C39B00C0B265 /* effectsound.aiff */; };
 		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; };
 		BE7597E71BD73661005608E1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597E61BD73661005608E1 /* StartScene.swift */; };
@@ -68,7 +69,7 @@
 		3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DoorOpened.atlas; sourceTree = "<group>"; };
 		3D5E38661BF393A500D59321 /* portaDireita.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaDireita.atlas; sourceTree = "<group>"; };
 		3D5E38671BF393A500D59321 /* portaEsquerda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaEsquerda.atlas; sourceTree = "<group>"; };
-		3D5E386A1BF5382F00D59321 /* theaterBased.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = theaterBased.sks; sourceTree = "<group>"; };
+		3D5E386A1BF5382F00D59321 /* TheaterBased.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TheaterBased.sks; sourceTree = "<group>"; };
 		3DC44D071BD52E0300502BF0 /* Speare2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speare2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DC44D0C1BD52E0400502BF0 /* Home.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Home.sks; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		3DC44D2A1BD52E0400502BF0 /* Speare2DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Speare2DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D2E1BD52E0400502BF0 /* Speare2DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speare2DUITests.swift; sourceTree = "<group>"; };
 		3DC44D301BD52E0400502BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DD58CB11BF6007F007E337B /* TheaterBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterBased.swift; sourceTree = "<group>"; };
 		BE005A211BF4C39B00C0B265 /* effectsound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = effectsound.aiff; sourceTree = "<group>"; };
 		BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AlexCorrendo.atlas; sourceTree = "<group>"; };
 		BE7597E61BD73661005608E1 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
@@ -225,7 +227,8 @@
 		BEE817931BDD4D30009365CE /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				3D5E386A1BF5382F00D59321 /* theaterBased.sks */,
+				3D5E386A1BF5382F00D59321 /* TheaterBased.sks */,
+				3DD58CB11BF6007F007E337B /* TheaterBased.swift */,
 				BEE817951BDD4DAB009365CE /* Tutorial */,
 				BEE817961BDD4DBD009365CE /* Level1 */,
 			);
@@ -386,7 +389,7 @@
 				BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
-				3D5E386B1BF5382F00D59321 /* theaterBased.sks in Resources */,
+				3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +420,7 @@
 				3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */,
 				BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
+				3DD58CB21BF6007F007E337B /* TheaterBased.swift in Sources */,
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
 				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
 				3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */,
@@ -567,6 +571,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.dkrs.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -581,6 +586,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.dkrs.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";

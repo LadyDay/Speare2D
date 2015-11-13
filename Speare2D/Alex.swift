@@ -64,7 +64,7 @@ class Alex: SKSpriteNode {
     
     func setupAlex(){
         self.position = CGPoint(x:167, y:200)
-        self.zPosition = 100.0
+        self.zPosition = 10.0
         self.xScale = scaleAlex
         self.yScale = scaleAlex
     }
@@ -83,10 +83,10 @@ class Alex: SKSpriteNode {
                 currentLocation = CGPointMake(touchLocation.x + self.frame.size.width/2 + (objectSize?.width)!/2, touchLocation.y)
             }
         }else{
-            if(touchLocation.x < self.frame.size.width/2 + 10){
-                currentLocation = CGPointMake(self.frame.size.width/2 + 10, touchLocation.y)
-            }else if(touchLocation.x > tamSize - self.frame.size.width/2 - 10){
-                currentLocation = CGPointMake(tamSize - self.frame.size.width/2 - 10, touchLocation.y)
+            if(touchLocation.x < self.frame.size.width/2 + 15){
+                currentLocation = CGPointMake(self.frame.size.width/2 + 15, touchLocation.y)
+            }else if(touchLocation.x > tamSize - self.frame.size.width/2 - 15){
+                currentLocation = CGPointMake(tamSize - self.frame.size.width/2 - 15, touchLocation.y)
             }else{
                 currentLocation = touchLocation
             }

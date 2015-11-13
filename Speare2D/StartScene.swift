@@ -32,11 +32,7 @@ class StartScene: SceneDefault {
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                         //Muda cena para Opção1
                         self.touchRuning = false
-                        let fadeScene = SKTransition.fadeWithDuration(1.5)
-                        let gameScene = TutorialScene(fileNamed: "TutorialScene")
-                        gameScene!.mainCharacter = self.mainCharacter
-                        self.mainCharacter.removeFromParent()
-                        self.view?.presentScene(gameScene!, transition: fadeScene)
+                        self.transitionNextScene(TutorialScene(fileNamed: "TutorialScene")!, withTheater: true)
                     })
                     break
                     
@@ -46,9 +42,7 @@ class StartScene: SceneDefault {
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                         //Volta ao menu
                         self.touchRuning = false
-                        let fadeScene = SKTransition.fadeWithDuration(1.5)
-                        let gameScene = Home(fileNamed: "Home")
-                        self.view?.presentScene(gameScene!, transition: fadeScene)
+                        self.transitionNextScene(Home(fileNamed: "Home")!, withTheater: false)
                     })
                     break
                     

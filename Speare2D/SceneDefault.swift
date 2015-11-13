@@ -14,6 +14,8 @@ class SceneDefault: SKScene {
     var touchRuning: Bool = false
     var firstAcess: Bool = true
     
+    var theater: TheaterBased?
+    
     //inventory
     var inventory: Inventory!
     var viewInventory: SKView!
@@ -45,9 +47,8 @@ class SceneDefault: SKScene {
     /* ANOTHER FUNCTION */
     func moveInfo(gameScene: SceneDefault){
         gameScene.mainCharacter = self.mainCharacter
-        gameScene.inventory = self.inventory
-        self.inventory.removeFromParent()
         self.mainCharacter.removeFromParent()
+        gameScene.bgMusicVolume = self.bgMusicVolume
     }
     
     func musicBgConfiguration(fileString: String) {
@@ -59,6 +60,27 @@ class SceneDefault: SKScene {
         backgroundMusic.runAction(SKAction.changeVolumeTo(bgMusicVolume, duration: 0))
         
         
+    }
+    
+    func transitionNextScene(sceneTransition: SceneDefault, withTheater: Bool){
+        
+        let fadeScene = SKTransition.fadeWithDuration(1.5)
+        
+        
+        if(withTheater){
+            let gameScene = TheaterBased(fileNamed: "TheaterBased")
+            let viewBased = SKView(frame: CGRectMake(0, 0, 1024, 768))
+            viewBased.backgroundColor = UIColor.clearColor()
+            moveInfo(sceneTransition)
+            self.view?.presentScene(sceneTransition)
+            sceneTransition.view?.addSubview(viewBased as UIView)
+            self.theater = gameScene
+            viewBased.presentScene(gameScene)
+            
+        }else{
+            moveInfo(sceneTransition)
+            self.view?.presentScene(sceneTransition, transition: fadeScene)
+        }
     }
     
     func setCamera(){

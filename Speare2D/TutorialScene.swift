@@ -8,23 +8,10 @@
 
 import SpriteKit
 
-class TutorialScene: SceneGameBase {
+class TutorialScene: TheaterBased {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        mainCharacter.name = "Alex"
-        
-        //Make in inventory for the scene
-        self.inventory = Inventory(fileNamed: "Inventory")
-        //clear the inventory (textures and colors)
-        self.inventory.firstFunc()
-        
-        //Add swipes
-        self.addSwipes(self.view!)
-        
-        //call function setupAlex
-        self.mainCharacter.setupAlex()
-        addChild(mainCharacter)
         setCamera()
     }
     
@@ -49,10 +36,7 @@ class TutorialScene: SceneGameBase {
                         //changes the scene for the garden
                         mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
-                            let fadeScene = SKTransition.crossFadeWithDuration(1.5)
-                            let gameScene = FarmScene(fileNamed: "FarmScene")
-                            self.moveInfo(gameScene!)
-                            self.view?.presentScene(gameScene!, transition: fadeScene)
+                            self.transitionNextScene(FarmScene(fileNamed: "FarmScene")!, withTheater: true)
                         })
                         break
                         
