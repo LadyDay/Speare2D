@@ -20,11 +20,9 @@ class OptionsScene: SceneDefault {
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
-        
-        bgMusicVolume = 0.7
-        effectsVolume = 0.7
-        voiceVolume = 0.7
-        musicBgConfiguration("backgroundMusic.mp3")
+        setUpView()
+        let gameScene = Home(fileNamed: "Home")
+        musicBgConfiguration(startBGmusic)
         
         
         addSlider(bgMusicSlider, volume: bgMusicVolume)
@@ -46,6 +44,15 @@ class OptionsScene: SceneDefault {
         
     }
     
+    func setUpView(){
+        self.optionView = SKView(frame: CGRectMake(0, 0, 1024, 768))
+        
+        self.view?.addSubview(optionView as UIView)
+        //self.optionView.backgroundColor = UIColor.whiteColor()
+        //self.view?.backgroundColor = UIColor.whiteColor()
+        //view = self.optionView
+    }
+    
     func addSlider(Slider: UISlider, volume: Float){
         let sliderDemo = Slider
         
@@ -55,7 +62,7 @@ class OptionsScene: SceneDefault {
         sliderDemo.tintColor = UIColor.redColor()
         sliderDemo.value = volume
         sliderDemo.addTarget(self, action: "sliderValueDidChange:", forControlEvents: .ValueChanged)
-        self.view!.addSubview(sliderDemo)
+        self.optionView.addSubview(sliderDemo)
     }
     
     func sliderValueDidChange(sender:UISlider!)
@@ -64,10 +71,13 @@ class OptionsScene: SceneDefault {
         //print("bgMusicSlider.layer: \(bgMusicSlider.layer) - value: \(bgMusicSlider.value) ")
         if sender.layer == bgMusicSlider.layer {
             backgroundMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            bgMusicVolume = sender.value
+            self.bgMusicVolume = sender.value
         } else if sender.layer == effectsSlider.layer {
             //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            effectsVolume = sender.value
+            self.effectsVolume = sender.value
+        } else if sender.layer == voiceSlider.layer {
+            //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
+            self.voiceVolume = sender.value
         }
         
     }
@@ -79,7 +89,7 @@ class OptionsScene: SceneDefault {
         switchDemo.on = onOff
         switchDemo.setOn(true, animated: false);
         switchDemo.addTarget(self, action: "switchValueDidChange:", forControlEvents: .ValueChanged);
-        self.view!.addSubview(switchDemo);
+        self.optionView.addSubview(switchDemo);
     }
     
     func switchValueDidChange(sender:UISwitch!)
@@ -94,11 +104,11 @@ class OptionsScene: SceneDefault {
     
     func addButton(Button: UIButton){
         let buttonDemo = Button
-        buttonDemo.backgroundColor = UIColor.greenColor()
-        buttonDemo.setTitle("Botão!!!", forState: UIControlState.Normal)
+        buttonDemo.backgroundColor = UIColor.blackColor()
+        buttonDemo.setTitle("Voltar", forState: UIControlState.Normal)
         buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonDemo.tag = 22;
-        self.view!.addSubview(buttonDemo)
+        self.optionView!.addSubview(buttonDemo)
     }
     
     func buttonAction(sender:UIButton!)
@@ -106,6 +116,14 @@ class OptionsScene: SceneDefault {
         //var btnsendtag:UIButton = sender
         if sender.tag == 22 {
             print("Button tapped tag 22")
+            let fadeScene = SKTransition.fadeWithDuration(1.0)
+            let gameScene = Home(fileNamed: "Home")
+            gameScene?.bgMusicVolume = self.bgMusicVolume
+            gameScene?.effectsVolume = self.effectsVolume
+            gameScene?.voiceVolume = self.voiceVolume
+            optionView.removeFromSuperview()
+          
+            self.view?.presentScene(gameScene!, transition: fadeScene)
         }
     }
     

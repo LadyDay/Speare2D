@@ -17,6 +17,11 @@ class StartScene: SceneDefault {
         mainCharacter.setupAlex()
         addChild(mainCharacter)
         setCamera()
+        
+        self.bgMusicVolume = 0.7
+        self.effectsVolume = 0.7
+        self.voiceVolume = 0.7
+        musicBgConfiguration(startBGmusic)
     }
     
     /* Called when a touch begins */
@@ -43,6 +48,7 @@ class StartScene: SceneDefault {
                         //Volta ao menu
                         self.touchRuning = false
                         self.transitionNextScene(Home(fileNamed: "Home")!, withTheater: false)
+
                     })
                     break
                     

@@ -116,7 +116,7 @@ class Alex: SKSpriteNode {
         let catetos:CGFloat = pow(abs(currentLocation.x - pastLocation.x), 2) + pow(abs(currentLocation.y - pastLocation.y), 2)
         let hipotenusa = sqrt(catetos)
         
-        return hipotenusa.native as NSTimeInterval //Double(hipotenusa)
+        return Double(hipotenusa.native) as NSTimeInterval //Double(hipotenusa)
     }
     
 }

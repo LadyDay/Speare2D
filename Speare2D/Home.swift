@@ -25,23 +25,18 @@ class Home: SceneDefault {
         countDoorAnimation = 0
 
         if(self.firstAcess){
-            bgMusicVolume = 0.7
-            effectsVolume = 0.7
+            self.bgMusicVolume = 0.7
+            self.effectsVolume = 0.7
+            self.voiceVolume = 0.7
         }
         self.firstAcess = false
-        let defaultVolume = OptionsScene(fileNamed: "OptionsScene")
-        defaultVolume?.bgMusicVolume = self.bgMusicVolume
+        print("volume bg: \(self.bgMusicVolume)")
+        musicBgConfiguration(homeBGmusic)
         
-        musicBgConfiguration("backgroundMusic.mp3")
+        
         cameraHome = self.childNodeWithName("cameraHome") as! SKCameraNode
         
         self.initTexturesDoor()
-        
-        backgroundMusic = SKAudioNode(fileNamed: "backgroundMusic.mp3")
-        backgroundMusic.autoplayLooped = true
-        addChild(backgroundMusic)
-        
-        //effectsMusic = SKAudioNode(fileNamed: "applause.wav")
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -78,6 +73,7 @@ class Home: SceneDefault {
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
                             self.transitionNextScene(OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
+
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         
@@ -102,7 +98,7 @@ class Home: SceneDefault {
         let playerAnimationDoorRight = SKAction.repeatAction(SKAction.animateWithTextures(doorRightSpriteArray, timePerFrame: 0.06), count: 1)
         leftDoor.runAction(playerAnimationDoorLeft)
         rightDoor.runAction(playerAnimationDoorRight)
-        self.runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: false))
+        self.runAction(SKAction.playSoundFileNamed(openingDoorEffect, waitForCompletion: false))
     }
     
     func animationHalfDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
