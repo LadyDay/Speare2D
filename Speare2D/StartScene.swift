@@ -16,10 +16,7 @@ class StartScene: SceneDefault {
         
         mainCharacter.setupAlex()
         addChild(mainCharacter)
-        
-        let cameraNode = SKCameraNode()
-        self.addChild(cameraNode)
-        self.camera = cameraNode
+        setCamera()
     }
     
     /* Called when a touch begins */
@@ -32,7 +29,7 @@ class StartScene: SceneDefault {
                 guard let nome = nodeTouched.name else {continue ;}
                 switch nome{
                 case "tutorial":
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, objectPresent: false, objectSize: nil), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                         //Muda cena para Opção1
                         self.touchRuning = false
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
@@ -46,7 +43,7 @@ class StartScene: SceneDefault {
                 case "exitNode":
                     //chama a animação para a bilheteria
                     location = CGPoint(x: -70, y: 300)
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), objectPresent: false, objectSize: nil), completion: {
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                         //Volta ao menu
                         self.touchRuning = false
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
@@ -57,7 +54,7 @@ class StartScene: SceneDefault {
                     
                 default:
                     if location.y<200 {
-                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), objectPresent: false, objectSize: nil), completion: {
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
                         })
                     }else{
@@ -72,15 +69,7 @@ class StartScene: SceneDefault {
     
     /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
-        
-        if mainCharacter.position.x < 476.0 {
-            self.camera?.position = CGPoint(x: 476, y: 387.942)
-        } else if mainCharacter.position.x > 545.0 {
-            self.camera?.position = CGPoint(x: 545.0, y: 387.942)
-        } else {
-            self.camera?.position = CGPoint(x: mainCharacter.position.x, y: 387.942)
-        }
-        
+        updateCamera()
     }
     
 }

@@ -50,5 +50,21 @@ class SceneDefault: SKScene {
         
         
     }
+    
+    func setCamera(){
+        let cameraNode = SKCameraNode()
+        self.addChild(cameraNode)
+        self.camera = cameraNode
+    }
+    
+    func updateCamera(){
+        if mainCharacter.position.x < 512 {
+            self.camera?.position = CGPoint(x: 512, y: 384)
+        } else if mainCharacter.position.x > 1536 {
+            self.camera?.position = CGPoint(x: 1536, y: 384)
+        } else {
+            self.camera?.position = CGPoint(x: mainCharacter.position.x, y: 384)
+        }
+    }
 }
 

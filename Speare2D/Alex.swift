@@ -19,10 +19,7 @@ class Alex: SKSpriteNode {
     init() {
         let texture = SKTexture(imageNamed: "Alex_Sprite_Princ1_400x708")
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
-        //animate()
-        
-        
-        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
+
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr1_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr2_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr3_400x708"))
@@ -33,14 +30,8 @@ class Alex: SKSpriteNode {
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr8_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr9_400x708"))
         alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr10_400x708"))
-        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Corr11_400x708"))
-        //alexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
-        
-        
         
         animate()
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,10 +50,6 @@ class Alex: SKSpriteNode {
         waitingAlexSpriteArray.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
         
         let playerAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray, timePerFrame: 0.2))
-//        waitingAlexSpriteArray2.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ1_400x708"))
-//        waitingAlexSpriteArray2.append(alexTextureAtlas.textureNamed("Alex_Sprite_Princ2_400x708"))
-//        let playerAnimation2 = SKAction.repeatActionForever( SKAction.animateWithTextures(waitingAlexSpriteArray2, timePerFrame: 0.1))
-//        let waitingAnimation = SKAction.group([playerAnimation, playerAnimation2])
         self.runAction(playerAnimation)
     }
     
@@ -82,7 +69,7 @@ class Alex: SKSpriteNode {
         self.yScale = scaleAlex
     }
     
-    func walk(inicialLocation: CGPoint, touchLocation: CGPoint, objectPresent: Bool, objectSize: CGSize?) -> SKAction {
+    func walk(inicialLocation: CGPoint, touchLocation: CGPoint, tamSize: CGFloat, objectPresent: Bool, objectSize: CGSize?) -> SKAction {
         
         self.removeActionForKey("andando")
         
@@ -96,7 +83,13 @@ class Alex: SKSpriteNode {
                 currentLocation = CGPointMake(touchLocation.x + self.frame.size.width/2 + (objectSize?.width)!/2, touchLocation.y)
             }
         }else{
-            currentLocation = touchLocation
+            if(touchLocation.x < self.frame.size.width/2 + 10){
+                currentLocation = CGPointMake(self.frame.size.width/2 + 10, touchLocation.y)
+            }else if(touchLocation.x > tamSize - self.frame.size.width/2 - 10){
+                currentLocation = CGPointMake(tamSize - self.frame.size.width/2 - 10, touchLocation.y)
+            }else{
+                currentLocation = touchLocation
+            }
         }
         
         let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400

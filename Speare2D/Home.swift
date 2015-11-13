@@ -10,15 +10,20 @@ import SpriteKit
 
 class Home: SceneDefault {
     
+    var countDoorAnimation: Int = 0
     var cameraHome: SKCameraNode!
     var doorLeftSpriteArray = Array<SKTexture>()
+    var doorHalfLeftSpriteArray = Array<SKTexture>()
     let doorLeftTextureAtlas = SKTextureAtlas(named: "portaEsquerda.atlas")
     var doorRightSpriteArray = Array<SKTexture>()
+    var doorHalfRightSpriteArray = Array<SKTexture>()
     let doorRightTextureAtlas = SKTextureAtlas(named: "portaDireita.atlas")
 
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         /* Setup your scene here */
+        countDoorAnimation = 0
+
         if(self.firstAcess){
             self.bgMusicVolume = 0.7
             self.effectsVolume = 0.7
@@ -106,10 +111,27 @@ class Home: SceneDefault {
         self.runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: false))
     }
     
+    func animationHalfDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
+        let playerAnimationDoorLeft = SKAction.repeatAction(SKAction.animateWithTextures(doorHalfLeftSpriteArray, timePerFrame: 0.08), count: 1)
+        let playerAnimationDoorRight = SKAction.repeatAction(SKAction.animateWithTextures(doorHalfRightSpriteArray, timePerFrame: 0.08), count: 1)
+        leftDoor.runAction(playerAnimationDoorLeft)
+        rightDoor.runAction(playerAnimationDoorRight)
+    }
+    
     func initTexturesDoor(){
         for(var i = 1; i<26; i++){
             doorLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("leftDoor\(i)"))
             doorRightSpriteArray.append(doorRightTextureAtlas.textureNamed("rightDoor\(i)"))
+        }
+        
+        for(var i = 1; i<7; i++){
+            doorHalfLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("leftDoor\(i)"))
+            doorHalfRightSpriteArray.append(doorRightTextureAtlas.textureNamed("rightDoor\(i)"))
+        }
+        
+        for(var i = 6; i>0; i--){
+            doorHalfLeftSpriteArray.append(doorLeftTextureAtlas.textureNamed("leftDoor\(i)"))
+            doorHalfRightSpriteArray.append(doorRightTextureAtlas.textureNamed("rightDoor\(i)"))
         }
     }
 
@@ -122,6 +144,13 @@ class Home: SceneDefault {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        
+        if(countDoorAnimation==300){
+            countDoorAnimation = 0
+            if(!touchRuning){
+                animationHalfDoor(self.childNodeWithName("leftDoorStart") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorStart") as! SKSpriteNode)
+            }
+        }else{
+            countDoorAnimation++
+        }
     }
 }

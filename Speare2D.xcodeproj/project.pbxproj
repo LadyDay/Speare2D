@@ -14,6 +14,7 @@
 		3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */; };
 		3D5E38681BF393A500D59321 /* portaDireita.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E38661BF393A500D59321 /* portaDireita.atlas */; };
 		3D5E38691BF393A500D59321 /* portaEsquerda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E38671BF393A500D59321 /* portaEsquerda.atlas */; };
+		3D5E386B1BF5382F00D59321 /* theaterBased.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E386A1BF5382F00D59321 /* theaterBased.sks */; };
 		3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */; };
 		3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DC44D0C1BD52E0400502BF0 /* Home.sks */; };
 		3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0E1BD52E0400502BF0 /* Home.swift */; };
@@ -67,6 +68,7 @@
 		3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DoorOpened.atlas; sourceTree = "<group>"; };
 		3D5E38661BF393A500D59321 /* portaDireita.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaDireita.atlas; sourceTree = "<group>"; };
 		3D5E38671BF393A500D59321 /* portaEsquerda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaEsquerda.atlas; sourceTree = "<group>"; };
+		3D5E386A1BF5382F00D59321 /* theaterBased.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = theaterBased.sks; sourceTree = "<group>"; };
 		3DC44D071BD52E0300502BF0 /* Speare2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speare2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DC44D0C1BD52E0400502BF0 /* Home.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Home.sks; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		BEE817931BDD4D30009365CE /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				3D5E386A1BF5382F00D59321 /* theaterBased.sks */,
 				BEE817951BDD4DAB009365CE /* Tutorial */,
 				BEE817961BDD4DBD009365CE /* Level1 */,
 			);
@@ -383,6 +386,7 @@
 				BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
+				3D5E386B1BF5382F00D59321 /* theaterBased.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

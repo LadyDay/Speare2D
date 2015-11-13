@@ -20,6 +20,7 @@ class FarmScene: SceneGameBase {
         //call function setupAlex
         self.mainCharacter.setupAlex()
         addChild(self.mainCharacter)
+        setCamera()
     }
     
 /*TOUCH's FUCTION */
@@ -43,7 +44,7 @@ class FarmScene: SceneGameBase {
                     default:
                         if(inventoryPresent==false && location.y<200){
                             //mainCharacter walks
-                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), objectPresent: false, objectSize: nil), completion: {
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                 self.touchRuning = false
                             })
                         }else{
@@ -60,6 +61,6 @@ class FarmScene: SceneGameBase {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        
+        updateCamera()
     }
 }
