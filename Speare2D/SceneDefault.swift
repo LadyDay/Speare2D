@@ -99,7 +99,7 @@ class SceneDefault: SKScene {
             viewBased.backgroundColor = UIColor.clearColor()
             moveInfo(sceneTransition)
             self.view?.presentScene(sceneTransition)
-            sceneTransition.view?.addSubview(viewBased as UIView)
+            sceneTransition.view?.addSubview(viewBased)
             self.theater = gameScene
             viewBased.presentScene(gameScene)
             
