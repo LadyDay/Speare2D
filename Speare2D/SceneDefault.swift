@@ -76,6 +76,7 @@ class SceneDefault: SKScene {
         gameScene.bgMusicVolume = self.bgMusicVolume
     }
     
+
     func musicBgConfiguration(fileString: String) {
         //        let gameScene = OptionsScene(fileNamed: "OptionScene")
         //        gameScene!.bgMusicVolume = self.bgMusicVolume
@@ -83,7 +84,7 @@ class SceneDefault: SKScene {
         backgroundMusic.autoplayLooped = true
         self.addChild(backgroundMusic)
         backgroundMusic.runAction(SKAction.changeVolumeTo(self.bgMusicVolume, duration: 0))
-        
+
         
     }
     

@@ -73,7 +73,6 @@ class Home: SceneDefault {
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
                             self.transitionNextScene(OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
-
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         

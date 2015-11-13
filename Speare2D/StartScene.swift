@@ -48,7 +48,6 @@ class StartScene: SceneDefault {
                         //Volta ao menu
                         self.touchRuning = false
                         self.transitionNextScene(Home(fileNamed: "Home")!, withTheater: false)
-
                     })
                     break
                     
