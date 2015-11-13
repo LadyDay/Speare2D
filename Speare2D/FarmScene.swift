@@ -54,6 +54,6 @@ class FarmScene: SceneGameBase {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        updateCamera()
+        updateCameraSceneDefault()
     }
 }

@@ -57,9 +57,37 @@ class TutorialScene: TheaterBased {
         }
     }
     
+    func touchInScene(nodeTouched: SKNode, location: CGPoint, touch: UITouch){
+        if(nodeTouched.name == nil){
+            self.catchObject(self, location: location, object: nodeTouched)
+            
+        }else{
+            switch nodeTouched.name!{
+            case "hortaNode":
+                //changes the scene for the garden
+                mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                    self.touchRuning = false
+                    self.transitionNextScene(FarmScene(fileNamed: "FarmScene")!, withTheater: true)
+                })
+                break
+                
+            default:
+                if(inventoryPresent==false && location.y<200){
+                    //mainCharacter walks
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                        self.touchRuning = false
+                    })
+                }else{
+                    self.touchRuning = false
+                }
+                break
+            }
+        }
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        updateCamera()
+        updateCameraSceneDefault()
     }
     
 }

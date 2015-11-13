@@ -17,7 +17,7 @@ class SceneDefault: SKScene {
     var theater: TheaterBased?
     
     //inventory
-    var inventory: Inventory!
+    var inventory: Inventory = Inventory(fileNamed: "Inventory")!
     var viewInventory: SKView!
     var inventoryPresent: Bool = false
     
@@ -115,7 +115,20 @@ class SceneDefault: SKScene {
         self.camera = cameraNode
     }
     
-    func updateCamera(){
+    func updateCameraTheater(object: SKSpriteNode){
+        if object.position.x < 512 {
+            //self.camera?.position = CGPoint(x: 512, y: 384)
+            self.camera?.runAction(SKAction.moveTo(CGPoint(x: 512, y: 384), duration: 1))
+        } else if object.position.x > 1536 {
+            //self.camera?.position = CGPoint(x: 1536, y: 384)
+            self.camera?.runAction(SKAction.moveTo(CGPoint(x: 1536, y: 384), duration: 1))
+        } else {
+            //self.camera?.position = CGPoint(x: object.position.x, y: 384)
+            self.camera?.runAction(SKAction.moveTo(CGPoint(x: object.position.x, y: 384), duration: 1))
+        }
+    }
+    
+    func updateCameraSceneDefault(){
         if mainCharacter.position.x < 512 {
             self.camera?.position = CGPoint(x: 512, y: 384)
         } else if mainCharacter.position.x > 1536 {

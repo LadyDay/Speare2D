@@ -21,7 +21,6 @@ class OptionsScene: SceneDefault {
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
         setUpView()
-        let gameScene = Home(fileNamed: "Home")
         musicBgConfiguration(startBGmusic)
         
         

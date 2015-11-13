@@ -259,8 +259,8 @@
 		BEE817931BDD4D30009365CE /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				3D64A9AA1BF625BD006D4F4B /* TheaterBased.swift */,
 				3D5E386A1BF5382F00D59321 /* TheaterBased.sks */,
+				3D64A9AA1BF625BD006D4F4B /* TheaterBased.swift */,
 				BEE817951BDD4DAB009365CE /* Tutorial */,
 				BEE817961BDD4DBD009365CE /* Level1 */,
 			);
@@ -364,6 +364,7 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = DALRD2YRNJ;
 					};
 					3DC44D1E1BD52E0400502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;

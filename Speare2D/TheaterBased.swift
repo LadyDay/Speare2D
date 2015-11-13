@@ -15,8 +15,6 @@ class TheaterBased: SceneGameBase {
         
         mainCharacter.name = "Alex"
         
-        //Make in inventory for the scene
-        self.inventory = Inventory(fileNamed: "Inventory")
         //clear the inventory (textures and colors)
         self.inventory.firstFunc()
         
@@ -42,32 +40,8 @@ class TheaterBased: SceneGameBase {
                 
                 //for nodeTouched in self.nodesAtPoint(location){
                 if let nodeTouched: SKNode = self.nodeAtPoint(location){
+                    let SceneBase = self.view?.superclass as! SceneGameBase
                     
-                    if(nodeTouched.name == nil){
-                        self.catchObject(self, location: location, object: nodeTouched)
-                        
-                    }else{
-                        switch nodeTouched.name!{
-                        case "hortaNode":
-                            //changes the scene for the garden
-                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                self.touchRuning = false
-                                self.transitionNextScene(FarmScene(fileNamed: "FarmScene")!, withTheater: true)
-                            })
-                            break
-                            
-                        default:
-                            if(inventoryPresent==false && location.y<200){
-                                //mainCharacter walks
-                                mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                    self.touchRuning = false
-                                })
-                            }else{
-                                self.touchRuning = false
-                            }
-                            break
-                        }
-                    }
                 }
             }
         }
@@ -75,7 +49,7 @@ class TheaterBased: SceneGameBase {
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        updateCamera()
+        updateCameraSceneDefault()
     }
     
 }

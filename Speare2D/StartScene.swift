@@ -68,7 +68,7 @@ class StartScene: SceneDefault {
     
     /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
-        updateCamera()
+        updateCameraSceneDefault()
     }
     
 }
