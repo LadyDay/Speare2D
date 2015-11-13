@@ -17,6 +17,11 @@ class StartScene: SceneDefault {
         mainCharacter.setupAlex()
         addChild(mainCharacter)
         setCamera()
+        
+        self.bgMusicVolume = 0.7
+        self.effectsVolume = 0.7
+        self.voiceVolume = 0.7
+        musicBgConfiguration(startBGmusic)
     }
     
     /* Called when a touch begins */
@@ -48,6 +53,7 @@ class StartScene: SceneDefault {
                         self.touchRuning = false
                         let fadeScene = SKTransition.fadeWithDuration(1.5)
                         let gameScene = Home(fileNamed: "Home")
+//                        runAction(SKAction.playSoundFileNamed(selectionButtonSound, waitForCompletion: false))
                         self.view?.presentScene(gameScene!, transition: fadeScene)
                     })
                     break

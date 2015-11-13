@@ -22,23 +22,38 @@ class SceneDefault: SKScene {
     //mainCharacter
     var mainCharacter: Alex = Alex()
     
+//    //optionView
+//    var optionView: SKView!
+//    
+//    func setUpOptionView(view: SceneDefault){
+//        view.optionView = SKView(frame: CGRectMake(0, 0, 1024, 768))
+//        view.optionView.backgroundColor = UIColor.clearColor()
+//        view.view?.addSubview(optionView as UIView)
+//        //view = self.optionView
+//    }
+
+    
+    //music files
+    let selectionButtonSound: String = "BotaoSelecionar.mp3"
+    let backButtonSound: String = "Botaoboltar.mp3"
+    let homeBGmusic: String = "Murmurinho teatro.mp3"
+    let openingDoorEffect: String = "Porta abrindo.mp3"
+    let startBGmusic: String = "Seleção de fases - teste.mp3"
+    let transitionSound1: String = "Transicao.mp3"
+    let trafficSound: String = "Transito1.mp3"
+    let trafficSound2: String = "Transito2.mp3"
+    let metalEffectSound: String = "effectsound.aiff"
+    let applauseSound: String = "applause.wav"
+    
     //music
-    var backgroundMusic: SKAudioNode = SKAudioNode(fileNamed: "backgroundMusic.mp3")
+    var backgroundMusic: SKAudioNode!
     var bgMusicVolume: Float!
-    var effectsMusic: SKAudioNode = SKAudioNode(fileNamed: "effectsound.aiff")
+    var effectsMusic: SKAudioNode!
     var effectsVolume: Float!
-    var voiceSound: SKAudioNode = SKAudioNode(fileNamed: "effectsound.aiff")
+    var voiceSound: SKAudioNode!
     var voiceVolume: Float!
     let pauseAction = SKAction.pause()
     let stopAction = SKAction.stop()
-    
-    /* ANOTHER FUNCTION */
-    func moveInfo(gameScene: SceneDefault){
-        gameScene.mainCharacter = self.mainCharacter
-        gameScene.inventory = self.inventory
-        self.inventory.removeFromParent()
-        self.mainCharacter.removeFromParent()
-    }
     
     func musicBgConfiguration(fileString: String) {
         //        let gameScene = OptionsScene(fileNamed: "OptionScene")
@@ -49,6 +64,14 @@ class SceneDefault: SKScene {
         backgroundMusic.runAction(SKAction.changeVolumeTo(self.bgMusicVolume, duration: 0))
         
         
+    }
+    
+    /* ANOTHER FUNCTION */
+    func moveInfo(gameScene: SceneDefault){
+        gameScene.mainCharacter = self.mainCharacter
+        gameScene.inventory = self.inventory
+        self.inventory.removeFromParent()
+        self.mainCharacter.removeFromParent()
     }
     
     func setCamera(){

@@ -34,6 +34,14 @@
 		BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */; };
 		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; };
 		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; };
+		BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */; };
+		BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB01BF5D7C20030DE5E /* Botaovoltar.mp3 */; };
+		BE960FB91BF5D7C20030DE5E /* Murmurinho teatro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB11BF5D7C20030DE5E /* Murmurinho teatro.mp3 */; };
+		BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB21BF5D7C20030DE5E /* Porta abrindo.mp3 */; };
+		BE960FBB1BF5D7C20030DE5E /* Seleção de fases - teste.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB31BF5D7C20030DE5E /* Seleção de fases - teste.mp3 */; };
+		BE960FBC1BF5D7C20030DE5E /* Transicao.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB41BF5D7C20030DE5E /* Transicao.wav */; };
+		BE960FBD1BF5D7C20030DE5E /* Transito1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB51BF5D7C20030DE5E /* Transito1.mp3 */; };
+		BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB61BF5D7C20030DE5E /* Transito2.mp3 */; };
 		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; };
 		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; };
 		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; };
@@ -94,6 +102,14 @@
 		BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alex128.atlas; sourceTree = "<group>"; };
 		BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
+		BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BotaoSelecionar.mp3; sourceTree = "<group>"; };
+		BE960FB01BF5D7C20030DE5E /* Botaovoltar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Botaovoltar.mp3; sourceTree = "<group>"; };
+		BE960FB11BF5D7C20030DE5E /* Murmurinho teatro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Murmurinho teatro.mp3"; sourceTree = "<group>"; };
+		BE960FB21BF5D7C20030DE5E /* Porta abrindo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Porta abrindo.mp3"; sourceTree = "<group>"; };
+		BE960FB31BF5D7C20030DE5E /* Seleção de fases - teste.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Seleção de fases - teste.mp3"; sourceTree = "<group>"; };
+		BE960FB41BF5D7C20030DE5E /* Transicao.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Transicao.wav; sourceTree = "<group>"; };
+		BE960FB51BF5D7C20030DE5E /* Transito1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Transito1.mp3; sourceTree = "<group>"; };
+		BE960FB61BF5D7C20030DE5E /* Transito2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Transito2.mp3; sourceTree = "<group>"; };
 		BED4D90D1BE10E6800F8B35A /* Alex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alex.swift; sourceTree = "<group>"; };
 		BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backgroundMusic.mp3; path = ../backgroundMusic.mp3; sourceTree = "<group>"; };
 		BED4D9101BEB665A00F8B35A /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = applause.wav; path = ../applause.wav; sourceTree = "<group>"; };
@@ -151,6 +167,7 @@
 		3DC44D091BD52E0300502BF0 /* Speare2D */ = {
 			isa = PBXGroup;
 			children = (
+				BE960FBF1BF5D7CE0030DE5E /* Music */,
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
 				3DC44D101BD52E0400502BF0 /* GameViewController.swift */,
 				BEE817941BDD4D81009365CE /* Assets */,
@@ -196,12 +213,27 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		BEE817891BDD49EA009365CE /* GameMenu */ = {
+		BE960FBF1BF5D7CE0030DE5E /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */,
+				BE960FB01BF5D7C20030DE5E /* Botaovoltar.mp3 */,
+				BE960FB11BF5D7C20030DE5E /* Murmurinho teatro.mp3 */,
+				BE960FB21BF5D7C20030DE5E /* Porta abrindo.mp3 */,
+				BE960FB31BF5D7C20030DE5E /* Seleção de fases - teste.mp3 */,
+				BE960FB41BF5D7C20030DE5E /* Transicao.wav */,
+				BE960FB51BF5D7C20030DE5E /* Transito1.mp3 */,
+				BE960FB61BF5D7C20030DE5E /* Transito2.mp3 */,
 				BE005A211BF4C39B00C0B265 /* effectsound.aiff */,
 				BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */,
 				BED4D9101BEB665A00F8B35A /* applause.wav */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		BEE817891BDD49EA009365CE /* GameMenu */ = {
+			isa = PBXGroup;
+			children = (
 				3DC44D0C1BD52E0400502BF0 /* Home.sks */,
 				3DC44D0E1BD52E0400502BF0 /* Home.swift */,
 				BEE8178A1BDD4A28009365CE /* Options */,
@@ -371,22 +403,30 @@
 				3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
+				BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */,
 				3D5E38681BF393A500D59321 /* portaDireita.atlas in Resources */,
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
+				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
 				3D5E38691BF393A500D59321 /* portaEsquerda.atlas in Resources */,
+				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
+				BE960FBD1BF5D7C20030DE5E /* Transito1.mp3 in Resources */,
 				BE89CC4D1BDE497E0063B3A9 /* Alex1024.atlas in Resources */,
 				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
+				BE960FBC1BF5D7C20030DE5E /* Transicao.wav in Resources */,
 				BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */,
 				BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */,
+				BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */,
 				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
 				BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
+				BE960FBB1BF5D7C20030DE5E /* Seleção de fases - teste.mp3 in Resources */,
 				BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
 				3D5E386B1BF5382F00D59321 /* theaterBased.sks in Resources */,
+				BE960FB91BF5D7C20030DE5E /* Murmurinho teatro.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,10 +30,10 @@ class Home: SceneDefault {
             self.voiceVolume = 0.7
         }
         self.firstAcess = false
-        
         print("volume bg: \(self.bgMusicVolume)")
+        musicBgConfiguration(homeBGmusic)
         
-        musicBgConfiguration("backgroundMusic.mp3")
+        
         cameraHome = self.childNodeWithName("cameraHome") as! SKCameraNode
         
         self.initTexturesDoor()
@@ -82,7 +82,7 @@ class Home: SceneDefault {
                             gameScene?.bgMusicVolume = self.bgMusicVolume
                             gameScene?.effectsVolume = self.effectsVolume
                             gameScene?.voiceVolume = self.voiceVolume
-                            self.view?.presentScene(gameScene!, transition: fadeScene)
+                            self.view!.presentScene(gameScene!, transition: fadeScene)
                             self.backgroundMusic.removeFromParent()
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
@@ -108,7 +108,7 @@ class Home: SceneDefault {
         let playerAnimationDoorRight = SKAction.repeatAction(SKAction.animateWithTextures(doorRightSpriteArray, timePerFrame: 0.06), count: 1)
         leftDoor.runAction(playerAnimationDoorLeft)
         rightDoor.runAction(playerAnimationDoorRight)
-        self.runAction(SKAction.playSoundFileNamed("applause.wav", waitForCompletion: false))
+        self.runAction(SKAction.playSoundFileNamed(openingDoorEffect, waitForCompletion: false))
     }
     
     func animationHalfDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
