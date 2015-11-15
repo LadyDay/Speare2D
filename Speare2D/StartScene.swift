@@ -28,41 +28,44 @@ class StartScene: SceneDefault {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if(!self.touchRuning){
             touchRuning = true
-        if let touch = touches.first{
-            var location = touch.locationInNode(self)
-            for nodeTouched in self.nodesAtPoint(location){
-                guard let nome = nodeTouched.name else {continue ;}
-                switch nome{
-                case "tutorial":
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                        //Muda cena para Opção1
-                        self.touchRuning = false
-                        self.transitionNextScene(TutorialScene(fileNamed: "TutorialScene")!, withTheater: true)
-                    })
-                    break
-                    
-                case "exitNode":
-                    //chama a animação para a bilheteria
-                    location = CGPoint(x: -70, y: 300)
-                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                        //Volta ao menu
-                        self.touchRuning = false
-                        self.transitionNextScene(Home(fileNamed: "Home")!, withTheater: false)
-                    })
-                    break
-                    
-                default:
-                    if location.y<200 {
-                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+            if let touch = touches.first{
+                var location = touch.locationInNode(self)
+                for nodeTouched in self.nodesAtPoint(location){
+                    guard let nome = nodeTouched.name else {continue ;}
+                    switch nome{
+                    case "tutorial":
+                        effectConfiguration(selectionButtonSound, waitC: true)
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            //Muda cena para Opção1
+                            //effectConfiguration(selectionButtonSound, waitC: true)
                             self.touchRuning = false
+                            self.transitionNextScene(TutorialScene(fileNamed: "TutorialScene")!, withTheater: true)
                         })
-                    }else{
-                        self.touchRuning = false
+                        break
+                        
+                    case "exitNode":
+                        effectConfiguration(backButtonSound, waitC: true)
+                        //chama a animação para a bilheteria
+                        location = CGPoint(x: -70, y: 300)
+                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            //Volta ao menu
+                            self.touchRuning = false
+                            self.transitionNextScene(Home(fileNamed: "Home")!, withTheater: false)
+                        })
+                        break
+                        
+                    default:
+                        if location.y<200 {
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                self.touchRuning = false
+                            })
+                        }else{
+                            self.touchRuning = false
+                        }
+                        break
                     }
-                    break
                 }
             }
-        }
         }
     }
     

@@ -6,6 +6,8 @@
 //  Copyright © 2015 LadyDay. All rights reserved.
 //
 
+import Foundation
+import AVFoundation
 import SpriteKit
 
 class SceneDefault: SKScene {
@@ -26,7 +28,7 @@ class SceneDefault: SKScene {
     
     //music files
     let selectionButtonSound: String = "BotaoSelecionar.mp3"
-    let backButtonSound: String = "Botaoboltar.mp3"
+    let backButtonSound: String = "Botaovoltar.mp3"
     let homeBGmusic: String = "Murmurinho teatro.mp3"
     let openingDoorEffect: String = "Porta abrindo.mp3"
     let startBGmusic: String = "SelecaoDeFases-teste.mp3"
@@ -36,7 +38,8 @@ class SceneDefault: SKScene {
     let metalEffectSound: String = "effectsound.aiff"
     let applauseSound: String = "applause.wav"
     
-    //music
+    //Sounds
+    var audioPlayer: AVAudioPlayer!
     var backgroundMusic: SKAudioNode!
     static var bgMusicVolume: Float!
     var effectsMusic: SKAudioNode!
@@ -46,21 +49,66 @@ class SceneDefault: SKScene {
     let pauseAction = SKAction.pause()
     let stopAction = SKAction.stop()
     
+    //subtitles
+    static var subtitlesSwitch: Bool = true
+    
     /* ANOTHER FUNCTION */
     func moveInfo(gameScene: SceneDefault){
         gameScene.mainCharacter = self.mainCharacter
         self.mainCharacter.removeFromParent()
     }
     
-
+    func playSoundFileNamed(fileName: NSString, atVolume: Float, waitForCompletion: Bool) -> SKAction {
+        
+        let nameOnly = fileName.stringByDeletingPathExtension
+        let fileExt  = fileName.pathExtension
+        
+        let soundPath = NSBundle.mainBundle().pathForResource(nameOnly as String, ofType: fileExt as String)
+        let url = NSURL.fileURLWithPath(soundPath!)
+        
+        
+        var Aplayer:AVAudioPlayer?
+        do {
+            try Aplayer = AVAudioPlayer(contentsOfURL: url)
+            Aplayer?.volume = atVolume
+        } catch {
+            print("Player not available")
+        }
+        
+        let AplayAction: SKAction = SKAction.runBlock { () -> Void in
+            Aplayer!.play()
+        }
+        
+        if(waitForCompletion){
+            let waitAction = SKAction.waitForDuration(Aplayer!.duration)
+            let groupAction: SKAction = SKAction.group([AplayAction, waitAction])
+            return groupAction
+        }
+        
+        return AplayAction
+    }
+    
     func musicBgConfiguration(fileString: String) {
         backgroundMusic = SKAudioNode(fileNamed: fileString)
         backgroundMusic.autoplayLooped = true
-        self.addChild(backgroundMusic)
         backgroundMusic.runAction(SKAction.changeVolumeTo(SceneDefault.bgMusicVolume, duration: 0))
-
+        self.addChild(backgroundMusic)
         
     }
+    
+    func effectConfiguration(fileString: String, waitC: Bool){
+        let effect = playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/)
+        if (waitC == true){
+            effect.duration = 10.0
+            //            self.runAction(playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/), completion: {
+            //                print("relou")
+            //            })
+            self.runAction(effect)
+        }else{
+            self.runAction(playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/))
+        }
+    }
+    
     
     func transitionNextScene(sceneTransition: SceneDefault, withTheater: Bool){
         

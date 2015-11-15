@@ -5,12 +5,10 @@
 //  Created by Dayane Kelly Rodrigues da Silva on 19/10/15.
 //  Copyright (c) 2015 LadyDay. All rights reserved.
 //
-    
+
 import SpriteKit
 
 class Home: SceneDefault {
-    
-    
     
     var countDoorAnimation: Int = 0
     var cameraHome: SKCameraNode!
@@ -21,21 +19,22 @@ class Home: SceneDefault {
     var doorHalfRightSpriteArray = Array<SKTexture>()
     let doorRightTextureAtlas = SKTextureAtlas(named: "portaDireita.atlas")
     
-
-
+    
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         /* Setup your scene here */
         countDoorAnimation = 0
-
+        
         if(SceneDefault.firstAcess){
             SceneDefault.bgMusicVolume = 0.7
             SceneDefault.effectsVolume = 0.7
             SceneDefault.voiceVolume = 0.7
             SceneDefault.firstAcess = false
         }
-
+        
         print("volume bg: \(SceneDefault.bgMusicVolume)")
+        print("volume eff: \(SceneDefault.effectsVolume)")
         musicBgConfiguration(homeBGmusic)
         
         
@@ -45,16 +44,16 @@ class Home: SceneDefault {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+        /* Called when a touch begins */
         
         if(!self.touchRuning){
             self.touchRuning = true
-        if let touch = touches.first {
-            //let emitterNode = childNodeWithName("EmitterNode1") as! SKEmitterNode
-            let location = touch.locationInNode(self)
-            //for node in self.nodesAtPoint(location){
-            if let node: SKNode = self.nodeAtPoint(location){
-                switch node.name!{
+            if let touch = touches.first {
+                //let emitterNode = childNodeWithName("EmitterNode1") as! SKEmitterNode
+                let location = touch.locationInNode(self)
+                //for node in self.nodesAtPoint(location){
+                if let node: SKNode = self.nodeAtPoint(location){
+                    switch node.name!{
                     case "start":
                         //chama a animação para a porta
                         self.animationDoor(self.childNodeWithName("leftDoorStart") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorStart") as! SKSpriteNode)
@@ -66,9 +65,9 @@ class Home: SceneDefault {
                             self.transitionNextScene(StartScene(fileNamed: "StartScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
-
+                        
                         break
-                    
+                        
                     case "options":
                         //chama a animação para a porta
                         self.animationDoor(self.childNodeWithName("leftDoorOptions") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorOptions") as! SKSpriteNode)
@@ -82,18 +81,18 @@ class Home: SceneDefault {
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         
                         break
-                    
+                        
                     case "info":
                         //chama a animação para a bilheteria
                         self.touchRuning = false
                         break
-                    
+                        
                     default:
                         self.touchRuning = false
                         break
+                    }
                 }
             }
-        }
         }
     }
     
@@ -102,7 +101,8 @@ class Home: SceneDefault {
         let playerAnimationDoorRight = SKAction.repeatAction(SKAction.animateWithTextures(doorRightSpriteArray, timePerFrame: 0.06), count: 1)
         leftDoor.runAction(playerAnimationDoorLeft)
         rightDoor.runAction(playerAnimationDoorRight)
-        self.runAction(SKAction.playSoundFileNamed(openingDoorEffect, waitForCompletion: false))
+        //self.runAction(SKAction.playSoundFileNamed(openingDoorEffect, waitForCompletion: false))
+        effectConfiguration(openingDoorEffect, waitC: false)
     }
     
     func animationHalfDoor(leftDoor: SKSpriteNode, rightDoor: SKSpriteNode){
@@ -128,14 +128,14 @@ class Home: SceneDefault {
             doorHalfRightSpriteArray.append(doorRightTextureAtlas.textureNamed("rightDoor\(i)"))
         }
     }
-
+    
     
     func centerOnNode(node:SKNode) -> SKAction {
         let moveCamera = SKAction.moveTo(node.position, duration: 1.5)
         let zoomCamera = SKAction.scaleTo(0.5, duration: 1.5)
         return SKAction.group([moveCamera, zoomCamera])
     }
-   
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         if(countDoorAnimation==300){
