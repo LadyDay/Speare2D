@@ -10,6 +10,8 @@ import SpriteKit
 
 class Home: SceneDefault {
     
+    
+    
     var countDoorAnimation: Int = 0
     var cameraHome: SKCameraNode!
     var doorLeftSpriteArray = Array<SKTexture>()
@@ -18,19 +20,22 @@ class Home: SceneDefault {
     var doorRightSpriteArray = Array<SKTexture>()
     var doorHalfRightSpriteArray = Array<SKTexture>()
     let doorRightTextureAtlas = SKTextureAtlas(named: "portaDireita.atlas")
+    
+
 
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         /* Setup your scene here */
         countDoorAnimation = 0
 
-        if(self.firstAcess){
-            self.bgMusicVolume = 0.7
-            self.effectsVolume = 0.7
-            self.voiceVolume = 0.7
+        if(SceneDefault.firstAcess){
+            SceneDefault.bgMusicVolume = 0.7
+            SceneDefault.effectsVolume = 0.7
+            SceneDefault.voiceVolume = 0.7
+            SceneDefault.firstAcess = false
         }
-        self.firstAcess = false
-        print("volume bg: \(self.bgMusicVolume)")
+
+        print("volume bg: \(SceneDefault.bgMusicVolume)")
         musicBgConfiguration(homeBGmusic)
         
         

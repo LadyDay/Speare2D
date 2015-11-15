@@ -24,9 +24,9 @@ class OptionsScene: SceneDefault {
         musicBgConfiguration(startBGmusic)
         
         
-        addSlider(bgMusicSlider, volume: bgMusicVolume)
-        addSlider(effectsSlider, volume: effectsVolume)
-        addSlider(voiceSlider, volume: voiceVolume)
+        addSlider(bgMusicSlider, volume: SceneDefault.bgMusicVolume)
+        addSlider(effectsSlider, volume: SceneDefault.effectsVolume)
+        addSlider(voiceSlider, volume: SceneDefault.voiceVolume)
         addSwitch(switchSubtitles, beginsOn: true)
         addButton(backButton)
         
@@ -70,13 +70,16 @@ class OptionsScene: SceneDefault {
         //print("bgMusicSlider.layer: \(bgMusicSlider.layer) - value: \(bgMusicSlider.value) ")
         if sender.layer == bgMusicSlider.layer {
             backgroundMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            self.bgMusicVolume = sender.value
+            //self.bgMusicVolume = sender.value
+            SceneDefault.bgMusicVolume = sender.value
         } else if sender.layer == effectsSlider.layer {
             //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            self.effectsVolume = sender.value
+            //self.effectsVolume = sender.value
+            SceneDefault.effectsVolume = sender.value
         } else if sender.layer == voiceSlider.layer {
             //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            self.voiceVolume = sender.value
+            //self.voiceVolume = sender.value
+            SceneDefault.voiceVolume = sender.value
         }
         
     }
@@ -115,11 +118,11 @@ class OptionsScene: SceneDefault {
         //var btnsendtag:UIButton = sender
         if sender.tag == 22 {
             print("Button tapped tag 22")
-            let fadeScene = SKTransition.fadeWithDuration(1.0)
+            let fadeScene = SKTransition.fadeWithDuration(0)
             let gameScene = Home(fileNamed: "Home")
-            gameScene?.bgMusicVolume = self.bgMusicVolume
-            gameScene?.effectsVolume = self.effectsVolume
-            gameScene?.voiceVolume = self.voiceVolume
+            //gameScene?.bgMusicVolume = self.bgMusicVolume
+            //gameScene?.effectsVolume = self.effectsVolume
+            //gameScene?.voiceVolume = self.voiceVolume
             optionView.removeFromSuperview()
           
             self.view?.presentScene(gameScene!, transition: fadeScene)

@@ -18,9 +18,9 @@ class StartScene: SceneDefault {
         addChild(mainCharacter)
         setCamera()
         
-        self.bgMusicVolume = 0.7
-        self.effectsVolume = 0.7
-        self.voiceVolume = 0.7
+        //SceneDefault.bgMusicVolume = 0.7
+        //SceneDefault.effectsVolume = 0.7
+        //SceneDefault.voiceVolume = 0.7
         musicBgConfiguration(startBGmusic)
     }
     
