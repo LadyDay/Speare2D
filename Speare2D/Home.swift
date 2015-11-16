@@ -32,9 +32,6 @@ class Home: SceneDefault {
             SceneDefault.voiceVolume = 0.7
             SceneDefault.firstAcess = false
         }
-        
-        print("volume bg: \(SceneDefault.bgMusicVolume)")
-        print("volume eff: \(SceneDefault.effectsVolume)")
         musicBgConfiguration(homeBGmusic)
         
         

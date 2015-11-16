@@ -37,6 +37,8 @@ class SceneDefault: SKScene {
     let trafficSound2: String = "Transito2.mp3"
     let metalEffectSound: String = "effectsound.aiff"
     let applauseSound: String = "applause.wav"
+    let optionsBGmusic: String = "optionsMusic.wav"
+    let sliderSound: String = "slider.aiff"
     
     //Sounds
     var audioPlayer: AVAudioPlayer!

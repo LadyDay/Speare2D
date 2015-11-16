@@ -21,7 +21,7 @@ class OptionsScene: SceneDefault {
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
         setUpView()
-        musicBgConfiguration(startBGmusic)
+        musicBgConfiguration(optionsBGmusic)
         
         addSlider(bgMusicSlider, volume: SceneDefault.bgMusicVolume)
         addSlider(effectsSlider, volume: SceneDefault.effectsVolume)
@@ -65,12 +65,15 @@ class OptionsScene: SceneDefault {
     func sliderValueDidChange(sender:UISlider!)
     {
         if sender.layer == bgMusicSlider.layer {
+            effectConfiguration(metalEffectSound, waitC: false)
             backgroundMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
             SceneDefault.bgMusicVolume = sender.value
         } else if sender.layer == effectsSlider.layer {
-            //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
+            effectConfiguration(metalEffectSound, waitC: false)
+            
             SceneDefault.effectsVolume = sender.value
         } else if sender.layer == voiceSlider.layer {
+            effectConfiguration(metalEffectSound, waitC: false)
             //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
             SceneDefault.voiceVolume = sender.value
         }
@@ -92,10 +95,12 @@ class OptionsScene: SceneDefault {
         if (sender.on == true){
             print("on")
             SceneDefault.subtitlesSwitch = true
+            effectConfiguration(sliderSound, waitC: false)
         }
         else{
             print("off")
             SceneDefault.subtitlesSwitch = false
+            effectConfiguration(sliderSound, waitC: false)
         }
     }
     
