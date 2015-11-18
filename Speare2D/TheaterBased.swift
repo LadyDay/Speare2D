@@ -25,8 +25,8 @@ class TheaterBased: SceneGameBase {
         self.mainCharacter.setupAlex()
         addChild(mainCharacter)
         
-        //addChild(mainCharacter)
-        setCamera()
+        let sceneBaseView = self.view!.superview! as! SKView
+        self.camera = sceneBaseView.scene!.camera
     }
     
     /*TOUCH's FUCTION */

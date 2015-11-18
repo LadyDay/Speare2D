@@ -47,9 +47,9 @@ class SceneGameBase: SceneDefault {
     //function for catch object in view
     func catchObject(gameScene: SceneGameBase, location: CGPoint, object: SKNode){
         //pega qualquer objeto da tela, que seja um skspritenode sem nome
-        gameScene.mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: object.frame.size), completion: {
+        gameScene.theater!.mainCharacter.runAction(gameScene.theater!.mainCharacter.walk(gameScene.theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: object.frame.size), completion: {
             //guarding the object in the inventory
-            self.inventory.guardingObject(object as! SKSpriteNode)
+            gameScene.theater.inventory.guardingObject(object as! SKSpriteNode)
             object.removeFromParent()
             self.touchRuning = false
         })
