@@ -35,6 +35,8 @@ class TheaterBased: SceneGameBase {
         let sceneBaseView = self.view!.superview! as! SKView
         let sceneBase = sceneBaseView.scene!
         sceneBase.touchesEnded(touches, withEvent: event)
+        
+        //a vida é uma bosta
     }
 
     override func update(currentTime: CFTimeInterval) {
