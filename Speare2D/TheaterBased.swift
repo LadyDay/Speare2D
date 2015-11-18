@@ -25,6 +25,8 @@ class TheaterBased: SceneGameBase {
         self.mainCharacter.setupAlex()
         addChild(mainCharacter)
         
+        addObjects()
+        
         let sceneBaseView = self.view!.superview! as! SKView
         self.camera = sceneBaseView.scene!.camera
     }
@@ -38,10 +40,29 @@ class TheaterBased: SceneGameBase {
         
         //a vida é uma bosta
     }
+    
+    func addObjects(){
+        let sceneBaseView = self.view!.superview! as! SKView
+        for object in sceneBaseView.scene!.children{
+            if (object.name != "background"){
+                let objectInTheater = object
+                object.removeFromParent()
+                addChild(objectInTheater)
+            }
+        }
+    }
+    
+    func updateButtonsScene(){
+        let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+        saco.position.x = 103 + self.camera!.position.x - 512
+        let corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
+        corda.position.x = 1000 + self.camera!.position.x - 512
+    }
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         updateCameraSceneDefault()
+        updateButtonsScene()
     }
     
 }

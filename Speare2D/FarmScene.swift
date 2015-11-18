@@ -29,7 +29,7 @@ class FarmScene: SceneGameBase {
             if let nodeTouched: SKNode = self.nodeAtPoint(location){
             
                 if(nodeTouched.name == nil){
-                    self.catchObject(self, location: location, object: nodeTouched)
+                    self.catchObject(self.theater, location: location, object: nodeTouched)
                     
                 }else{
                     switch nodeTouched.name!{
