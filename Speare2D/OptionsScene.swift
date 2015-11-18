@@ -13,10 +13,10 @@ class OptionsScene: SceneDefault {
     var optionView: SKView!
     
     let imageBackName = "optionScreen.png"
-    let switchSubtitles = UISwitch(frame:CGRectMake(525, 500, 0, 0))
-    let bgMusicSlider = UISlider(frame:CGRectMake(420, 350, 280, 20))
-    let effectsSlider = UISlider(frame:CGRectMake(580, 450, 280, 20))
-    let voiceSlider = UISlider(frame:CGRectMake(580, 550, 280, 20))
+    let switchSubtitles = UISwitch(frame:CGRectMake(880, 422, 0, 0))
+    let bgMusicSlider = UISlider(frame:CGRectMake(250, 350, 280, 20))
+    let effectsSlider = UISlider(frame:CGRectMake(250, 425, 280, 20))
+    let voiceSlider = UISlider(frame:CGRectMake(250, 500, 280, 20))
     let backButton = UIButton(frame: CGRectMake(500, 600, 100, 50))
     
     /* Setup your scene here */
