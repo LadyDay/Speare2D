@@ -41,7 +41,16 @@ class TheaterBased: SceneGameBase {
                 //for nodeTouched in self.nodesAtPoint(location){
                 if let nodeTouched: SKNode = self.nodeAtPoint(location){
                     let SceneBase = self.view?.superclass as! SceneGameBase
-                    
+                    switch nodeTouched.name!{
+                        
+                    default:
+                        if(inventoryPresent==false && location.y<200){
+                            //mainCharacter walks
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                self.touchRuning = false
+                            })
+                        }
+                    }
                 }
             }
         }

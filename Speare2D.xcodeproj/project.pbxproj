@@ -11,7 +11,6 @@
 		3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0545351BD7C45500D1DC0A /* Inventory.swift */; };
 		3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */; };
 		3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E385A1BF1279A00D59321 /* SceneDefault.swift */; };
-		3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */; };
 		3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E386A1BF5382F00D59321 /* TheaterBased.sks */; };
 		3D64A9AB1BF625BD006D4F4B /* TheaterBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A9AA1BF625BD006D4F4B /* TheaterBased.swift */; };
 		3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */; };
@@ -31,8 +30,6 @@
 		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; };
 		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; };
 		BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597F91BD78833005608E1 /* TutorialScene.swift */; };
-		BE89CC4D1BDE497E0063B3A9 /* Alex1024.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4B1BDE497E0063B3A9 /* Alex1024.atlas */; };
-		BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */; };
 		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; };
 		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; };
 		BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */; };
@@ -76,7 +73,6 @@
 		3D0545351BD7C45500D1DC0A /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneGameBase.swift; sourceTree = "<group>"; };
 		3D5E385A1BF1279A00D59321 /* SceneDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDefault.swift; sourceTree = "<group>"; };
-		3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DoorOpened.atlas; sourceTree = "<group>"; };
 		3D5E386A1BF5382F00D59321 /* TheaterBased.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TheaterBased.sks; sourceTree = "<group>"; };
 		3D64A9AA1BF625BD006D4F4B /* TheaterBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterBased.swift; sourceTree = "<group>"; };
 		3DC44D071BD52E0300502BF0 /* Speare2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Speare2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,8 +98,6 @@
 		BE7597E81BD73683005608E1 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		BE7597F71BD78826005608E1 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
 		BE7597F91BD78833005608E1 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
-		BE89CC4B1BDE497E0063B3A9 /* Alex1024.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alex1024.atlas; sourceTree = "<group>"; };
-		BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alex128.atlas; sourceTree = "<group>"; };
 		BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BotaoSelecionar.mp3; sourceTree = "<group>"; };
@@ -211,10 +205,7 @@
 			children = (
 				BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */,
 				BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */,
-				3D5E385E1BF2205A00D59321 /* DoorOpened.atlas */,
 				BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */,
-				BE89CC4B1BDE497E0063B3A9 /* Alex1024.atlas */,
-				BE89CC4C1BDE497E0063B3A9 /* Alex128.atlas */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -370,6 +361,7 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 9S8UE9T8R2;
 					};
 					3DC44D1E1BD52E0400502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -409,7 +401,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
-				3D5E385F1BF2205A00D59321 /* DoorOpened.atlas in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
 				BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */,
@@ -418,7 +409,6 @@
 				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BE960FBD1BF5D7C20030DE5E /* Transito1.mp3 in Resources */,
-				BE89CC4D1BDE497E0063B3A9 /* Alex1024.atlas in Resources */,
 				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
 				BE960FBC1BF5D7C20030DE5E /* Transicao.wav in Resources */,
 				BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */,
@@ -432,7 +422,6 @@
 				BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */,
 				BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
-				BE89CC4E1BDE497E0063B3A9 /* Alex128.atlas in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
 				3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */,
