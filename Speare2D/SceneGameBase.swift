@@ -17,7 +17,7 @@ class SceneGameBase: SceneDefault {
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         view.addGestureRecognizer(swipeDown)
         
-        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
+        let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp")
         swipeUp.direction = UISwipeGestureRecognizerDirection.Up
         view.addGestureRecognizer(swipeUp)
     }
@@ -25,37 +25,36 @@ class SceneGameBase: SceneDefault {
     func swipeDown(sender: UISwipeGestureRecognizer){
         /* Function to display the inventory */
         if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){ //limits the recognition area swipe
-            self.viewInventory = SKView(frame: CGRectMake(0, 0, 1024, 150))
+            self.viewInventory = SKView(frame: CGRectMake(0, -150, 1024, 150))
             self.view?.addSubview(viewInventory as UIView)
+            self.viewInventory.backgroundColor = UIColor.clearColor()
+            self.viewInventory.presentScene(inventory)
             inventoryPresent = true
             
-            let transition = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 5)
-            viewInventory.presentScene(inventory, transition: transition)
+            let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
+            cortina.runAction(SKAction.moveToY(640, duration: 1))
+            self.viewInventory.cheetah.move(0, 150).duration(1).run()
+            
         }else{
             /* Function to use swipe on the main chaacter */
             
         }
     }
     
-    func swipeUp(sender: UISwipeGestureRecognizer){
+    func swipeUp(){
         if(inventoryPresent==true){
-            viewInventory.removeFromSuperview()
-            inventoryPresent = false
+            let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
+            self.viewInventory.cheetah.move(0, -150).duration(1).run()
+            cortina.runAction(SKAction.moveToY(800, duration: 1), completion: {
+                self.viewInventory.removeFromSuperview()
+                self.inventoryPresent = false
+            })
         }
     }
     
-    //function for catch object in view
-    func catchObject(gameScene: TheaterBased, location: CGPoint, object: SKNode){
-        //pega qualquer objeto da tela, que seja um skspritenode sem nome
-        gameScene.mainCharacter.runAction(gameScene.mainCharacter.walk(gameScene.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: object.frame.size), completion: {
-            //guarding the object in the inventory
-            gameScene.inventory.guardingObject(object as! SKSpriteNode)
-            object.removeFromParent()
-            self.touchRuning = false
-        })
-    }
-    
     override func moveInfo(gameScene: SceneDefault) {
+        //pra executar o que tem na classe pai da funcao
+        super.moveInfo(gameScene)
         gameScene.inventory = self.inventory
         self.inventory.removeFromParent()
     }

@@ -60,6 +60,17 @@ class SceneDefault: SKScene {
         self.mainCharacter.removeFromParent()
     }
     
+    //function for catch object in view
+    func catchObject(gameScene: TheaterBased, location: CGPoint, object: SKNode){
+        //pega qualquer objeto da tela, que seja um skspritenode sem nome
+        gameScene.mainCharacter.runAction(gameScene.mainCharacter.walk(gameScene.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: object.frame.size), completion: {
+            //guarding the object in the inventory
+            gameScene.inventory.guardingObject(object as! SKSpriteNode)
+            object.removeFromParent()
+            self.touchRuning = false
+        })
+    }
+    
     func playSoundFileNamed(fileName: NSString, atVolume: Float, waitForCompletion: Bool) -> SKAction {
         
         let nameOnly = fileName.stringByDeletingPathExtension

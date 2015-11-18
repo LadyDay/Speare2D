@@ -36,9 +36,10 @@ class TheaterBased: SceneGameBase {
         /* Called when a touch begins */
         let sceneBaseView = self.view!.superview! as! SKView
         let sceneBase = sceneBaseView.scene!
+        if(inventoryPresent==true){
+            swipeUp()
+        }
         sceneBase.touchesBegan(touches, withEvent: event)
-        
-        //a vida é uma bosta
     }
     
     func addObjects(){
@@ -54,7 +55,7 @@ class TheaterBased: SceneGameBase {
     
     func updateButtonsScene(){
         let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
-        saco.position.x = 103 + self.camera!.position.x - 512
+        saco.position.x = 50 + self.camera!.position.x - 512
         let corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
         corda.position.x = 1000 + self.camera!.position.x - 512
     }

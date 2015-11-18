@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D0545331BD7C44600D1DC0A /* Inventory.sks */; };
 		3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0545351BD7C45500D1DC0A /* Inventory.swift */; };
+		3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94C1BFD1DAF0022511E /* Bezier.swift */; };
+		3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */; };
+		3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */; };
+		3D4CC95C1BFD1DAF0022511E /* CheetahGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9501BFD1DAF0022511E /* CheetahGroup.swift */; };
+		3D4CC95D1BFD1DAF0022511E /* CheetahLabelProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9511BFD1DAF0022511E /* CheetahLabelProperties.swift */; };
+		3D4CC95E1BFD1DAF0022511E /* CheetahLayerProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9521BFD1DAF0022511E /* CheetahLayerProperties.swift */; };
+		3D4CC95F1BFD1DAF0022511E /* CheetahManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9531BFD1DAF0022511E /* CheetahManager.swift */; };
+		3D4CC9601BFD1DAF0022511E /* CheetahProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9541BFD1DAF0022511E /* CheetahProperties.swift */; };
+		3D4CC9611BFD1DAF0022511E /* CheetahViewProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9551BFD1DAF0022511E /* CheetahViewProperties.swift */; };
+		3D4CC9621BFD1DAF0022511E /* Easings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9561BFD1DAF0022511E /* Easings.swift */; };
+		3D4CC9631BFD1DAF0022511E /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9571BFD1DAF0022511E /* Spring.swift */; };
+		3D4CC9641BFD1DAF0022511E /* UIView+CheetahAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC9581BFD1DAF0022511E /* UIView+CheetahAnimation.swift */; };
 		3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */; };
 		3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E385A1BF1279A00D59321 /* SceneDefault.swift */; };
 		3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D5E386A1BF5382F00D59321 /* TheaterBased.sks */; };
@@ -71,6 +83,19 @@
 /* Begin PBXFileReference section */
 		3D0545331BD7C44600D1DC0A /* Inventory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Inventory.sks; sourceTree = "<group>"; };
 		3D0545351BD7C45500D1DC0A /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		3D4CC94C1BFD1DAF0022511E /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
+		3D4CC94D1BFD1DAF0022511E /* Cheetah.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cheetah.h; sourceTree = "<group>"; };
+		3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cheetah.swift; sourceTree = "<group>"; };
+		3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahConstraintProperties.swift; sourceTree = "<group>"; };
+		3D4CC9501BFD1DAF0022511E /* CheetahGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahGroup.swift; sourceTree = "<group>"; };
+		3D4CC9511BFD1DAF0022511E /* CheetahLabelProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahLabelProperties.swift; sourceTree = "<group>"; };
+		3D4CC9521BFD1DAF0022511E /* CheetahLayerProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahLayerProperties.swift; sourceTree = "<group>"; };
+		3D4CC9531BFD1DAF0022511E /* CheetahManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahManager.swift; sourceTree = "<group>"; };
+		3D4CC9541BFD1DAF0022511E /* CheetahProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahProperties.swift; sourceTree = "<group>"; };
+		3D4CC9551BFD1DAF0022511E /* CheetahViewProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheetahViewProperties.swift; sourceTree = "<group>"; };
+		3D4CC9561BFD1DAF0022511E /* Easings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easings.swift; sourceTree = "<group>"; };
+		3D4CC9571BFD1DAF0022511E /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+		3D4CC9581BFD1DAF0022511E /* UIView+CheetahAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CheetahAnimation.swift"; sourceTree = "<group>"; };
 		3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneGameBase.swift; sourceTree = "<group>"; };
 		3D5E385A1BF1279A00D59321 /* SceneDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDefault.swift; sourceTree = "<group>"; };
 		3D5E386A1BF5382F00D59321 /* TheaterBased.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TheaterBased.sks; sourceTree = "<group>"; };
@@ -144,6 +169,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D4CC9491BFD1D030022511E /* Cheetah */ = {
+			isa = PBXGroup;
+			children = (
+				3D4CC94C1BFD1DAF0022511E /* Bezier.swift */,
+				3D4CC94D1BFD1DAF0022511E /* Cheetah.h */,
+				3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */,
+				3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */,
+				3D4CC9501BFD1DAF0022511E /* CheetahGroup.swift */,
+				3D4CC9511BFD1DAF0022511E /* CheetahLabelProperties.swift */,
+				3D4CC9521BFD1DAF0022511E /* CheetahLayerProperties.swift */,
+				3D4CC9531BFD1DAF0022511E /* CheetahManager.swift */,
+				3D4CC9541BFD1DAF0022511E /* CheetahProperties.swift */,
+				3D4CC9551BFD1DAF0022511E /* CheetahViewProperties.swift */,
+				3D4CC9561BFD1DAF0022511E /* Easings.swift */,
+				3D4CC9571BFD1DAF0022511E /* Spring.swift */,
+				3D4CC9581BFD1DAF0022511E /* UIView+CheetahAnimation.swift */,
+			);
+			name = Cheetah;
+			sourceTree = "<group>";
+		};
 		3DC44CFE1BD52E0300502BF0 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +212,7 @@
 		3DC44D091BD52E0300502BF0 /* Speare2D */ = {
 			isa = PBXGroup;
 			children = (
+				3D4CC9491BFD1D030022511E /* Cheetah */,
 				BE960FBF1BF5D7CE0030DE5E /* Music */,
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
 				3DC44D101BD52E0400502BF0 /* GameViewController.swift */,
@@ -451,15 +497,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */,
 				3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */,
+				3D4CC9631BFD1DAF0022511E /* Spring.swift in Sources */,
+				3D4CC9641BFD1DAF0022511E /* UIView+CheetahAnimation.swift in Sources */,
+				3D4CC95D1BFD1DAF0022511E /* CheetahLabelProperties.swift in Sources */,
 				3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */,
+				3D4CC9621BFD1DAF0022511E /* Easings.swift in Sources */,
+				3D4CC95E1BFD1DAF0022511E /* CheetahLayerProperties.swift in Sources */,
 				BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */,
 				3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */,
+				3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */,
+				3D4CC9611BFD1DAF0022511E /* CheetahViewProperties.swift in Sources */,
 				BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */,
+				3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */,
+				3D4CC9601BFD1DAF0022511E /* CheetahProperties.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3D64A9AB1BF625BD006D4F4B /* TheaterBased.swift in Sources */,
+				3D4CC95F1BFD1DAF0022511E /* CheetahManager.swift in Sources */,
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
 				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
+				3D4CC95C1BFD1DAF0022511E /* CheetahGroup.swift in Sources */,
 				3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */,
 				3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */,
 				BE7597E71BD73661005608E1 /* StartScene.swift in Sources */,
