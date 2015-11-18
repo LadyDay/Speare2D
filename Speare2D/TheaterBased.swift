@@ -30,11 +30,11 @@ class TheaterBased: SceneGameBase {
     }
     
     /*TOUCH's FUCTION */
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         let sceneBaseView = self.view!.superview! as! SKView
         let sceneBase = sceneBaseView.scene!
-        sceneBase.touchesEnded(touches, withEvent: event)
+        sceneBase.touchesBegan(touches, withEvent: event)
         
         //a vida é uma bosta
     }

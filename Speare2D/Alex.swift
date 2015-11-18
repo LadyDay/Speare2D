@@ -60,7 +60,7 @@ class Alex: SKSpriteNode {
     //Function to the default position of Alex
     func setupAlex(){
         self.position = CGPoint(x:167, y:200)
-        self.zPosition = 10.0
+        self.zPosition = 50.0
         self.xScale = scaleAlex
         self.yScale = scaleAlex
     }

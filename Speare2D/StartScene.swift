@@ -25,7 +25,7 @@ class StartScene: SceneDefault {
     }
     
     /* Called when a touch begins */
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if(!self.touchRuning){
             touchRuning = true
             if let touch = touches.first{

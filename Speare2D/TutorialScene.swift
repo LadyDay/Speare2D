@@ -16,7 +16,7 @@ class TutorialScene: SceneGameBase {
     }
     
 /*TOUCH's FUCTION */
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
         if(!self.touchRuning){
