@@ -14,9 +14,9 @@ class OptionsScene: SceneDefault {
     
     let imageBackName = "optionScreen.png"
     let switchSubtitles = UISwitch(frame:CGRectMake(525, 500, 0, 0))
-    let bgMusicSlider = UISlider(frame:CGRectMake(420, 0, 280, 20))
-    let effectsSlider = UISlider(frame:CGRectMake(580, 300, 280, 20))
-    let voiceSlider = UISlider(frame:CGRectMake(580, 400, 280, 20))
+    let bgMusicSlider = UISlider(frame:CGRectMake(420, 350, 280, 20))
+    let effectsSlider = UISlider(frame:CGRectMake(580, 450, 280, 20))
+    let voiceSlider = UISlider(frame:CGRectMake(580, 550, 280, 20))
     let backButton = UIButton(frame: CGRectMake(500, 600, 100, 50))
     
     /* Setup your scene here */
