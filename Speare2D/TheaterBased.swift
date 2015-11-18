@@ -25,26 +25,16 @@ class TheaterBased: SceneGameBase {
         self.mainCharacter.setupAlex()
         addChild(mainCharacter)
         
-        //addChild(mainCharacter)
-        setCamera()
+        let sceneBaseView = self.view!.superview! as! SKView
+        self.camera = sceneBaseView.scene!.camera
     }
     
     /*TOUCH's FUCTION */
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
-        
-        if(!self.touchRuning){
-            self.touchRuning = true
-            if let touch = touches.first {
-                let location = touch.locationInNode(self)
-                
-                //for nodeTouched in self.nodesAtPoint(location){
-                if let nodeTouched: SKNode = self.nodeAtPoint(location){
-                    let SceneBase = self.view?.superclass as! SceneGameBase
-                    
-                }
-            }
-        }
+        let sceneBaseView = self.view!.superview! as! SKView
+        let sceneBase = sceneBaseView.scene!
+        sceneBase.touchesEnded(touches, withEvent: event)
     }
 
     override func update(currentTime: CFTimeInterval) {

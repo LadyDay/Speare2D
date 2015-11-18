@@ -16,7 +16,7 @@ class SceneDefault: SKScene {
     var touchRuning: Bool = false
     static var firstAcess: Bool = true
     
-    var theater: TheaterBased?
+    var theater: TheaterBased!
     
     //inventory
     var inventory: Inventory = Inventory(fileNamed: "Inventory")!
@@ -119,12 +119,12 @@ class SceneDefault: SKScene {
         
         if(withTheater){
             let gameScene = TheaterBased(fileNamed: "TheaterBased")
-            let viewBased = SKView(frame: CGRectMake(0, 0, 1024, 768))
+            let viewBased = SKView(frame: self.view!.frame)
             viewBased.backgroundColor = UIColor.clearColor()
-            moveInfo(sceneTransition)
             self.view?.presentScene(sceneTransition)
             sceneTransition.view?.addSubview(viewBased)
-            self.theater = gameScene
+            sceneTransition.theater = gameScene
+            moveInfo(gameScene!)
             viewBased.presentScene(gameScene)
             
         }else{
