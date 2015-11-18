@@ -32,28 +32,11 @@ class TheaterBased: SceneGameBase {
     /*TOUCH's FUCTION */
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
+        let sceneBaseView = self.view!.superview! as! SKView
+        let sceneBase = sceneBaseView.scene!
+        sceneBase.touchesEnded(touches, withEvent: event)
         
-        if(!self.touchRuning){
-            self.touchRuning = true
-            if let touch = touches.first {
-                let location = touch.locationInNode(self)
-                
-                //for nodeTouched in self.nodesAtPoint(location){
-                if let nodeTouched: SKNode = self.nodeAtPoint(location){
-                    let SceneBase = self.view?.superclass as! SceneGameBase
-                    switch nodeTouched.name!{
-                        
-                    default:
-                        if(inventoryPresent==false && location.y<200){
-                            //mainCharacter walks
-                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                self.touchRuning = false
-                            })
-                        }
-                    }
-                }
-            }
-        }
+        //a vida é uma bosta
     }
 
     override func update(currentTime: CFTimeInterval) {
