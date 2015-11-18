@@ -13,11 +13,11 @@ class OptionsScene: SceneDefault {
     var optionView: SKView!
     
     let imageBackName = "optionScreen.png"
-    let switchSubtitles = UISwitch(frame:CGRectMake(525, 500, 0, 0))
-    let bgMusicSlider = UISlider(frame:CGRectMake(420, 0, 280, 20))
-    let effectsSlider = UISlider(frame:CGRectMake(580, 300, 280, 20))
-    let voiceSlider = UISlider(frame:CGRectMake(580, 400, 280, 20))
-    let backButton = UIButton(frame: CGRectMake(500, 600, 100, 50))
+    let switchSubtitles = UISwitch(frame:CGRectMake(880, 422, 0, 0))
+    let bgMusicSlider = UISlider(frame:CGRectMake(250, 350, 280, 20))
+    let effectsSlider = UISlider(frame:CGRectMake(250, 425, 280, 20))
+    let voiceSlider = UISlider(frame:CGRectMake(250, 500, 280, 20))
+    let backButton = UIButton(frame: CGRectMake(140, 135, 177, 55))
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
@@ -118,9 +118,10 @@ class OptionsScene: SceneDefault {
     func addButton(Button: UIButton){
         let buttonDemo = Button
         buttonDemo.backgroundColor = UIColor.blackColor()
-        buttonDemo.setTitle("Voltar", forState: UIControlState.Normal)
+        buttonDemo.setTitle("", forState: UIControlState.Normal)
         buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonDemo.tag = 22;
+        buttonDemo.setImage(UIImage(named: "exitButton.png"), forState: UIControlState.Normal)
         self.optionView!.addSubview(buttonDemo)
     }
     
@@ -129,7 +130,7 @@ class OptionsScene: SceneDefault {
         //var btnsendtag:UIButton = sender
         if sender.tag == 22 {
             print("Button tapped tag 22")
-            effectConfiguration(selectionButtonSound, waitC: true)
+            effectConfiguration(backButtonSound, waitC: true)
             let fadeScene = SKTransition.fadeWithDuration(0.7)
             let gameScene = Home(fileNamed: "Home")
             self.view?.presentScene(gameScene!, transition: fadeScene)
