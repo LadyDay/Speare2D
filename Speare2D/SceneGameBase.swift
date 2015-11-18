@@ -10,6 +10,11 @@ import SpriteKit
 
 class SceneGameBase: SceneDefault {
     
+    //inventory
+    var inventory: Inventory = Inventory(fileNamed: "Inventory")!
+    var viewInventory: SKView!
+    var inventoryPresent: Bool = false
+    
     /*SWIPE's FUNCTION */
     func addSwipes(view: UIView){
         //Add swipe in the view (self.view)
@@ -29,11 +34,11 @@ class SceneGameBase: SceneDefault {
             self.view?.addSubview(viewInventory as UIView)
             self.viewInventory.backgroundColor = UIColor.clearColor()
             self.viewInventory.presentScene(inventory)
-            inventoryPresent = true
             
             let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
             cortina.runAction(SKAction.moveToY(640, duration: 1))
             self.viewInventory.cheetah.move(0, 150).duration(1).run()
+            inventoryPresent = true
             
         }else{
             /* Function to use swipe on the main chaacter */
@@ -50,12 +55,5 @@ class SceneGameBase: SceneDefault {
                 self.inventoryPresent = false
             })
         }
-    }
-    
-    override func moveInfo(gameScene: SceneDefault) {
-        //pra executar o que tem na classe pai da funcao
-        super.moveInfo(gameScene)
-        gameScene.inventory = self.inventory
-        self.inventory.removeFromParent()
     }
 }

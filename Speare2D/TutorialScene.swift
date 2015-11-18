@@ -40,7 +40,7 @@ class TutorialScene: SceneDefault {
                             break
                         
                         default:
-                            if(inventoryPresent==false && location.y<200){
+                            if(theater.inventoryPresent==false && location.y<200){
                                 //mainCharacter walks
                                 theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                     self.touchRuning = false

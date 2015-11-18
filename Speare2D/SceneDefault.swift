@@ -18,11 +18,6 @@ class SceneDefault: SKScene {
     
     var theater: TheaterBased!
     
-    //inventory
-    var inventory: Inventory = Inventory(fileNamed: "Inventory")!
-    var viewInventory: SKView!
-    var inventoryPresent: Bool = false
-    
     //mainCharacter
     var mainCharacter: Alex = Alex()
     
