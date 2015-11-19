@@ -10,8 +10,15 @@ import SpriteKit
 
 class TheaterBased: SceneGameBase {
     
+    let imageBackName = "optionScreen.png"
+    var pauseMenuPresent: Bool!
+    var pauseMenuView: SKView!
+    let backButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
+    
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        pauseMenuPresent = false
         
         mainCharacter.name = "Alex"
         
@@ -29,6 +36,7 @@ class TheaterBased: SceneGameBase {
         
         let sceneBaseView = self.view!.superview! as! SKView
         self.camera = sceneBaseView.scene!.camera
+        print("Touch: \(pauseMenuPresent)")
     }
     
     /*TOUCH's FUCTION */
@@ -39,7 +47,21 @@ class TheaterBased: SceneGameBase {
         if(inventoryPresent==true){
             swipeUp()
         }
-        sceneBase.touchesBegan(touches, withEvent: event)
+        
+        //Selecting pause menu
+        if let touch = touches.first {
+            let location = touch.locationInNode(self)
+            if let nodeTouched: SKNode = self.nodeAtPoint(location){
+                let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+                if(nodeTouched == saco){
+                    pauseMenu()
+                }
+                sceneBase.touchesBegan(touches, withEvent: event)
+            }
+        }
+        
+        //sceneBase.touchesBegan(touches, withEvent: event)
+        print("Touch: \(pauseMenuPresent)")
     }
     
     func addObjects(){
@@ -64,6 +86,56 @@ class TheaterBased: SceneGameBase {
         /* Called before each frame is rendered */
         updateCameraSceneDefault()
         updateButtonsScene()
+    }
+    
+    func pauseMenu(){
+//        pauseMenuView = SKView(frame: CGRectMake(0, 0, 480, 320))
+//        setUpViews(pauseMenuView, /*originX: 0, originY: 0, sizeX: 480, sizeY: 320,*/ imageBGString: imageBackName, toBack: false)
+        
+        setupPauseView()
+        
+    
+    }
+    
+    func setupPauseView(){
+        pauseMenuPresent = true
+        pauseMenuView = SKView(frame: CGRectMake(0, 0, 240, 160))
+        pauseMenuView.center = CGPointMake(512.0, 384.0)
+        self.view?.addSubview(pauseMenuView as UIView)
+        
+//        let imageBG = UIImage(named: imageBackName)
+//        let imageView = UIImageView(image: imageBG)
+//        imageView.frame = CGRectMake(0, 0, 480, 320)
+//        pauseMenuView.addSubview(imageView)
+        
+        pauseMenuView.cheetah.scale(3).run()
+        setupBackButton(backButton)
+    }
+    
+    func setupBackButton(Button: UIButton){
+        let buttonDemo = Button
+        buttonDemo.center = CGPointMake(120, 160)
+        buttonDemo.backgroundColor = UIColor.blackColor()
+        buttonDemo.setTitle("Voltar", forState: UIControlState.Normal)
+        buttonDemo.addTarget(self, action: "buttonBackAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        buttonDemo.tag = 21;
+        buttonDemo.setImage(UIImage(named: "exitButton.png"), forState: UIControlState.Normal)
+        self.pauseMenuView!.addSubview(buttonDemo)
+        self.pauseMenuView.bringSubviewToFront(buttonDemo)
+    }
+    
+    func buttonBackAction(sender:UIButton!)
+    {
+        //var btnsendtag:UIButton = sender
+        if sender.tag == 22 {
+            print("Button tapped tag 21")
+            effectConfiguration(backButtonSound, waitC: true)
+            //let fadeScene = SKTransition.fadeWithDuration(0.7)
+            pauseMenuView.cheetah.scale(0.5).duration(2).run()
+            //pauseMenuView.cheetah.wait()
+            pauseMenuPresent = false
+            pauseMenuView.removeFromSuperview()
+        }
     }
     
 }

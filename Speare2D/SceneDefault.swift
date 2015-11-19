@@ -17,6 +17,7 @@ class SceneDefault: SKScene {
     static var firstAcess: Bool = true
     
     var theater: TheaterBased!
+    var givenSKView: SKView!
     
     //mainCharacter
     var mainCharacter: Alex = Alex()
@@ -165,6 +166,20 @@ class SceneDefault: SKScene {
             self.camera?.position = CGPoint(x: 1536, y: 384)
         } else {
             self.camera?.position = CGPoint(x: mainCharacter.position.x, y: 384)
+        }
+    }
+    
+    func setUpViews(givenSKView: SKView, /*originX: CGFloat, originY: CGFloat, sizeX: CGFloat, sizeY: CGFloat, */imageBGString: String, toBack: Bool){
+        /*Setar frame da view antes de chamar essa função!!! 
+        Utilizar:
+        VIEW = SKView(frame: CGRectMake(originX, originY, sizeX, sizeY))*/
+        self.view?.addSubview(givenSKView as UIView)
+        let imageBG = UIImage(named: imageBGString)
+        let imageView = UIImageView(image: imageBG)
+        imageView.frame = CGRectMake(givenSKView.frame.origin.x, givenSKView.frame.origin.y, givenSKView.frame.size.width, givenSKView.frame.size.height )//(originX, originY, sizeX, sizeY)
+        givenSKView.addSubview(imageView)
+        if(toBack == true){
+            self.givenSKView.sendSubviewToBack(imageView)
         }
     }
 }
