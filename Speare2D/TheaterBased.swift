@@ -114,7 +114,7 @@ class TheaterBased: SceneGameBase {
     
     func setupBackButton(Button: UIButton){
         let buttonDemo = Button
-        buttonDemo.center = CGPointMake(120, 160)
+        buttonDemo.center = CGPointMake(120, 140)
         buttonDemo.backgroundColor = UIColor.blackColor()
         buttonDemo.setTitle("Voltar", forState: UIControlState.Normal)
         buttonDemo.addTarget(self, action: "buttonBackAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -127,7 +127,7 @@ class TheaterBased: SceneGameBase {
     func buttonBackAction(sender:UIButton!)
     {
         //var btnsendtag:UIButton = sender
-        if sender.tag == 22 {
+        if sender.tag == 21 {
             print("Button tapped tag 21")
             effectConfiguration(backButtonSound, waitC: true)
             //let fadeScene = SKTransition.fadeWithDuration(0.7)
