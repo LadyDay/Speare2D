@@ -10,14 +10,16 @@ import SpriteKit
 
 class TheaterBased: SceneGameBase {
     
-    let imageBackName = "optionScreen.png"
+    let imageBackName = "paused.png"
     var pauseMenuPresent: Bool!
+    var pauseMenuCounter = 0
     var pauseMenuView: SKView!
     let backButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
     
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        addObjects()
         pauseMenuPresent = false
         
         mainCharacter.name = "Alex"
@@ -31,8 +33,6 @@ class TheaterBased: SceneGameBase {
         //call function setupAlex
         self.mainCharacter.setupAlex()
         addChild(mainCharacter)
-        
-        addObjects()
         
         let sceneBaseView = self.view!.superview! as! SKView
         self.camera = sceneBaseView.scene!.camera
@@ -53,7 +53,9 @@ class TheaterBased: SceneGameBase {
             let location = touch.locationInNode(self)
             if let nodeTouched: SKNode = self.nodeAtPoint(location){
                 let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
-                if(nodeTouched == saco){
+                if(nodeTouched == saco && pauseMenuCounter == 0){
+                    pauseMenuCounter++
+                    effectConfiguration(selectionButtonSound, waitC: true)
                     pauseMenu()
                 }
                 sceneBase.touchesBegan(touches, withEvent: event)
@@ -103,10 +105,10 @@ class TheaterBased: SceneGameBase {
         pauseMenuView.center = CGPointMake(512.0, 384.0)
         self.view?.addSubview(pauseMenuView as UIView)
         
-//        let imageBG = UIImage(named: imageBackName)
-//        let imageView = UIImageView(image: imageBG)
-//        imageView.frame = CGRectMake(0, 0, 480, 320)
-//        pauseMenuView.addSubview(imageView)
+        let imageBG = UIImage(named: imageBackName)
+        let imageView = UIImageView(image: imageBG)
+        imageView.frame = CGRectMake(0, 0, 240, 160)
+        pauseMenuView.addSubview(imageView)
         
         pauseMenuView.cheetah.scale(3).run()
         setupBackButton(backButton)
@@ -134,6 +136,7 @@ class TheaterBased: SceneGameBase {
             pauseMenuView.cheetah.scale(0.5).duration(2).run()
             //pauseMenuView.cheetah.wait()
             pauseMenuPresent = false
+            pauseMenuCounter--
             pauseMenuView.removeFromSuperview()
         }
     }
