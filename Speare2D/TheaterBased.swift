@@ -95,6 +95,7 @@ class TheaterBased: SceneGameBase {
 //        setUpViews(pauseMenuView, /*originX: 0, originY: 0, sizeX: 480, sizeY: 320,*/ imageBGString: imageBackName, toBack: false)
         
         setupPauseView()
+        setupBackButton(backButton)
         
     
     }
@@ -109,9 +110,8 @@ class TheaterBased: SceneGameBase {
         let imageView = UIImageView(image: imageBG)
         imageView.frame = CGRectMake(0, 0, 240, 160)
         pauseMenuView.addSubview(imageView)
+        pauseMenuView.cheetah.scale(3).duration(0.5).run()
         
-        pauseMenuView.cheetah.scale(3).run()
-        setupBackButton(backButton)
     }
     
     func setupBackButton(Button: UIButton){

@@ -81,7 +81,14 @@ class Home: SceneDefault {
                         
                     case "info":
                         //chama a animação para a bilheteria
-                        self.touchRuning = false
+                        effectConfiguration(ticketSound, waitC: true)
+                        let action1 = self.centerOnNode(self.childNodeWithName("viewInfo")!)
+                        let action2 = SKAction.runBlock({
+                            self.touchRuning = false
+                            self.transitionNextScene(InfoScene(fileNamed: "InfoScene")!, withTheater: false)
+                        })
+                        cameraHome.runAction(SKAction.sequence([action1,action2]))
+
                         break
                         
                     default:

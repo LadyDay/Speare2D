@@ -35,6 +35,7 @@ class SceneDefault: SKScene {
     let applauseSound: String = "applause.wav"
     let optionsBGmusic: String = "optionsMusic.wav"
     let sliderSound: String = "slider.aiff"
+    let ticketSound: String = "ticketSound.wav"
     
     //Sounds
     var audioPlayer: AVAudioPlayer!
@@ -62,7 +63,12 @@ class SceneDefault: SKScene {
         gameScene.mainCharacter.runAction(gameScene.mainCharacter.walk(gameScene.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: object.frame.size), completion: {
             //guarding the object in the inventory
             gameScene.inventory.guardingObject(object as! SKSpriteNode)
-            object.removeFromParent()
+            let spinAction = SKAction.rotateByAngle(CGFloat(2.0*M_PI), duration: 1)
+            let goUpAction = SKAction.moveTo(CGPoint(x: object.position.x, y: 1000), duration: 1)
+            let fadeAction = SKAction.fadeOutWithDuration(0.5)
+            let groupActions = SKAction.group([spinAction, goUpAction, fadeAction])
+            object.runAction(groupActions, completion: {object.removeFromParent()})
+//            object.removeFromParent()
             self.touchRuning = false
         })
     }
@@ -119,8 +125,7 @@ class SceneDefault: SKScene {
     }
     
     
-    func transitionNextScene(sceneTransition: SceneDefault, withTheater: Bool){
-        
+    func transitionNextScene(sceneTransition: SceneDefault, withTheater: Bool){        
         let fadeScene = SKTransition.fadeWithDuration(1.5)
         
         
