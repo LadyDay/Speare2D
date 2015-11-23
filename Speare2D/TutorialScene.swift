@@ -27,9 +27,9 @@ class TutorialScene: SceneDefault {
                 //for nodeTouched in self.nodesAtPoint(location){
                 if let nodeTouched: SKNode = theater.nodeAtPoint(location){
                 
-                    if(nodeTouched.name == nil){
-                        self.catchObject(self.theater, location: location, object: nodeTouched)
-                    }else{
+                    if(nodeTouched.name != nil){
+                        //self.catchObject(self.theater, location: location, object: nodeTouched)
+                    //}else{
                         switch nodeTouched.name!{
                         case "hortaNode":
                             //changes the scene for the garden
@@ -54,6 +54,7 @@ class TutorialScene: SceneDefault {
                 }
             }
         }
+        self.touchRuning = false
     }
     
 }

@@ -59,12 +59,13 @@ class TheaterBased: SceneGameBase {
                     effectConfiguration(selectionButtonSound, waitC: true)
                     pauseMenu()
                 }
-//                if(nodeTouched.name == nil){
-//                    self.catchObject(self.theater, location: location, object: nodeTouched)
-//                }
-                
+                if(nodeTouched.name == nil){
+                    self.catchObject(self, location: location, object: nodeTouched)
+                } else {
                 //substitui essa chamada de metódo abaixo pela tua função
                 sceneBase.touchesBegan(touches, withEvent: event)
+                }
+                
             }
         }
         
