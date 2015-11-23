@@ -62,6 +62,8 @@ class TheaterBased: SceneGameBase {
 //                if(nodeTouched.name == nil){
 //                    self.catchObject(self.theater, location: location, object: nodeTouched)
 //                }
+                
+                //substitui essa chamada de metódo abaixo pela tua função
                 sceneBase.touchesBegan(touches, withEvent: event)
             }
         }
