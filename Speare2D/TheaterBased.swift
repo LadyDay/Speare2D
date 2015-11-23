@@ -16,6 +16,8 @@ class TheaterBased: SceneGameBase {
     var pauseMenuView: SKView!
     let backButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
     var iten: SKSpriteNode!
+    var itenHasMoved: Bool = false
+    var selectedNode: SKNode!
     
     
     override func didMoveToView(view: SKView) {
@@ -43,8 +45,8 @@ class TheaterBased: SceneGameBase {
     /*TOUCH's FUCTION */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
-        let sceneBaseView = self.view!.superview! as! SKView
-        let sceneBase = sceneBaseView.scene!
+//        let sceneBaseView = self.view!.superview! as! SKView
+//        let sceneBase = sceneBaseView.scene!
         if(inventoryPresent==true){
             swipeUp()
         }
@@ -60,17 +62,83 @@ class TheaterBased: SceneGameBase {
                     pauseMenu()
                 }
                 if(nodeTouched.name == nil){
-                    self.catchObject(self, location: location, object: nodeTouched)
-                } else {
-                //substitui essa chamada de metódo abaixo pela tua função
-                sceneBase.touchesBegan(touches, withEvent: event)
+                    itenHasMoved = false
+                    //self.catchObject(self, location: location, object: nodeTouched)
                 }
-                
             }
         }
         
         //sceneBase.touchesBegan(touches, withEvent: event)
         print("Touch: \(pauseMenuPresent)")
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            let positionInScene = touch.locationInNode(self)
+            let previousPosition = touch.previousLocationInNode(self)
+            let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
+            //let location = touch.locationInNode(self)
+            if let nodeTouched: SKNode = self.nodeAtPoint(positionInScene){
+                if(nodeTouched.name == nil){
+                    itenHasMoved = true
+                    selectedNode = nodeTouched as! SKSpriteNode
+                    self.panForTranslation(translation)
+                }
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let sceneBaseView = self.view!.superview! as! SKView
+        let sceneBase = sceneBaseView.scene!
+        if let touch = touches.first {
+            let location = touch.locationInNode(self)
+            if let nodeTouched: SKNode = self.nodeAtPoint(location){
+                if(nodeTouched.name == nil && itenHasMoved == false){
+                    self.catchObject(self, location: location, object: nodeTouched)
+                } else if (nodeTouched.name == nil && itenHasMoved == true) {
+                    itenHasMoved = false
+                    //Quando soltar o item que estava sendo movido:
+                    
+                    fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
+                } else if (nodeTouched.name != nil){
+                    //substitui essa chamada de metódo abaixo pela tua função
+                    sceneBase.touchesBegan(touches, withEvent: event)
+                }
+            }
+        }
+    }
+    func selectNodeForTouch(touchLocation : CGPoint) {
+        // 1
+        let touchedNode = self.nodeAtPoint(touchLocation)
+        
+        if touchedNode is SKSpriteNode {
+            // 2
+            if (!selectedNode.isEqual(touchedNode)) {
+                selectedNode.removeAllActions()
+                selectedNode.runAction(SKAction.rotateToAngle(0.0, duration: 0.1))
+                
+                selectedNode = touchedNode as! SKSpriteNode
+                
+                // 3
+                let sequence = SKAction.sequence([SKAction.rotateByAngle(degToRad(-4.0), duration: 0.1),
+                    SKAction.rotateByAngle(0.0, duration: 0.1),
+                    SKAction.rotateByAngle(degToRad(4.0), duration: 0.1)])
+                selectedNode.runAction(SKAction.repeatActionForever(sequence))
+                
+            }
+        }
+    }
+    
+    func panForTranslation(translation : CGPoint) {
+        let position = selectedNode.position
+//        
+//        if selectedNode.name! == nil {
+            selectedNode.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
+//        }
+    }
+    func degToRad(degree: Double) -> CGFloat {
+        return CGFloat(degree / 180.0 * M_PI)
     }
     
     func addObjects(){
@@ -159,21 +227,27 @@ class TheaterBased: SceneGameBase {
         addChild(iten)
         iten.position = CGPoint(x: (self.camera?.position.x)!, y: 700)
         iten.name = nil
-        iten.zPosition = 45
-        fallingIten(iten)
+        iten.zPosition = 50
+        fallingIten(iten, fromInventory: true)
         addObjects()
 
     }
     
-    func fallingIten(obj: SKSpriteNode){
-        let initA = SKAction.moveTo(CGPoint(x: iten.position.x, y: 1000), duration: 0.0)
-        let fallingAction = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y), duration: 1.0)
+    func fallingIten(obj: SKSpriteNode, fromInventory: Bool){
+        var initA = SKAction.moveTo(CGPoint(x: iten.position.x, y: iten.position.y), duration: 0.0)
+        var secondsFalling = 0.4
+        if (fromInventory){
+            initA = SKAction.moveTo(CGPoint(x: iten.position.x, y: 1000), duration: 0.0)
+            secondsFalling = 1.0
+        }
+        let fallingAction = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y), duration: secondsFalling)
         let upOne = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y + 20), duration: 0.2)
         let downOne = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y), duration: 0.2)
         let upTwo = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y + 10), duration: 0.2)
         let downTwo = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y), duration: 0.2)
         let groupAction = SKAction.sequence([initA, fallingAction, upOne, downOne, upTwo, downTwo])
         obj.runAction(groupAction)
-        obj.position = CGPoint(x: (self.camera?.position.x)!, y: mainCharacter.position.y)
+        
+        obj.position = CGPoint(x: iten.position.x, y: mainCharacter.position.y)
     }
 }
