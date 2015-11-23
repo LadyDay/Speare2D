@@ -15,6 +15,7 @@ class TheaterBased: SceneGameBase {
     var pauseMenuCounter = 0
     var pauseMenuView: SKView!
     let backButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
+    var iten: SKSpriteNode!
     
     
     override func didMoveToView(view: SKView) {
@@ -58,6 +59,9 @@ class TheaterBased: SceneGameBase {
                     effectConfiguration(selectionButtonSound, waitC: true)
                     pauseMenu()
                 }
+//                if(nodeTouched.name == nil){
+//                    self.catchObject(self.theater, location: location, object: nodeTouched)
+//                }
                 sceneBase.touchesBegan(touches, withEvent: event)
             }
         }
@@ -88,7 +92,12 @@ class TheaterBased: SceneGameBase {
         /* Called before each frame is rendered */
         updateCameraSceneDefault()
         updateButtonsScene()
+        if (inventoryPresent && SceneGameBase.itenComing){
+            SceneGameBase.itenComing = false
+            addItenFromInventory()
+        }
     }
+    
     
     func pauseMenu(){
 //        pauseMenuView = SKView(frame: CGRectMake(0, 0, 480, 320))
@@ -141,4 +150,27 @@ class TheaterBased: SceneGameBase {
         }
     }
     
+    func addItenFromInventory(){
+        iten = SceneGameBase.itenFromInventory
+        iten.position = CGPoint(x: (self.camera?.position.x)!, y: 700)
+        addChild(iten)
+        iten.position = CGPoint(x: (self.camera?.position.x)!, y: 700)
+        iten.name = nil
+        iten.zPosition = 45
+        fallingIten(iten)
+        addObjects()
+
+    }
+    
+    func fallingIten(obj: SKSpriteNode){
+        let initA = SKAction.moveTo(CGPoint(x: iten.position.x, y: 1000), duration: 0.0)
+        let fallingAction = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y), duration: 1.0)
+        let upOne = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y + 20), duration: 0.2)
+        let downOne = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y), duration: 0.2)
+        let upTwo = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y + 10), duration: 0.2)
+        let downTwo = SKAction.moveTo(CGPoint(x: iten.position.x, y: mainCharacter.position.y), duration: 0.2)
+        let groupAction = SKAction.sequence([initA, fallingAction, upOne, downOne, upTwo, downTwo])
+        obj.runAction(groupAction)
+        obj.position = CGPoint(x: (self.camera?.position.x)!, y: mainCharacter.position.y)
+    }
 }

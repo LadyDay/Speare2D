@@ -14,6 +14,8 @@ class SceneGameBase: SceneDefault {
     var inventory: Inventory = Inventory(fileNamed: "Inventory")!
     var viewInventory: SKView!
     var inventoryPresent: Bool = false
+    static var itenComing: Bool = false
+    static var itenFromInventory: SKSpriteNode!
     
     /*SWIPE's FUNCTION */
     func addSwipes(view: UIView){
