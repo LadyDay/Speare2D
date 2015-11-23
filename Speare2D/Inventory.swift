@@ -64,6 +64,7 @@ class Inventory: SKScene {
         var completed: Bool = false
         for(var i = 0; i<7 && completed==false; i++){
             let lot = self.childNodeWithName("lot\(i)") as! SKSpriteNode
+            lot.size = CGSize(width: 110, height:110)
             if(lot.texture == nil){
                 lot.texture = object.texture
                 if(object.texture!.size().width > lot.size.width || object.texture!.size().height > lot.size.height){
