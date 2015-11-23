@@ -30,6 +30,11 @@ class Inventory: SKScene {
                 let colorize = SKAction.colorizeWithColor(.greenColor(), colorBlendFactor: 1, duration: 1)
                 node.runAction(colorize)
             }
+            if (node.texture != nil){
+                SceneGameBase.itenFromInventory = SKSpriteNode(texture: node.texture, size: CGSize(width: node.texture!.size().width, height: node.texture!.size().height))
+                node.texture = nil
+                SceneGameBase.itenComing = true
+            }
             
         }
     }

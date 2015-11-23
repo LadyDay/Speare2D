@@ -17,6 +17,7 @@ class SceneDefault: SKScene {
     static var firstAcess: Bool = true
     
     var theater: TheaterBased!
+    var givenSKView: SKView!
     
     //mainCharacter
     var mainCharacter: Alex = Alex()
@@ -34,6 +35,7 @@ class SceneDefault: SKScene {
     let applauseSound: String = "applause.wav"
     let optionsBGmusic: String = "optionsMusic.wav"
     let sliderSound: String = "slider.aiff"
+    let ticketSound: String = "ticketSound.wav"
     
     //Sounds
     var audioPlayer: AVAudioPlayer!
@@ -61,7 +63,12 @@ class SceneDefault: SKScene {
         gameScene.mainCharacter.runAction(gameScene.mainCharacter.walk(gameScene.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: object.frame.size), completion: {
             //guarding the object in the inventory
             gameScene.inventory.guardingObject(object as! SKSpriteNode)
-            object.removeFromParent()
+            let spinAction = SKAction.rotateByAngle(CGFloat(2.0*M_PI), duration: 1)
+            let goUpAction = SKAction.moveTo(CGPoint(x: object.position.x, y: 1000), duration: 1)
+            let fadeAction = SKAction.fadeOutWithDuration(0.5)
+            let groupActions = SKAction.group([spinAction, goUpAction, fadeAction])
+            object.runAction(groupActions, completion: {object.removeFromParent()})
+//            object.removeFromParent()
             self.touchRuning = false
         })
     }
@@ -118,8 +125,7 @@ class SceneDefault: SKScene {
     }
     
     
-    func transitionNextScene(sceneTransition: SceneDefault, withTheater: Bool){
-        
+    func transitionNextScene(sceneTransition: SceneDefault, withTheater: Bool){        
         let fadeScene = SKTransition.fadeWithDuration(1.5)
         
         
@@ -165,6 +171,20 @@ class SceneDefault: SKScene {
             self.camera?.position = CGPoint(x: 1536, y: 384)
         } else {
             self.camera?.position = CGPoint(x: mainCharacter.position.x, y: 384)
+        }
+    }
+    
+    func setUpViews(givenSKView: SKView, /*originX: CGFloat, originY: CGFloat, sizeX: CGFloat, sizeY: CGFloat, */imageBGString: String, toBack: Bool){
+        /*Setar frame da view antes de chamar essa função!!! 
+        Utilizar:
+        VIEW = SKView(frame: CGRectMake(originX, originY, sizeX, sizeY))*/
+        self.view?.addSubview(givenSKView as UIView)
+        let imageBG = UIImage(named: imageBGString)
+        let imageView = UIImageView(image: imageBG)
+        imageView.frame = CGRectMake(givenSKView.frame.origin.x, givenSKView.frame.origin.y, givenSKView.frame.size.width, givenSKView.frame.size.height )//(originX, originY, sizeX, sizeY)
+        givenSKView.addSubview(imageView)
+        if(toBack == true){
+            self.givenSKView.sendSubviewToBack(imageView)
         }
     }
 }

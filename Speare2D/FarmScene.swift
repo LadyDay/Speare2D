@@ -20,7 +20,7 @@ class FarmScene: SceneDefault {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        if(!self.touchRuning){
+        if(self.touchRuning == false && theater.pauseMenuPresent == false){
             self.touchRuning = true
             if let touch = touches.first {
                 let location = touch.locationInNode(self)

@@ -38,6 +38,7 @@
 		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; };
 		BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */; };
 		BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */; };
+		BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */; };
 		BE7597E71BD73661005608E1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597E61BD73661005608E1 /* StartScene.swift */; };
 		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; };
 		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; };
@@ -119,6 +120,7 @@
 		BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AlexCorrendo.atlas; sourceTree = "<group>"; };
 		BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = optionsMusic.wav; sourceTree = "<group>"; };
 		BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = slider.aiff; sourceTree = "<group>"; };
+		BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticketSound.wav; sourceTree = "<group>"; };
 		BE7597E61BD73661005608E1 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		BE7597E81BD73683005608E1 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		BE7597F71BD78826005608E1 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		BE960FBF1BF5D7CE0030DE5E /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */,
 				BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */,
 				BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */,
 				BE960FB01BF5D7C20030DE5E /* Botaovoltar.mp3 */,
@@ -407,7 +410,6 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = DALRD2YRNJ;
 					};
 					3DC44D1E1BD52E0400502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -446,6 +448,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */,
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
