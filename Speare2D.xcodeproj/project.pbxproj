@@ -44,6 +44,7 @@
 		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; };
 		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; };
 		BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597F91BD78833005608E1 /* TutorialScene.swift */; };
+		BE8401A51C062FDA00E9712D /* fogoCaldeira.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */; };
 		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; };
 		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; };
 		BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */; };
@@ -127,6 +128,7 @@
 		BE7597E81BD73683005608E1 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		BE7597F71BD78826005608E1 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
 		BE7597F91BD78833005608E1 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fogoCaldeira.atlas; sourceTree = "<group>"; };
 		BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BotaoSelecionar.mp3; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */,
 				BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */,
 				BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */,
 				BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */,
@@ -478,6 +481,7 @@
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
 				3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */,
+				BE8401A51C062FDA00E9712D /* fogoCaldeira.atlas in Resources */,
 				BE960FB91BF5D7C20030DE5E /* Murmurinho teatro.mp3 in Resources */,
 				BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */,
 			);

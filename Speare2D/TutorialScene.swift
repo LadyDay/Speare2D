@@ -9,10 +9,15 @@
 import SpriteKit
 
 class TutorialScene: SceneDefault {
+    var fireArray = Array<SKTexture>()
+    let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
+    var fireAnimation = SKAction()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         setCamera()
+        initTextureFire()
+        initFire(self.childNodeWithName("fire") as! SKSpriteNode)
     }
     
 /*TOUCH's FUCTION */
@@ -54,6 +59,16 @@ class TutorialScene: SceneDefault {
             }
         }
         self.touchRuning = false
+    }
+    
+    func initTextureFire() {
+        fireArray.append(fireAtlas.textureNamed("fogoSPRITE176x124_1"))
+        fireArray.append(fireAtlas.textureNamed("fogoSPRITE176x124_2"))
+    }
+    
+    func initFire(fireNode: SKSpriteNode){
+        fireAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(fireArray, timePerFrame: 0.08))
+        fireNode.runAction(fireAnimation)
     }
     
 }

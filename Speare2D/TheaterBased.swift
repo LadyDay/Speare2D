@@ -4,6 +4,7 @@
 //
 //  Created by Dayane Kelly Rodrigues da Silva on 12/11/15.
 //  Copyright © 2015 LadyDay. All rights reserved.
+//  COORDENADAS: Y = ((y-214)/2)-768 e X = x/2
 //
 
 import SpriteKit
