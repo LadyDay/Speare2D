@@ -38,8 +38,8 @@ class SceneGameBase: SceneDefault {
             self.viewInventory.presentScene(inventory)
             
             let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
-            cortina.runAction(SKAction.moveToY(640, duration: 1))
-            self.viewInventory.cheetah.move(0, 150).duration(1).run()
+            cortina.runAction(SKAction.moveToY(660, duration: 1))
+            self.viewInventory.cheetah.move(0, 130).duration(1).run()
             inventoryPresent = true
             
         }else{
@@ -51,8 +51,8 @@ class SceneGameBase: SceneDefault {
     func swipeUp(){
         if(inventoryPresent==true){
             let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
-            self.viewInventory.cheetah.move(0, -150).duration(1).run()
-            cortina.runAction(SKAction.moveToY(800, duration: 1), completion: {
+            self.viewInventory.cheetah.move(0, -130).duration(1).run()
+            cortina.runAction(SKAction.moveToY(766.25, duration: 1), completion: {
                 self.viewInventory.removeFromSuperview()
                 self.inventoryPresent = false
             })
