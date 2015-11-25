@@ -26,7 +26,6 @@ class TutorialScene: SceneDefault {
             
                 //for nodeTouched in self.nodesAtPoint(location){
                 if let nodeTouched: SKNode = theater.nodeAtPoint(location){
-                
                     if(nodeTouched.name != nil){
                         //self.catchObject(self.theater, location: location, object: nodeTouched)
                     //}else{

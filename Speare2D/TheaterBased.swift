@@ -93,18 +93,37 @@ class TheaterBased: SceneGameBase {
         let sceneBase = sceneBaseView.scene!
         if let touch = touches.first {
             let location = touch.locationInNode(self)
-            if let nodeTouched: SKNode = self.nodeAtPoint(location){
-                if(nodeTouched.name == nil && itenHasMoved == false){
-                    self.catchObject(self, location: location, object: nodeTouched)
-                } else if (nodeTouched.name == nil && itenHasMoved == true) {
-                    itenHasMoved = false
-                    //Quando soltar o item que estava sendo movido:
-                    
-                    fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
-                } else if (nodeTouched.name != nil){
-                    //substitui essa chamada de metódo abaixo pela tua função
-                    sceneBase.touchesBegan(touches, withEvent: event)
+            let nodeTouched = self.nodeAtPoint(location) as! SKSpriteNode
+            
+            if(nodeTouched.name == nil && itenHasMoved == false){
+                self.catchObject(self, location: location, object: nodeTouched)
+            } else if (nodeTouched.name == nil && itenHasMoved == true) {
+                itenHasMoved = false
+                //Quando soltar o item que estava sendo movido:
+                var interactionPossible : Bool = false
+                for nodes in self.nodesAtPoint(location){
+                    if nodes.name != nil{
+                        print(nodes.name)
+                        let texture = SKTexture(imageNamed: nodes.name!)
+                        let texture2 = nodeTouched.texture!
+                        
+                        if(texture2.description == texture.description){
+                            interactionPossible = true
+                            nodeTouched.name = nodes.name! + "Deleted"
+                        }
+                    }
                 }
+                
+                if(interactionPossible){
+                    //chama a função do objeto
+                    //sceneBase.
+                }else{
+                    fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
+                }
+                
+            } else if (nodeTouched.name != nil){
+                    //substitui essa chamada de metódo abaixo pela tua função
+                sceneBase.touchesBegan(touches, withEvent: event)
             }
         }
     }
