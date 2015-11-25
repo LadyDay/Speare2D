@@ -37,6 +37,7 @@
 		BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE005A211BF4C39B00C0B265 /* effectsound.aiff */; };
 		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; };
 		BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */; };
+		BE15B9461C05E3FF004D9724 /* Itens.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE15B9451C05E3FF004D9724 /* Itens.swift */; };
 		BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */; };
 		BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */; };
 		BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */; };
@@ -120,6 +121,7 @@
 		BE005A211BF4C39B00C0B265 /* effectsound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = effectsound.aiff; sourceTree = "<group>"; };
 		BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AlexCorrendo.atlas; sourceTree = "<group>"; };
 		BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Passos na madeira.mp3"; sourceTree = "<group>"; };
+		BE15B9451C05E3FF004D9724 /* Itens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itens.swift; sourceTree = "<group>"; };
 		BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = optionsMusic.wav; sourceTree = "<group>"; };
 		BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = slider.aiff; sourceTree = "<group>"; };
 		BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticketSound.wav; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				3D0545331BD7C44600D1DC0A /* Inventory.sks */,
+				BE15B9451C05E3FF004D9724 /* Itens.swift */,
 				3D0545351BD7C45500D1DC0A /* Inventory.swift */,
 				3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */,
 				3D5E385A1BF1279A00D59321 /* SceneDefault.swift */,
@@ -519,6 +522,7 @@
 				BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */,
 				3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */,
 				3D4CC9601BFD1DAF0022511E /* CheetahProperties.swift in Sources */,
+				BE15B9461C05E3FF004D9724 /* Itens.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3D64A9AB1BF625BD006D4F4B /* TheaterBased.swift in Sources */,
 				3D4CC95F1BFD1DAF0022511E /* CheetahManager.swift in Sources */,
