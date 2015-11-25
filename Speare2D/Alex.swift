@@ -14,6 +14,7 @@ class Alex: SKSpriteNode {
     var alexSpriteArray = Array<SKTexture>()
     var waitingAlexSpriteArray = Array<SKTexture>()
     var scaleAlex: CGFloat = 0.3
+    var alexIsWalking: Bool = false
     
     init() {
         //Initializing alex with her first sprite
@@ -116,6 +117,17 @@ class Alex: SKSpriteNode {
         
         return group
     }
+    
+    func walkWithSound(inicialLocation: CGPoint, touchLocation: CGPoint, tamSize: CGFloat, objectPresent: Bool, objectSize: CGSize?, sound: String) -> SKAction {
+    
+        let walkAct = walk(inicialLocation, touchLocation: touchLocation, tamSize: tamSize, objectPresent: objectPresent, objectSize: objectSize)
+        let sound = SKAction.repeatActionForever(SKAction.playSoundFileNamed("Passos na madeira/mp3", waitForCompletion: false))
+        let delay = SKAction.waitForDuration((4*0.08))
+        let sequence = SKAction.sequence([sound, delay])
+        let group = SKAction.group([walkAct, sequence])
+        return group
+    }
+    
     
     //Function to determine which way Alex should point.
     func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{

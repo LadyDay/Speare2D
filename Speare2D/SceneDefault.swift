@@ -36,6 +36,7 @@ class SceneDefault: SKScene {
     let optionsBGmusic: String = "optionsMusic.wav"
     let sliderSound: String = "slider.aiff"
     let ticketSound: String = "ticketSound.wav"
+    let passosNaMadeira: String = "Passos na madeira.mp3"
     
     //Sounds
     var audioPlayer: AVAudioPlayer!
