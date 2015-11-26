@@ -57,6 +57,10 @@
 		BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FC01BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 */; };
 		BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */; };
 		BE9EA0D81BFCA41E0040EEB0 /* portaEsquerda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */; };
+		BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF41C06B24F0013E3EB /* fogao.atlas */; };
+		BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF61C06B2550013E3EB /* panela.atlas */; };
+		BEA58CF91C06B2870013E3EB /* KitchenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA58CF81C06B2870013E3EB /* KitchenScene.swift */; };
+		BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CFA1C06B2920013E3EB /* KitchenScene.sks */; };
 		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; };
 		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; };
 		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; };
@@ -141,6 +145,10 @@
 		BE960FC01BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "SelecaoDeFases-teste.mp3"; sourceTree = "<group>"; };
 		BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaDireita.atlas; sourceTree = "<group>"; };
 		BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaEsquerda.atlas; sourceTree = "<group>"; };
+		BEA58CF41C06B24F0013E3EB /* fogao.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fogao.atlas; sourceTree = "<group>"; };
+		BEA58CF61C06B2550013E3EB /* panela.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = panela.atlas; sourceTree = "<group>"; };
+		BEA58CF81C06B2870013E3EB /* KitchenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenScene.swift; sourceTree = "<group>"; };
+		BEA58CFA1C06B2920013E3EB /* KitchenScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = KitchenScene.sks; sourceTree = "<group>"; };
 		BED4D90D1BE10E6800F8B35A /* Alex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alex.swift; sourceTree = "<group>"; };
 		BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backgroundMusic.mp3; path = ../backgroundMusic.mp3; sourceTree = "<group>"; };
 		BED4D9101BEB665A00F8B35A /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = applause.wav; path = ../applause.wav; sourceTree = "<group>"; };
@@ -255,6 +263,8 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BEA58CF61C06B2550013E3EB /* panela.atlas */,
+				BEA58CF41C06B24F0013E3EB /* fogao.atlas */,
 				BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */,
 				BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */,
 				BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */,
@@ -338,6 +348,8 @@
 				BE7597F91BD78833005608E1 /* TutorialScene.swift */,
 				BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */,
 				BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */,
+				BEA58CFA1C06B2920013E3EB /* KitchenScene.sks */,
+				BEA58CF81C06B2870013E3EB /* KitchenScene.swift */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -454,15 +466,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */,
 				BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */,
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
+				BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */,
 				BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */,
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
 				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
 				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
+				BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */,
 				BE960FBD1BF5D7C20030DE5E /* Transito1.mp3 in Resources */,
 				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
 				BE960FBC1BF5D7C20030DE5E /* Transicao.wav in Resources */,
@@ -529,6 +544,7 @@
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
 				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
 				3D4CC95C1BFD1DAF0022511E /* CheetahGroup.swift in Sources */,
+				BEA58CF91C06B2870013E3EB /* KitchenScene.swift in Sources */,
 				3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */,
 				3DC44D0B1BD52E0400502BF0 /* AppDelegate.swift in Sources */,
 				BE7597E71BD73661005608E1 /* StartScene.swift in Sources */,

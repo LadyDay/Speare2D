@@ -40,6 +40,7 @@ class StartScene: SceneDefault {
                             //effectConfiguration(selectionButtonSound, waitC: true)
                             self.touchRuning = false
                             self.transitionNextScene(TutorialScene(fileNamed: "TutorialScene")!, withTheater: true)
+                            //self.transitionNextScene(KitchenScene(fileNamed: "KitchenScene")!, withTheater: true)
                         })
                         break
                         
