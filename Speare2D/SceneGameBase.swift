@@ -31,17 +31,24 @@ class SceneGameBase: SceneDefault {
     
     func swipeDown(sender: UISwipeGestureRecognizer){
         /* Function to display the inventory */
-        if(sender.locationInView(self.view).y < 350 && inventoryPresent==false){ //limits the recognition area swipe
-            self.viewInventory = SKView(frame: CGRectMake(0, -150, 1024, 150))
-            self.view?.addSubview(viewInventory as UIView)
-            self.viewInventory.backgroundColor = UIColor.clearColor()
-            self.viewInventory.presentScene(inventory)
+        print(sender.locationInView(self.view))
+        let location = CGPointMake(sender.locationInView(self.view).x, 768 - sender.locationInView(self.view).y)
+        print(location)
+        if location.x > 990 && location.x < 1010 && location.y > 500 && location.y < 650 && inventoryPresent==false {
+            //limits the recognition area swipe
+                self.viewInventory = SKView(frame: CGRectMake(0, -150, 1024, 150))
+                self.view?.addSubview(viewInventory as UIView)
+                self.viewInventory.backgroundColor = UIColor.clearColor()
+                self.viewInventory.presentScene(inventory)
             
-            let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
-            cortina.runAction(SKAction.moveToY(660, duration: 1))
-            self.viewInventory.cheetah.move(0, 130).duration(1).run()
-            inventoryPresent = true
-            
+                let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
+                let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+                let corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
+                cortina.runAction(SKAction.moveToY(660, duration: 1))
+                saco.runAction(SKAction.moveToY(540.25, duration: 1))
+                corda.runAction(SKAction.moveToY(528.75, duration: 1))
+                self.viewInventory.cheetah.move(0, 130).duration(1).run()
+                inventoryPresent = true
         }else{
             /* Function to use swipe on the main chaacter */
             
@@ -51,6 +58,10 @@ class SceneGameBase: SceneDefault {
     func swipeUp(){
         if(inventoryPresent==true){
             let cortina = self.childNodeWithName("cortina") as! SKSpriteNode
+            let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+            let corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
+            saco.runAction(SKAction.moveToY(646.5, duration: 1))
+            corda.runAction(SKAction.moveToY(635, duration: 1))
             self.viewInventory.cheetah.move(0, -130).duration(1).run()
             cortina.runAction(SKAction.moveToY(766.25, duration: 1), completion: {
                 self.viewInventory.removeFromSuperview()

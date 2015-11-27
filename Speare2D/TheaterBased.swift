@@ -11,6 +11,8 @@ import SpriteKit
 
 class TheaterBased: SceneGameBase {
     
+    var saco: SKSpriteNode!
+    var corda: SKSpriteNode!
     var sceneBackground: SceneDefault!
     var flagCurtinsClosed: Bool = false
     let imageBackName = "paused.png"
@@ -25,6 +27,9 @@ class TheaterBased: SceneGameBase {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+        self.corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
+        
         flagCurtinsClosed = true
         transitionSceneBackground(true)
         pauseMenuPresent = false
@@ -50,22 +55,26 @@ class TheaterBased: SceneGameBase {
         var animationCurtainsClosed = Array<SKTexture>()
         
         for(var j = 1; j < 11; j++){
-            animationCurtainsOpen.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
-        }
-        
-        for(var j = 10; j>0; j--){
             animationCurtainsClosed.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
         }
         
-        curtains.runAction(SKAction.animateWithTextures(animationCurtainsOpen, timePerFrame: 0.1), completion: {
+        for(var j = 10; j>0; j--){
+            animationCurtainsOpen.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
+        }
+        
+        self.removeVisionButtonsScene()
+        
+        curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
             self.removeObjects({
-                let superView = self.view?.superview as! SKView
-                superView.presentScene(self.sceneBackground)
+                self.sceneBackground.touchRuning = false
                 let sceneBaseView = self.view!.superview! as! SKView
-                self.camera = sceneBaseView.scene!.camera
+                sceneBaseView.presentScene(self.sceneBackground)
+                self.sceneBackground.theater = self
+                self.camera = self.sceneBackground.camera
                 self.addObjects()
-                curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
+                curtains.runAction(SKAction.animateWithTextures(animationCurtainsOpen, timePerFrame: 0.1), completion: {
                     self.flagCurtinsClosed = false
+                    self.showVisionButtonsScene()
                 })
             })
         })
@@ -83,7 +92,8 @@ class TheaterBased: SceneGameBase {
         //Selecting pause menu
         if let touch = touches.first {
             let location = touch.locationInNode(self)
-            if let nodeTouched: SKNode = self.nodeAtPoint(location){
+            let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
+            if let nodeTouched: SKNode = self.nodesAtPoint(location)[index] {
                 let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
                 if(nodeTouched == saco && pauseMenuCounter == 0){
                     pauseMenuCounter++
@@ -92,12 +102,9 @@ class TheaterBased: SceneGameBase {
                 }
                 if(nodeTouched.name == nil){
                     itenHasMoved = false
-                    //self.catchObject(self, location: location, object: nodeTouched)
                 }
             }
         }
-        
-        //sceneBase.touchesBegan(touches, withEvent: event)
         print("Touch: \(pauseMenuPresent)")
     }
     
@@ -106,8 +113,9 @@ class TheaterBased: SceneGameBase {
             let positionInScene = touch.locationInNode(self)
             let previousPosition = touch.previousLocationInNode(self)
             let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
-            //let location = touch.locationInNode(self)
-            if let nodeTouched: SKNode = self.nodeAtPoint(positionInScene){
+
+            let index = self.nodesAtPoint(positionInScene).startIndex.advancedBy(1)
+            if let nodeTouched: SKNode = self.nodesAtPoint(positionInScene)[index] {
                 if(nodeTouched.name == nil){
                     itenHasMoved = true
                     selectedNode = nodeTouched as! SKSpriteNode
@@ -122,7 +130,8 @@ class TheaterBased: SceneGameBase {
         let sceneBase = sceneBaseView.scene!
         if let touch = touches.first {
             let location = touch.locationInNode(self)
-            let nodeTouched = self.nodeAtPoint(location) as! SKSpriteNode
+            let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
+            let nodeTouched = self.nodesAtPoint(location)[index] as! SKSpriteNode
             
             if(nodeTouched.name == nil && itenHasMoved == false){
                 self.catchObject(self, location: location, object: nodeTouched)
@@ -151,7 +160,6 @@ class TheaterBased: SceneGameBase {
                 }
                 
             } else if (nodeTouched.name != nil){
-                    //substitui essa chamada de metódo abaixo pela tua função
                 sceneBase.touchesBegan(touches, withEvent: event)
             }
         }
@@ -190,14 +198,15 @@ class TheaterBased: SceneGameBase {
     }
     
     func addObjects(){
-        let sceneBaseView = self.view!.superview! as! SKView
-        for object in sceneBaseView.scene!.children{
+        for object in sceneBackground.children{
             if (object.name != "background"){
+                print(object.name)
                 let objectInTheater = object
                 object.removeFromParent()
                 addChild(objectInTheater)
             }
         }
+        print("=========")
     }
     
     func removeObjects(completion: () -> Void){
@@ -241,22 +250,30 @@ class TheaterBased: SceneGameBase {
         }
     }
     
+    func removeVisionButtonsScene(){
+        saco.runAction(SKAction.moveToY(846.5, duration: 0.5))
+        corda.runAction(SKAction.moveToY(835, duration: 0.5))
+    }
+    
+    func showVisionButtonsScene(){
+        saco.runAction(SKAction.moveToY(646.5, duration: 0.5))
+        corda.runAction(SKAction.moveToY(635, duration: 0.5))
+    }
+    
     func updateButtonsScene(){
-        if(!flagCurtinsClosed){
-            let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
-            saco.position.x = 50 + self.camera!.position.x - 512
-            let corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
+            saco.position.x = 56 + self.camera!.position.x - 512
             corda.position.x = 1000 + self.camera!.position.x - 512
-        }
     }
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         updateCameraSceneDefault()
-        updateButtonsScene()
-        if (inventoryPresent && SceneGameBase.itenComing){
-            SceneGameBase.itenComing = false
-            addItenFromInventory()
+        if(!flagCurtinsClosed){
+            updateButtonsScene()
+            if (inventoryPresent && SceneGameBase.itenComing){
+                SceneGameBase.itenComing = false
+                addItenFromInventory()
+            }
         }
     }
     
@@ -309,6 +326,7 @@ class TheaterBased: SceneGameBase {
             pauseMenuPresent = false
             pauseMenuCounter--
             pauseMenuView.removeFromSuperview()
+            self.showVisionButtonsScene()
         }
     }
     
@@ -320,7 +338,7 @@ class TheaterBased: SceneGameBase {
         iten.name = nil
         iten.zPosition = 50
         fallingIten(iten, fromInventory: true)
-        addObjects()
+        //addObjects()
 
     }
     

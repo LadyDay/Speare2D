@@ -29,53 +29,46 @@ class TutorialScene: SceneDefault {
             self.touchRuning = true
             if let touch = touches.first {
                 let location = touch.locationInNode(self)
-            
+                
                 //for nodeTouched in self.nodesAtPoint(location){
-                if let nodeTouched: SKNode = theater.nodeAtPoint(location){
-                    if(nodeTouched.name != nil){
-                        for nodes in theater.nodesAtPoint(location){
-                            if nodes.name != nil{
+                if let nodeTouched: SKNode = theater.nodeAtPoint(location) {
+                    
+                    switch nodeTouched.name!{
+                    case "hortaNode":
+                        //changes the scene for the garden
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
+                            self.theater!.flagCurtinsClosed = true
+                            self.theater!.transitionSceneBackground(false)
+                        })
+                        break
+                    case "casaNode":
+                        //changes the scene for the garden
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
+                            self.theater!.flagCurtinsClosed = true
+                            self.theater!.transitionSceneBackground(false)
+                        })
+                        break
                         
-                        //self.catchObject(self.theater, location: location, object: nodeTouched)
-                    //}else{
-                                switch nodes.name!{
-                                    case "hortaNode":
-                            //changes the scene for the garden
-                                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                            self.touchRuning = false
-                                            self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
-                                            self.theater!.flagCurtinsClosed = true
-                                            self.theater!.transitionSceneBackground(false)
-                                        })
-                                    break
-                                case "casaNode":
-                            //changes the scene for the garden
-                                    theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                        self.touchRuning = false
-                                        self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
-                                        self.theater!.flagCurtinsClosed = true
-                                        self.theater!.transitionSceneBackground(false)
-                                    })
-                                    break
-                        
-                                default:
-                                    if(theater.inventoryPresent==false && location.y<200){
-                                //mainCharacter walks
-                                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                            self.touchRuning = false
-                                        })
-                                    }else{
-                                        self.touchRuning = false
-                                    }
-                                break
-                                }
-                            }
+                    default:
+                        if(theater.inventoryPresent==false && location.y<200){
+                            //mainCharacter walks
+                            theater.removeVisionButtonsScene()
+                            theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                self.theater.showVisionButtonsScene()
+                                self.touchRuning = false
+                            })
+                        }else{
+                            self.touchRuning = false
                         }
+                        break
                     }
                 }
+            }else{
+                self.touchRuning = false
             }
         }
-        self.touchRuning = false
     }
     
     func initTextureFire() {

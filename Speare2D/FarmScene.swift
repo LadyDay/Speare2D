@@ -13,10 +13,11 @@ class FarmScene: SceneDefault {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        //setCamera()
+        setCamera()
+        setPositionCamera()
     }
     
-/*TOUCH's FUCTION */
+    /*TOUCH's FUCTION */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
@@ -26,26 +27,45 @@ class FarmScene: SceneDefault {
                 let location = touch.locationInNode(self)
                 
                 //for nodeTouched in self.nodesAtPoint(location){
-                if let nodeTouched: SKNode = theater.nodeAtPoint(location){
+                if let nodeTouched: SKNode = theater.nodeAtPoint(location) {
                     
-                    if(nodeTouched.name == nil){
-                        self.catchObject(self.theater, location: location, object: nodeTouched)
-                    }else{
-                        switch nodeTouched.name!{
-                            
-                        default:
-                            if(theater.inventoryPresent==false && location.y<200){
-                                //mainCharacter walks
-                                theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                    self.touchRuning = false
-                                })
-                            }else{
+                    if(!self.theater.inventoryPresent){
+                        theater.removeVisionButtonsScene()
+                    }
+                    
+                    switch nodeTouched.name!{
+                    case "hortaNode":
+                        //changes the scene for the garden
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
+                            self.theater!.flagCurtinsClosed = true
+                            self.theater!.transitionSceneBackground(false)
+                        })
+                        break
+                    case "casaNode":
+                        //changes the scene for the garden
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
+                            self.theater!.flagCurtinsClosed = true
+                            self.theater!.transitionSceneBackground(false)
+                        })
+                        break
+                        
+                    default:
+                        if(theater.inventoryPresent==false && location.y<200){
+                            //mainCharacter walks
+                            theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                self.theater.showVisionButtonsScene()
                                 self.touchRuning = false
-                            }
-                            break
+                            })
+                        }else{
+                            self.touchRuning = false
                         }
+                        break
                     }
                 }
+            }else{
+                self.touchRuning = false
             }
         }
     }
