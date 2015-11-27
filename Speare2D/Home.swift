@@ -59,7 +59,7 @@ class Home: SceneDefault {
                         let action1 = self.centerOnNode(self.childNodeWithName("viewStart")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
-                            self.transitionNextScene(StartScene(fileNamed: "StartScene")!, withTheater: false)
+                            self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         
@@ -73,7 +73,7 @@ class Home: SceneDefault {
                         let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
-                            self.transitionNextScene(OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
+                            self.transitionNextScene(self, sceneTransition: OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         
@@ -85,7 +85,7 @@ class Home: SceneDefault {
                         let action1 = self.centerOnNode(self.childNodeWithName("viewInfo")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
-                            self.transitionNextScene(InfoScene(fileNamed: "InfoScene")!, withTheater: false)
+                            self.transitionNextScene(self, sceneTransition: InfoScene(fileNamed: "InfoScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
 

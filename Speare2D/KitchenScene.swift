@@ -19,9 +19,10 @@ class KitchenScene: SceneDefault {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         setCamera()
-        initTextureAnimatio()
-        initFogao(self.childNodeWithName("fogao") as! SKSpriteNode)
-        initPanela(self.childNodeWithName("panela") as! SKSpriteNode)
+        setPositionCamera()
+        initTextureAnimation()
+        //initFogao(self.childNodeWithName("fogao") as! SKSpriteNode)
+        //initPanela(self.childNodeWithName("panela") as! SKSpriteNode)
     }
     
 //    /*TOUCH's FUCTION */
@@ -72,7 +73,7 @@ class KitchenScene: SceneDefault {
 //        self.touchRuning = false
 //    }
     
-    func initTextureAnimatio() {
+    func initTextureAnimation() {
         panelaArray.append(panelaAtlas.textureNamed("panela1"))
         panelaArray.append(panelaAtlas.textureNamed("panela2"))
         panelaArray.append(panelaAtlas.textureNamed("panela3"))

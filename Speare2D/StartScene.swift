@@ -39,7 +39,7 @@ class StartScene: SceneDefault {
                             //Muda cena para Opção1
                             //effectConfiguration(selectionButtonSound, waitC: true)
                             self.touchRuning = false
-                            self.transitionNextScene(TutorialScene(fileNamed: "TutorialScene")!, withTheater: true)
+                            self.transitionNextScene(self, sceneTransition: TutorialScene(fileNamed: "TutorialScene")!, withTheater: true)
                             //self.transitionNextScene(KitchenScene(fileNamed: "KitchenScene")!, withTheater: true)
                         })
                         break
@@ -51,7 +51,7 @@ class StartScene: SceneDefault {
                         mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             //Volta ao menu
                             self.touchRuning = false
-                            self.transitionNextScene(Home(fileNamed: "Home")!, withTheater: false)
+                            self.transitionNextScene(self, sceneTransition: Home(fileNamed: "Home")!, withTheater: false)
                         })
                         break
                         

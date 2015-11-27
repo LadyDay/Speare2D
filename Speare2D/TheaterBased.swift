@@ -11,6 +11,8 @@ import SpriteKit
 
 class TheaterBased: SceneGameBase {
     
+    var sceneBackground: SceneDefault!
+    var flagCurtinsClosed: Bool = false
     let imageBackName = "paused.png"
     var pauseMenuPresent: Bool!
     var pauseMenuCounter = 0
@@ -23,7 +25,8 @@ class TheaterBased: SceneGameBase {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        addObjects()
+        flagCurtinsClosed = true
+        transitionSceneBackground(true)
         pauseMenuPresent = false
         
         mainCharacter.name = "Alex"
@@ -38,9 +41,34 @@ class TheaterBased: SceneGameBase {
         self.mainCharacter.setupAlex()
         addChild(mainCharacter)
         
-        let sceneBaseView = self.view!.superview! as! SKView
-        self.camera = sceneBaseView.scene!.camera
         print("Touch: \(pauseMenuPresent)")
+    }
+    
+    func transitionSceneBackground(backgroundBlack: Bool){
+        let curtains = self.childNodeWithName("cortinaLateral") as! SKSpriteNode
+        var animationCurtainsOpen = Array<SKTexture>()
+        var animationCurtainsClosed = Array<SKTexture>()
+        
+        for(var j = 1; j < 11; j++){
+            animationCurtainsOpen.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
+        }
+        
+        for(var j = 10; j>0; j--){
+            animationCurtainsClosed.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
+        }
+        
+        curtains.runAction(SKAction.animateWithTextures(animationCurtainsOpen, timePerFrame: 0.1), completion: {
+            self.removeObjects({
+                let superView = self.view?.superview as! SKView
+                superView.presentScene(self.sceneBackground)
+                let sceneBaseView = self.view!.superview! as! SKView
+                self.camera = sceneBaseView.scene!.camera
+                self.addObjects()
+                curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
+                    self.flagCurtinsClosed = false
+                })
+            })
+        })
     }
     
     /*TOUCH's FUCTION */
@@ -172,11 +200,54 @@ class TheaterBased: SceneGameBase {
         }
     }
     
+    func removeObjects(completion: () -> Void){
+        for object in self.scene!.children{
+            nopeObjectTheater(object)
+        }
+        completion()
+    }
+    
+    private func nopeObjectTheater(object: SKNode){
+        if(object.name != nil){
+            switch object.name!{
+                case "corSeletiva":
+                break
+            
+                case "cortinaLateral":
+                break
+                
+                case "cortina":
+                break
+                
+                case "publico":
+                break
+                
+                case "fundo":
+                break
+                
+                case "sacoOpcao":
+                break
+                
+                case "cordaInventario":
+                break
+                
+                default:
+                    object.removeFromParent()
+                break
+                
+            }
+        }else{
+            object.removeFromParent()
+        }
+    }
+    
     func updateButtonsScene(){
-        let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
-        saco.position.x = 50 + self.camera!.position.x - 512
-        let corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
-        corda.position.x = 1000 + self.camera!.position.x - 512
+        if(!flagCurtinsClosed){
+            let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+            saco.position.x = 50 + self.camera!.position.x - 512
+            let corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
+            corda.position.x = 1000 + self.camera!.position.x - 512
+        }
     }
 
     override func update(currentTime: CFTimeInterval) {

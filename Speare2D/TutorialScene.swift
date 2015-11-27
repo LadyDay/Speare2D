@@ -16,6 +16,7 @@ class TutorialScene: SceneDefault {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         setCamera()
+        setPositionCamera()
         initTextureFire()
         initFire(self.childNodeWithName("fire") as! SKSpriteNode)
     }
@@ -42,14 +43,18 @@ class TutorialScene: SceneDefault {
                             //changes the scene for the garden
                                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                             self.touchRuning = false
-                                            self.transitionNextScene(FarmScene(fileNamed: "FarmScene")!, withTheater: true)
+                                            self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
+                                            self.theater!.flagCurtinsClosed = true
+                                            self.theater!.transitionSceneBackground(false)
                                         })
                                     break
                                 case "casaNode":
                             //changes the scene for the garden
                                     theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                         self.touchRuning = false
-                                        self.transitionNextScene(KitchenScene(fileNamed: "KitchenScene")!, withTheater: true)
+                                        self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
+                                        self.theater!.flagCurtinsClosed = true
+                                        self.theater!.transitionSceneBackground(false)
                                     })
                                     break
                         

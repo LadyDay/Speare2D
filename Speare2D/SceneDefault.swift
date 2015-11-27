@@ -126,19 +126,17 @@ class SceneDefault: SKScene {
     }
     
     
-    func transitionNextScene(sceneTransition: SceneDefault, withTheater: Bool){        
+    func transitionNextScene(currentScene: SceneDefault , sceneTransition: SceneDefault, withTheater: Bool){
         let fadeScene = SKTransition.fadeWithDuration(1.5)
-        
-        
         if(withTheater){
             let gameScene = TheaterBased(fileNamed: "TheaterBased")
             let viewBased = SKView(frame: self.view!.frame)
             viewBased.backgroundColor = UIColor.clearColor()
-            self.view?.presentScene(sceneTransition)
-            sceneTransition.view?.addSubview(viewBased)
+            self.view?.addSubview(viewBased)
             sceneTransition.theater = gameScene
+            gameScene?.sceneBackground = sceneTransition
             moveInfo(gameScene!)
-            viewBased.presentScene(gameScene)
+            viewBased.presentScene(gameScene!, transition: fadeScene)
             
         }else{
             moveInfo(sceneTransition)
@@ -150,6 +148,11 @@ class SceneDefault: SKScene {
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
+    }
+    
+    func setPositionCamera(){
+        self.camera?.position.x = 512
+        self.camera?.position.y = 384
     }
     
     func updateCameraTheater(object: SKSpriteNode){

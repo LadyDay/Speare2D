@@ -13,7 +13,7 @@ class FarmScene: SceneDefault {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        setCamera()
+        //setCamera()
     }
     
 /*TOUCH's FUCTION */

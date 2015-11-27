@@ -36,7 +36,7 @@ class InfoScene: SceneDefault {
                         
                     case "ticketBackButton":
                         effectConfiguration(backButtonSound, waitC: true)
-                        self.transitionNextScene(Home(fileNamed: "Home")!, withTheater: false)
+                        self.transitionNextScene(self, sceneTransition: Home(fileNamed: "Home")!, withTheater: false)
                         break
                         
                     case "teamButton":
