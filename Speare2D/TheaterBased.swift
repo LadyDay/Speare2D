@@ -342,9 +342,14 @@ class TheaterBased: SceneGameBase {
             pauseMenuCounter--
             pauseMenuView.removeFromSuperview()
             //self.showVisionButtonsScene()
-            self.removeAllChildren()
-            self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: true)
+            //self.removeAllChildren()
+            //transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
             //self.removeAllActions()
+            //let fadeScene = SKTransition.fadeWithDuration(0)
+            let scene = StartScene(fileNamed:"StartScene")
+            let skView = self.view! as SKView
+            moveInfo(scene!)
+            skView.presentScene(scene!)
             
             break
         case 21:
