@@ -21,17 +21,31 @@ class TheaterBased: SceneGameBase {
     var pauseMenuPresent: Bool!
     var pauseMenuCounter = 0
     var pauseMenuView: SKView!
-    let returnButton = UIButton(frame: CGRectMake(0, 0, 50, 50))
+    let returnButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
     let exitButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
     var iten: SKSpriteNode!
     var itenHasMoved: Bool = false
     var selectedNode: SKNode!
+    var animationCurtainsOpen = Array<SKTexture>()
+    var animationCurtainsClosed = Array<SKTexture>()
+    var curtains: SKSpriteNode!
     
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
         self.corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
+        self.curtains = self.childNodeWithName("cortinaLateral") as! SKSpriteNode
+        
+        //init sprites da cortina
+        for(var j = 1; j < 11; j++){
+            animationCurtainsClosed.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
+        }
+        
+        for(var j = 10; j>0; j--){
+            animationCurtainsOpen.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
+        }
+        
         
         flagCurtinsClosed = true
         transitionSceneBackground(true)
@@ -53,18 +67,11 @@ class TheaterBased: SceneGameBase {
     }
     
     func transitionSceneBackground(backgroundBlack: Bool){
-        let curtains = self.childNodeWithName("cortinaLateral") as! SKSpriteNode
-        var animationCurtainsOpen = Array<SKTexture>()
-        var animationCurtainsClosed = Array<SKTexture>()
         
-        for(var j = 1; j < 11; j++){
-            animationCurtainsClosed.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
+        
+        if(inventoryPresent==true){
+            swipeUp()
         }
-        
-        for(var j = 10; j>0; j--){
-            animationCurtainsOpen.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
-        }
-        
         self.removeVisionButtonsScene()
         
         curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
@@ -75,7 +82,7 @@ class TheaterBased: SceneGameBase {
                 self.sceneBackground.theater = self
                 self.camera = self.sceneBackground.camera
                 self.addObjects()
-                curtains.runAction(SKAction.animateWithTextures(animationCurtainsOpen, timePerFrame: 0.1), completion: {
+                self.curtains.runAction(SKAction.animateWithTextures(self.animationCurtainsOpen, timePerFrame: 0.1), completion: {
                     self.flagCurtinsClosed = false
                     self.showVisionButtonsScene()
                 })
@@ -86,25 +93,30 @@ class TheaterBased: SceneGameBase {
     /*TOUCH's FUCTION */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
-//        let sceneBaseView = self.view!.superview! as! SKView
-//        let sceneBase = sceneBaseView.scene!
+        let sceneBaseView = self.view!.superview! as! SKView
+        let sceneBase = sceneBaseView.scene!
+        
         if(inventoryPresent==true){
             swipeUp()
         }
-        
         //Selecting pause menu
         if let touch = touches.first {
             let location = touch.locationInNode(self)
-            let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
-            if let nodeTouched: SKNode = self.nodesAtPoint(location)[index] {
-                let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
-                if(nodeTouched == saco && pauseMenuCounter == 0){
-                    pauseMenuCounter++
-                    effectConfiguration(selectionButtonSound, waitC: true)
-                    pauseMenu()
-                }
-                if(nodeTouched.name == nil){
-                    itenHasMoved = false
+            let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+            var nodeTouched: SKNode = self.nodeAtPoint(location)
+            if(nodeTouched == saco && pauseMenuCounter == 0){
+                pauseMenuCounter++
+                flagCurtinsClosed = true
+                curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1))
+                removeVisionButtonsScene()
+                effectConfiguration(selectionButtonSound, waitC: true)
+                pauseMenu()
+            } else {
+                let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
+                if let nodeTouched: SKNode = self.nodesAtPoint(location)[index] {
+                    if(nodeTouched.name == nil){
+                        itenHasMoved = false
+                    }
                 }
             }
         }
@@ -116,7 +128,7 @@ class TheaterBased: SceneGameBase {
             let positionInScene = touch.locationInNode(self)
             let previousPosition = touch.previousLocationInNode(self)
             let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
-
+            
             let index = self.nodesAtPoint(positionInScene).startIndex.advancedBy(1)
             if let nodeTouched: SKNode = self.nodesAtPoint(positionInScene)[index] {
                 if(nodeTouched.name == nil){
@@ -191,10 +203,10 @@ class TheaterBased: SceneGameBase {
     
     func panForTranslation(translation : CGPoint) {
         let position = selectedNode.position
-//        
-//        if selectedNode.name! == nil {
-            selectedNode.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
-//        }
+        //
+        //        if selectedNode.name! == nil {
+        selectedNode.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
+        //        }
     }
     func degToRad(degree: Double) -> CGFloat {
         return CGFloat(degree / 180.0 * M_PI)
@@ -222,29 +234,29 @@ class TheaterBased: SceneGameBase {
     private func nopeObjectTheater(object: SKNode){
         if(object.name != nil){
             switch object.name!{
-                case "corSeletiva":
-                break
-            
-                case "cortinaLateral":
+            case "corSeletiva":
                 break
                 
-                case "cortina":
+            case "cortinaLateral":
                 break
                 
-                case "publico":
+            case "cortina":
                 break
                 
-                case "fundo":
+            case "publico":
                 break
                 
-                case "sacoOpcao":
+            case "fundo":
                 break
                 
-                case "cordaInventario":
+            case "sacoOpcao":
                 break
                 
-                default:
-                    object.removeFromParent()
+            case "cordaInventario":
+                break
+                
+            default:
+                object.removeFromParent()
                 break
                 
             }
@@ -264,10 +276,10 @@ class TheaterBased: SceneGameBase {
     }
     
     func updateButtonsScene(){
-            saco.position.x = 56 + self.camera!.position.x - 512
-            corda.position.x = 1000 + self.camera!.position.x - 512
+        saco.position.x = 56 + self.camera!.position.x - 512
+        corda.position.x = 1000 + self.camera!.position.x - 512
     }
-
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         updateCameraSceneDefault()
@@ -282,15 +294,15 @@ class TheaterBased: SceneGameBase {
     
     
     func pauseMenu(){
-//        pauseMenuView = SKView(frame: CGRectMake(0, 0, 480, 320))
-//        setUpViews(pauseMenuView, /*originX: 0, originY: 0, sizeX: 480, sizeY: 320,*/ imageBGString: imageBackName, toBack: false)
+        //        pauseMenuView = SKView(frame: CGRectMake(0, 0, 480, 320))
+        //        setUpViews(pauseMenuView, /*originX: 0, originY: 0, sizeX: 480, sizeY: 320,*/ imageBGString: imageBackName, toBack: false)
         
         setupPauseView()
-        setupButton(returnButton, image: imageReturnButton, tag: 21)
-        setupButton(exitButton, image: imageExitButton, tag: 20)
+        setupButton(returnButton, image: imageReturnButton, tag: 21, locationCenter: CGPoint(x: 120, y: 100))
+        setupButton(exitButton, image: imageExitButton, tag: 20, locationCenter: CGPoint(x: 120, y: 140))
         
         
-    
+        
     }
     
     func setupPauseView(){
@@ -307,9 +319,9 @@ class TheaterBased: SceneGameBase {
         
     }
     
-    func setupButton(Button: UIButton, image: String, tag: Int){
+    func setupButton(Button: UIButton, image: String, tag: Int, locationCenter: CGPoint){
         let buttonDemo = Button
-        buttonDemo.center = CGPointMake(120, 140)
+        buttonDemo.center = CGPointMake(locationCenter.x, locationCenter.y)
         buttonDemo.backgroundColor = UIColor.blackColor()
         buttonDemo.setTitle("Voltar", forState: UIControlState.Normal)
         buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -321,17 +333,36 @@ class TheaterBased: SceneGameBase {
     
     func buttonAction(sender:UIButton!)
     {
-        //var btnsendtag:UIButton = sender
-        if sender.tag == 21 {
-            print("Button tapped tag 21")
+        switch sender.tag{
+        case 20:
+            print("Button tapped tag 20: exit")
+            effectConfiguration(backButtonSound, waitC: true)
+            pauseMenuView.cheetah.scale(0.5).duration(2).run()
+            pauseMenuPresent = false
+            pauseMenuCounter--
+            pauseMenuView.removeFromSuperview()
+            //self.showVisionButtonsScene()
+            self.removeAllChildren()
+            self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: true)
+            //self.removeAllActions()
+            
+            break
+        case 21:
+            print("Button tapped tag 21: return")
             effectConfiguration(backButtonSound, waitC: true)
             //let fadeScene = SKTransition.fadeWithDuration(0.7)
             pauseMenuView.cheetah.scale(0.5).duration(2).run()
             //pauseMenuView.cheetah.wait()
             pauseMenuPresent = false
             pauseMenuCounter--
+            flagCurtinsClosed = false
+            curtains.runAction(SKAction.animateWithTextures(animationCurtainsOpen, timePerFrame: 0.1))
             pauseMenuView.removeFromSuperview()
             self.showVisionButtonsScene()
+            
+            break
+        default:
+            break
         }
     }
     
@@ -344,7 +375,7 @@ class TheaterBased: SceneGameBase {
         iten.zPosition = 50
         fallingIten(iten, fromInventory: true)
         //addObjects()
-
+        
     }
     
     func fallingIten(obj: SKSpriteNode, fromInventory: Bool){
