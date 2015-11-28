@@ -21,8 +21,8 @@ class KitchenScene: SceneDefault {
         setCamera()
         setPositionCamera()
         initTextureAnimation()
-        //initFogao(self.childNodeWithName("fogao") as! SKSpriteNode)
-        //initPanela(self.childNodeWithName("panela") as! SKSpriteNode)
+        initFogao(self.childNodeWithName("fogao") as! SKSpriteNode)
+        initPanela(self.childNodeWithName("panela") as! SKSpriteNode)
     }
     
     /*TOUCH's FUCTION */

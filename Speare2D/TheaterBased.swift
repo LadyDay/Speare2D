@@ -16,10 +16,13 @@ class TheaterBased: SceneGameBase {
     var sceneBackground: SceneDefault!
     var flagCurtinsClosed: Bool = false
     let imageBackName = "paused.png"
+    let imageExitButton = "exitButton.png"
+    let imageReturnButton = "Red_play_button.png"
     var pauseMenuPresent: Bool!
     var pauseMenuCounter = 0
     var pauseMenuView: SKView!
-    let backButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
+    let returnButton = UIButton(frame: CGRectMake(0, 0, 50, 50))
+    let exitButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
     var iten: SKSpriteNode!
     var itenHasMoved: Bool = false
     var selectedNode: SKNode!
@@ -283,7 +286,9 @@ class TheaterBased: SceneGameBase {
 //        setUpViews(pauseMenuView, /*originX: 0, originY: 0, sizeX: 480, sizeY: 320,*/ imageBGString: imageBackName, toBack: false)
         
         setupPauseView()
-        setupBackButton(backButton)
+        setupButton(returnButton, image: imageReturnButton, tag: 21)
+        setupButton(exitButton, image: imageExitButton, tag: 20)
+        
         
     
     }
@@ -302,19 +307,19 @@ class TheaterBased: SceneGameBase {
         
     }
     
-    func setupBackButton(Button: UIButton){
+    func setupButton(Button: UIButton, image: String, tag: Int){
         let buttonDemo = Button
         buttonDemo.center = CGPointMake(120, 140)
         buttonDemo.backgroundColor = UIColor.blackColor()
         buttonDemo.setTitle("Voltar", forState: UIControlState.Normal)
-        buttonDemo.addTarget(self, action: "buttonBackAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        buttonDemo.tag = 21;
-        buttonDemo.setImage(UIImage(named: "exitButton.png"), forState: UIControlState.Normal)
+        buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        buttonDemo.tag = tag
+        buttonDemo.setImage(UIImage(named: image), forState: UIControlState.Normal)
         self.pauseMenuView!.addSubview(buttonDemo)
         self.pauseMenuView.bringSubviewToFront(buttonDemo)
     }
     
-    func buttonBackAction(sender:UIButton!)
+    func buttonAction(sender:UIButton!)
     {
         //var btnsendtag:UIButton = sender
         if sender.tag == 21 {
