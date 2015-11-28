@@ -340,6 +340,7 @@ class TheaterBased: SceneGameBase {
             pauseMenuView.cheetah.scale(0.5).duration(2).run()
             pauseMenuPresent = false
             pauseMenuCounter--
+        
             pauseMenuView.removeFromSuperview()
             //self.showVisionButtonsScene()
             //self.removeAllChildren()
@@ -348,8 +349,7 @@ class TheaterBased: SceneGameBase {
             //let fadeScene = SKTransition.fadeWithDuration(0)
             let sceneBack = StartScene(fileNamed:"StartScene")
             let skView = self.view! as SKView
-            
-            self.removeFromParent()
+            //self.removeFromParent()
             self.scene?.removeFromParent()
             self.sceneBackground.removeFromParent()
             
