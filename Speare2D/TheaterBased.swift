@@ -346,10 +346,20 @@ class TheaterBased: SceneGameBase {
             //transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
             //self.removeAllActions()
             //let fadeScene = SKTransition.fadeWithDuration(0)
-            let scene = StartScene(fileNamed:"StartScene")
+            let sceneBack = StartScene(fileNamed:"StartScene")
             let skView = self.view! as SKView
-            moveInfo(scene!)
-            skView.presentScene(scene!)
+            
+            self.removeFromParent()
+            self.scene?.removeFromParent()
+            self.sceneBackground.removeFromParent()
+            
+            
+            
+            //self.scene!.removeAllChildren()
+            //self.sceneBackground!.removeAllChildren()
+            
+            skView.presentScene(sceneBack!)
+            
             
             break
         case 21:

@@ -19,6 +19,9 @@ class GameViewController: UIViewController {
             let skView = self.view as! SKView
             skView.showsFPS = true
             skView.showsNodeCount = true
+            let nodes = skView.showsNodeCount.boolValue
+            let fps = skView.showsFPS.boolValue
+            
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true

@@ -56,11 +56,11 @@
 		BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB61BF5D7C20030DE5E /* Transito2.mp3 */; };
 		BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FC01BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 */; };
 		BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */; };
-		BE9EA0D81BFCA41E0040EEB0 /* portaEsquerda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */; };
 		BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF41C06B24F0013E3EB /* fogao.atlas */; };
 		BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF61C06B2550013E3EB /* panela.atlas */; };
 		BEA58CF91C06B2870013E3EB /* KitchenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA58CF81C06B2870013E3EB /* KitchenScene.swift */; };
 		BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CFA1C06B2920013E3EB /* KitchenScene.sks */; };
+		BEBA9FE31C0A2B8B006A7179 /* portaEsquerda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEBA9FE21C0A2B8B006A7179 /* portaEsquerda.atlas */; };
 		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; };
 		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; };
 		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; };
@@ -144,11 +144,11 @@
 		BE960FB61BF5D7C20030DE5E /* Transito2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Transito2.mp3; sourceTree = "<group>"; };
 		BE960FC01BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "SelecaoDeFases-teste.mp3"; sourceTree = "<group>"; };
 		BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaDireita.atlas; sourceTree = "<group>"; };
-		BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaEsquerda.atlas; sourceTree = "<group>"; };
 		BEA58CF41C06B24F0013E3EB /* fogao.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fogao.atlas; sourceTree = "<group>"; };
 		BEA58CF61C06B2550013E3EB /* panela.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = panela.atlas; sourceTree = "<group>"; };
 		BEA58CF81C06B2870013E3EB /* KitchenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenScene.swift; sourceTree = "<group>"; };
 		BEA58CFA1C06B2920013E3EB /* KitchenScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = KitchenScene.sks; sourceTree = "<group>"; };
+		BEBA9FE21C0A2B8B006A7179 /* portaEsquerda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaEsquerda.atlas; sourceTree = "<group>"; };
 		BED4D90D1BE10E6800F8B35A /* Alex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alex.swift; sourceTree = "<group>"; };
 		BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backgroundMusic.mp3; path = ../backgroundMusic.mp3; sourceTree = "<group>"; };
 		BED4D9101BEB665A00F8B35A /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = applause.wav; path = ../applause.wav; sourceTree = "<group>"; };
@@ -266,8 +266,8 @@
 				BEA58CF61C06B2550013E3EB /* panela.atlas */,
 				BEA58CF41C06B24F0013E3EB /* fogao.atlas */,
 				BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */,
-				BE9EA0D71BFCA41E0040EEB0 /* portaEsquerda.atlas */,
 				BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */,
+				BEBA9FE21C0A2B8B006A7179 /* portaEsquerda.atlas */,
 				BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */,
 			);
 			name = Images;
@@ -486,7 +486,6 @@
 				BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */,
 				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
 				BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */,
-				BE9EA0D81BFCA41E0040EEB0 /* portaEsquerda.atlas in Resources */,
 				BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */,
 				BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
@@ -497,6 +496,7 @@
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
 				3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */,
 				BE8401A51C062FDA00E9712D /* fogoCaldeira.atlas in Resources */,
+				BEBA9FE31C0A2B8B006A7179 /* portaEsquerda.atlas in Resources */,
 				BE960FB91BF5D7C20030DE5E /* Murmurinho teatro.mp3 in Resources */,
 				BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */,
 			);
