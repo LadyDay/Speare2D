@@ -61,6 +61,7 @@
 		BEA58CF91C06B2870013E3EB /* KitchenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA58CF81C06B2870013E3EB /* KitchenScene.swift */; };
 		BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CFA1C06B2920013E3EB /* KitchenScene.sks */; };
 		BEBA9FE31C0A2B8B006A7179 /* portaEsquerda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEBA9FE21C0A2B8B006A7179 /* portaEsquerda.atlas */; };
+		BEBA9FE71C0A484A006A7179 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBA9FE61C0A484A006A7179 /* GameKit.framework */; };
 		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; };
 		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; };
 		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; };
@@ -149,6 +150,7 @@
 		BEA58CF81C06B2870013E3EB /* KitchenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenScene.swift; sourceTree = "<group>"; };
 		BEA58CFA1C06B2920013E3EB /* KitchenScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = KitchenScene.sks; sourceTree = "<group>"; };
 		BEBA9FE21C0A2B8B006A7179 /* portaEsquerda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaEsquerda.atlas; sourceTree = "<group>"; };
+		BEBA9FE61C0A484A006A7179 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		BED4D90D1BE10E6800F8B35A /* Alex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alex.swift; sourceTree = "<group>"; };
 		BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backgroundMusic.mp3; path = ../backgroundMusic.mp3; sourceTree = "<group>"; };
 		BED4D9101BEB665A00F8B35A /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = applause.wav; path = ../applause.wav; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBA9FE71C0A484A006A7179 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +209,7 @@
 		3DC44CFE1BD52E0300502BF0 = {
 			isa = PBXGroup;
 			children = (
+				BEBA9FE61C0A484A006A7179 /* GameKit.framework */,
 				3DC44D091BD52E0300502BF0 /* Speare2D */,
 				3DC44D221BD52E0400502BF0 /* Speare2DTests */,
 				3DC44D2D1BD52E0400502BF0 /* Speare2DUITests */,
@@ -428,6 +432,11 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					3DC44D1E1BD52E0400502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
