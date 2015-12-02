@@ -18,6 +18,7 @@ class KitchenScene: SceneDefault {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.offsetWalkScene = 100
         setCamera()
         setPositionCamera()
         initTextureAnimation()
@@ -47,6 +48,15 @@ class KitchenScene: SceneDefault {
                         })
                         break
                     case "casaNode":
+                        //changes the scene for the garden
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
+                            self.theater!.flagCurtinsClosed = true
+                            self.theater!.transitionSceneBackground(false)
+                        })
+                        break
+                        
+                    case "tutorialScene":
                         //changes the scene for the garden
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")

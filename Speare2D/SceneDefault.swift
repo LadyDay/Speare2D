@@ -12,6 +12,8 @@ import SpriteKit
 
 class SceneDefault: SKScene {
     
+    var offsetWalkScene: CGFloat = 15
+    
     //flag
     var touchRuning: Bool = false
     static var firstAcess: Bool = true
@@ -127,7 +129,7 @@ class SceneDefault: SKScene {
     
     
     func transitionNextScene(currentScene: SceneDefault , sceneTransition: SceneDefault, withTheater: Bool){
-        let fadeScene = SKTransition.fadeWithDuration(1.5)
+        var fadeScene = SKTransition.fadeWithDuration(1.5)
         if(withTheater){
             let gameScene = TheaterBased(fileNamed: "TheaterBased")
             let viewBased = SKView(frame: self.view!.frame)
@@ -138,8 +140,15 @@ class SceneDefault: SKScene {
             viewBased.presentScene(gameScene!, transition: fadeScene)
             
         }else{
-            moveInfo(sceneTransition)
-            self.view?.presentScene(sceneTransition, transition: fadeScene)
+            if(currentScene.theater != nil){
+                currentScene.theater.view?.removeFromSuperview()
+                fadeScene = SKTransition.fadeWithDuration(0.1)
+            }
+            currentScene.moveInfo(sceneTransition)
+            sceneTransition.theater = currentScene.theater
+            sceneTransition.mainCharacter.offsetAlexWalk = sceneTransition.offsetWalkScene
+            currentScene.view?.presentScene(sceneTransition, transition: fadeScene)
+            
         }
     }
     

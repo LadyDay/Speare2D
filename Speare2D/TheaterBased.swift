@@ -78,8 +78,9 @@ class TheaterBased: SceneGameBase {
             self.removeObjects({
                 self.sceneBackground.touchRuning = false
                 let sceneBaseView = self.view!.superview! as! SKView
-                sceneBaseView.presentScene(self.sceneBackground)
                 self.sceneBackground.theater = self
+                sceneBaseView.presentScene(self.sceneBackground)
+                self.mainCharacter.offsetAlexWalk = self.sceneBackground.offsetWalkScene
                 self.camera = self.sceneBackground.camera
                 self.addObjects()
                 self.curtains.runAction(SKAction.animateWithTextures(self.animationCurtainsOpen, timePerFrame: 0.1), completion: {
@@ -170,6 +171,7 @@ class TheaterBased: SceneGameBase {
                 if(interactionPossible){
                     //chama a função do objeto
                     //sceneBase.
+                    
                 }else{
                     fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
                 }
@@ -347,18 +349,19 @@ class TheaterBased: SceneGameBase {
             //transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
             //self.removeAllActions()
             //let fadeScene = SKTransition.fadeWithDuration(0)
+            /*
             let sceneBack = StartScene(fileNamed:"StartScene")
             let skView = self.view! as SKView
             //self.removeFromParent()
             self.scene?.removeFromParent()
             self.sceneBackground.removeFromParent()
-            
-            
+            */
+            self.transitionNextScene(self.sceneBackground, sceneTransition: StartScene(fileNamed:"StartScene")!, withTheater: false)
             
             //self.scene!.removeAllChildren()
             //self.sceneBackground!.removeAllChildren()
             
-            skView.presentScene(sceneBack!)
+            //skView.presentScene(sceneBack!)
             
             
             break

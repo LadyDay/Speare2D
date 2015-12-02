@@ -10,6 +10,7 @@ import SpriteKit
 
 class Alex: SKSpriteNode {
 
+    var offsetAlexWalk: CGFloat!
     let alexTextureAtlas = SKTextureAtlas(named: "AlexCorrendo.atlas")
     var alexSpriteArray = Array<SKTexture>()
     var waitingAlexSpriteArray = Array<SKTexture>()
@@ -99,10 +100,10 @@ class Alex: SKSpriteNode {
                 currentLocation = CGPointMake(touchLocation.x + self.frame.size.width/2 + (objectSize?.width)!/2, touchLocation.y)
             }
         }else{
-            if(touchLocation.x < self.frame.size.width/2 + 15){
-                currentLocation = CGPointMake(self.frame.size.width/2 + 15, touchLocation.y)
-            }else if(touchLocation.x > tamSize - self.frame.size.width/2 - 15){
-                currentLocation = CGPointMake(tamSize - self.frame.size.width/2 - 15, touchLocation.y)
+            if(touchLocation.x < self.frame.size.width/2 + self.offsetAlexWalk){
+                currentLocation = CGPointMake(self.frame.size.width/2 + self.offsetAlexWalk, touchLocation.y)
+            }else if(touchLocation.x > tamSize - self.frame.size.width/2 - self.offsetAlexWalk){
+                currentLocation = CGPointMake(tamSize - self.frame.size.width/2 - self.offsetAlexWalk, touchLocation.y)
             }else{
                 currentLocation = touchLocation
             }
