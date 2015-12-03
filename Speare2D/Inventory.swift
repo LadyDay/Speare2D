@@ -27,8 +27,6 @@ class Inventory: SKScene {
             //tests whether the node is one of the lot and it has texture
             if(!(node.name=="closet") && node.texture != nil){
                 self.clearLots()
-                let colorize = SKAction.colorizeWithColor(.greenColor(), colorBlendFactor: 1, duration: 1)
-                node.runAction(colorize)
             }
             if (node.texture != nil){
                 SceneGameBase.itenFromInventory = SKSpriteNode(texture: node.texture, size: CGSize(width: node.texture!.size().width, height: node.texture!.size().height))

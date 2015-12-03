@@ -21,18 +21,15 @@ class FarmScene: SceneDefault {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        if(self.touchRuning == false && theater.pauseMenuPresent == false){
+        if(self.touchRuning == false && theater.pauseMenuPresent == false && theater.flagStartTouchedBeganTheater == false){
             self.touchRuning = true
             if let touch = touches.first {
                 let location = touch.locationInNode(self)
                 
                 //for nodeTouched in self.nodesAtPoint(location){
-                if let nodeTouched: SKNode = theater.nodeAtPoint(location) {
-                    
-                    if(!self.theater.inventoryPresent){
-                        theater.removeVisionButtonsScene()
-                    }
-                    
+                let index = theater.nodesAtPoint(location).startIndex.advancedBy(1)
+                if let nodeTouched: SKNode = theater.nodesAtPoint(location)[index] {
+
                     switch nodeTouched.name!{
                     case "hortaNode":
                         //changes the scene for the garden

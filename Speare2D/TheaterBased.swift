@@ -11,6 +11,9 @@ import SpriteKit
 
 class TheaterBased: SceneGameBase {
     
+    //flags
+    var flagStartTouchedBeganTheater: Bool!
+    //
     var saco: SKSpriteNode!
     var corda: SKSpriteNode!
     var sceneBackground: SceneDefault!
@@ -94,12 +97,16 @@ class TheaterBased: SceneGameBase {
     /*TOUCH's FUCTION */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
+        
+        self.flagStartTouchedBeganTheater = true
+        
         let sceneBaseView = self.view!.superview! as! SKView
         let sceneBase = sceneBaseView.scene!
         
         if(inventoryPresent==true){
             swipeUp()
         }
+        
         //Selecting pause menu
         if let touch = touches.first {
             let location = touch.locationInNode(self)
@@ -117,6 +124,7 @@ class TheaterBased: SceneGameBase {
                 if let nodeTouched: SKNode = self.nodesAtPoint(location)[index] {
                     if(nodeTouched.name == nil){
                         itenHasMoved = false
+                        selectedNode = nodeTouched as! SKSpriteNode
                     }
                 }
             }
@@ -129,15 +137,19 @@ class TheaterBased: SceneGameBase {
             let positionInScene = touch.locationInNode(self)
             let previousPosition = touch.previousLocationInNode(self)
             let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
-            
+            itenHasMoved = true
+            selectedNode.zPosition = 
+            self.panForTranslation(translation)
+            /*
             let index = self.nodesAtPoint(positionInScene).startIndex.advancedBy(1)
-            if let nodeTouched: SKNode = self.nodesAtPoint(positionInScene)[index] {
-                if(nodeTouched.name == nil){
+            if let nodeTouched: SKSpriteNode = self.nodesAtPoint(positionInScene)[index] as? SKSpriteNode{
+                if(nodeTouched == selectedNode){
                     itenHasMoved = true
-                    selectedNode = nodeTouched as! SKSpriteNode
+                    //selectedNode = nodeTouched as! SKSpriteNode
                     self.panForTranslation(translation)
                 }
             }
+    */
         }
     }
     
@@ -151,7 +163,7 @@ class TheaterBased: SceneGameBase {
             
             if(nodeTouched.name == nil && itenHasMoved == false){
                 self.catchObject(self, location: location, object: nodeTouched)
-            } else if (nodeTouched.name == nil && itenHasMoved == true) {
+            }else if (nodeTouched.name == nil && itenHasMoved == true) {
                 itenHasMoved = false
                 //Quando soltar o item que estava sendo movido:
                 var interactionPossible : Bool = false
@@ -176,11 +188,14 @@ class TheaterBased: SceneGameBase {
                     fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
                 }
                 
-            } else if (nodeTouched.name != nil){
+            }else if (nodeTouched.name != nil){
+                self.flagStartTouchedBeganTheater = false
                 sceneBase.touchesBegan(touches, withEvent: event)
             }
         }
     }
+    
+    
     func selectNodeForTouch(touchLocation : CGPoint) {
         // 1
         let touchedNode = self.nodeAtPoint(touchLocation)

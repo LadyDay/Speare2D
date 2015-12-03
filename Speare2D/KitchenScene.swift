@@ -22,23 +22,34 @@ class KitchenScene: SceneDefault {
         setCamera()
         setPositionCamera()
         initTextureAnimation()
-        initFogao(self.childNodeWithName("fogao") as! SKSpriteNode)
-        initPanela(self.childNodeWithName("panela") as! SKSpriteNode)
     }
     
     /*TOUCH's FUCTION */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        if(self.touchRuning == false && theater.pauseMenuPresent == false){
+        if(self.touchRuning == false && theater.pauseMenuPresent == false && theater.flagStartTouchedBeganTheater == false){
             self.touchRuning = true
             if let touch = touches.first {
-                let location = touch.locationInNode(self)
+                let location = touch.locationInNode(theater)
                 
                 //for nodeTouched in self.nodesAtPoint(location){
-                if let nodeTouched: SKNode = theater.nodeAtPoint(location) {
+                let index = theater.nodesAtPoint(location).startIndex.advancedBy(1)
+                if let nodeTouched: SKNode = theater.nodesAtPoint(location)[index] {
                     
                     switch nodeTouched.name!{
+                    case "panela":
+                        //mexer a panela
+                        animationPanela()
+                        self.touchRuning = false
+                        break
+                        
+                    case "fogao":
+                        //acender o fogão
+                        animationFogao()
+                        self.touchRuning = false
+                        break
+                        
                     case "hortaNode":
                         //changes the scene for the garden
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
@@ -47,19 +58,11 @@ class KitchenScene: SceneDefault {
                             self.theater!.transitionSceneBackground(false)
                         })
                         break
-                    case "casaNode":
-                        //changes the scene for the garden
-                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                            self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
-                            self.theater!.flagCurtinsClosed = true
-                            self.theater!.transitionSceneBackground(false)
-                        })
-                        break
                         
                     case "tutorialScene":
                         //changes the scene for the garden
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                            self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
+                            self.theater!.sceneBackground = TutorialScene(fileNamed: "TutorialScene")
                             self.theater!.flagCurtinsClosed = true
                             self.theater!.transitionSceneBackground(false)
                         })
@@ -97,13 +100,13 @@ class KitchenScene: SceneDefault {
         fogaoArray.append(fogaoAtlas.textureNamed("fogao5"))
     }
     
-    func initFogao(objNode: SKSpriteNode){
-        fogaoAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(fogaoArray, timePerFrame: 0.04))
-        objNode.runAction(fogaoAnimation)
+    func animationFogao(){
+        fogaoAnimation = SKAction.repeatAction(SKAction.animateWithTextures(fogaoArray, timePerFrame: 0.08, resize: true, restore: true), count: 2)
+        (theater.childNodeWithName("fogao") as! SKSpriteNode).runAction(fogaoAnimation)
     }
-    func initPanela(objNode: SKSpriteNode){
-        panelaAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(panelaArray, timePerFrame: 0.08))
-        objNode.runAction(panelaAnimation)
+    func animationPanela(){
+        panelaAnimation = SKAction.repeatAction(SKAction.animateWithTextures(panelaArray, timePerFrame: 0.08, resize: true, restore: true), count: 2)
+        (theater.childNodeWithName("panela") as! SKSpriteNode).runAction(panelaAnimation)
     }
     
 }
