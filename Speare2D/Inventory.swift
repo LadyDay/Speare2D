@@ -65,6 +65,7 @@ class Inventory: SKScene {
             lot.size = CGSize(width: 110, height:110)
             if(lot.texture == nil){
                 lot.texture = object.texture
+                lot.zPosition = object.zPosition
                 if(object.texture!.size().width > lot.size.width || object.texture!.size().height > lot.size.height){
                     lot.xScale = lot.size.width/lot.texture!.size().width
                     lot.yScale = lot.size.height/lot.texture!.size().height

@@ -29,6 +29,7 @@ class TheaterBased: SceneGameBase {
     var iten: SKSpriteNode!
     var itenHasMoved: Bool = false
     var selectedNode: SKNode!
+    var selectedNodeZPosition: CGFloat!
     var animationCurtainsOpen = Array<SKTexture>()
     var animationCurtainsClosed = Array<SKTexture>()
     var curtains: SKSpriteNode!
@@ -125,6 +126,7 @@ class TheaterBased: SceneGameBase {
                     if(nodeTouched.name == nil){
                         itenHasMoved = false
                         selectedNode = nodeTouched as! SKSpriteNode
+                        selectedNodeZPosition = selectedNode.zPosition
                     }
                 }
             }
@@ -138,8 +140,10 @@ class TheaterBased: SceneGameBase {
             let previousPosition = touch.previousLocationInNode(self)
             let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
             itenHasMoved = true
-            selectedNode.zPosition = 
-            self.panForTranslation(translation)
+            if(selectedNode != nil){
+                selectedNode.zPosition = 98
+                self.panForTranslation(translation)
+            }
             /*
             let index = self.nodesAtPoint(positionInScene).startIndex.advancedBy(1)
             if let nodeTouched: SKSpriteNode = self.nodesAtPoint(positionInScene)[index] as? SKSpriteNode{
@@ -185,7 +189,9 @@ class TheaterBased: SceneGameBase {
                     //sceneBase.
                     
                 }else{
+                    selectedNode.zPosition = selectedNodeZPosition
                     fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
+                    selectedNode = nil
                 }
                 
             }else if (nodeTouched.name != nil){
