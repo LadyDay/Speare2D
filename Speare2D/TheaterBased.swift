@@ -18,13 +18,13 @@ class TheaterBased: SceneGameBase {
     var corda: SKSpriteNode!
     var sceneBackground: SceneDefault!
     var flagCurtinsClosed: Bool = false
-    let imageBackName = "paused.png"
+    let imageBackName = "tela de pause.png"
     let imageExitButton = "exitButton.png"
     let imageReturnButton = "Red_play_button.png"
     var pauseMenuPresent: Bool!
     var pauseMenuCounter = 0
     var pauseMenuView: SKView!
-    let returnButton = UIButton(frame: CGRectMake(0, 0, 30, 30))
+    let returnButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
     let exitButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
     var iten: SKSpriteNode!
     var itenHasMoved: Bool = false
@@ -321,8 +321,8 @@ class TheaterBased: SceneGameBase {
         //        setUpViews(pauseMenuView, /*originX: 0, originY: 0, sizeX: 480, sizeY: 320,*/ imageBGString: imageBackName, toBack: false)
         
         setupPauseView()
-        setupButton(returnButton, image: imageReturnButton, tag: 21, locationCenter: CGPoint(x: 120, y: 100))
-        setupButton(exitButton, image: imageExitButton, tag: 20, locationCenter: CGPoint(x: 120, y: 140))
+        setupButton(returnButton, image: ""/*imageReturnButton*/, tag: 21, locationCenter: CGPoint(x: 93.625, y: 53.875))
+        setupButton(exitButton, image: ""/*imageExitButton*/, tag: 20, locationCenter: CGPoint(x: 93.625, y: 83.875))
         
         
         
@@ -330,13 +330,13 @@ class TheaterBased: SceneGameBase {
     
     func setupPauseView(){
         pauseMenuPresent = true
-        pauseMenuView = SKView(frame: CGRectMake(0, 0, 240, 160))
+        pauseMenuView = SKView(frame: CGRectMake(0, 0, 187.25, 107.75))
         pauseMenuView.center = CGPointMake(512.0, 384.0)
         self.view?.addSubview(pauseMenuView as UIView)
         
         let imageBG = UIImage(named: imageBackName)
         let imageView = UIImageView(image: imageBG)
-        imageView.frame = CGRectMake(0, 0, 240, 160)
+        imageView.frame = CGRectMake(0, 0, 187.25, 107.75)
         pauseMenuView.addSubview(imageView)
         pauseMenuView.cheetah.scale(3).duration(0.5).run()
         
@@ -345,8 +345,8 @@ class TheaterBased: SceneGameBase {
     func setupButton(Button: UIButton, image: String, tag: Int, locationCenter: CGPoint){
         let buttonDemo = Button
         buttonDemo.center = CGPointMake(locationCenter.x, locationCenter.y)
-        buttonDemo.backgroundColor = UIColor.blackColor()
-        buttonDemo.setTitle("Voltar", forState: UIControlState.Normal)
+        buttonDemo.backgroundColor = UIColor.clearColor()
+        buttonDemo.setTitle("", forState: UIControlState.Normal)
         buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonDemo.tag = tag
         buttonDemo.setImage(UIImage(named: image), forState: UIControlState.Normal)
@@ -365,27 +365,9 @@ class TheaterBased: SceneGameBase {
             pauseMenuCounter--
         
             pauseMenuView.removeFromSuperview()
-            //self.showVisionButtonsScene()
-            //self.removeAllChildren()
-            //transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
-            //self.removeAllActions()
-            //let fadeScene = SKTransition.fadeWithDuration(0)
-            /*
-            let sceneBack = StartScene(fileNamed:"StartScene")
-            let skView = self.view! as SKView
-            //self.removeFromParent()
-            self.scene?.removeFromParent()
-            self.sceneBackground.removeFromParent()
-            */
             self.transitionNextScene(self.sceneBackground, sceneTransition: StartScene(fileNamed:"StartScene")!, withTheater: false)
-            
-            //self.scene!.removeAllChildren()
-            //self.sceneBackground!.removeAllChildren()
-            
-            //skView.presentScene(sceneBack!)
-            
-            
             break
+            
         case 21:
             print("Button tapped tag 21: return")
             effectConfiguration(backButtonSound, waitC: true)
