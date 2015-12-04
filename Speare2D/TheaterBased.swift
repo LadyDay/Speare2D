@@ -400,19 +400,21 @@ class TheaterBased: SceneGameBase {
     }
     
     func fallingIten(obj: SKSpriteNode, fromInventory: Bool){
+        obj.anchorPoint = CGPoint(x: 0.5, y: 0)
+        let floorPosition = CGFloat(125)
         var initA = SKAction.moveTo(CGPoint(x: obj.position.x, y: obj.position.y), duration: 0.0)
         var secondsFalling = 0.4
         if (fromInventory){
             initA = SKAction.moveTo(CGPoint(x: obj.position.x, y: 1000), duration: 0.0)
             secondsFalling = 1.0
         }
-        let fallingAction = SKAction.moveTo(CGPoint(x: obj.position.x, y: mainCharacter.position.y), duration: secondsFalling)
-        let upOne = SKAction.moveTo(CGPoint(x: obj.position.x, y: mainCharacter.position.y + 20), duration: 0.2)
-        let downOne = SKAction.moveTo(CGPoint(x: obj.position.x, y: mainCharacter.position.y), duration: 0.2)
-        let upTwo = SKAction.moveTo(CGPoint(x: obj.position.x, y: mainCharacter.position.y + 10), duration: 0.2)
-        let downTwo = SKAction.moveTo(CGPoint(x: obj.position.x, y: mainCharacter.position.y), duration: 0.2)
+        let fallingAction = SKAction.moveTo(CGPoint(x: obj.position.x, y: floorPosition/*mainCharacter.position.y*/), duration: secondsFalling)
+        let upOne = SKAction.moveTo(CGPoint(x: obj.position.x, y: floorPosition/*mainCharacter.position.y*/ + 20), duration: 0.2)
+        let downOne = SKAction.moveTo(CGPoint(x: obj.position.x, y: floorPosition/*mainCharacter.position.y*/), duration: 0.2)
+        let upTwo = SKAction.moveTo(CGPoint(x: obj.position.x, y: floorPosition/*mainCharacter.position.y*/ + 10), duration: 0.2)
+        let downTwo = SKAction.moveTo(CGPoint(x: obj.position.x, y: floorPosition/*mainCharacter.position.y*/), duration: 0.2)
         let groupAction = SKAction.sequence([initA, fallingAction, upOne, downOne, upTwo, downTwo])
         obj.runAction(groupAction)
-        obj.position = CGPoint(x: obj.position.x, y: mainCharacter.position.y)
+        obj.position = CGPoint(x: obj.position.x, y: floorPosition/*mainCharacter.position.y*/)
     }
 }
