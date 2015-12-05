@@ -58,7 +58,7 @@ class TheaterBased: SceneGameBase {
         mainCharacter.name = "Alex"
         
         //clear the inventory (textures and colors)
-        self.inventory.firstFunc()
+        self.inventory.firstFunc(self)
         
         //Add swipes
         self.addSwipes(self.view!)
@@ -236,12 +236,28 @@ class TheaterBased: SceneGameBase {
     }
     
     func addObjects(){
+        
+
         for object in sceneBackground.children{
-            if (object.name != "background"){
-                print(object.name)
-                let objectInTheater = object
-                object.removeFromParent()
-                addChild(objectInTheater)
+            if (object.name != "background" && object.name != "camera"){
+                if(object.name == nil){
+                    if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle(fileName) {
+                        let string = (object as! SKSpriteNode).texture?.description.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                        if((dictionary[string![1]] as! Int) == 0){
+                            print(object.name)
+                            let objectInTheater = object
+                            object.removeFromParent()
+                            addChild(objectInTheater)
+                        }else{
+                            object.removeFromParent()
+                        }
+                    }
+                }else{
+                    print(object.name)
+                    let objectInTheater = object
+                    object.removeFromParent()
+                    addChild(objectInTheater)
+                }
             }
         }
         print("=========")

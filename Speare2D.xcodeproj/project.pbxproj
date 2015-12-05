@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D0545331BD7C44600D1DC0A /* Inventory.sks */; };
 		3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0545351BD7C45500D1DC0A /* Inventory.swift */; };
+		3D11CC431C11DF2F00DEFDD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC411C11DF2F00DEFDD6 /* Extensions.swift */; };
+		3D11CC441C11DF2F00DEFDD6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC421C11DF2F00DEFDD6 /* SwiftyJSON.swift */; };
+		3D11CC471C11FD5A00DEFDD6 /* TutorialScene.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC461C11FD5A00DEFDD6 /* TutorialScene.json */; };
 		3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94C1BFD1DAF0022511E /* Bezier.swift */; };
 		3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */; };
 		3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */; };
@@ -91,6 +94,9 @@
 /* Begin PBXFileReference section */
 		3D0545331BD7C44600D1DC0A /* Inventory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Inventory.sks; sourceTree = "<group>"; };
 		3D0545351BD7C45500D1DC0A /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		3D11CC411C11DF2F00DEFDD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3D11CC421C11DF2F00DEFDD6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		3D11CC461C11FD5A00DEFDD6 /* TutorialScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TutorialScene.json; sourceTree = "<group>"; };
 		3D4CC94C1BFD1DAF0022511E /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
 		3D4CC94D1BFD1DAF0022511E /* Cheetah.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cheetah.h; sourceTree = "<group>"; };
 		3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cheetah.swift; sourceTree = "<group>"; };
@@ -186,6 +192,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D11CC451C11FBE800DEFDD6 /* Arquivos */ = {
+			isa = PBXGroup;
+			children = (
+				3D11CC461C11FD5A00DEFDD6 /* TutorialScene.json */,
+			);
+			name = Arquivos;
+			sourceTree = "<group>";
+		};
 		3D4CC9491BFD1D030022511E /* Cheetah */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +244,7 @@
 		3DC44D091BD52E0300502BF0 /* Speare2D */ = {
 			isa = PBXGroup;
 			children = (
+				3D11CC451C11FBE800DEFDD6 /* Arquivos */,
 				3D4CC9491BFD1D030022511E /* Cheetah */,
 				BE960FBF1BF5D7CE0030DE5E /* Music */,
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
@@ -336,6 +351,8 @@
 		BEE817941BDD4D81009365CE /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3D11CC421C11DF2F00DEFDD6 /* SwiftyJSON.swift */,
+				3D11CC411C11DF2F00DEFDD6 /* Extensions.swift */,
 				3D0545331BD7C44600D1DC0A /* Inventory.sks */,
 				3D0545351BD7C45500D1DC0A /* Inventory.swift */,
 				3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */,
@@ -432,6 +449,7 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = DALRD2YRNJ;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -498,6 +516,7 @@
 				BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */,
 				BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
+				3D11CC471C11FD5A00DEFDD6 /* TutorialScene.json in Resources */,
 				BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */,
 				BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
@@ -533,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */,
+				3D11CC431C11DF2F00DEFDD6 /* Extensions.swift in Sources */,
 				3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */,
 				3D4CC9631BFD1DAF0022511E /* Spring.swift in Sources */,
 				3D4CC9641BFD1DAF0022511E /* UIView+CheetahAnimation.swift in Sources */,
@@ -550,6 +570,7 @@
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3D64A9AB1BF625BD006D4F4B /* TheaterBased.swift in Sources */,
 				3D4CC95F1BFD1DAF0022511E /* CheetahManager.swift in Sources */,
+				3D11CC441C11DF2F00DEFDD6 /* SwiftyJSON.swift in Sources */,
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
 				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
 				3D4CC95C1BFD1DAF0022511E /* CheetahGroup.swift in Sources */,
@@ -703,7 +724,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -717,7 +738,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

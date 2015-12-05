@@ -10,7 +10,7 @@ import SpriteKit
 
 class Inventory: SKScene {
 
-    var gameScene: SKScene!
+    var gameScene: SceneGameBase!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -25,20 +25,26 @@ class Inventory: SKScene {
             let node = self.nodeAtPoint(location) as! SKSpriteNode
             
             //tests whether the node is one of the lot and it has texture
-            if(!(node.name=="closet") && node.texture != nil){
+            /*if(!(node.name=="closet") && node.texture != nil){
                 self.clearLots()
-            }
+            }*/
             if (node.texture != nil){
                 SceneGameBase.itenFromInventory = SKSpriteNode(texture: node.texture, size: CGSize(width: node.texture!.size().width, height: node.texture!.size().height))
+                self.atualizaArquivo(node, state: 0)
                 node.texture = nil
                 SceneGameBase.itenComing = true
             }
-            
         }
     }
     
+    func atualizaArquivo(object: SKSpriteNode, state: Int){
+        let string = object.texture!.description.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            Dictionary<String, AnyObject>.writeInfoJSONToBundle(gameScene.fileName, string: string[1] , object: state)
+    }
+    
     //clear color of the all lots
-    func firstFunc(){
+    func firstFunc(scene: SceneGameBase){
+        self.gameScene = scene
             for(var i = 0; i<7; i++){
                 let lot = self.childNodeWithName("lot\(i)") as! SKSpriteNode
                 lot.texture = nil
@@ -65,6 +71,7 @@ class Inventory: SKScene {
             lot.size = CGSize(width: 110, height:110)
             if(lot.texture == nil){
                 lot.texture = object.texture
+                self.atualizaArquivo(object, state: 1)
                 lot.zPosition = object.zPosition
                 if(object.texture!.size().width > lot.size.width || object.texture!.size().height > lot.size.height){
                     lot.xScale = lot.size.width/lot.texture!.size().width
