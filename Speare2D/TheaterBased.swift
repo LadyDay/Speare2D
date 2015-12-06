@@ -170,24 +170,21 @@ class TheaterBased: SceneGameBase {
             }else if (nodeTouched.name == nil && itenHasMoved == true) {
                 itenHasMoved = false
                 //Quando soltar o item que estava sendo movido:
-                var interactionPossible : Bool = false
+                var interactionPossible: Bool = false
                 for nodes in self.nodesAtPoint(location){
                     if nodes.name != nil{
-                        print(nodes.name)
-                        let texture = SKTexture(imageNamed: nodes.name!)
-                        let texture2 = nodeTouched.texture!
-                        
-                        if(texture2.description == texture.description){
-                            interactionPossible = true
-                            nodeTouched.name = nodes.name! + "Deleted"
+                        if self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched) != nil {
+                            if(interactionPossible == false){
+                                interactionPossible = self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched)!
+                            }
                         }
                     }
                 }
                 
                 if(interactionPossible){
-                    //chama a função do objeto
-                    //sceneBase.
-                    
+                    //animação do objeto
+                    //sceneBased.
+                    nodeTouched.removeFromParent()
                 }else{
                     selectedNode.zPosition = selectedNodeZPosition
                     fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
@@ -201,6 +198,28 @@ class TheaterBased: SceneGameBase {
         }
     }
     
+    func objectsInteraction(fixedObject: SKSpriteNode, receivedObject: SKSpriteNode) -> Bool? {
+        let nameFixedObject = SKTexture.returnNameTexture(fixedObject.texture!)
+        let nameReceivedObject = SKTexture.returnNameTexture(receivedObject.texture!)
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData(fileName) {
+            if let index = dictionary.indexForKey(nameFixedObject) {
+                if let array: NSArray = dictionary[index].1 as! NSArray{
+                    for nameObject in array{
+                        if(nameObject as! String == nameReceivedObject){
+                            return true
+                        }
+                    }
+                    return false
+                }else{
+                    return false
+                }
+            }else{
+                return false
+            }
+        }else{
+            return nil
+        }
+    }
     
     func selectNodeForTouch(touchLocation : CGPoint) {
         // 1
@@ -231,13 +250,12 @@ class TheaterBased: SceneGameBase {
         selectedNode.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
         //        }
     }
+    
     func degToRad(degree: Double) -> CGFloat {
         return CGFloat(degree / 180.0 * M_PI)
     }
     
     func addObjects(){
-        
-
         for object in sceneBackground.children{
             if (object.name != "background" && object.name != "camera"){
                 if(object.name == nil){
