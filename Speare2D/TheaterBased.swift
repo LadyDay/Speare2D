@@ -174,19 +174,23 @@ class TheaterBased: SceneGameBase {
                 for nodes in self.nodesAtPoint(location){
                     if nodes.name != nil{
                         if self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched) != nil {
-                            interactionPossible = self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched)!
+                            if(interactionPossible == false){
+                                interactionPossible = self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched)!
+                            }
                         }
                     }
                 }
+                
                 if(interactionPossible){
-                    //chama a função do objeto
-                    //sceneBase.
-                    
+                    //animação do objeto
+                    //sceneBased.
+                    nodeTouched.removeFromParent()
                 }else{
                     selectedNode.zPosition = selectedNodeZPosition
                     fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
                     selectedNode = nil
                 }
+                
             }else if (nodeTouched.name != nil){
                 self.flagStartTouchedBeganTheater = false
                 sceneBase.touchesBegan(touches, withEvent: event)
