@@ -12,6 +12,13 @@ class TutorialScene: SceneDefault {
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
     var fireAnimation = SKAction()
+    var ballon = SKView(frame: CGRectMake(0, 0, 187.25, 107.75))
+    var ballonIsPresented: Bool = false
+    var ballonTraveller: Int!
+    var ballonOldie: Int!
+    var firstPresented = 0
+    var imageBallon: UIImage!
+    var imageViewBallon: UIImageView!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -19,6 +26,13 @@ class TutorialScene: SceneDefault {
         setPositionCamera()
         initTextureFire()
         initFire(self.childNodeWithName("fire") as! SKSpriteNode)
+        ballon.center = CGPointMake(512.0, 384.0)
+        
+        if (firstPresented == 0){
+            firstPresented = 1
+            ballonTraveller = 0
+            ballonOldie = 0
+        }
     }
     
 /*TOUCH's FUCTION */
@@ -38,18 +52,79 @@ class TutorialScene: SceneDefault {
                         
                     case "hortaNode":
                         //changes the scene for the garden
+                        theater.removeVisionButtonsScene()
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.touchRuning = false
                             self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
                             self.theater!.flagCurtinsClosed = true
                             self.theater!.transitionSceneBackground(false)
+                            self.theater.showVisionButtonsScene()
                         })
                         break
                     case "casaNode":
                         //changes the scene for the garden
+                        theater.removeVisionButtonsScene()
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.touchRuning = false
                             self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
                             self.theater!.flagCurtinsClosed = true
                             self.theater!.transitionSceneBackground(false)
+                            self.theater.showVisionButtonsScene()
+                        })
+                        break
+                    case "viajante":
+                        //changes the scene for the garden
+                        theater.removeVisionButtonsScene()
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.touchRuning = false
+                            // o que fazer?
+                            self.view?.addSubview(self.ballon as UIView)
+                            
+                            switch self.ballonTraveller{
+                            case 0:
+                                //balao chamando para ajudar na sopa
+                                //sim ou nao
+                                break
+                            case 1:
+                                //balao listando ingredientes
+                                //informativo
+                                break
+                            case 2:
+                                //balao quando todos os ingredientes foram entregues
+                                //a sopa ta pronta
+                                //informativo
+                                break
+                            case 3:
+                                // vamos dividir com a velha?
+                                //sim ou nao
+                                break
+                            default:
+                                //mensagem padrao?
+                                //self.imageBallon = UIImage(named: "imageBackName")
+                                //self.imageViewBallon = UIImageView(image: self.imageBallon)
+                                //imageViewBallon.frame = CGRectMake(0, 0, 187.25, 107.75)
+                                break
+                                
+                            }
+                            //
+                            //self.ballon.addSubview(imageView)
+                            //self.ballon.cheetah.scale(3).duration(0.5).run()
+                            //
+                            self.theater.showVisionButtonsScene()
+                            
+                        })
+                        break
+                        
+                    case "velha":
+                        //changes the scene for the garden
+                        theater.removeVisionButtonsScene()
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                            self.touchRuning = false
+                            // baloes
+                            
+                            
+                            //
+                            self.theater.showVisionButtonsScene()
                         })
                         break
                         
