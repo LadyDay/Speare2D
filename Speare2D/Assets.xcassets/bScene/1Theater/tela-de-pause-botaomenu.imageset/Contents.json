@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "ipad",
-      "filename" : "homeWithoutDoor~ipad.png",
+      "filename" : "tela-de-pause-botaomenu~ipad.png",
       "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "filename" : "homeWithoutDoor@2x~ipad.png",
+      "filename" : "tela-de-pause-botaomenu@2x~ipad.png",
       "scale" : "2x"
     }
   ],

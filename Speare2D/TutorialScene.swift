@@ -58,6 +58,7 @@ class TutorialScene: SceneDefault {
                         
                     case "hortaNode":
                         //changes the scene for the garden
+                        self.removeAllActions()
                         theater.removeVisionButtonsScene()
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
@@ -70,6 +71,7 @@ class TutorialScene: SceneDefault {
                         break
                     case "casaNode":
                         //changes the scene for the garden
+                        self.removeAllActions()
                         theater.removeVisionButtonsScene()
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
@@ -185,11 +187,17 @@ class TutorialScene: SceneDefault {
     }
     
     func initFire(fireNode: SKSpriteNode){
+        //let soundFire = SKAction.repeatActionForever(playSoundFileNamed(fireTuto, atVolume: SceneDefault.effectsVolume, waitForCompletion: true))
         fireAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(fireArray, timePerFrame: 0.08))
+        //let group = SKAction.group([fireAnimation, soundFire])
         fireNode.runAction(fireAnimation)
+        //fireNode.runAction(group, withKey: "actionFireSound")
+        //self.musicBgConfiguration(fireTuto)
+        
     }
     
     func setupBallonView(image: String){
+        effectConfiguration(dialoguePopup, waitC: true)
         let imageBG = UIImage(named: image)
         let imageView = UIImageView(image: imageBG)
         //imageView.frame = CGRectMake(0, 0, 187.25, 107.75)
@@ -240,6 +248,7 @@ class TutorialScene: SceneDefault {
         case 32:
             print("Button tapped tag 32: NOOOO")
             effectConfiguration(backButtonSound, waitC: true)
+            effectConfiguration(vaia, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             ballonTraveller = 0

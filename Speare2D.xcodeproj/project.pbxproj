@@ -13,7 +13,6 @@
 		3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC511C143FE800DEFDD6 /* StateGame.plist */; };
 		3D11CC541C14402F00DEFDD6 /* TutorialScene.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */; };
 		3D11CC561C145A6300DEFDD6 /* Inventory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC551C145A6300DEFDD6 /* Inventory.plist */; };
-		3D11CC581C14A4EE00DEFDD6 /* TableNamesLevels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC571C14A4EE00DEFDD6 /* TableNamesLevels.plist */; };
 		3D11CC5A1C14AC0F00DEFDD6 /* CurrentLevel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC591C14AC0F00DEFDD6 /* CurrentLevel.plist */; };
 		3D11CC5C1C14ACAC00DEFDD6 /* Characters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC5B1C14ACAC00DEFDD6 /* Characters.plist */; };
 		3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94C1BFD1DAF0022511E /* Bezier.swift */; };
@@ -51,9 +50,15 @@
 		BE7597E91BD73683005608E1 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597E81BD73683005608E1 /* StartScene.sks */; };
 		BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE7597F71BD78826005608E1 /* TutorialScene.sks */; };
 		BE7597FA1BD78833005608E1 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7597F91BD78833005608E1 /* TutorialScene.swift */; };
+		BE760D561C14D0A800040264 /* TableNamesLevels.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE760D551C14D0A800040264 /* TableNamesLevels.plist */; };
 		BE81EE681C13C2530022FC3E /* Princess_bubblegum_character.png in Resources */ = {isa = PBXBuildFile; fileRef = BE81EE671C13C2530022FC3E /* Princess_bubblegum_character.png */; };
 		BE81EE6A1C13C25B0022FC3E /* traveller.png in Resources */ = {isa = PBXBuildFile; fileRef = BE81EE691C13C25B0022FC3E /* traveller.png */; };
 		BE8401A51C062FDA00E9712D /* fogoCaldeira.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */; };
+		BE86071D1C14A12C00CFA32F /* Colocaritemnasopa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE8607181C14A12C00CFA32F /* Colocaritemnasopa.mp3 */; };
+		BE86071E1C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE8607191C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 */; };
+		BE86071F1C14A12C00CFA32F /* Pegarumitemchave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE86071A1C14A12C00CFA32F /* Pegarumitemchave.mp3 */; };
+		BE8607201C14A12C00CFA32F /* AparecerDialogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE86071B1C14A12C00CFA32F /* AparecerDialogo.mp3 */; };
+		BE8607211C14A12C00CFA32F /* Vaia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE86071C1C14A12C00CFA32F /* Vaia.mp3 */; };
 		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; };
 		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; };
 		BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */; };
@@ -104,7 +109,6 @@
 		3D11CC511C143FE800DEFDD6 /* StateGame.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StateGame.plist; sourceTree = "<group>"; };
 		3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TutorialScene.plist; sourceTree = "<group>"; };
 		3D11CC551C145A6300DEFDD6 /* Inventory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Inventory.plist; sourceTree = "<group>"; };
-		3D11CC571C14A4EE00DEFDD6 /* TableNamesLevels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TableNamesLevels.plist; sourceTree = "<group>"; };
 		3D11CC591C14AC0F00DEFDD6 /* CurrentLevel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CurrentLevel.plist; sourceTree = "<group>"; };
 		3D11CC5B1C14ACAC00DEFDD6 /* Characters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Characters.plist; sourceTree = "<group>"; };
 		3D4CC94C1BFD1DAF0022511E /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
@@ -149,9 +153,15 @@
 		BE7597E81BD73683005608E1 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		BE7597F71BD78826005608E1 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
 		BE7597F91BD78833005608E1 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		BE760D551C14D0A800040264 /* TableNamesLevels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TableNamesLevels.plist; path = ../TableNamesLevels.plist; sourceTree = "<group>"; };
 		BE81EE671C13C2530022FC3E /* Princess_bubblegum_character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Princess_bubblegum_character.png; sourceTree = "<group>"; };
 		BE81EE691C13C25B0022FC3E /* traveller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traveller.png; sourceTree = "<group>"; };
 		BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fogoCaldeira.atlas; sourceTree = "<group>"; };
+		BE8607181C14A12C00CFA32F /* Colocaritemnasopa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Colocaritemnasopa.mp3; sourceTree = "<group>"; };
+		BE8607191C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fogueiradocaldeirao.mp3; sourceTree = "<group>"; };
+		BE86071A1C14A12C00CFA32F /* Pegarumitemchave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pegarumitemchave.mp3; sourceTree = "<group>"; };
+		BE86071B1C14A12C00CFA32F /* AparecerDialogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AparecerDialogo.mp3; sourceTree = "<group>"; };
+		BE86071C1C14A12C00CFA32F /* Vaia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Vaia.mp3; sourceTree = "<group>"; };
 		BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BotaoSelecionar.mp3; sourceTree = "<group>"; };
@@ -207,11 +217,11 @@
 		3D11CC491C13D68E00DEFDD6 /* Arquivos */ = {
 			isa = PBXGroup;
 			children = (
+				BE760D551C14D0A800040264 /* TableNamesLevels.plist */,
 				3D11CC551C145A6300DEFDD6 /* Inventory.plist */,
 				3D11CC511C143FE800DEFDD6 /* StateGame.plist */,
 				3D11CC591C14AC0F00DEFDD6 /* CurrentLevel.plist */,
 				3D11CC5B1C14ACAC00DEFDD6 /* Characters.plist */,
-				3D11CC571C14A4EE00DEFDD6 /* TableNamesLevels.plist */,
 				3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */,
 			);
 			name = Arquivos;
@@ -314,6 +324,11 @@
 		BE960FBF1BF5D7CE0030DE5E /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				BE8607181C14A12C00CFA32F /* Colocaritemnasopa.mp3 */,
+				BE8607191C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 */,
+				BE86071A1C14A12C00CFA32F /* Pegarumitemchave.mp3 */,
+				BE86071B1C14A12C00CFA32F /* AparecerDialogo.mp3 */,
+				BE86071C1C14A12C00CFA32F /* Vaia.mp3 */,
 				BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */,
 				BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */,
 				BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */,
@@ -467,7 +482,7 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = DALRD2YRNJ;
+						DevelopmentTeam = 9S8UE9T8R2;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -511,6 +526,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE86071D1C14A12C00CFA32F /* Colocaritemnasopa.mp3 in Resources */,
 				BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */,
 				BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */,
 				3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */,
@@ -518,6 +534,7 @@
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
+				BE8607211C14A12C00CFA32F /* Vaia.mp3 in Resources */,
 				BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */,
 				BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */,
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
@@ -528,6 +545,7 @@
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */,
 				BE960FBD1BF5D7C20030DE5E /* Transito1.mp3 in Resources */,
+				BE86071F1C14A12C00CFA32F /* Pegarumitemchave.mp3 in Resources */,
 				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
 				BE960FBC1BF5D7C20030DE5E /* Transicao.wav in Resources */,
 				BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */,
@@ -539,6 +557,7 @@
 				BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */,
 				BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
+				BE8607201C14A12C00CFA32F /* AparecerDialogo.mp3 in Resources */,
 				BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */,
 				BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */,
 				BE81EE6A1C13C25B0022FC3E /* traveller.png in Resources */,
@@ -548,9 +567,10 @@
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
 				3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */,
 				BE8401A51C062FDA00E9712D /* fogoCaldeira.atlas in Resources */,
+				BE760D561C14D0A800040264 /* TableNamesLevels.plist in Resources */,
 				BEBA9FE31C0A2B8B006A7179 /* portaEsquerda.atlas in Resources */,
 				BE960FB91BF5D7C20030DE5E /* Murmurinho teatro.mp3 in Resources */,
-				3D11CC581C14A4EE00DEFDD6 /* TableNamesLevels.plist in Resources */,
+				BE86071E1C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 in Resources */,
 				BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,7 +776,7 @@
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -772,7 +792,7 @@
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
