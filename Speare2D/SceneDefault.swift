@@ -134,14 +134,15 @@ class SceneDefault: SKScene {
     }
     
     
-    func transitionNextScene(currentScene: SceneDefault , sceneTransition: SceneDefault, withTheater: Bool){
+    func transitionNextScene(currentScene: SceneDefault , sceneTransition: SKScene, withTheater: Bool){
         var fadeScene = SKTransition.fadeWithDuration(1.5)
+        let scene = sceneTransition as! SceneDefault
         if(withTheater){
             let gameScene = TheaterBased(fileNamed: "TheaterBased")
             let viewBased = SKView(frame: self.view!.frame)
             viewBased.backgroundColor = UIColor.clearColor()
             self.view?.addSubview(viewBased)
-            gameScene?.sceneBackground = sceneTransition
+            gameScene?.sceneBackground = scene
             gameScene?.fileName = "TutorialScene"
             moveInfo(gameScene!)
             viewBased.presentScene(gameScene!, transition: fadeScene)
@@ -151,10 +152,10 @@ class SceneDefault: SKScene {
                 currentScene.theater.view?.removeFromSuperview()
                 fadeScene = SKTransition.fadeWithDuration(0.1)
             }
-            currentScene.moveInfo(sceneTransition)
-            sceneTransition.theater = currentScene.theater
-            sceneTransition.mainCharacter.offsetAlexWalk = sceneTransition.offsetWalkScene
-            currentScene.view?.presentScene(sceneTransition, transition: fadeScene)
+            currentScene.moveInfo(scene)
+            scene.theater = currentScene.theater
+            scene.mainCharacter.offsetAlexWalk = scene.offsetWalkScene
+            currentScene.view?.presentScene(scene, transition: fadeScene)
             
         }
     }
