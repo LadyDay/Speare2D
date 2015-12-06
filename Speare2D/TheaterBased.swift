@@ -58,7 +58,7 @@ class TheaterBased: SceneGameBase {
         mainCharacter.name = "Alex"
         
         //clear the inventory (textures and colors)
-        self.inventory.firstFunc()
+        self.inventory.firstFunc(self)
         
         //Add swipes
         self.addSwipes(self.view!)
@@ -236,12 +236,39 @@ class TheaterBased: SceneGameBase {
     }
     
     func addObjects(){
+        
+
         for object in sceneBackground.children{
-            if (object.name != "background"){
-                print(object.name)
-                let objectInTheater = object
-                object.removeFromParent()
-                addChild(objectInTheater)
+            if (object.name != "background" && object.name != "camera"){
+                if(object.name == nil){
+                    if let dictionary = Dictionary<String, AnyObject>.loadGameData("Inventory") {
+
+                        let string = SKTexture.returnNameTexture((object as! SKSpriteNode).texture!)
+                        if let index = dictionary.indexForKey(string) {
+                            let dict = dictionary[index].1 as! Bool
+                            if(dict){
+                                object.removeFromParent()
+                            }else{
+                                print(object.name)
+                                let objectInTheater = object
+                                object.removeFromParent()
+                                addChild(objectInTheater)
+                            }
+                            
+                        }else{
+                            //Dictionary<String, AnyObject>.saveGameData("Inventory", key: <#T##String#>, object: <#T##AnyObject#>)
+                            print(object.name)
+                            let objectInTheater = object
+                            object.removeFromParent()
+                            addChild(objectInTheater)
+                        }
+                    }
+                }else{
+                    print(object.name)
+                    let objectInTheater = object
+                    object.removeFromParent()
+                    addChild(objectInTheater)
+                }
             }
         }
         print("=========")

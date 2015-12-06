@@ -136,6 +136,7 @@ class SceneDefault: SKScene {
             viewBased.backgroundColor = UIColor.clearColor()
             self.view?.addSubview(viewBased)
             gameScene?.sceneBackground = sceneTransition
+            gameScene?.fileName = "TutorialScene"
             moveInfo(gameScene!)
             viewBased.presentScene(gameScene!, transition: fadeScene)
             
@@ -156,6 +157,7 @@ class SceneDefault: SKScene {
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
+        self.camera?.name = "camera"
     }
     
     func setPositionCamera(){
