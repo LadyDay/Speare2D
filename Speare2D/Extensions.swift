@@ -55,7 +55,9 @@ extension Dictionary {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
         let documentsDirectory = paths.objectAtIndex(0) as! NSString
         let path = documentsDirectory.stringByAppendingPathComponent("/" + filename + ".plist")
-        var dict: NSMutableDictionary = ["XInitializerItem": "DoNotEverChangeMe"]
+        var dict: NSMutableDictionary =  NSMutableDictionary()
+        
+        dict.setDictionary(self.loadGameData(filename)!)
         //saving values
         
         dict.setObject(object, forKey: key)

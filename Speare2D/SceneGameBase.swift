@@ -39,7 +39,7 @@ class SceneGameBase: SceneDefault {
             print(sender.locationInView(self.view))
             let location = CGPointMake(sender.locationInView(self.view).x, 768 - sender.locationInView(self.view).y)
             print(location)
-            if location.x > 950 && location.x < 1100 && location.y > 500 && location.y < 650 && inventoryPresent==false {
+            if location.x > 950 && location.x < 1100 && location.y > 400 && location.y < 700 && inventoryPresent==false {
                 //limits the recognition area swipe
                 self.viewInventory = SKView(frame: CGRectMake(0, -150, 1024, 150))
                 self.view?.addSubview(viewInventory as UIView)
