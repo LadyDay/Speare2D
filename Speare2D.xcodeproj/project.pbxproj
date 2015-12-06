@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D0545331BD7C44600D1DC0A /* Inventory.sks */; };
 		3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0545351BD7C45500D1DC0A /* Inventory.swift */; };
-		3D11CC431C11DF2F00DEFDD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC411C11DF2F00DEFDD6 /* Extensions.swift */; };
-		3D11CC441C11DF2F00DEFDD6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC421C11DF2F00DEFDD6 /* SwiftyJSON.swift */; };
-		3D11CC471C11FD5A00DEFDD6 /* TutorialScene.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC461C11FD5A00DEFDD6 /* TutorialScene.json */; };
+		3D11CC501C143AA800DEFDD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */; };
+		3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC511C143FE800DEFDD6 /* StateGame.plist */; };
+		3D11CC541C14402F00DEFDD6 /* TutorialScene.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */; };
+		3D11CC561C145A6300DEFDD6 /* Inventory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC551C145A6300DEFDD6 /* Inventory.plist */; };
 		3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94C1BFD1DAF0022511E /* Bezier.swift */; };
 		3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */; };
 		3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */; };
@@ -94,9 +95,10 @@
 /* Begin PBXFileReference section */
 		3D0545331BD7C44600D1DC0A /* Inventory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Inventory.sks; sourceTree = "<group>"; };
 		3D0545351BD7C45500D1DC0A /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		3D11CC411C11DF2F00DEFDD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		3D11CC421C11DF2F00DEFDD6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		3D11CC461C11FD5A00DEFDD6 /* TutorialScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TutorialScene.json; sourceTree = "<group>"; };
+		3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3D11CC511C143FE800DEFDD6 /* StateGame.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StateGame.plist; sourceTree = "<group>"; };
+		3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TutorialScene.plist; sourceTree = "<group>"; };
+		3D11CC551C145A6300DEFDD6 /* Inventory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Inventory.plist; sourceTree = "<group>"; };
 		3D4CC94C1BFD1DAF0022511E /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
 		3D4CC94D1BFD1DAF0022511E /* Cheetah.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cheetah.h; sourceTree = "<group>"; };
 		3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cheetah.swift; sourceTree = "<group>"; };
@@ -192,10 +194,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D11CC451C11FBE800DEFDD6 /* Arquivos */ = {
+		3D11CC491C13D68E00DEFDD6 /* Arquivos */ = {
 			isa = PBXGroup;
 			children = (
-				3D11CC461C11FD5A00DEFDD6 /* TutorialScene.json */,
+				3D11CC551C145A6300DEFDD6 /* Inventory.plist */,
+				3D11CC511C143FE800DEFDD6 /* StateGame.plist */,
+				3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */,
 			);
 			name = Arquivos;
 			sourceTree = "<group>";
@@ -244,7 +248,7 @@
 		3DC44D091BD52E0300502BF0 /* Speare2D */ = {
 			isa = PBXGroup;
 			children = (
-				3D11CC451C11FBE800DEFDD6 /* Arquivos */,
+				3D11CC491C13D68E00DEFDD6 /* Arquivos */,
 				3D4CC9491BFD1D030022511E /* Cheetah */,
 				BE960FBF1BF5D7CE0030DE5E /* Music */,
 				3DC44D0A1BD52E0400502BF0 /* AppDelegate.swift */,
@@ -351,10 +355,9 @@
 		BEE817941BDD4D81009365CE /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				3D11CC421C11DF2F00DEFDD6 /* SwiftyJSON.swift */,
-				3D11CC411C11DF2F00DEFDD6 /* Extensions.swift */,
 				3D0545331BD7C44600D1DC0A /* Inventory.sks */,
 				3D0545351BD7C45500D1DC0A /* Inventory.swift */,
+				3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */,
 				3D5E38581BF0D7B100D59321 /* SceneGameBase.swift */,
 				3D5E385A1BF1279A00D59321 /* SceneDefault.swift */,
 				BED4D90D1BE10E6800F8B35A /* Alex.swift */,
@@ -495,6 +498,8 @@
 			files = (
 				BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */,
 				BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */,
+				3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */,
+				3D11CC561C145A6300DEFDD6 /* Inventory.plist in Resources */,
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
@@ -502,6 +507,7 @@
 				BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */,
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
 				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
+				3D11CC541C14402F00DEFDD6 /* TutorialScene.plist in Resources */,
 				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */,
@@ -516,7 +522,6 @@
 				BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */,
 				BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
-				3D11CC471C11FD5A00DEFDD6 /* TutorialScene.json in Resources */,
 				BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */,
 				BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
@@ -552,7 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */,
-				3D11CC431C11DF2F00DEFDD6 /* Extensions.swift in Sources */,
+				3D11CC501C143AA800DEFDD6 /* Extensions.swift in Sources */,
 				3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */,
 				3D4CC9631BFD1DAF0022511E /* Spring.swift in Sources */,
 				3D4CC9641BFD1DAF0022511E /* UIView+CheetahAnimation.swift in Sources */,
@@ -570,7 +575,6 @@
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3D64A9AB1BF625BD006D4F4B /* TheaterBased.swift in Sources */,
 				3D4CC95F1BFD1DAF0022511E /* CheetahManager.swift in Sources */,
-				3D11CC441C11DF2F00DEFDD6 /* SwiftyJSON.swift in Sources */,
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
 				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
 				3D4CC95C1BFD1DAF0022511E /* CheetahGroup.swift in Sources */,
@@ -636,7 +640,9 @@
 		3DC44D311BD52E0400502BF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATE_MODE = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLY_RULES_IN_COPY_FILES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -669,6 +675,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -681,7 +688,9 @@
 		3DC44D321BD52E0400502BF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATE_MODE = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLY_RULES_IN_COPY_FILES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -708,6 +717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -719,10 +729,12 @@
 		3DC44D341BD52E0400502BF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLY_RULES_IN_COPY_FILES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
+				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -733,10 +745,12 @@
 		3DC44D351BD52E0400502BF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLY_RULES_IN_COPY_FILES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Speare2D/Info.plist;
+				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";

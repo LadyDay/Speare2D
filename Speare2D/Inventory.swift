@@ -30,16 +30,17 @@ class Inventory: SKScene {
             }*/
             if (node.texture != nil){
                 SceneGameBase.itenFromInventory = SKSpriteNode(texture: node.texture, size: CGSize(width: node.texture!.size().width, height: node.texture!.size().height))
-                self.atualizaArquivo(node, state: 0)
+                //manda pro arquivo do Inventario
+                self.addObjectInFile(node, state: false)
                 node.texture = nil
                 SceneGameBase.itenComing = true
             }
         }
     }
     
-    func atualizaArquivo(object: SKSpriteNode, state: Int){
-        let string = object.texture!.description.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            Dictionary<String, AnyObject>.writeInfoJSONToBundle(gameScene.fileName, string: string[1] , object: state)
+    func addObjectInFile(object: SKSpriteNode, state: AnyObject){
+        let string = SKTexture.returnNameTexture(object.texture!)
+        Dictionary<String, AnyObject>.saveGameData("Inventory", key: string, object: state)
     }
     
     //clear color of the all lots
@@ -50,6 +51,21 @@ class Inventory: SKScene {
                 lot.texture = nil
                 lot.color = UIColor.clearColor()
             }
+        //inicializa as texturas salvas no arquivo
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Inventory") {
+            var j = 0;
+            for object in dictionary{
+                if(object.0 != "XInitializerItem"){
+                    if(object.1 as! Bool){
+                        print(object.0)
+                        let lot = self.childNodeWithName("lot\(j)") as! SKSpriteNode
+                        lot.texture = SKTexture(imageNamed: object.0)
+                        j++
+                    }
+                }
+            }
+        }
+        
     }
     
     //clear selection of the selected lot
@@ -71,7 +87,10 @@ class Inventory: SKScene {
             lot.size = CGSize(width: 110, height:110)
             if(lot.texture == nil){
                 lot.texture = object.texture
-                self.atualizaArquivo(object, state: 1)
+                
+                //manda pro arquivo do Inventario
+                self.addObjectInFile(object, state: true)
+                
                 lot.zPosition = object.zPosition
                 if(object.texture!.size().width > lot.size.width || object.texture!.size().height > lot.size.height){
                     lot.xScale = lot.size.width/lot.texture!.size().width

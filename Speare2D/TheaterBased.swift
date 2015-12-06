@@ -241,15 +241,26 @@ class TheaterBased: SceneGameBase {
         for object in sceneBackground.children{
             if (object.name != "background" && object.name != "camera"){
                 if(object.name == nil){
-                    if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle(fileName) {
-                        let string = (object as! SKSpriteNode).texture?.description.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-                        if((dictionary[string![1]] as! Int) == 0){
+                    if let dictionary = Dictionary<String, AnyObject>.loadGameData("Inventory") {
+
+                        let string = SKTexture.returnNameTexture((object as! SKSpriteNode).texture!)
+                        if let index = dictionary.indexForKey(string) {
+                            let dict = dictionary[index].1 as! Bool
+                            if(dict){
+                                object.removeFromParent()
+                            }else{
+                                print(object.name)
+                                let objectInTheater = object
+                                object.removeFromParent()
+                                addChild(objectInTheater)
+                            }
+                            
+                        }else{
+                            //Dictionary<String, AnyObject>.saveGameData("Inventory", key: <#T##String#>, object: <#T##AnyObject#>)
                             print(object.name)
                             let objectInTheater = object
                             object.removeFromParent()
                             addChild(objectInTheater)
-                        }else{
-                            object.removeFromParent()
                         }
                     }
                 }else{
