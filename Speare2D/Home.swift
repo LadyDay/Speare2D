@@ -135,7 +135,11 @@ class Home: SceneDefault {
     
     
     func centerOnNode(node:SKNode) -> SKAction {
-        let moveCamera = SKAction.moveTo(node.position, duration: 1.5)
+        var position : CGPoint = node.position
+        if(position.y/2 < 192){
+            position.y = 192
+        }
+        let moveCamera = SKAction.moveTo(position, duration: 1.5)
         let zoomCamera = SKAction.scaleTo(0.5, duration: 1.5)
         return SKAction.group([moveCamera, zoomCamera])
     }
