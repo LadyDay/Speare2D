@@ -89,6 +89,8 @@ class StartScene: SceneDefault {
                                         })
                                     }else{
                                         self.touchRuning = false
+                                        
+                                        print("oi")
                                     }
                                 }
                             }
