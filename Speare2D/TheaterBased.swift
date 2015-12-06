@@ -72,7 +72,6 @@ class TheaterBased: SceneGameBase {
     
     func transitionSceneBackground(backgroundBlack: Bool){
         
-        
         if(inventoryPresent==true){
             swipeUp()
         }
@@ -80,6 +79,7 @@ class TheaterBased: SceneGameBase {
         
         curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
             self.removeObjects({
+                Dictionary<String, AnyObject>.saveGameData("StateGame", key: "currentScene", object: self.fileName)
                 self.sceneBackground.touchRuning = false
                 let sceneBaseView = self.view!.superview! as! SKView
                 self.sceneBackground.theater = self
@@ -184,6 +184,14 @@ class TheaterBased: SceneGameBase {
                 if(interactionPossible){
                     //animação do objeto
                     //sceneBased.
+                    if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
+                        let indexDataScene = dictionaryDataScene.indexForKey("Finished")
+                        let arrayFinished = dictionaryDataScene[indexDataScene!].1 as! NSArray
+                        var array = NSMutableArray(array: arrayFinished)
+                        array.addObject(SKTexture.returnNameTexture(nodeTouched.texture!))
+                        
+                        Dictionary<String, AnyObject>.saveGameData("TutorialScene", key: "Finished", object: array as NSArray)
+                    }
                     nodeTouched.removeFromParent()
                 }else{
                     selectedNode.zPosition = selectedNodeZPosition
@@ -201,7 +209,7 @@ class TheaterBased: SceneGameBase {
     func objectsInteraction(fixedObject: SKSpriteNode, receivedObject: SKSpriteNode) -> Bool? {
         let nameFixedObject = SKTexture.returnNameTexture(fixedObject.texture!)
         let nameReceivedObject = SKTexture.returnNameTexture(receivedObject.texture!)
-        if let dictionary = Dictionary<String, AnyObject>.loadGameData(fileName) {
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
             if let index = dictionary.indexForKey(nameFixedObject) {
                 if let array: NSArray = dictionary[index].1 as! NSArray{
                     for nameObject in array{
@@ -257,31 +265,38 @@ class TheaterBased: SceneGameBase {
     
     func addObjects(){
         for object in sceneBackground.children{
-            if (object.name != "background" && object.name != "camera"){
-                if(object.name == nil){
-                    if let dictionary = Dictionary<String, AnyObject>.loadGameData("Inventory") {
-
-                        let string = SKTexture.returnNameTexture((object as! SKSpriteNode).texture!)
-                        if let index = dictionary.indexForKey(string) {
-                            let dict = dictionary[index].1 as! Bool
-                            if(dict){
-                                object.removeFromParent()
+            if(object.name == nil){
+                let string = SKTexture.returnNameTexture((object as! SKSpriteNode).texture!)
+                if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
+                    let indexDataScene = dictionaryDataScene.indexForKey("Finished")
+                    let array = dictionaryDataScene[indexDataScene!].1 as! NSArray
+                    if !(array.containsObject(string)) {
+                        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Inventory") {
+                            if let index = dictionary.indexForKey(string) {
+                                let dict = dictionary[index].1 as! Bool
+                                if(dict){
+                                    object.removeFromParent()
+                                }else{
+                                    print(object.name)
+                                    let objectInTheater = object
+                                    object.removeFromParent()
+                                    addChild(objectInTheater)
+                                }
                             }else{
+                                //o objeto nunca entrou no inventario
                                 print(object.name)
                                 let objectInTheater = object
                                 object.removeFromParent()
                                 addChild(objectInTheater)
                             }
-                            
-                        }else{
-                            //Dictionary<String, AnyObject>.saveGameData("Inventory", key: <#T##String#>, object: <#T##AnyObject#>)
-                            print(object.name)
-                            let objectInTheater = object
-                            object.removeFromParent()
-                            addChild(objectInTheater)
                         }
+                    }else{
+                        //o objeto já cumpriu sua função
+                        //não vai aparecer nunca mais o/
                     }
-                }else{
+                }
+            }else{
+                if(object.name! != "background" && object.name! != "camera"){
                     print(object.name)
                     let objectInTheater = object
                     object.removeFromParent()
@@ -291,7 +306,7 @@ class TheaterBased: SceneGameBase {
         }
         print("=========")
     }
-    
+
     func removeObjects(completion: () -> Void){
         for object in self.scene!.children{
             nopeObjectTheater(object)

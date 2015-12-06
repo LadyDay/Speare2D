@@ -2,11 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentScene</key>
-	<string>TutorialScene</string>
-	<key>currentLevel</key>
-	<real>0</real>
-	<key>XInitializerItem</key>
-	<string>DoNotEverChangeMe</string>
+	<key>Sopa de Pedra</key>
+	<integer>0</integer>
+	<key>Auto da Compadecida</key>
+	<integer>1</integer>
 </dict>
 </plist>

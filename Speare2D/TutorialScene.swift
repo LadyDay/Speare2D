@@ -62,6 +62,7 @@ class TutorialScene: SceneDefault {
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
                             self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
+                            self.theater.fileName = "FarmScene"
                             self.theater!.flagCurtinsClosed = true
                             self.theater!.transitionSceneBackground(false)
                             self.theater.showVisionButtonsScene()
@@ -73,6 +74,7 @@ class TutorialScene: SceneDefault {
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
                             self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
+                            self.theater.fileName = "KitchenScene"
                             self.theater!.flagCurtinsClosed = true
                             self.theater!.transitionSceneBackground(false)
                             self.theater.showVisionButtonsScene()
