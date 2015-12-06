@@ -35,7 +35,6 @@ class FarmScene: SceneDefault {
                         //changes the scene for the garden
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
-                            self.theater.fileName = "FarmScene"
                             self.theater!.flagCurtinsClosed = true
                             self.theater!.transitionSceneBackground(false)
                         })
@@ -44,7 +43,6 @@ class FarmScene: SceneDefault {
                         //changes the scene for the garden
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
-                            self.theater.fileName = "KitchenScene"
                             self.theater!.flagCurtinsClosed = true
                             self.theater!.transitionSceneBackground(false)
                         })
