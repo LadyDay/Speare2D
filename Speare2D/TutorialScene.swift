@@ -12,13 +12,17 @@ class TutorialScene: SceneDefault {
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
     var fireAnimation = SKAction()
-    var ballon = SKView(frame: CGRectMake(0, 0, 187.25, 107.75))
+    var ballon = SKView()//(frame: CGRectMake(0, 0, 187.25, 107.75))
     var ballonIsPresented: Bool = false
-    var ballonTraveller: Int!
-    var ballonOldie: Int!
+    var ballonTraveller: Int = 0
+    var ballonOldie: Int = 0
     var firstPresented = 0
     var imageBallon: UIImage!
     var imageViewBallon: UIImageView!
+    var ballonIsPresentedCounter: Int!
+    let exitButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
+    let yesButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
+    let noButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -26,7 +30,9 @@ class TutorialScene: SceneDefault {
         setPositionCamera()
         initTextureFire()
         initFire(self.childNodeWithName("fire") as! SKSpriteNode)
-        ballon.center = CGPointMake(512.0, 384.0)
+        
+        ballonIsPresentedCounter = 0
+        //imageViewBallon.frame = CGRect(x: 0, y: 0, width: 187.25, height: 107.75)
         
         if (firstPresented == 0){
             firstPresented = 1
@@ -39,7 +45,7 @@ class TutorialScene: SceneDefault {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        if(self.touchRuning == false && theater.pauseMenuPresent == false && theater.flagStartTouchedBeganTheater == false){
+        if(self.touchRuning == false && theater.pauseMenuPresent == false && theater.flagStartTouchedBeganTheater == false && self.ballonIsPresented == false){
             self.touchRuning = true
             if let touch = touches.first {
                 let location = touch.locationInNode(theater)
@@ -78,25 +84,53 @@ class TutorialScene: SceneDefault {
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
                             // o que fazer?
-                            self.view?.addSubview(self.ballon as UIView)
+                            self.ballonIsPresented = true
+                            //self.ballon.center = CGPointMake(512 - 1.5*(self.ballon.frame.width), (768/2) - 1.5*(self.ballon.frame.height))
+                            
                             
                             switch self.ballonTraveller{
                             case 0:
                                 //balao chamando para ajudar na sopa
+//                                self.imageBallon = UIImage(named: "tela de pause.png")
+//                                self.imageViewBallon = UIImageView(image: self.imageBallon)
+                                //self.setupButton(self.yesButton, image: "Red_play_button.png"/*imageExitButton*/, tag: 31, locationCenter: CGPoint(x: 2*self.imageBallon.size.width/3, y: 2*self.imageBallon.size.height/3))
+                                //self.setupButton(self.notButton, image: "Red_play_button.png"/*imageExitButton*/, tag: 32, locationCenter: CGPoint(x: self.imageBallon.size.width/3, y: 2*self.imageBallon.size.height/3))
+                                
+                                self.setupBallonView("tela de pause.png")
+                                self.setupButton(self.yesButton, image: "Red_play_button.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+
+                                
                                 //sim ou nao
                                 break
                             case 1:
                                 //balao listando ingredientes
                                 //informativo
+                                
+
+                                self.setupBallonView("tela de pause.png")
+                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+                                
+                                
+                                
                                 break
                             case 2:
                                 //balao quando todos os ingredientes foram entregues
                                 //a sopa ta pronta
                                 //informativo
+                                
+                                self.setupBallonView("tela de pause.png")
+                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+                                
+                                
                                 break
                             case 3:
                                 // vamos dividir com a velha?
                                 //sim ou nao
+                                //self.imageBallon = UIImage(named: "imageBackName")
+                                //self.imageViewBallon = UIImageView(image: self.imageBallon)
+                                
+                                
                                 break
                             default:
                                 //mensagem padrao?
@@ -106,17 +140,12 @@ class TutorialScene: SceneDefault {
                                 break
                                 
                             }
-                            //
-                            //self.ballon.addSubview(imageView)
-                            //self.ballon.cheetah.scale(3).duration(0.5).run()
-                            //
                             self.theater.showVisionButtonsScene()
                             
                         })
                         break
                         
                     case "velha":
-                        //changes the scene for the garden
                         theater.removeVisionButtonsScene()
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
@@ -156,6 +185,68 @@ class TutorialScene: SceneDefault {
     func initFire(fireNode: SKSpriteNode){
         fireAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(fireArray, timePerFrame: 0.08))
         fireNode.runAction(fireAnimation)
+    }
+    
+    func setupBallonView(image: String){
+        let imageBG = UIImage(named: image)
+        let imageView = UIImageView(image: imageBG)
+        //imageView.frame = CGRectMake(0, 0, 187.25, 107.75)
+        
+        ballonIsPresented = true
+        ballon = SKView(frame: CGRectMake(0, 0, imageView.frame.width, imageView.frame.height))
+        ballon.center = CGPointMake(512.0, 384.0)
+        self.view?.addSubview(ballon as UIView)
+        
+        ballon.addSubview(imageView)
+        ballon.cheetah.scale(1).duration(0.5).run()
+        
+    }
+    
+    func setupButton(Button: UIButton, image: String, tag: Int, locationCenter: CGPoint){
+        let buttonDemo = Button
+        buttonDemo.center = CGPointMake(locationCenter.x, locationCenter.y)
+        buttonDemo.backgroundColor = UIColor.clearColor()
+        buttonDemo.setTitle("", forState: UIControlState.Normal)
+        buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        buttonDemo.tag = tag
+        buttonDemo.setImage(UIImage(named: image), forState: UIControlState.Normal)
+        self.ballon.addSubview(buttonDemo)
+        self.ballon.bringSubviewToFront(buttonDemo)
+    }
+    
+    func buttonAction(sender:UIButton!)
+    {
+        switch sender.tag{
+        case 30:
+            print("Button tapped tag 30: exit")
+            effectConfiguration(backButtonSound, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            //ballonIsPresentedCounter = 0
+            ballon.removeFromSuperview()
+            break
+        case 31:
+            print("Button tapped tag 31: YEEEES")
+            effectConfiguration(backButtonSound, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            //ballonIsPresentedCounter = 0
+            ballonTraveller++
+            ballon.removeFromSuperview()
+            
+            break
+        case 32:
+            print("Button tapped tag 32: NOOOO")
+            effectConfiguration(backButtonSound, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            ballonTraveller = 0
+            //ballonIsPresentedCounter = 0
+            ballon.removeFromSuperview()
+            break
+        default:
+            break
+        }
     }
     
 }
