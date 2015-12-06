@@ -39,6 +39,11 @@ class SceneDefault: SKScene {
     let sliderSound: String = "slider.aiff"
     let ticketSound: String = "ticketSound.wav"
     let passosNaMadeira: String = "Passos na madeira.mp3"
+    let puttingItenTuto: String = "Colocaritemnasopa.mp3"
+    let fireTuto: String = "Fogueiradocaldeirao.mp3"
+    let catchAnIten: String = "Pegarumitemchave.mp3"
+    let dialoguePopup: String = "AparecerDialogo.mp3"
+    let vaia: String = "Vaia.mp3"
     
     //Sounds
     var audioPlayer: AVAudioPlayer!
@@ -65,6 +70,7 @@ class SceneDefault: SKScene {
         //pega qualquer objeto da tela, que seja um skspritenode sem nome
         gameScene.mainCharacter.runAction(gameScene.mainCharacter.walk(gameScene.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: object.frame.size), completion: {
             //guarding the object in the inventory
+            self.effectConfiguration(self.catchAnIten, waitC: true)
             gameScene.inventory.guardingObject(object as! SKSpriteNode)
             let spinAction = SKAction.rotateByAngle(CGFloat(2.0*M_PI), duration: 1)
             let goUpAction = SKAction.moveTo(CGPoint(x: object.position.x, y: 1000), duration: 1)

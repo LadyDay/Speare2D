@@ -18,14 +18,14 @@ class TheaterBased: SceneGameBase {
     var corda: SKSpriteNode!
     var sceneBackground: SceneDefault!
     var flagCurtinsClosed: Bool = false
-    let imageBackName = "tela de pause.png"
-    let imageExitButton = "exitButton.png"
-    let imageReturnButton = "Red_play_button.png"
+    let imageBackName = "tela-de-pause-sembotao.png"
+    let imageExitButton = "tela-de-pause-botaomenu.png"
+    let imageReturnButton = "tela-de-pause-botaovoltar.png"
     var pauseMenuPresent: Bool!
     var pauseMenuCounter = 0
     var pauseMenuView: SKView!
-    let returnButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
-    let exitButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
+    let returnButton = UIButton()//(frame: CGRectMake(0, 0, 177/2, 55/2))
+    let exitButton = UIButton()//(frame: CGRectMake(0, 0, 177/2, 55/2))
     var iten: SKSpriteNode!
     var itenHasMoved: Bool = false
     var selectedNode: SKNode!
@@ -366,35 +366,44 @@ class TheaterBased: SceneGameBase {
         //        setUpViews(pauseMenuView, /*originX: 0, originY: 0, sizeX: 480, sizeY: 320,*/ imageBGString: imageBackName, toBack: false)
         
         setupPauseView()
-        setupButton(returnButton, image: ""/*imageReturnButton*/, tag: 21, locationCenter: CGPoint(x: 93.625, y: 53.875))
-        setupButton(exitButton, image: ""/*imageExitButton*/, tag: 20, locationCenter: CGPoint(x: 93.625, y: 83.875))
+        setupButton(returnButton, imageBk: imageReturnButton, tag: 21, locationCenter: CGPoint(x: pauseMenuView.frame.width/2, y: 3*pauseMenuView.frame.height/6))
+        setupButton(exitButton, imageBk: imageExitButton, tag: 20, locationCenter: CGPoint(x: pauseMenuView.frame.width/2, y: 4.5*pauseMenuView.frame.height/6))
         
         
         
     }
     
     func setupPauseView(){
+        let imageBG = UIImage(named: imageBackName)
+        let imageView = UIImageView(image: imageBG)
+        
         pauseMenuPresent = true
-        pauseMenuView = SKView(frame: CGRectMake(0, 0, 187.25, 107.75))
+        pauseMenuView = SKView(frame: CGRectMake(0, 0,imageView.frame.width, imageView.frame.height))
         pauseMenuView.center = CGPointMake(512.0, 384.0)
         self.view?.addSubview(pauseMenuView as UIView)
         
-        let imageBG = UIImage(named: imageBackName)
-        let imageView = UIImageView(image: imageBG)
-        imageView.frame = CGRectMake(0, 0, 187.25, 107.75)
+//        let imageBG = UIImage(named: imageBackName)
+//        let imageView = UIImageView(image: imageBG)
+        //imageView.frame = CGRectMake(0, 0, 187.25, 107.75)
         pauseMenuView.addSubview(imageView)
-        pauseMenuView.cheetah.scale(3).duration(0.5).run()
+        pauseMenuView.cheetah.scale(1).duration(0.5).run()
         
     }
     
-    func setupButton(Button: UIButton, image: String, tag: Int, locationCenter: CGPoint){
-        let buttonDemo = Button
+    func setupButton(Button: UIButton, imageBk: String, tag: Int, locationCenter: CGPoint){
+        var buttonDemo = Button
+        let imageBG = UIImage(named: imageBk)
+        let imageView = UIImageView(image: imageBG)
+        
+        buttonDemo = UIButton(frame: CGRectMake(0, 0, imageView.frame.width, imageView.frame.height))
         buttonDemo.center = CGPointMake(locationCenter.x, locationCenter.y)
         buttonDemo.backgroundColor = UIColor.clearColor()
         buttonDemo.setTitle("", forState: UIControlState.Normal)
         buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonDemo.tag = tag
-        buttonDemo.setImage(UIImage(named: image), forState: UIControlState.Normal)
+        buttonDemo.setImage(UIImage(named: imageBk), forState: UIControlState.Normal)
+        //buttonDemo.highlighted = true
+        
         self.pauseMenuView!.addSubview(buttonDemo)
         self.pauseMenuView.bringSubviewToFront(buttonDemo)
     }
@@ -410,6 +419,8 @@ class TheaterBased: SceneGameBase {
             pauseMenuCounter--
         
             pauseMenuView.removeFromSuperview()
+            //TutorialScene.removeAllActions()
+            //self.sceneBackground.removeFromParent()
             self.transitionNextScene(self.sceneBackground, sceneTransition: StartScene(fileNamed:"StartScene")!, withTheater: false)
             break
             
