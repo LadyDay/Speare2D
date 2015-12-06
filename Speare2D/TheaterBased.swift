@@ -464,7 +464,7 @@ class TheaterBased: SceneGameBase {
         addChild(iten)
         iten.position = CGPoint(x: (self.camera?.position.x)!, y: 700)
         iten.name = nil
-        iten.zPosition = 50
+        //iten.zPosition = 50
         fallingIten(iten, fromInventory: true)
         //addObjects()
         
