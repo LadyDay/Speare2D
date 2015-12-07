@@ -33,7 +33,7 @@ class TutorialScene: SceneDefault {
     var ballon = UIView()//(frame: CGRectMake(0, 0, 187.25, 107.75))
     var ballonIsPresented: Bool = false
     static var ballonTraveller: Int = 0
-    static var ballonOldie: Int = 0
+    static var ballonOldie: Int = 1
     static var firstPresented = 0
     var imageBallon: UIImage!
     var imageViewBallon: UIImageView!
@@ -57,7 +57,7 @@ class TutorialScene: SceneDefault {
         if (TutorialScene.firstPresented == 0){
             TutorialScene.firstPresented = 1
             TutorialScene.ballonTraveller = 0
-            TutorialScene.ballonOldie = 0
+            TutorialScene.ballonOldie = 1
         }
         //musicBgConfiguration(fireTuto)
     }
@@ -301,7 +301,11 @@ class TutorialScene: SceneDefault {
         
         ballonIsPresented = true
         ballon = UIView(frame: CGRectMake(0, 0, imageView.frame.width, imageView.frame.height))
-        ballon.center = CGPointMake(512.0, 250.0)
+        if (TutorialScene.ballonTraveller == 3 ){
+            ballon.center = CGPointMake(512.0, 384.0)
+            
+        } else {
+            ballon.center = CGPointMake(512.0, 250.0) }
         ballon.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.0)
 
         self.view?.addSubview(ballon as UIView)
@@ -387,6 +391,8 @@ class TutorialScene: SceneDefault {
             //ballonIsPresentedCounter = 0
             TutorialScene.ballonTraveller = 4
             ballon.removeFromSuperview()
+            acabouBebe()
+            self.touchRuning = true
             break
         case 36:
             print("Button tapped tag 36: pegou chave")
@@ -397,9 +403,32 @@ class TutorialScene: SceneDefault {
             TutorialScene.ballonOldie = 1
             ballon.removeFromSuperview()
             break
+        case 100:
+            print("acabou")
+            
+            effectConfiguration(applauseSound, waitC: true)
+            ballon.cheetah.scale(0.5).duration(3).run()
+            ballonIsPresented = false
+            TutorialScene.ballonOldie = 1
+            ballon.removeFromSuperview()
+            theater.transitionNextScene(self, sceneTransition: StartScene(fileNamed:"StartScene")!, withTheater: false)
+//            theater!.flagCurtinsClosed = true
+//            theater!.transitionSceneBackground(true)
+//            theater.curtains.runAction(SKAction.animateWithTextures(theater.animationCurtainsClosed, timePerFrame: 0.1))
+            
+            break
         default:
             break
         }
+    }
+    
+    func acabouBebe(){
+        TutorialScene.ballonTraveller = 3
+        setupBallonView("balao-de-parabens.png")
+        ballonIsPresented = true
+        self.touchRuning = false
+        setupButton(exitButton, image: "botao-ok-parabens.png", tag: 100, locationCenter: CGPoint(x: (self.ballon.frame.width/2) - 5, y: self.ballon.frame.height-20))
+        
     }
     
 }

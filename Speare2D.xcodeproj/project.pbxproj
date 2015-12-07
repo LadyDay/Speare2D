@@ -43,6 +43,7 @@
 		BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE005A211BF4C39B00C0B265 /* effectsound.aiff */; };
 		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; };
 		BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */; };
+		BE152AB51C1599FB00785BC9 /* finishedLevel.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE152AB41C1599FB00785BC9 /* finishedLevel.atlas */; };
 		BE1FAE641C14F4130016B077 /* viajantePiscando.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE631C14F4130016B077 /* viajantePiscando.atlas */; };
 		BE1FAE661C14FDB30016B077 /* idosaPiscando.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */; };
 		BE1FAE681C1562DE0016B077 /* Boo curto.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE671C1562DE0016B077 /* Boo curto.wav */; };
@@ -152,6 +153,7 @@
 		BE005A211BF4C39B00C0B265 /* effectsound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = effectsound.aiff; sourceTree = "<group>"; };
 		BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AlexCorrendo.atlas; sourceTree = "<group>"; };
 		BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Passos na madeira.mp3"; sourceTree = "<group>"; };
+		BE152AB41C1599FB00785BC9 /* finishedLevel.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = finishedLevel.atlas; sourceTree = "<group>"; };
 		BE1FAE631C14F4130016B077 /* viajantePiscando.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = viajantePiscando.atlas; sourceTree = "<group>"; };
 		BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = idosaPiscando.atlas; sourceTree = "<group>"; };
 		BE1FAE671C1562DE0016B077 /* Boo curto.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Boo curto.wav"; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BE152AB41C1599FB00785BC9 /* finishedLevel.atlas */,
 				BE1FAE6F1C157CFB0016B077 /* viajanteFalando.atlas */,
 				BE1FAE6B1C157BA30016B077 /* idosaFalando.atlas */,
 				BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */,
@@ -583,6 +586,7 @@
 				BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */,
 				BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */,
 				BE81EE6A1C13C25B0022FC3E /* traveller.png in Resources */,
+				BE152AB51C1599FB00785BC9 /* finishedLevel.atlas in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
 				3D11CC5A1C14AC0F00DEFDD6 /* CurrentLevel.plist in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
