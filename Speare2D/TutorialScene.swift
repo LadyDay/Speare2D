@@ -220,6 +220,8 @@ class TutorialScene: SceneDefault {
                         }
                         break
                     }
+                }else{
+                    self.touchRuning = false
                 }
             }else{
                 self.touchRuning = false

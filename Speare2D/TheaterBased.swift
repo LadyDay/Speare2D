@@ -189,10 +189,20 @@ class TheaterBased: SceneGameBase {
                     if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
                         let indexDataScene = dictionaryDataScene.indexForKey("Finished")
                         let arrayFinished = dictionaryDataScene[indexDataScene!].1 as! NSArray
+                        let arrayCaldeirao = dictionaryDataScene[dictionaryDataScene.indexForKey("caldeirao")!].1 as! NSArray
                         var array = NSMutableArray(array: arrayFinished)
                         array.addObject(SKTexture.returnNameTexture(nodeTouched.texture!))
+                        var completeLevel: Bool = true
                         
+                        for object in arrayCaldeirao {
+                            if !(arrayFinished.containsObject(object as! String)){
+                                completeLevel = false
+                            }
+                        }
                         Dictionary<String, AnyObject>.saveGameData("TutorialScene", key: "Finished", object: array as NSArray)
+                        if(completeLevel){
+                            //chamar a função do pop up pra dividir a sopa de pedra
+                        }
                     }
                     nodeTouched.removeFromParent()
                 }else{

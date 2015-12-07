@@ -71,6 +71,8 @@ class FarmScene: SceneDefault {
                         }
                         break
                     }
+                }else{
+                    self.touchRuning = false
                 }
             }else{
                 self.touchRuning = false
