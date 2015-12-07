@@ -151,8 +151,32 @@ class TutorialScene: SceneDefault {
                         theater.removeVisionButtonsScene()
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             self.touchRuning = false
-                            // baloes
+                            self.ballonIsPresented = true
                             
+                            switch TutorialScene.ballonOldie{
+                            case 0:
+                                self.setupBallonView("tome essa chave.png")
+                                self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+                                
+                                //FUNCAO PARA A CHAVE CAIR/APARECER
+                                //AQUI
+                                //SE MAINCHARACTER PEGOU CHAVE{
+                                TutorialScene.ballonOldie = 1
+                                //}
+                                break
+                            case 1:
+                                self.setupBallonView("vamos ver se essa sopa vai ser boa.png")
+                                self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+                                if (TutorialScene.ballonTraveller >= 2){
+                                    TutorialScene.ballonOldie = 2
+                                }
+                               
+                                break
+                            default:
+                                self.setupBallonView("nunca tomei uma sopa tao boa.png")
+                                self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+                                break
+                            }
                             
                             //
                             self.theater.showVisionButtonsScene()
@@ -266,7 +290,7 @@ class TutorialScene: SceneDefault {
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
-            TutorialScene.ballonTraveller = 10
+            TutorialScene.ballonTraveller = -1
             ballon.removeFromSuperview()
             break
         case 34:
@@ -285,6 +309,15 @@ class TutorialScene: SceneDefault {
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
             TutorialScene.ballonTraveller = 4
+            ballon.removeFromSuperview()
+            break
+        case 36:
+            print("Button tapped tag 36: pegou chave")
+            
+            effectConfiguration(dialoguePopup, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            TutorialScene.ballonOldie = 1
             ballon.removeFromSuperview()
             break
         default:
