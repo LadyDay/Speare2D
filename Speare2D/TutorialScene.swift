@@ -12,6 +12,24 @@ class TutorialScene: SceneDefault {
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
     var fireAnimation = SKAction()
+    
+    var oldieLadyArray = Array<SKTexture>()
+    let oldieLadyAtlas = SKTextureAtlas(named: "idosaPiscando.atlas")
+    var oldieAnimation = SKAction()
+    
+    var oldieLadyTalkingArray = Array<SKTexture>()
+    let oldieLadyTalkingAtlas = SKTextureAtlas(named: "idosaFalando.atlas")
+    var oldieTalkingAnimation = SKAction()
+    
+    var travellerTalkingArray = Array<SKTexture>()
+    let travellerTalkingAtlas = SKTextureAtlas(named: "viajanteFalando.atlas")
+    var travellerTalkingAnimation = SKAction()
+    
+    var travellerArray = Array<SKTexture>()
+    let travellerAtlas = SKTextureAtlas(named: "viajantePiscando.atlas")
+    var travellerAnimation = SKAction()
+    
+
     var ballon = UIView()//(frame: CGRectMake(0, 0, 187.25, 107.75))
     var ballonIsPresented: Bool = false
     static var ballonTraveller: Int = 0
@@ -30,6 +48,8 @@ class TutorialScene: SceneDefault {
         setPositionCamera()
         initTextureFire()
         initFire(self.childNodeWithName("fire") as! SKSpriteNode)
+        initArrayNPC()
+        initNPC(self.childNodeWithName("velha")as! SKSpriteNode, travellerNode: self.childNodeWithName("viajante")as! SKSpriteNode)
         
         ballonIsPresentedCounter = 0
         //imageViewBallon.frame = CGRect(x: 0, y: 0, width: 187.25, height: 107.75)
@@ -217,6 +237,44 @@ class TutorialScene: SceneDefault {
         //self.musicBgConfiguration(fireTuto)
         
     }
+    
+    
+    func initArrayNPC() {
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0006_piscando1_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0005_piscando2_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0006_piscando1_360x476.png"))
+        
+        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0003_falando1_360x476.png"))
+        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0002_falando2_360x476.png"))
+        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0001_falando3_360x476.png"))
+        
+        
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada1_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada1_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada2_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
+        
+        travellerTalkingArray.append(travellerAtlas.textureNamed("viajantegalho_SPRITE_falando1.png"))
+        travellerTalkingArray.append(travellerAtlas.textureNamed("viajantegalho_SPRITE_falando2.png"))
+        travellerTalkingArray.append(travellerAtlas.textureNamed("viajantegalho_SPRITE_falando3.png"))
+        
+    }
+    
+    func initNPC(oldieNode: SKSpriteNode, travellerNode: SKSpriteNode){
+        oldieAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(oldieLadyArray, timePerFrame: 0.209))
+        oldieNode.runAction(oldieAnimation)
+        
+        
+        travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(travellerArray, timePerFrame: 0.2))
+        travellerNode.runAction(travellerAnimation)
+        
+    }
+    
     
     func setupBallonView(image: String){
         effectConfiguration(dialoguePopup, waitC: true)
