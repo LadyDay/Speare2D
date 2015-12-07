@@ -106,12 +106,12 @@ class TutorialScene: SceneDefault {
                     case "viajante":
                         //changes the scene for the garden
                         theater.removeVisionButtonsScene()
-                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                        let sprite = nodeTouched as! SKSpriteNode
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
                             self.touchRuning = false
                             // o que fazer?
                             self.ballonIsPresented = true
-                            //self.ballon.center = CGPointMake(512 - 1.5*(self.ballon.frame.width), (768/2) - 1.5*(self.ballon.frame.height))
-                            
+                            //nodeTouched.runAction(self.talkingNPC(nodeTouched as! SKSpriteNode), withKey: "falando")
                             
                             switch TutorialScene.ballonTraveller{
                             case 0:
@@ -168,10 +168,14 @@ class TutorialScene: SceneDefault {
                         break
                         
                     case "velha":
+                        let sprite = nodeTouched as! SKSpriteNode
                         theater.removeVisionButtonsScene()
-                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
                             self.touchRuning = false
                             self.ballonIsPresented = true
+                            
+                            //nodeTouched.runAction(self.talkingNPC(nodeTouched as! SKSpriteNode), withKey: "falando")
+                            
                             
                             switch TutorialScene.ballonOldie{
                             case 0:
@@ -259,9 +263,9 @@ class TutorialScene: SceneDefault {
         travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
         travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
         
-        travellerTalkingArray.append(travellerAtlas.textureNamed("viajantegalho_SPRITE_falando1.png"))
-        travellerTalkingArray.append(travellerAtlas.textureNamed("viajantegalho_SPRITE_falando2.png"))
-        travellerTalkingArray.append(travellerAtlas.textureNamed("viajantegalho_SPRITE_falando3.png"))
+        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando1.png"))
+        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando2.png"))
+        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando3.png"))
         
     }
     
@@ -273,6 +277,19 @@ class TutorialScene: SceneDefault {
         travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(travellerArray, timePerFrame: 0.2))
         travellerNode.runAction(travellerAnimation)
         
+        
+    }
+    
+    func talkingNPC(NPC: SKSpriteNode) -> SKAction{
+        
+        if (NPC.name == "velha"){
+            oldieTalkingAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.oldieLadyTalkingArray, timePerFrame: 0.1))
+            return oldieTalkingAnimation
+            
+        } else /*if (NPC.name == "viajante")*/{
+            travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.travellerTalkingArray, timePerFrame: 0.1))
+            return travellerAnimation
+        }
     }
     
     
@@ -313,6 +330,8 @@ class TutorialScene: SceneDefault {
     
     func buttonAction(sender:UIButton!)
     {
+        //removeActionForKey("falando")
+        
         switch sender.tag{
         case 30:
             print("Button tapped tag 30: exit")
