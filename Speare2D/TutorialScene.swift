@@ -94,15 +94,9 @@ class TutorialScene: SceneDefault {
                             
                             switch self.ballonTraveller{
                             case 0:
-                                //balao chamando para ajudar na sopa
-//                                self.imageBallon = UIImage(named: "tela de pause.png")
-//                                self.imageViewBallon = UIImageView(image: self.imageBallon)
-                                //self.setupButton(self.yesButton, image: "Red_play_button.png"/*imageExitButton*/, tag: 31, locationCenter: CGPoint(x: 2*self.imageBallon.size.width/3, y: 2*self.imageBallon.size.height/3))
-                                //self.setupButton(self.notButton, image: "Red_play_button.png"/*imageExitButton*/, tag: 32, locationCenter: CGPoint(x: self.imageBallon.size.width/3, y: 2*self.imageBallon.size.height/3))
-                                
-                                self.setupBallonView("tela de pause.png")
-                                self.setupButton(self.yesButton, image: "Red_play_button.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
-                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+                                self.setupBallonView("me ajuda a fazer a sopa.png")
+                                self.setupButton(self.yesButton, image: "tela-de-pausa-botaosim.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+                                self.setupButton(self.noButton, image: "tela-de-pausa-botaosim.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
 
                                 
                                 //sim ou nao

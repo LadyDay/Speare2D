@@ -43,6 +43,8 @@
 		BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE005A211BF4C39B00C0B265 /* effectsound.aiff */; };
 		BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */; };
 		BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */; };
+		BE1FAE641C14F4130016B077 /* viajantePiscando.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE631C14F4130016B077 /* viajantePiscando.atlas */; };
+		BE1FAE661C14FDB30016B077 /* idosaPiscando.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */; };
 		BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */; };
 		BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */; };
 		BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */; };
@@ -146,6 +148,8 @@
 		BE005A211BF4C39B00C0B265 /* effectsound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = effectsound.aiff; sourceTree = "<group>"; };
 		BE0F46A71BF0D90F00F801B6 /* AlexCorrendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AlexCorrendo.atlas; sourceTree = "<group>"; };
 		BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Passos na madeira.mp3"; sourceTree = "<group>"; };
+		BE1FAE631C14F4130016B077 /* viajantePiscando.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = viajantePiscando.atlas; sourceTree = "<group>"; };
+		BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = idosaPiscando.atlas; sourceTree = "<group>"; };
 		BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = optionsMusic.wav; sourceTree = "<group>"; };
 		BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = slider.aiff; sourceTree = "<group>"; };
 		BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticketSound.wav; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */,
+				BE1FAE631C14F4130016B077 /* viajantePiscando.atlas */,
 				BEA58CF61C06B2550013E3EB /* panela.atlas */,
 				BEA58CF41C06B24F0013E3EB /* fogao.atlas */,
 				BE8401A41C062FDA00E9712D /* fogoCaldeira.atlas */,
@@ -482,6 +488,7 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 9S8UE9T8R2;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -532,6 +539,7 @@
 				3D11CC561C145A6300DEFDD6 /* Inventory.plist in Resources */,
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
+				BE1FAE661C14FDB30016B077 /* idosaPiscando.atlas in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
 				BE8607211C14A12C00CFA32F /* Vaia.mp3 in Resources */,
 				BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */,
@@ -542,6 +550,7 @@
 				3D11CC541C14402F00DEFDD6 /* TutorialScene.plist in Resources */,
 				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
+				BE1FAE641C14F4130016B077 /* viajantePiscando.atlas in Resources */,
 				BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */,
 				BE960FBD1BF5D7C20030DE5E /* Transito1.mp3 in Resources */,
 				BE86071F1C14A12C00CFA32F /* Pegarumitemchave.mp3 in Resources */,
@@ -775,7 +784,7 @@
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -791,7 +800,7 @@
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
