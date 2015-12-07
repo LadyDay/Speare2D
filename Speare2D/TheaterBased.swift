@@ -195,13 +195,14 @@ class TheaterBased: SceneGameBase {
                         var completeLevel: Bool = true
                         
                         for object in arrayCaldeirao {
-                            if !(arrayFinished.containsObject(object as! String)){
+                            if !(array.containsObject(object as! String)){
                                 completeLevel = false
                             }
                         }
                         Dictionary<String, AnyObject>.saveGameData("TutorialScene", key: "Finished", object: array as NSArray)
                         if(completeLevel){
                             //chamar a função do pop up pra dividir a sopa de pedra
+                            TutorialScene.ballonTraveller = 2
                         }
                     }
                     nodeTouched.removeFromParent()

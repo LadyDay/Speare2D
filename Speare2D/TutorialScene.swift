@@ -166,7 +166,7 @@ class TutorialScene: SceneDefault {
                             
                         })
                         break
-                        
+                    /*
                     case "velha":
                         let sprite = nodeTouched as! SKSpriteNode
                         theater.removeVisionButtonsScene()
@@ -206,7 +206,7 @@ class TutorialScene: SceneDefault {
                             self.theater.showVisionButtonsScene()
                         })
                         break
-                        
+                    */
                     default:
                         if(theater.inventoryPresent==false && location.y<200){
                             //mainCharacter walks
