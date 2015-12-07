@@ -12,17 +12,17 @@ class TutorialScene: SceneDefault {
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
     var fireAnimation = SKAction()
-    var ballon = SKView()//(frame: CGRectMake(0, 0, 187.25, 107.75))
+    var ballon = UIView()//(frame: CGRectMake(0, 0, 187.25, 107.75))
     var ballonIsPresented: Bool = false
-    var ballonTraveller: Int = 0
-    var ballonOldie: Int = 0
-    var firstPresented = 0
+    static var ballonTraveller: Int = 0
+    static var ballonOldie: Int = 0
+    static var firstPresented = 0
     var imageBallon: UIImage!
     var imageViewBallon: UIImageView!
     var ballonIsPresentedCounter: Int!
-    let exitButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
-    let yesButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
-    let noButton = UIButton(frame: CGRectMake(0, 0, 177/2, 55/2))
+    let exitButton = UIButton()
+    let yesButton = UIButton()
+    let noButton = UIButton()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -34,11 +34,12 @@ class TutorialScene: SceneDefault {
         ballonIsPresentedCounter = 0
         //imageViewBallon.frame = CGRect(x: 0, y: 0, width: 187.25, height: 107.75)
         
-        if (firstPresented == 0){
-            firstPresented = 1
-            ballonTraveller = 0
-            ballonOldie = 0
+        if (TutorialScene.firstPresented == 0){
+            TutorialScene.firstPresented = 1
+            TutorialScene.ballonTraveller = 0
+            TutorialScene.ballonOldie = 0
         }
+        //musicBgConfiguration(fireTuto)
     }
     
 /*TOUCH's FUCTION */
@@ -92,11 +93,11 @@ class TutorialScene: SceneDefault {
                             //self.ballon.center = CGPointMake(512 - 1.5*(self.ballon.frame.width), (768/2) - 1.5*(self.ballon.frame.height))
                             
                             
-                            switch self.ballonTraveller{
+                            switch TutorialScene.ballonTraveller{
                             case 0:
                                 self.setupBallonView("me ajuda a fazer a sopa.png")
-                                self.setupButton(self.yesButton, image: "tela-de-pausa-botaosim.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
-                                self.setupButton(self.noButton, image: "tela-de-pausa-botaosim.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+                                self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
+                                self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 32, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
 
                                 
                                 //sim ou nao
@@ -106,35 +107,38 @@ class TutorialScene: SceneDefault {
                                 //informativo
                                 
 
-                                self.setupBallonView("tela de pause.png")
-                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
+                                self.setupBallonView("preciso de tais coisas.png")
+                                self.setupButton(self.noButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
                                 
                                 
                                 
                                 break
-                            case 2:
-                                //balao quando todos os ingredientes foram entregues
-                                //a sopa ta pronta
-                                //informativo
-                                
-                                self.setupBallonView("tela de pause.png")
-                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: 2*self.ballon.frame.width/3, y: 2*self.ballon.frame.height/3))
-                                
-                                
-                                break
-                            case 3:
+//                            case 2:
+//                                
+//                                
+//                                //balao quando todos os ingredientes foram entregues
+//                                //a sopa ta pronta
+//                                //informativo
+//                                
+//                                self.setupBallonView("tela de pause.png")
+//                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+//                                
+//                                
+//                                break
+                            case 2/*3*/:
                                 // vamos dividir com a velha?
                                 //sim ou nao
-                                //self.imageBallon = UIImage(named: "imageBackName")
-                                //self.imageViewBallon = UIImageView(image: self.imageBallon)
+                                self.setupBallonView("vamos-dividir-a-sopa-com-ela.png")
+                                self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
+                                self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
                                 
                                 
                                 break
                             default:
                                 //mensagem padrao?
-                                //self.imageBallon = UIImage(named: "imageBackName")
-                                //self.imageViewBallon = UIImageView(image: self.imageBallon)
-                                //imageViewBallon.frame = CGRectMake(0, 0, 187.25, 107.75)
+                                self.setupBallonView("temctz.png")
+                                self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
+                                self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
                                 break
                                 
                             }
@@ -197,8 +201,10 @@ class TutorialScene: SceneDefault {
         //imageView.frame = CGRectMake(0, 0, 187.25, 107.75)
         
         ballonIsPresented = true
-        ballon = SKView(frame: CGRectMake(0, 0, imageView.frame.width, imageView.frame.height))
-        ballon.center = CGPointMake(512.0, 384.0)
+        ballon = UIView(frame: CGRectMake(0, 0, imageView.frame.width, imageView.frame.height))
+        ballon.center = CGPointMake(512.0, 250.0)
+        ballon.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.0)
+
         self.view?.addSubview(ballon as UIView)
         
         ballon.addSubview(imageView)
@@ -207,13 +213,18 @@ class TutorialScene: SceneDefault {
     }
     
     func setupButton(Button: UIButton, image: String, tag: Int, locationCenter: CGPoint){
-        let buttonDemo = Button
+        var buttonDemo = Button
+        let imageBG = UIImage(named: image)
+        let imageView = UIImageView(image: imageBG)
+        
+        buttonDemo = UIButton(frame: CGRectMake(0, 0, imageView.frame.width, imageView.frame.height))
         buttonDemo.center = CGPointMake(locationCenter.x, locationCenter.y)
-        buttonDemo.backgroundColor = UIColor.clearColor()
+        //buttonDemo.backgroundColor = UIColor.blackColor()
         buttonDemo.setTitle("", forState: UIControlState.Normal)
         buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonDemo.tag = tag
-        buttonDemo.setImage(UIImage(named: image), forState: UIControlState.Normal)
+        buttonDemo.setImage(imageBG, forState: UIControlState.Normal)
+        
         self.ballon.addSubview(buttonDemo)
         self.ballon.bringSubviewToFront(buttonDemo)
     }
@@ -223,7 +234,7 @@ class TutorialScene: SceneDefault {
         switch sender.tag{
         case 30:
             print("Button tapped tag 30: exit")
-            effectConfiguration(backButtonSound, waitC: true)
+            effectConfiguration(dialoguePopup, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
@@ -231,22 +242,49 @@ class TutorialScene: SceneDefault {
             break
         case 31:
             print("Button tapped tag 31: YEEEES")
-            effectConfiguration(backButtonSound, waitC: true)
+            effectConfiguration(applauseSound, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
-            ballonTraveller++
+            TutorialScene.ballonTraveller = 1
             ballon.removeFromSuperview()
             
             break
         case 32:
             print("Button tapped tag 32: NOOOO")
-            effectConfiguration(backButtonSound, waitC: true)
-            effectConfiguration(vaia, waitC: true)
+            //effectConfiguration(metalEffectSound, waitC: true)
+            effectConfiguration(vaia2, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
-            ballonTraveller = 0
+            TutorialScene.ballonTraveller = 0
             //ballonIsPresentedCounter = 0
+            ballon.removeFromSuperview()
+            break
+        case 33:
+            print("Button tapped tag 33: nao quis ajudar")
+            effectConfiguration(vaia2, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            //ballonIsPresentedCounter = 0
+            TutorialScene.ballonTraveller = 10
+            ballon.removeFromSuperview()
+            break
+        case 34:
+            print("Button tapped tag 34: quer ajudar")
+            effectConfiguration(applauseSound, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            //ballonIsPresentedCounter = 0
+            TutorialScene.ballonTraveller = 1
+            ballon.removeFromSuperview()
+            break
+        case 35:
+            print("Button tapped tag 35: quer dividir")
+            effectConfiguration(applauseSound, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            //ballonIsPresentedCounter = 0
+            TutorialScene.ballonTraveller = 4
             ballon.removeFromSuperview()
             break
         default:

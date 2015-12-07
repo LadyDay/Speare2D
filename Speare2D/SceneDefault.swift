@@ -44,6 +44,7 @@ class SceneDefault: SKScene {
     let catchAnIten: String = "Pegarumitemchave.mp3"
     let dialoguePopup: String = "AparecerDialogo.mp3"
     let vaia: String = "Vaia.mp3"
+    let vaia2: String = "Boo curto.wav"
     
     //Sounds
     var audioPlayer: AVAudioPlayer!

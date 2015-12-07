@@ -45,6 +45,8 @@
 		BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */; };
 		BE1FAE641C14F4130016B077 /* viajantePiscando.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE631C14F4130016B077 /* viajantePiscando.atlas */; };
 		BE1FAE661C14FDB30016B077 /* idosaPiscando.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */; };
+		BE1FAE681C1562DE0016B077 /* Boo curto.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE671C1562DE0016B077 /* Boo curto.wav */; };
+		BE1FAE6A1C1563DA0016B077 /* Aplausos-curto.aiff.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE1FAE691C1563DA0016B077 /* Aplausos-curto.aiff.aiff */; };
 		BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */; };
 		BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */; };
 		BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */; };
@@ -150,6 +152,8 @@
 		BE123A4D1C04A608007B0856 /* Passos na madeira.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Passos na madeira.mp3"; sourceTree = "<group>"; };
 		BE1FAE631C14F4130016B077 /* viajantePiscando.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = viajantePiscando.atlas; sourceTree = "<group>"; };
 		BE1FAE651C14FDB30016B077 /* idosaPiscando.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = idosaPiscando.atlas; sourceTree = "<group>"; };
+		BE1FAE671C1562DE0016B077 /* Boo curto.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Boo curto.wav"; sourceTree = "<group>"; };
+		BE1FAE691C1563DA0016B077 /* Aplausos-curto.aiff.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "Aplausos-curto.aiff.aiff"; sourceTree = "<group>"; };
 		BE20BF0C1BFA09B60027C4BB /* optionsMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = optionsMusic.wav; sourceTree = "<group>"; };
 		BE20BF0E1BFA0E1E0027C4BB /* slider.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = slider.aiff; sourceTree = "<group>"; };
 		BE3DC66D1BFF56B800A20C3A /* ticketSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ticketSound.wav; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 		BE960FBF1BF5D7CE0030DE5E /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				BE1FAE691C1563DA0016B077 /* Aplausos-curto.aiff.aiff */,
+				BE1FAE671C1562DE0016B077 /* Boo curto.wav */,
 				BE8607181C14A12C00CFA32F /* Colocaritemnasopa.mp3 */,
 				BE8607191C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 */,
 				BE86071A1C14A12C00CFA32F /* Pegarumitemchave.mp3 */,
@@ -557,6 +563,7 @@
 				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
 				BE960FBC1BF5D7C20030DE5E /* Transicao.wav in Resources */,
 				BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */,
+				BE1FAE681C1562DE0016B077 /* Boo curto.wav in Resources */,
 				BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */,
 				BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */,
 				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
@@ -577,6 +584,7 @@
 				BE8401A51C062FDA00E9712D /* fogoCaldeira.atlas in Resources */,
 				BE760D561C14D0A800040264 /* TableNamesLevels.plist in Resources */,
 				BEBA9FE31C0A2B8B006A7179 /* portaEsquerda.atlas in Resources */,
+				BE1FAE6A1C1563DA0016B077 /* Aplausos-curto.aiff.aiff in Resources */,
 				BE960FB91BF5D7C20030DE5E /* Murmurinho teatro.mp3 in Resources */,
 				BE86071E1C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 in Resources */,
 				BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */,

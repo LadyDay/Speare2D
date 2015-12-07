@@ -86,6 +86,8 @@ class TheaterBased: SceneGameBase {
                 sceneBaseView.presentScene(self.sceneBackground)
                 self.mainCharacter.offsetAlexWalk = self.sceneBackground.offsetWalkScene
                 self.camera = self.sceneBackground.camera
+                //self.removeFromParent()
+                //self.sceneBackground.backgroundMusic.removeFromParent()
                 self.addObjects()
                 self.curtains.runAction(SKAction.animateWithTextures(self.animationCurtainsOpen, timePerFrame: 0.1), completion: {
                     self.flagCurtinsClosed = false
@@ -265,7 +267,7 @@ class TheaterBased: SceneGameBase {
     
     func addObjects(){
         for object in sceneBackground.children{
-            if(object.name == nil){
+            if(object.name == nil && !object.isKindOfClass(SKAudioNode)){
                 let string = SKTexture.returnNameTexture((object as! SKSpriteNode).texture!)
                 if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
                     let indexDataScene = dictionaryDataScene.indexForKey("Finished")
@@ -344,7 +346,7 @@ class TheaterBased: SceneGameBase {
                 
             }
         }else{
-            object.removeFromParent()
+                object.removeFromParent()
         }
     }
     
