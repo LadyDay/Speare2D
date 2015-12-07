@@ -500,7 +500,6 @@
 				TargetAttributes = {
 					3DC44D061BD52E0300502BF0 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 9S8UE9T8R2;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -800,7 +799,7 @@
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -816,7 +815,7 @@
 				INFOPLIST_FILE = Speare2D/Info.plist;
 				INSTALL_MODE_FLAG = "u+w, go-w, a+rX";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ladyday.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
