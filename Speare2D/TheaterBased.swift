@@ -185,7 +185,7 @@ class TheaterBased: SceneGameBase {
                 if(interactionPossible){
                     //animação do objeto
                     //sceneBased.
-                    if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
+                    if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
                         let indexDataScene = dictionaryDataScene.indexForKey("Finished")
                         let arrayFinished = dictionaryDataScene[indexDataScene!].1 as! NSArray
                         let arrayCaldeirao = dictionaryDataScene[dictionaryDataScene.indexForKey("caldeirao")!].1 as! NSArray
@@ -198,7 +198,7 @@ class TheaterBased: SceneGameBase {
                                 completeLevel = false
                             }
                         }
-                        Dictionary<String, AnyObject>.saveGameData("TutorialScene", key: "Finished", object: array as NSArray)
+                        Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Finished", object: array as NSArray)
                         if(completeLevel){
                             //chamar a função do pop up pra dividir a sopa de pedra
                         }
@@ -220,7 +220,7 @@ class TheaterBased: SceneGameBase {
     func objectsInteraction(fixedObject: SKSpriteNode, receivedObject: SKSpriteNode) -> Bool? {
         let nameFixedObject = SKTexture.returnNameTexture(fixedObject.texture!)
         let nameReceivedObject = SKTexture.returnNameTexture(receivedObject.texture!)
-        if let dictionary = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
             if let index = dictionary.indexForKey(nameFixedObject) {
                 if let array: NSArray = dictionary[index].1 as! NSArray{
                     for nameObject in array{
