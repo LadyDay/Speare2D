@@ -120,6 +120,11 @@ class TutorialScene: SceneDefault {
                             self.ballonIsPresented = true
                             //nodeTouched.runAction(self.talkingNPC(nodeTouched as! SKSpriteNode), withKey: "falando")
                             
+                            //lê informação do arquivo
+                            if let dictionaryBallonTraveller = Dictionary<String, AnyObject>.loadGameData("Characters") {
+                                let number = dictionaryBallonTraveller["Viajante"]
+                            }
+                            
                             switch TutorialScene.ballonTraveller{
                             case 0:
                                 self.setupBallonView("me ajuda a fazer a sopa.png")
@@ -361,6 +366,10 @@ class TutorialScene: SceneDefault {
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
             TutorialScene.ballonTraveller = 1
+            
+            //salva o dado no arquivo
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 1)
+            
             ballon.removeFromSuperview()
             
             break
