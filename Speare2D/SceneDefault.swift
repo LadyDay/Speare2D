@@ -14,6 +14,12 @@ class SceneDefault: SKScene {
     
     var offsetWalkScene: CGFloat = 15
     
+    //tuto
+    var clickArray = Array<SKTexture>()
+    let clickAtlas = SKTextureAtlas(named: "click.atlas")
+    var clickAnimation = SKAction()
+
+    
     //flag
     var touchRuning: Bool = false
     static var firstAcess: Bool = true
@@ -209,5 +215,23 @@ class SceneDefault: SKScene {
             self.givenSKView.sendSubviewToBack(imageView)
         }
     }
+    
+    //function for clicking hand in tutorial
+    func initClickTexture(){
+        clickArray.append(clickAtlas.textureNamed("clique1"))
+        clickArray.append(clickAtlas.textureNamed("clique2"))
+    }
+    
+    func initClick(clickNode: SKSpriteNode){
+        clickAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(clickArray, timePerFrame: 0.3))
+        //clickFadingINAnimation = SKAction.repeatActionForever(SKAction.fadeInWithDuration(1))
+        //clickFadingOUTAnimation = SKAction.repeatActionForever(SKAction.fadeOutWithDuration(1))
+        //let sequenceClick = SKAction.sequence([clickFadingOUTAnimation, clickFadingINAnimation])
+        //let groupClick = SKAction.group([sequenceClick, clickAnimation])
+        //clickNode.runAction(groupClick, withKey: "clickTutorial")
+        clickNode.runAction(clickAnimation, withKey: "clickTutorial")
+        
+    }
+    
 }
 

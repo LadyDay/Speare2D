@@ -11,8 +11,11 @@ import SpriteKit
 
 class StartScene: SceneDefault {
     
+    
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
+        
+        
         
         mainCharacter.setupAlex()
         addChild(mainCharacter)
@@ -22,6 +25,15 @@ class StartScene: SceneDefault {
         //SceneDefault.effectsVolume = 0.7
         //SceneDefault.voiceVolume = 0.7
         musicBgConfiguration(startBGmusic)
+        
+        
+        //Colocar um if para arquivos, para apenas exibir essa mão na primeira vez:
+        initClickTexture()
+        initClick(self.childNodeWithName("clique") as! SKSpriteNode)
+        //se não:
+        //self.childNodeWithName("clique")?.removeFromParent()
+        
+        
     }
     
     /* Called when a touch begins */
@@ -107,6 +119,7 @@ class StartScene: SceneDefault {
             }
         }
     }
+    
     
     /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {

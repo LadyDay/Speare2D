@@ -9,11 +9,6 @@
 import SpriteKit
 
 class TutorialScene: SceneDefault {
-    var clickArray = Array<SKTexture>()
-    let clickAtlas = SKTextureAtlas(named: "click.atlas")
-    var clickAnimation = SKAction()
-    var clickFadingINAnimation = SKAction()
-    var clickFadingOUTAnimation = SKAction()
     
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
@@ -47,7 +42,8 @@ class TutorialScene: SceneDefault {
     let exitButton = UIButton()
     let yesButton = UIButton()
     let noButton = UIButton()
-    //let pedraSprite = childNodeWithName()
+
+    let clickCounter: Int = 0
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -59,6 +55,8 @@ class TutorialScene: SceneDefault {
         initNPC(self.childNodeWithName("velha")as! SKSpriteNode, travellerNode: self.childNodeWithName("viajante")as! SKSpriteNode)
         initClickTexture()
         initClick(self.childNodeWithName("clique") as! SKSpriteNode)
+        initClick(self.childNodeWithName("clique2") as! SKSpriteNode)
+        //objShaking(self.childNodeWithName(" ") as! SKSpriteNode)
         
         ballonIsPresentedCounter = 0
         //imageViewBallon.frame = CGRect(x: 0, y: 0, width: 187.25, height: 107.75)
@@ -86,11 +84,40 @@ class TutorialScene: SceneDefault {
 
                     switch nodeTouched.name!{
                         
-                    case "maoTutorial":
-                        //let position = maoTutorial.position
-                        //remove o sprite
-                        //chama a função de mover a Alex até o ponto onde estava a mão
+                    case "clique":
                         
+                        theater.removeVisionButtonsScene()
+                        
+                        let sprite = nodeTouched as! SKSpriteNode
+                        sprite.runAction(SKAction.fadeAlphaTo(0, duration: 1), completion: {
+                            //sprite.runAction(SKAction.fadeAlphaTo(1, duration: 0))
+                            sprite.removeFromParent()
+                        })
+                        
+                        
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: sprite.size), completion: {
+                            self.touchRuning = false
+
+                            })
+                        break
+                        
+                    case "clique2":
+                        
+                        theater.removeVisionButtonsScene()
+                        
+                        let sprite = nodeTouched as! SKSpriteNode
+                        
+                        sprite.runAction(SKAction.fadeAlphaTo(0, duration: 1), completion: {
+                            //sprite.runAction(SKAction.fadeAlphaTo(1, duration: 0))
+                            sprite.removeFromParent()
+                        })
+                        
+                        let object = self.theater.nodesAtPoint(location)[theater.nodesAtPoint(location).startIndex.advancedBy(2)] as! SKSpriteNode
+                        if(SKTexture.returnNameTexture(object.texture!) == "pedras"){
+                            self.theater.catchObject(self.theater, location: location, object: self.theater.nodesAtPoint(location)[theater.nodesAtPoint(location).startIndex.advancedBy(2)])
+                        }
+                        
+                        self.touchRuning = false
                         break
                         
                     case "hortaNode":
@@ -237,6 +264,9 @@ class TutorialScene: SceneDefault {
                             //mainCharacter walks
                             theater.removeVisionButtonsScene()
                             theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                if let mao = self.theater.childNodeWithName("clique"){
+                                    mao.removeFromParent()
+                                }
                                 self.theater.showVisionButtonsScene()
                                 self.touchRuning = false
                             })
@@ -254,10 +284,7 @@ class TutorialScene: SceneDefault {
         }
     }
     
-    func initClickTexture(){
-        clickArray.append(clickAtlas.textureNamed("clique1"))
-        clickArray.append(clickAtlas.textureNamed("clique2"))
-    }
+    
     
     func initTextureFire() {
         fireArray.append(fireAtlas.textureNamed("fogo1"))
@@ -271,17 +298,6 @@ class TutorialScene: SceneDefault {
         fireNode.runAction(fireAnimation)
         //fireNode.runAction(group, withKey: "actionFireSound")
         //self.musicBgConfiguration(fireTuto)
-        
-    }
-    
-    func initClick(clickNode: SKSpriteNode){
-        clickAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(clickArray, timePerFrame: 0.3))
-        clickFadingINAnimation = SKAction.repeatActionForever(SKAction.fadeInWithDuration(1))
-        clickFadingOUTAnimation = SKAction.repeatActionForever(SKAction.fadeOutWithDuration(1))
-        let sequenceClick = SKAction.sequence([clickFadingOUTAnimation, clickFadingINAnimation])
-        let groupClick = SKAction.group([sequenceClick, clickAnimation])
-        clickNode.runAction(groupClick, withKey: "clickTutorial")
-       
         
     }
     
