@@ -78,7 +78,7 @@ class TheaterBased: SceneGameBase {
         
         curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
             self.removeObjects({
-                Dictionary<String, AnyObject>.saveGameData("StateGame", key: "currentScene", object: self.fileName)
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "currentScene", object: self.fileName)
                 self.sceneBackground.touchRuning = false
                 let sceneBaseView = self.view!.superview! as! SKView
                 self.sceneBackground.theater = self

@@ -13,6 +13,9 @@ class FarmScene: SceneDefault {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.fileName = "FarmScene"
+        self.numberLevel = 0
+        
         setCamera()
         setPositionCamera()
     }

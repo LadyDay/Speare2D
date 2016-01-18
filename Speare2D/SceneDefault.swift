@@ -12,6 +12,9 @@ import SpriteKit
 
 class SceneDefault: SKScene {
     
+    var fileName: String!
+    var numberLevel: NSNumber!
+    
     var offsetWalkScene: CGFloat = 15
     
     //flag
@@ -144,12 +147,13 @@ class SceneDefault: SKScene {
             viewBased.backgroundColor = UIColor.clearColor()
             self.view?.addSubview(viewBased)
             gameScene?.sceneBackground = scene
-            gameScene?.fileName = "TutorialScene"
+            gameScene?.fileName = currentScene.fileName
+            gameScene?.numberLevel = currentScene.numberLevel
             moveInfo(gameScene!)
             viewBased.presentScene(gameScene!, transition: fadeScene)
-            
         }else{
             if(currentScene.theater != nil){
+                saveCurrentScene(currentScene.theater, stringScene: currentScene.fileName)
                 currentScene.theater.view?.removeFromSuperview()
                 fadeScene = SKTransition.fadeWithDuration(0.1)
             }
@@ -157,8 +161,11 @@ class SceneDefault: SKScene {
             scene.theater = currentScene.theater
             scene.mainCharacter.offsetAlexWalk = scene.offsetWalkScene
             currentScene.view?.presentScene(scene, transition: fadeScene)
-            
         }
+    }
+    
+    func saveCurrentScene(gameScene: TheaterBased, stringScene: String){
+        Dictionary<String, AnyObject>.saveGameData("Level" + String(gameScene.numberLevel), key: "currentScene", object: stringScene)
     }
     
     func setCamera(){

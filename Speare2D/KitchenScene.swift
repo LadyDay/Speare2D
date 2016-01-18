@@ -18,6 +18,9 @@ class KitchenScene: SceneDefault {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.fileName = "KitchenScene"
+        self.numberLevel = 0
+        
         self.offsetWalkScene = 100
         setCamera()
         setPositionCamera()

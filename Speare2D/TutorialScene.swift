@@ -44,6 +44,9 @@ class TutorialScene: SceneDefault {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.fileName = "TutorialScene"
+        self.numberLevel = 0
+        
         setCamera()
         setPositionCamera()
         initTextureFire()

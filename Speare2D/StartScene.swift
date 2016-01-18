@@ -33,18 +33,6 @@ class StartScene: SceneDefault {
                 for nodeTouched in self.nodesAtPoint(location){
                     guard let nome = nodeTouched.name else {continue ;}
                     switch nome{
-                        /*
-                    case "Sopa De Pedra":
-                        effectConfiguration(selectionButtonSound, waitC: true)
-                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                            //Muda cena para Opção1
-                            //effectConfiguration(selectionButtonSound, waitC: true)
-                            self.touchRuning = false
-                            self.transitionNextScene(self, sceneTransition: TutorialScene(fileNamed: "TutorialScene")!, withTheater: true)
-                            //self.transitionNextScene(KitchenScene(fileNamed: "KitchenScene")!, withTheater: true)
-                        })
-                        break
-                        */
                         
                     case "maoTutorial":
                         //let position = maoTutorial.position
@@ -70,25 +58,31 @@ class StartScene: SceneDefault {
                                 if dictionaryTableLevels.indexForKey(nome) != nil {
                                     let numberLevelSelected = dictionaryTableLevels[dictionaryTableLevels.indexForKey(nome)!].1 as! NSNumber
                                     let numberLevelCurrent = dictionaryStateGame[dictionaryStateGame.indexForKey("currentLevel")!].1 as! NSNumber
-                                    //o meu level atual coencide com o selecionado
-                                    if(numberLevelCurrent.integerValue == numberLevelSelected.integerValue){
-                                        effectConfiguration(selectionButtonSound, waitC: true)
-                                        mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                                            //Muda cena para Opção1
-                                            //effectConfiguration(selectionButtonSound, waitC: true)
-                                            self.touchRuning = false
-                                            let string = "Speare2D." + (dictionaryStateGame[dictionaryStateGame.indexForKey("currentScene")!].1 as! String)
-                                            print(string)
-                                            let anyobjectype : AnyObject.Type = NSClassFromString(string)!
-                                            let classString : SKScene.Type = anyobjectype as! SKScene.Type
-                                            let sceneTransition = classString.init(fileNamed: dictionaryStateGame[dictionaryStateGame.indexForKey("currentScene")!].1 as! String)
-                                            self.transitionNextScene(self, sceneTransition: sceneTransition!, withTheater: true)
+                                    
+                                    if let dictionaryLevel = Dictionary<String, AnyObject>.loadGameData("Level"+String(numberLevelSelected)){
+                                        //o meu level atual coencide com o selecionado
+                                        if(numberLevelSelected.integerValue <= numberLevelCurrent.integerValue){
+                                            effectConfiguration(selectionButtonSound, waitC: true)
+                                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                                //Muda cena para Opção1
+                                                //effectConfiguration(selectionButtonSound, waitC: true)
+                                                self.fileName = dictionaryLevel["currentScene"] as! String
+                                                self.numberLevel = numberLevelSelected
+                                                
+                                                self.touchRuning = false
+                                                let string = "Speare2D." + (dictionaryLevel[dictionaryLevel.indexForKey("currentScene")!].1 as! String)
+                                                print(string)
+                                                let anyobjectype : AnyObject.Type = NSClassFromString(string)!
+                                                let classString : SKScene.Type = anyobjectype as! SKScene.Type
+                                                let sceneTransition = classString.init(fileNamed: dictionaryLevel[dictionaryLevel.indexForKey("currentScene")!].1 as! String)
+                                                self.transitionNextScene(self, sceneTransition: sceneTransition!, withTheater: true)
                                             })
-                                    }else if (numberLevelCurrent.integerValue > numberLevelSelected.integerValue){
-                                        
-                                    }else{
-                                        //tentando reproduzir um level maior do que o atual
-                                        self.touchRuning = false
+                                        }else if (numberLevelCurrent.integerValue > numberLevelSelected.integerValue){
+                                            self.touchRuning = false
+                                        }else{
+                                            //tentando reproduzir um level maior do que o atual
+                                            self.touchRuning = false
+                                        }
                                     }
                                 }else{
                                     if location.y<200 {

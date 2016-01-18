@@ -17,9 +17,6 @@ class SceneGameBase: SceneDefault {
     static var itenComing: Bool = false
     static var itenFromInventory: SKSpriteNode!
     
-    //arquivo
-    var fileName: String!
-    
     /*SWIPE's FUNCTION */
     func addSwipes(view: UIView){
         //Add swipe in the view (self.view)
