@@ -9,6 +9,12 @@
 import SpriteKit
 
 class TutorialScene: SceneDefault {
+    var clickArray = Array<SKTexture>()
+    let clickAtlas = SKTextureAtlas(named: "click.atlas")
+    var clickAnimation = SKAction()
+    var clickFadingINAnimation = SKAction()
+    var clickFadingOUTAnimation = SKAction()
+    
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
     var fireAnimation = SKAction()
@@ -41,6 +47,7 @@ class TutorialScene: SceneDefault {
     let exitButton = UIButton()
     let yesButton = UIButton()
     let noButton = UIButton()
+    //let pedraSprite = childNodeWithName()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -50,6 +57,8 @@ class TutorialScene: SceneDefault {
         initFire(self.childNodeWithName("fire") as! SKSpriteNode)
         initArrayNPC()
         initNPC(self.childNodeWithName("velha")as! SKSpriteNode, travellerNode: self.childNodeWithName("viajante")as! SKSpriteNode)
+        initClickTexture()
+        initClick(self.childNodeWithName("clique") as! SKSpriteNode)
         
         ballonIsPresentedCounter = 0
         //imageViewBallon.frame = CGRect(x: 0, y: 0, width: 187.25, height: 107.75)
@@ -110,56 +119,48 @@ class TutorialScene: SceneDefault {
                             self.theater.showVisionButtonsScene()
                         })
                         break
+                        
                     case "viajante":
                         //changes the scene for the garden
                         theater.removeVisionButtonsScene()
                         let sprite = nodeTouched as! SKSpriteNode
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
                             self.touchRuning = false
-                            // o que fazer?
                             self.ballonIsPresented = true
-                            //nodeTouched.runAction(self.talkingNPC(nodeTouched as! SKSpriteNode), withKey: "falando")
+
                             
                             //lê informação do arquivo
                             if let dictionaryBallonTraveller = Dictionary<String, AnyObject>.loadGameData("Characters") {
-                                let number = dictionaryBallonTraveller["Viajante"]
+                                TutorialScene.ballonTraveller = dictionaryBallonTraveller["Viajante"] as! Int
                             }
                             
                             switch TutorialScene.ballonTraveller{
+                                
                             case 0:
+                                
+                                /*      Me ajuda a fazer a sopa?
+                                            Sim ou Não?                 */
+                                
                                 self.setupBallonView("me ajuda a fazer a sopa.png")
                                 self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
                                 self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 32, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-
-                                
-                                //sim ou nao
                                 break
+                                
                             case 1:
-                                //balao listando ingredientes
-                                //informativo
+                                
+                                /*  Preciso de Pedras, Temperos e Legumes
+                                                    Ok                        */
                                 
 
                                 self.setupBallonView("preciso de tais coisas.png")
                                 self.setupButton(self.noButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-                                
-                                
-                                
                                 break
-//                            case 2:
-//                                
-//                                
-//                                //balao quando todos os ingredientes foram entregues
-//                                //a sopa ta pronta
-//                                //informativo
-//                                
-//                                self.setupBallonView("tela de pause.png")
-//                                self.setupButton(self.noButton, image: "Red_play_button.png", tag: 32, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-//                                
-//                                
-//                                break
-                            case 2/*3*/:
-                                // vamos dividir com a velha?
-                                //sim ou nao
+
+                            case 2:
+                                
+                                
+                                /*      Vamos dividir com a velha?
+                                                    Sim ou Não?                 */
                                 self.setupBallonView("vamos-dividir-a-sopa-com-ela.png")
                                 self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
                                 self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
@@ -167,7 +168,8 @@ class TutorialScene: SceneDefault {
                                 
                                 break
                             default:
-                                //mensagem padrao?
+                                /*      Tem certeza?           */
+                               
                                 self.setupBallonView("temctz.png")
                                 self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
                                 self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
@@ -188,9 +190,15 @@ class TutorialScene: SceneDefault {
                             
                             //nodeTouched.runAction(self.talkingNPC(nodeTouched as! SKSpriteNode), withKey: "falando")
                             
+                            //lê informação do arquivo
+                            if let dictionaryBallonTraveller = Dictionary<String, AnyObject>.loadGameData("Characters") {
+                                TutorialScene.ballonOldie = dictionaryBallonTraveller["Velha"] as! Int
+                            }
                             
                             switch TutorialScene.ballonOldie{
                             case 0:
+                                
+                                
                                 self.setupBallonView("tome essa chave.png")
                                 self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
                                 
@@ -200,7 +208,11 @@ class TutorialScene: SceneDefault {
                                 TutorialScene.ballonOldie = 1
                                 //}
                                 break
+                                
                             case 1:
+                                
+                                /*      Vamos ver se essa sopa vai ser boa...       */
+                                
                                 self.setupBallonView("vamos ver se essa sopa vai ser boa.png")
                                 self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
                                 if (TutorialScene.ballonTraveller >= 2){
@@ -208,6 +220,7 @@ class TutorialScene: SceneDefault {
                                 }
                                
                                 break
+                                
                             default:
                                 self.setupBallonView("nunca tomei uma sopa tao boa.png")
                                 self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
@@ -241,6 +254,11 @@ class TutorialScene: SceneDefault {
         }
     }
     
+    func initClickTexture(){
+        clickArray.append(clickAtlas.textureNamed("clique1"))
+        clickArray.append(clickAtlas.textureNamed("clique2"))
+    }
+    
     func initTextureFire() {
         fireArray.append(fireAtlas.textureNamed("fogo1"))
         fireArray.append(fireAtlas.textureNamed("fogo2"))
@@ -256,6 +274,16 @@ class TutorialScene: SceneDefault {
         
     }
     
+    func initClick(clickNode: SKSpriteNode){
+        clickAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(clickArray, timePerFrame: 0.3))
+        clickFadingINAnimation = SKAction.repeatActionForever(SKAction.fadeInWithDuration(1))
+        clickFadingOUTAnimation = SKAction.repeatActionForever(SKAction.fadeOutWithDuration(1))
+        let sequenceClick = SKAction.sequence([clickFadingOUTAnimation, clickFadingINAnimation])
+        let groupClick = SKAction.group([sequenceClick, clickAnimation])
+        clickNode.runAction(groupClick, withKey: "clickTutorial")
+       
+        
+    }
     
     func initArrayNPC() {
         oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0006_piscando1_360x476.png"))
@@ -356,71 +384,82 @@ class TutorialScene: SceneDefault {
             effectConfiguration(dialoguePopup, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
-            //ballonIsPresentedCounter = 0
             ballon.removeFromSuperview()
             break
+            
         case 31:
-            print("Button tapped tag 31: YEEEES")
+            //Escolheu ajudar o viajante
+            print("Button tapped tag 31: Escolheu ajudar o viajante")
             effectConfiguration(applauseSound, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
-            TutorialScene.ballonTraveller = 1
+            //TutorialScene.ballonTraveller = 1
             
             //salva o dado no arquivo
             Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 1)
-            
             ballon.removeFromSuperview()
-            
             break
+            
         case 32:
-            print("Button tapped tag 32: NOOOO")
+            //Escolheu ajudar o viajante
+            print("Button tapped tag 32: Escolheu NÃO ajudar o viajante")
             //effectConfiguration(metalEffectSound, waitC: true)
             effectConfiguration(vaia2, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
-            TutorialScene.ballonTraveller = 0
+            //TutorialScene.ballonTraveller = 0
             //ballonIsPresentedCounter = 0
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 0)
             ballon.removeFromSuperview()
             break
+            
         case 33:
             print("Button tapped tag 33: nao quis ajudar")
             effectConfiguration(vaia2, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
-            TutorialScene.ballonTraveller = -1
+            //TutorialScene.ballonTraveller = -1
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: -1)
             ballon.removeFromSuperview()
             break
+            
         case 34:
             print("Button tapped tag 34: quer ajudar")
             effectConfiguration(applauseSound, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
-            TutorialScene.ballonTraveller = 1
+            //TutorialScene.ballonTraveller = 1
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 1)
             ballon.removeFromSuperview()
             break
+            
         case 35:
             print("Button tapped tag 35: quer dividir")
             effectConfiguration(applauseSound, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
-            TutorialScene.ballonTraveller = 4
+            //TutorialScene.ballonTraveller = 4
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 4)
             ballon.removeFromSuperview()
             acabouBebe()
             self.touchRuning = true
             break
+            
         case 36:
             print("Button tapped tag 36: pegou chave")
             
             effectConfiguration(dialoguePopup, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
-            TutorialScene.ballonOldie = 1
+            //TutorialScene.ballonOldie = 1
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Velha", object: 1)
             ballon.removeFromSuperview()
             break
+            
         case 100:
             print("acabou")
             
@@ -428,6 +467,8 @@ class TutorialScene: SceneDefault {
             ballon.cheetah.scale(0.5).duration(3).run()
             ballonIsPresented = false
             TutorialScene.ballonOldie = 1
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Velha", object: 1)
+            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 0)
             ballon.removeFromSuperview()
             theater.transitionNextScene(self, sceneTransition: StartScene(fileNamed:"StartScene")!, withTheater: false)
 //            theater!.flagCurtinsClosed = true
