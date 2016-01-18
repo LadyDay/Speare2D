@@ -47,6 +47,9 @@ class TutorialScene: SceneDefault {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        self.fileName = "TutorialScene"
+        self.numberLevel = 0
+        
         setCamera()
         setPositionCamera()
         initTextureFire()
@@ -157,7 +160,8 @@ class TutorialScene: SceneDefault {
 
                             
                             //lê informação do arquivo
-                            if let dictionaryBallonTraveller = Dictionary<String, AnyObject>.loadGameData("Characters") {
+                            if let dictionary = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                                let dictionaryBallonTraveller = dictionary["Characters"] as! NSDictionary
                                 TutorialScene.ballonTraveller = dictionaryBallonTraveller["Viajante"] as! Int
                             }
                             
@@ -218,8 +222,9 @@ class TutorialScene: SceneDefault {
                             //nodeTouched.runAction(self.talkingNPC(nodeTouched as! SKSpriteNode), withKey: "falando")
                             
                             //lê informação do arquivo
-                            if let dictionaryBallonTraveller = Dictionary<String, AnyObject>.loadGameData("Characters") {
-                                TutorialScene.ballonOldie = dictionaryBallonTraveller["Velha"] as! Int
+                            if let dictionary = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                                let dictionaryBallonOldie = dictionary["Characters"] as! NSDictionary
+                                TutorialScene.ballonOldie = dictionaryBallonOldie["Velha"] as! Int
                             }
                             
                             switch TutorialScene.ballonOldie{
@@ -413,7 +418,13 @@ class TutorialScene: SceneDefault {
             //TutorialScene.ballonTraveller = 1
             
             //salva o dado no arquivo
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 1)
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(1, forKey: "Viajante")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
             ballon.removeFromSuperview()
             break
             
@@ -426,7 +437,13 @@ class TutorialScene: SceneDefault {
             ballonIsPresented = false
             //TutorialScene.ballonTraveller = 0
             //ballonIsPresentedCounter = 0
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 0)
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(0, forKey: "Viajante")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
             ballon.removeFromSuperview()
             break
             
@@ -437,7 +454,13 @@ class TutorialScene: SceneDefault {
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
             //TutorialScene.ballonTraveller = -1
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: -1)
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(-1, forKey: "Viajante")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
             ballon.removeFromSuperview()
             break
             
@@ -448,7 +471,13 @@ class TutorialScene: SceneDefault {
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
             //TutorialScene.ballonTraveller = 1
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 1)
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(1, forKey: "Viajante")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
             ballon.removeFromSuperview()
             break
             
@@ -459,7 +488,13 @@ class TutorialScene: SceneDefault {
             ballonIsPresented = false
             //ballonIsPresentedCounter = 0
             //TutorialScene.ballonTraveller = 4
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 4)
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(4, forKey: "Viajante")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
             ballon.removeFromSuperview()
             acabouBebe()
             self.touchRuning = true
@@ -472,7 +507,13 @@ class TutorialScene: SceneDefault {
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             //TutorialScene.ballonOldie = 1
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Velha", object: 1)
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(1, forKey: "Velha")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
             ballon.removeFromSuperview()
             break
             
@@ -483,10 +524,21 @@ class TutorialScene: SceneDefault {
             ballon.cheetah.scale(0.5).duration(3).run()
             ballonIsPresented = false
             TutorialScene.ballonOldie = 1
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Velha", object: 1)
-            Dictionary<String, AnyObject>.saveGameData("Characters", key: "Viajante", object: 0)
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(0, forKey: "Viajante")
+                dict.setValue(1, forKey: "Velha")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
             ballon.removeFromSuperview()
             theater.transitionNextScene(self, sceneTransition: StartScene(fileNamed:"StartScene")!, withTheater: false)
+            
+            //limpar os arquivos
+            Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Finished", object: NSArray())
+            Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Inventory", object: NSDictionary())
+            
 //            theater!.flagCurtinsClosed = true
 //            theater!.transitionSceneBackground(true)
 //            theater.curtains.runAction(SKAction.animateWithTextures(theater.animationCurtainsClosed, timePerFrame: 0.1))

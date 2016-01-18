@@ -43,7 +43,16 @@ class Inventory: SKScene {
     
     func addObjectInFile(object: SKSpriteNode, state: AnyObject){
         let string = SKTexture.returnNameTexture(object.texture!)
-        Dictionary<String, AnyObject>.saveGameData("Inventory", key: string, object: state)
+        if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(gameScene.numberLevel)) {
+            let indexDataScene = dictionaryDataScene.indexForKey("Inventory")
+            let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+            var dictMexer = dict as Dictionary
+            dictMexer[string] = state
+            
+            Dictionary<String, AnyObject>.saveGameData("Level" + String(gameScene.numberLevel), key: "Inventory", object: dictMexer)
+        }
+        
+        //Dictionary<String, AnyObject>.saveGameData("Inventory", key: string, object: state)
     }
     
     //clear color of the all lots
@@ -55,16 +64,17 @@ class Inventory: SKScene {
                 lot.color = UIColor.clearColor()
             }
         //inicializa as texturas salvas no arquivo
-        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Inventory") {
+        if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(gameScene.numberLevel)) {
+            let indexDataScene = dictionaryDataScene.indexForKey("Inventory")
+            let dictionary = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+            
             var j = 0;
             for object in dictionary{
-                if(object.0 != "XInitializerItem"){
-                    if(object.1 as! Bool){
-                        print(object.0)
-                        let lot = self.childNodeWithName("lot\(j)") as! SKSpriteNode
-                        lot.texture = SKTexture(imageNamed: object.0)
-                        j++
-                    }
+                if(object.1 as! Bool){
+                    print(object.0)
+                    let lot = self.childNodeWithName("lot\(j)") as! SKSpriteNode
+                    lot.texture = SKTexture(imageNamed: object.0 as! String)
+                    j++
                 }
             }
         }

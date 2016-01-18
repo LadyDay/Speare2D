@@ -11,10 +11,7 @@
 		3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0545351BD7C45500D1DC0A /* Inventory.swift */; };
 		3D11CC501C143AA800DEFDD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */; };
 		3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC511C143FE800DEFDD6 /* StateGame.plist */; };
-		3D11CC541C14402F00DEFDD6 /* TutorialScene.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */; };
-		3D11CC561C145A6300DEFDD6 /* Inventory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC551C145A6300DEFDD6 /* Inventory.plist */; };
-		3D11CC5A1C14AC0F00DEFDD6 /* CurrentLevel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC591C14AC0F00DEFDD6 /* CurrentLevel.plist */; };
-		3D11CC5C1C14ACAC00DEFDD6 /* Characters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC5B1C14ACAC00DEFDD6 /* Characters.plist */; };
+		3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC531C14402E00DEFDD6 /* Level0.plist */; };
 		3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94C1BFD1DAF0022511E /* Bezier.swift */; };
 		3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */; };
 		3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */; };
@@ -115,10 +112,7 @@
 		3D0545351BD7C45500D1DC0A /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3D11CC511C143FE800DEFDD6 /* StateGame.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StateGame.plist; sourceTree = "<group>"; };
-		3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TutorialScene.plist; sourceTree = "<group>"; };
-		3D11CC551C145A6300DEFDD6 /* Inventory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Inventory.plist; sourceTree = "<group>"; };
-		3D11CC591C14AC0F00DEFDD6 /* CurrentLevel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CurrentLevel.plist; sourceTree = "<group>"; };
-		3D11CC5B1C14ACAC00DEFDD6 /* Characters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Characters.plist; sourceTree = "<group>"; };
+		3D11CC531C14402E00DEFDD6 /* Level0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level0.plist; sourceTree = "<group>"; };
 		3D4CC94C1BFD1DAF0022511E /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
 		3D4CC94D1BFD1DAF0022511E /* Cheetah.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cheetah.h; sourceTree = "<group>"; };
 		3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cheetah.swift; sourceTree = "<group>"; };
@@ -234,11 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				BE760D551C14D0A800040264 /* TableNamesLevels.plist */,
-				3D11CC551C145A6300DEFDD6 /* Inventory.plist */,
 				3D11CC511C143FE800DEFDD6 /* StateGame.plist */,
-				3D11CC591C14AC0F00DEFDD6 /* CurrentLevel.plist */,
-				3D11CC5B1C14ACAC00DEFDD6 /* Characters.plist */,
-				3D11CC531C14402E00DEFDD6 /* TutorialScene.plist */,
+				3D11CC531C14402E00DEFDD6 /* Level0.plist */,
 			);
 			name = Arquivos;
 			sourceTree = "<group>";
@@ -554,7 +545,6 @@
 				BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */,
 				BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */,
 				3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */,
-				3D11CC561C145A6300DEFDD6 /* Inventory.plist in Resources */,
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				BE1FAE661C14FDB30016B077 /* idosaPiscando.atlas in Resources */,
@@ -566,7 +556,7 @@
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
 				BE81EE681C13C2530022FC3E /* Princess_bubblegum_character.png in Resources */,
 				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
-				3D11CC541C14402F00DEFDD6 /* TutorialScene.plist in Resources */,
+				3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */,
 				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BE1FAE641C14F4130016B077 /* viajantePiscando.atlas in Resources */,
@@ -582,7 +572,6 @@
 				BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */,
 				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
 				BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */,
-				3D11CC5C1C14ACAC00DEFDD6 /* Characters.plist in Resources */,
 				BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */,
 				BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */,
 				BE7597E91BD73683005608E1 /* StartScene.sks in Resources */,
@@ -593,7 +582,6 @@
 				BE81EE6A1C13C25B0022FC3E /* traveller.png in Resources */,
 				BE152AB51C1599FB00785BC9 /* finishedLevel.atlas in Resources */,
 				BE7597F81BD78826005608E1 /* TutorialScene.sks in Resources */,
-				3D11CC5A1C14AC0F00DEFDD6 /* CurrentLevel.plist in Resources */,
 				3DC44D141BD52E0400502BF0 /* Main.storyboard in Resources */,
 				3D0545341BD7C44600D1DC0A /* Inventory.sks in Resources */,
 				3D5E386B1BF5382F00D59321 /* TheaterBased.sks in Resources */,

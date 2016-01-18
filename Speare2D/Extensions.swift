@@ -59,7 +59,6 @@ extension Dictionary {
         
         dict.setDictionary(self.loadGameData(filename)!)
         //saving values
-        
         dict.setObject(object, forKey: key)
 
         //writing to GameData.plist

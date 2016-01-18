@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>currentScene</key>
+	<string>TutorialScene</string>
+	<key>Characters</key>
+	<dict>
+		<key>Viajante</key>
+		<integer>0</integer>
+		<key>Velha</key>
+		<integer>0</integer>
+	</dict>
+	<key>Inventory</key>
+	<dict/>
 	<key>Finished</key>
 	<array/>
 	<key>caldeirao</key>
