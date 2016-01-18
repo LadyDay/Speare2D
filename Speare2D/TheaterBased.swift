@@ -50,7 +50,6 @@ class TheaterBased: SceneGameBase {
             animationCurtainsOpen.append(SKTexture(imageNamed: "cortinaFechando" + String(j)))
         }
         
-        
         flagCurtinsClosed = true
         transitionSceneBackground(true)
         pauseMenuPresent = false
@@ -65,7 +64,7 @@ class TheaterBased: SceneGameBase {
         
         //call function setupAlex
         self.mainCharacter.setupAlex()
-        addChild(mainCharacter)
+        self.addChild(mainCharacter)
         
         print("Touch: \(pauseMenuPresent)")
     }
@@ -133,7 +132,7 @@ class TheaterBased: SceneGameBase {
                 }
             }
         }
-        print("Touch: \(pauseMenuPresent)")
+        //print("Touch: \(pauseMenuPresent)")
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -348,6 +347,9 @@ class TheaterBased: SceneGameBase {
                 break
                 
             case "cordaInventario":
+                break
+                
+            case "Alex":
                 break
                 
             default:

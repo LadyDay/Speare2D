@@ -15,6 +15,8 @@ class Inventory: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
+        //Se há um sprite de tutorial da mão, remover!
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

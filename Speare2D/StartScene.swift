@@ -45,6 +45,14 @@ class StartScene: SceneDefault {
                         })
                         break
                         */
+                        
+                    case "maoTutorial":
+                        //let position = maoTutorial.position
+                        //remove o sprite
+                        //chama a função de mover a Alex até o ponto onde estava a mão
+                        
+                        break
+                        
                     case "exitNode":
                         effectConfiguration(backButtonSound, waitC: true)
                         //chama a animação para a bilheteria
@@ -75,7 +83,7 @@ class StartScene: SceneDefault {
                                             let classString : SKScene.Type = anyobjectype as! SKScene.Type
                                             let sceneTransition = classString.init(fileNamed: dictionaryStateGame[dictionaryStateGame.indexForKey("currentScene")!].1 as! String)
                                             self.transitionNextScene(self, sceneTransition: sceneTransition!, withTheater: true)
-                                        })
+                                            })
                                     }else if (numberLevelCurrent.integerValue > numberLevelSelected.integerValue){
                                         
                                     }else{

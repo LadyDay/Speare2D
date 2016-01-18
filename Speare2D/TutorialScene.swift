@@ -77,6 +77,13 @@ class TutorialScene: SceneDefault {
 
                     switch nodeTouched.name!{
                         
+                    case "maoTutorial":
+                        //let position = maoTutorial.position
+                        //remove o sprite
+                        //chama a função de mover a Alex até o ponto onde estava a mão
+                        
+                        break
+                        
                     case "hortaNode":
                         //changes the scene for the garden
                         self.removeAllActions()
