@@ -278,28 +278,28 @@ class TheaterBased: SceneGameBase {
         for object in sceneBackground.children{
             if(object.name == nil && !object.isKindOfClass(SKAudioNode)){
                 let string = SKTexture.returnNameTexture((object as! SKSpriteNode).texture!)
-                if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("TutorialScene") {
+                if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
                     let indexDataScene = dictionaryDataScene.indexForKey("Finished")
                     let array = dictionaryDataScene[indexDataScene!].1 as! NSArray
                     if !(array.containsObject(string)) {
-                        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Inventory") {
-                            if let index = dictionary.indexForKey(string) {
-                                let dict = dictionary[index].1 as! Bool
-                                if(dict){
-                                    object.removeFromParent()
-                                }else{
-                                    print(object.name)
-                                    let objectInTheater = object
-                                    object.removeFromParent()
-                                    addChild(objectInTheater)
-                                }
+                        let dictionary = dictionaryDataScene[dictionaryDataScene.indexForKey("Inventory")!].1 as! NSDictionary
+                        let dict = dictionary as! Dictionary<String, AnyObject>
+                        if let objectDict = dict[string] {
+                            let objectBool = objectDict as! Bool
+                            if(objectBool){
+                                object.removeFromParent()
                             }else{
-                                //o objeto nunca entrou no inventario
                                 print(object.name)
                                 let objectInTheater = object
                                 object.removeFromParent()
                                 addChild(objectInTheater)
                             }
+                        }else{
+                            //o objeto nunca entrou no inventario
+                            print(object.name)
+                            let objectInTheater = object
+                            object.removeFromParent()
+                            addChild(objectInTheater)
                         }
                     }else{
                         //o objeto já cumpriu sua função
