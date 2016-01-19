@@ -223,16 +223,6 @@ class TutorialScene: SceneDefault {
                         
                     case "viajante":
                         //changes the scene for the garden
-                        theater.removeVisionButtonsScene()
-                        
-                        if let mao = self.theater.childNodeWithName("cliqueViajante"){
-                            mao.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
-                                mao.removeFromParent()
-                                if let mao2 = self.theater.childNodeWithName("cliqueChao"){
-                                    mao2.hidden = false
-                                }
-                            })
-                        }
                         
                         theater.removeVisionButtonsScene()
 
