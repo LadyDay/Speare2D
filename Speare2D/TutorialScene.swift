@@ -486,7 +486,7 @@ class TutorialScene: SceneDefault {
             break
             
         case 33:
-            print("Button tapped tag 33: nao quis ajudar")
+            print("Button tapped tag 33: NÃO vamos dividir a sopa")
             effectConfiguration(vaia2, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
@@ -520,7 +520,7 @@ class TutorialScene: SceneDefault {
             break
             
         case 35:
-            print("Button tapped tag 35: quer dividir")
+            print("Button tapped tag 35: VAMOS dividir a sopa")
             effectConfiguration(applauseSound, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
@@ -538,22 +538,22 @@ class TutorialScene: SceneDefault {
             self.touchRuning = true
             break
             
-        case 36:
-            print("Button tapped tag 36: pegou chave")
-            
-            effectConfiguration(dialoguePopup, waitC: true)
-            ballon.cheetah.scale(0.5).duration(2).run()
-            ballonIsPresented = false
-            //TutorialScene.ballonOldie = 1
-            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
-                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
-                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
-                dict.setValue(1, forKey: "Velha")
-                
-                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
-            }
-            ballon.removeFromSuperview()
-            break
+//        case 36:
+//            print("Button tapped tag 36: pegou chave")
+//            
+//            effectConfiguration(dialoguePopup, waitC: true)
+//            ballon.cheetah.scale(0.5).duration(2).run()
+//            ballonIsPresented = false
+//            //TutorialScene.ballonOldie = 1
+//            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+//                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+//                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+//                dict.setValue(1, forKey: "Velha")
+//                
+//                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+//            }
+//            ballon.removeFromSuperview()
+//            break
             
         case 100:
             print("acabou")
@@ -566,7 +566,7 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(0, forKey: "Viajante")
-                dict.setValue(1, forKey: "Velha")
+                dict.setValue(0, forKey: "Velha")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
