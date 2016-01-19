@@ -61,15 +61,33 @@ class TutorialScene: SceneDefault {
         initClickTexture()
         
         
-        if (clickChao == false){
-            clickChao = true
-            initClick(self.childNodeWithName("clique") as! SKSpriteNode)
-        } else {
-            self.childNodeWithName("clique")?.removeFromParent()
+        
+        //Colocar um if para arquivos, para apenas exibir essa mão na primeira vez:
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+            let click = dictionary["cliqueChao"] as! Bool
+            let click2 = dictionary["cliqueViajante"] as! Bool
+            let click3 = dictionary["cliquePedras"] as! Bool
+            if(!click){
+                initClick(self.childNodeWithName("cliqueChao") as! SKSpriteNode)
+                self.childNodeWithName("cliqueViajante")?.hidden = true
+                self.childNodeWithName("cliquePedras")?.hidden = true
+            }else if (!click2){
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                initClick(self.childNodeWithName("cliqueViajante") as! SKSpriteNode)
+                self.childNodeWithName("cliquePedras")?.hidden = true
+            }else if  (!click3){
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                initClick(self.childNodeWithName("cliquePedras") as! SKSpriteNode)
+            }else{
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                self.childNodeWithName("cliquePedras")?.removeFromParent()
+            }
         }
         
-        self.childNodeWithName("cliqueViajante")?.hidden = true
-        self.childNodeWithName("cliqueChao")?.hidden = true
+        
+        
         
         
         ballonIsPresentedCounter = 0
@@ -96,7 +114,7 @@ class TutorialScene: SceneDefault {
 
                     switch nodeTouched.name!{
                         
-                    case "clique":
+                    case "cliqueChao":
                         
                         theater.removeVisionButtonsScene()
                         let sprite = nodeTouched as! SKSpriteNode
@@ -104,22 +122,22 @@ class TutorialScene: SceneDefault {
                             sprite.removeFromParent()})
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: sprite.size), completion: {
                             self.touchRuning = false
-                            let mao2 = self.theater.childNodeWithName("cliqueViajante")
-                            mao2!.runAction(SKAction.fadeAlphaTo(1, duration: 0.5), completion: {
-                                mao2?.hidden = false})
-                                self.initClick(mao2 as! SKSpriteNode)})
+                            if let mao2 = self.theater.childNodeWithName("cliqueViajante") {
+                                mao2.runAction(SKAction.fadeAlphaTo(1, duration: 0.5), completion: {
+                                    mao2.hidden = false
+                                    self.initClick(mao2 as! SKSpriteNode)
+                            })}
+                        })
+                        
+                        Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueChao", object: true)
+                        
                         break
                         
                     case "cliqueViajante":
                         
                         //changes the scene for the garden
                         theater.removeVisionButtonsScene()
-                        let mao = self.theater.childNodeWithName("cliqueViajante")
-                        mao!.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
-                            mao?.removeFromParent()
-                            let mao2 = self.theater.childNodeWithName("cliqueChao")
-                            mao2?.hidden = false
-                            self.initClick(mao2 as! SKSpriteNode)})
+                        
                         
                         let sprite = nodeTouched as! SKSpriteNode
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
@@ -131,14 +149,24 @@ class TutorialScene: SceneDefault {
                                 TutorialScene.ballonTraveller = dictionaryBallonTraveller["Viajante"] as! Int
                             }
                             self.showBallon(TutorialScene.ballonTraveller)
-                            self.theater.showVisionButtonsScene()
+                            if (self.clickChao == true){
+                                let mao = self.theater.childNodeWithName("cliqueViajante")
+                                mao!.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                                    mao?.removeFromParent()
+                                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueViajante", object: true)
+                                })
+                                let mao2 = self.theater.childNodeWithName("cliquePedras")
+                                mao2?.hidden = false
+                                self.initClick(mao2 as! SKSpriteNode)
+                                self.theater.showVisionButtonsScene()
+                            }
                             
                         })
                         
                     break
                         
                         
-                    case "cliqueChao":
+                    case "cliquePedras":
                         
                         theater.removeVisionButtonsScene()
                         
@@ -153,7 +181,7 @@ class TutorialScene: SceneDefault {
                         if(SKTexture.returnNameTexture(object.texture!) == "pedras"){
                             self.theater.catchObject(self.theater, location: location, object: self.theater.nodesAtPoint(location)[theater.nodesAtPoint(location).startIndex.advancedBy(2)])
                         }
-                        
+                        Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliquePedras", object: true)
                         self.touchRuning = false
                         break
                         
@@ -186,29 +214,30 @@ class TutorialScene: SceneDefault {
                         
                     case "viajante":
                         //changes the scene for the garden
+                        
                         theater.removeVisionButtonsScene()
-                        
-                        let mao = self.theater.childNodeWithName("cliqueViajante")
-                        mao!.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
-                            mao?.removeFromParent()
-                            let mao2 = self.theater.childNodeWithName("cliqueChao")
-                            mao2?.hidden = false})
-                        
+
                         let sprite = nodeTouched as! SKSpriteNode
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
                             self.touchRuning = false
                             self.ballonIsPresented = true
-
-                            
                             //lê informação do arquivo
                             if let dictionary = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
                                 let dictionaryBallonTraveller = dictionary["Characters"] as! NSDictionary
                                 TutorialScene.ballonTraveller = dictionaryBallonTraveller["Viajante"] as! Int
                             }
-                            
                             self.showBallon(TutorialScene.ballonTraveller)
-                            
-                            
+                            if (self.clickChao == true){
+                                if let mao = self.theater.childNodeWithName("cliqueViajante") {
+                                    mao.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                                        mao.removeFromParent()
+                                        Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueViajante", object: true)
+                                    })
+                                let mao2 = self.theater.childNodeWithName("cliquePedras")
+                                mao2?.hidden = false
+                                self.initClick(mao2 as! SKSpriteNode)
+                                }
+                            }
                             self.theater.showVisionButtonsScene()
                             
                         })
@@ -273,7 +302,8 @@ class TutorialScene: SceneDefault {
                             theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                 if let mao = self.theater.childNodeWithName("clique"){
                                     mao.runAction(SKAction.fadeAlphaTo(0, duration: 1), completion: {
-                                        mao.removeFromParent()})
+                                        mao.removeFromParent()
+                                        Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueChao", object: true)})
                                     let mao2 = self.theater.childNodeWithName("cliqueViajante")
                                     mao2!.runAction(SKAction.fadeAlphaTo(1, duration: 1), completion: {
                                         mao2?.hidden = false
@@ -419,6 +449,7 @@ class TutorialScene: SceneDefault {
             
         case 31:
             //Escolheu ajudar o viajante
+            self.clickChao = true
             print("Button tapped tag 31: Escolheu ajudar o viajante")
             effectConfiguration(applauseSound, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
@@ -434,11 +465,13 @@ class TutorialScene: SceneDefault {
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
+            
             ballon.removeFromSuperview()
             break
             
         case 32:
-            //Escolheu ajudar o viajante
+            //Escolheu não ajudar o viajante
+            self.clickChao =  false
             print("Button tapped tag 32: Escolheu NÃO ajudar o viajante")
             //effectConfiguration(metalEffectSound, waitC: true)
             effectConfiguration(vaia2, waitC: true)
