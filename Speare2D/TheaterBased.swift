@@ -51,7 +51,7 @@ class TheaterBased: SceneGameBase {
         }
         
         flagCurtinsClosed = true
-        transitionSceneBackground(true)
+        transitionSceneBackground(true, completion: {})
         pauseMenuPresent = false
         
         mainCharacter.name = "Alex"
@@ -69,7 +69,7 @@ class TheaterBased: SceneGameBase {
         print("Touch: \(pauseMenuPresent)")
     }
     
-    func transitionSceneBackground(backgroundBlack: Bool){
+    func transitionSceneBackground(backgroundBlack: Bool, completion: (Void) -> Void){
         
         if(inventoryPresent==true){
             swipeUp()
@@ -78,7 +78,8 @@ class TheaterBased: SceneGameBase {
         
         curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
             self.removeObjects({
-                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "currentScene", object: self.fileName)
+                self.userInteractionEnabled = false
+                self.view?.superview?.userInteractionEnabled = false
                 self.sceneBackground.touchRuning = false
                 let sceneBaseView = self.view!.superview! as! SKView
                 self.sceneBackground.theater = self
@@ -88,7 +89,12 @@ class TheaterBased: SceneGameBase {
                 //self.removeFromParent()
                 //self.sceneBackground.backgroundMusic.removeFromParent()
                 self.addObjects()
+                
+                completion()
+                
                 self.curtains.runAction(SKAction.animateWithTextures(self.animationCurtainsOpen, timePerFrame: 0.1), completion: {
+                    self.userInteractionEnabled = true
+                    self.view?.superview?.userInteractionEnabled = true
                     self.flagCurtinsClosed = false
                     self.showVisionButtonsScene()
                 })

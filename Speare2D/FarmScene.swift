@@ -16,6 +16,8 @@ class FarmScene: SceneDefault {
         self.fileName = "FarmScene"
         self.numberLevel = 0
         
+        Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "currentScene", object: self.fileName)
+        
         setCamera()
         setPositionCamera()
     }
@@ -43,7 +45,12 @@ class FarmScene: SceneDefault {
                             self.theater!.sceneBackground = TutorialScene(fileNamed: "TutorialScene")
                             self.theater.fileName = "TutorialScene"
                             self.theater!.flagCurtinsClosed = true
-                            self.theater!.transitionSceneBackground(false)
+                            self.theater!.transitionSceneBackground(false, completion: {
+                                self.theater!.mainCharacter.position.x = 1881
+                                if(self.theater!.mainCharacter.xScale>0){
+                                    self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
+                                }
+                            })
                             self.theater.showVisionButtonsScene()
                         })
                         break
@@ -55,7 +62,12 @@ class FarmScene: SceneDefault {
                             self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
                             self.theater.fileName = "KitchenScene"
                             self.theater!.flagCurtinsClosed = true
-                            self.theater!.transitionSceneBackground(false)
+                            self.theater!.transitionSceneBackground(false, completion: {
+                                self.theater!.mainCharacter.position.x = 1881
+                                if(self.theater!.mainCharacter.xScale>0){
+                                    self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
+                                }
+                            })
                             self.theater.showVisionButtonsScene()
                         })
                         break
