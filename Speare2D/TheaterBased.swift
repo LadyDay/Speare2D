@@ -174,6 +174,9 @@ class TheaterBased: SceneGameBase {
                 let nodeTouched = self.nodesAtPoint(location)[index] as! SKSpriteNode
                 
                 if(nodeTouched.name == nil && itenHasMoved == false){
+                    if let click = self.childNodeWithName("cliquePedras"){
+                        click.removeFromParent()
+                    }
                     self.catchObject(self, location: location, object: nodeTouched)
                     self.flagStartTouchedBeganTheater = false
                 }else if (nodeTouched.name == nil && itenHasMoved == true) {
@@ -197,16 +200,25 @@ class TheaterBased: SceneGameBase {
                             let arrayCaldeirao = dictionaryDataScene[dictionaryDataScene.indexForKey("caldeirao")!].1 as! NSArray
                             var array = NSMutableArray(array: arrayFinished)
                             array.addObject(SKTexture.returnNameTexture(nodeTouched.texture!))
+                            
+                            Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Finished", object: array as NSArray)
+                            
                             var completeLevel: Bool = true
                             
                             for object in arrayCaldeirao {
-                                if !(arrayFinished.containsObject(object as! String)){
+                                if !(array.containsObject(object as! String)){
                                     completeLevel = false
                                 }
                             }
-                            Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Finished", object: array as NSArray)
+                            
                             if(completeLevel){
-                                //chamar a função do pop up pra dividir a sopa de pedra
+                                if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                                    let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                                    let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                                    dict.setValue(2, forKey: "Viajante")
+                                    
+                                    Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+                                }
                             }
                         }
                         nodeTouched.removeFromParent()

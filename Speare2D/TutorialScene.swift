@@ -270,19 +270,6 @@ class TutorialScene: SceneDefault {
                             switch TutorialScene.ballonOldie{
                             case 0:
                                 
-                                
-                                self.setupBallonView("tome essa chave.png")
-                                self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-                                
-                                //FUNCAO PARA A CHAVE CAIR/APARECER
-                                //AQUI
-                                //SE MAINCHARACTER PEGOU CHAVE{
-                                TutorialScene.ballonOldie = 1
-                                //}
-                                break
-                                
-                            case 1:
-                                
                                 /*      Vamos ver se essa sopa vai ser boa...       */
                                 
                                 self.setupBallonView("vamos ver se essa sopa vai ser boa.png")
