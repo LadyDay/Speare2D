@@ -37,6 +37,7 @@ class TheaterBased: SceneGameBase {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        sceneBackground.userInteractionEnabled = false
         self.saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
         self.corda = self.childNodeWithName("cordaInventario") as! SKSpriteNode
         self.curtains = self.childNodeWithName("cortinaLateral") as! SKSpriteNode
@@ -66,6 +67,8 @@ class TheaterBased: SceneGameBase {
         self.mainCharacter.setupAlex()
         self.addChild(mainCharacter)
         
+        self.flagStartTouchedBeganTheater = false
+        
         print("Touch: \(pauseMenuPresent)")
     }
     
@@ -79,10 +82,10 @@ class TheaterBased: SceneGameBase {
         curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1), completion: {
             self.removeObjects({
                 self.userInteractionEnabled = false
-                self.view?.superview?.userInteractionEnabled = false
                 self.sceneBackground.touchRuning = false
                 let sceneBaseView = self.view!.superview! as! SKView
                 self.sceneBackground.theater = self
+                self.sceneBackground.userInteractionEnabled = false
                 sceneBaseView.presentScene(self.sceneBackground)
                 self.mainCharacter.offsetAlexWalk = self.sceneBackground.offsetWalkScene
                 self.camera = self.sceneBackground.camera
@@ -94,7 +97,6 @@ class TheaterBased: SceneGameBase {
                 
                 self.curtains.runAction(SKAction.animateWithTextures(self.animationCurtainsOpen, timePerFrame: 0.1), completion: {
                     self.userInteractionEnabled = true
-                    self.view?.superview?.userInteractionEnabled = true
                     self.flagCurtinsClosed = false
                     self.showVisionButtonsScene()
                 })
@@ -105,120 +107,119 @@ class TheaterBased: SceneGameBase {
     /*TOUCH's FUCTION */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
-        
-        self.flagStartTouchedBeganTheater = true
-        
-        let sceneBaseView = self.view!.superview! as! SKView
-        let sceneBase = sceneBaseView.scene!
-        
-        if(inventoryPresent==true){
-            swipeUp()
-        }
-        
-        //Selecting pause menu
-        if let touch = touches.first {
-            let location = touch.locationInNode(self)
-            let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
-            var nodeTouched: SKNode = self.nodeAtPoint(location)
-            if(nodeTouched == saco && pauseMenuCounter == 0){
-                pauseMenuCounter++
-                flagCurtinsClosed = true
-                curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1))
-                removeVisionButtonsScene()
-                effectConfiguration(selectionButtonSound, waitC: true)
-                pauseMenu()
-            } else {
-                let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
-                if let nodeTouched: SKNode = self.nodesAtPoint(location)[index] {
-                    if(nodeTouched.name == nil){
-                        itenHasMoved = false
-                        selectedNode = nodeTouched as! SKSpriteNode
-                        selectedNodeZPosition = selectedNode.zPosition
-                    }
-                }
+        if(!self.flagStartTouchedBeganTheater){
+            self.flagStartTouchedBeganTheater = true
+            let sceneBaseView = self.view!.superview! as! SKView
+            let sceneBase = sceneBaseView.scene!
+            
+            if(inventoryPresent==true){
+                swipeUp()
             }
+            //Selecting pause menu
+            if let touch = touches.first {
+                let location = touch.locationInNode(self)
+                let saco = self.childNodeWithName("sacoOpcao") as! SKSpriteNode
+                let nodeTouched: SKNode = self.nodeAtPoint(location)
+                if(nodeTouched == saco && pauseMenuCounter == 0){
+                    pauseMenuCounter++
+                    flagCurtinsClosed = true
+                    curtains.runAction(SKAction.animateWithTextures(animationCurtainsClosed, timePerFrame: 0.1))
+                    removeVisionButtonsScene()
+                    effectConfiguration(selectionButtonSound, waitC: true)
+                    pauseMenu()
+                    self.flagStartTouchedBeganTheater = false
+                } else {
+                    let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
+                    if let nodeTouched: SKNode = self.nodesAtPoint(location)[index] {
+                        if(nodeTouched.name == nil){
+                            itenHasMoved = false
+                            selectedNode = nodeTouched as! SKSpriteNode
+                            selectedNodeZPosition = selectedNode.zPosition
+                        }
+                    }
+                    self.flagStartTouchedBeganTheater = false
+                }
+            }else{
+                self.flagStartTouchedBeganTheater = false
+            }
+            //print("Touch: \(pauseMenuPresent)")
         }
-        //print("Touch: \(pauseMenuPresent)")
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if let touch = touches.first {
-            let positionInScene = touch.locationInNode(self)
-            let previousPosition = touch.previousLocationInNode(self)
-            let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
-            itenHasMoved = true
-            if(selectedNode != nil){
-                selectedNode.zPosition = 98
-                self.panForTranslation(translation)
-            }
-            /*
-            let index = self.nodesAtPoint(positionInScene).startIndex.advancedBy(1)
-            if let nodeTouched: SKSpriteNode = self.nodesAtPoint(positionInScene)[index] as? SKSpriteNode{
-                if(nodeTouched == selectedNode){
-                    itenHasMoved = true
-                    //selectedNode = nodeTouched as! SKSpriteNode
+        if(!self.flagStartTouchedBeganTheater){
+            self.flagStartTouchedBeganTheater = true
+            if let touch = touches.first {
+                let positionInScene = touch.locationInNode(self)
+                let previousPosition = touch.previousLocationInNode(self)
+                let translation = CGPoint(x: positionInScene.x - previousPosition.x, y: positionInScene.y - previousPosition.y)
+                itenHasMoved = true
+                if(selectedNode != nil){
+                    selectedNode.zPosition = 99
                     self.panForTranslation(translation)
                 }
             }
-    */
+            self.flagStartTouchedBeganTheater = false
         }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let sceneBaseView = self.view!.superview! as! SKView
-        let sceneBase = sceneBaseView.scene!
-        if let touch = touches.first {
-            let location = touch.locationInNode(self)
-            let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
-            let nodeTouched = self.nodesAtPoint(location)[index] as! SKSpriteNode
-            
-            if(nodeTouched.name == nil && itenHasMoved == false){
-                self.catchObject(self, location: location, object: nodeTouched)
-            }else if (nodeTouched.name == nil && itenHasMoved == true) {
-                itenHasMoved = false
-                //Quando soltar o item que estava sendo movido:
-                var interactionPossible: Bool = false
-                for nodes in self.nodesAtPoint(location){
-                    if nodes.name != nil{
-                        if self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched) != nil {
-                            if(interactionPossible == false){
-                                interactionPossible = self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched)!
+        if(!self.flagStartTouchedBeganTheater){
+            self.flagStartTouchedBeganTheater = true
+            let sceneBaseView = self.view!.superview! as! SKView
+            let sceneBase = sceneBaseView.scene!
+            if let touch = touches.first {
+                let location = touch.locationInNode(self)
+                let index = self.nodesAtPoint(location).startIndex.advancedBy(1)
+                let nodeTouched = self.nodesAtPoint(location)[index] as! SKSpriteNode
+                
+                if(nodeTouched.name == nil && itenHasMoved == false){
+                    self.catchObject(self, location: location, object: nodeTouched)
+                    self.flagStartTouchedBeganTheater = false
+                }else if (nodeTouched.name == nil && itenHasMoved == true) {
+                    itenHasMoved = false
+                    //Quando soltar o item que estava sendo movido:
+                    var interactionPossible: Bool = false
+                    for nodes in self.nodesAtPoint(location){
+                        if nodes.name != nil{
+                            if self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched) != nil {
+                                if(interactionPossible == false){
+                                    interactionPossible = self.objectsInteraction(nodes as! SKSpriteNode, receivedObject: nodeTouched)!
+                                }
                             }
                         }
                     }
-                }
-                
-                if(interactionPossible){
-                    //animação do objeto
-                    //sceneBased.
-                    if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
-                        let indexDataScene = dictionaryDataScene.indexForKey("Finished")
-                        let arrayFinished = dictionaryDataScene[indexDataScene!].1 as! NSArray
-                        let arrayCaldeirao = dictionaryDataScene[dictionaryDataScene.indexForKey("caldeirao")!].1 as! NSArray
-                        var array = NSMutableArray(array: arrayFinished)
-                        array.addObject(SKTexture.returnNameTexture(nodeTouched.texture!))
-                        var completeLevel: Bool = true
-                        
-                        for object in arrayCaldeirao {
-                            if !(arrayFinished.containsObject(object as! String)){
-                                completeLevel = false
+                    
+                    if(interactionPossible){
+                        if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                            let indexDataScene = dictionaryDataScene.indexForKey("Finished")
+                            let arrayFinished = dictionaryDataScene[indexDataScene!].1 as! NSArray
+                            let arrayCaldeirao = dictionaryDataScene[dictionaryDataScene.indexForKey("caldeirao")!].1 as! NSArray
+                            var array = NSMutableArray(array: arrayFinished)
+                            array.addObject(SKTexture.returnNameTexture(nodeTouched.texture!))
+                            var completeLevel: Bool = true
+                            
+                            for object in arrayCaldeirao {
+                                if !(arrayFinished.containsObject(object as! String)){
+                                    completeLevel = false
+                                }
+                            }
+                            Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Finished", object: array as NSArray)
+                            if(completeLevel){
+                                //chamar a função do pop up pra dividir a sopa de pedra
                             }
                         }
-                        Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Finished", object: array as NSArray)
-                        if(completeLevel){
-                            //chamar a função do pop up pra dividir a sopa de pedra
-                        }
+                        nodeTouched.removeFromParent()
+                    }else{
+                        selectedNode.zPosition = selectedNodeZPosition
+                        fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
+                        selectedNode = nil
                     }
-                    nodeTouched.removeFromParent()
-                }else{
-                    selectedNode.zPosition = selectedNodeZPosition
-                    fallingIten(selectedNode as! SKSpriteNode, fromInventory: false)
-                    selectedNode = nil
+                    self.flagStartTouchedBeganTheater = false
+                }else if (nodeTouched.name != nil){
+                    self.flagStartTouchedBeganTheater = false
+                    sceneBase.touchesBegan(touches, withEvent: event)
                 }
-                
-            }else if (nodeTouched.name != nil){
-                self.flagStartTouchedBeganTheater = false
-                sceneBase.touchesBegan(touches, withEvent: event)
             }
         }
     }
