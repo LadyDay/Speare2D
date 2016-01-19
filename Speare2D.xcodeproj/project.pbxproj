@@ -12,6 +12,7 @@
 		3D11CC501C143AA800DEFDD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */; };
 		3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC511C143FE800DEFDD6 /* StateGame.plist */; };
 		3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC531C14402E00DEFDD6 /* Level0.plist */; };
+		3D3C85F61C4EDC7400D3FA63 /* Introdution.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */; };
 		3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94C1BFD1DAF0022511E /* Bezier.swift */; };
 		3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */; };
 		3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */; };
@@ -116,6 +117,7 @@
 		3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3D11CC511C143FE800DEFDD6 /* StateGame.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StateGame.plist; sourceTree = "<group>"; };
 		3D11CC531C14402E00DEFDD6 /* Level0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level0.plist; sourceTree = "<group>"; };
+		3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Introdution.sks; sourceTree = "<group>"; };
 		3D4CC94C1BFD1DAF0022511E /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
 		3D4CC94D1BFD1DAF0022511E /* Cheetah.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cheetah.h; sourceTree = "<group>"; };
 		3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cheetah.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 		BEE8178A1BDD4A28009365CE /* Options */ = {
 			isa = PBXGroup;
 			children = (
+				3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */,
 				BE7597E81BD73683005608E1 /* StartScene.sks */,
 				BE7597E61BD73661005608E1 /* StartScene.swift */,
 				BEE8178F1BDD4B7D009365CE /* InfoScene.sks */,
@@ -603,6 +606,7 @@
 				BE1FAE6A1C1563DA0016B077 /* Aplausos-curto.aiff.aiff in Resources */,
 				BE960FB91BF5D7C20030DE5E /* Murmurinho teatro.mp3 in Resources */,
 				BE86071E1C14A12C00CFA32F /* Fogueiradocaldeirao.mp3 in Resources */,
+				3D3C85F61C4EDC7400D3FA63 /* Introdution.sks in Resources */,
 				BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
