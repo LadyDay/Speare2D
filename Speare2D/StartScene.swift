@@ -10,29 +10,24 @@ import UIKit
 import SpriteKit
 
 class StartScene: SceneDefault {
+    var clickBanner = false
     
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
-        
-        
-        
         mainCharacter.setupAlex()
         addChild(mainCharacter)
         setCamera()
-        
-        //SceneDefault.bgMusicVolume = 0.7
-        //SceneDefault.effectsVolume = 0.7
-        //SceneDefault.voiceVolume = 0.7
         musicBgConfiguration(startBGmusic)
-        
         
         //Colocar um if para arquivos, para apenas exibir essa mão na primeira vez:
         initClickTexture()
-        initClick(self.childNodeWithName("clique") as! SKSpriteNode)
-        //se não:
-        //self.childNodeWithName("clique")?.removeFromParent()
-        
+        if (clickBanner == false){
+            clickBanner = true
+            initClick(self.childNodeWithName("clique") as! SKSpriteNode)
+        } else {
+            self.childNodeWithName("clique")?.removeFromParent()
+        }
         
     }
     

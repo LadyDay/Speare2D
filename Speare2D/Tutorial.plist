@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>0cliqueCartaz</key>
+	<false/>
+	<key>1cliqueChao</key>
+	<false/>
+	<key>2cliqueViajante</key>
+	<false/>
+	<key>3cliquePedra</key>
+	<false/>
+	<key>4swipeDown</key>
+	<false/>
+	<key>5swipeUp</key>
+	<false/>
+</dict>
+</plist>

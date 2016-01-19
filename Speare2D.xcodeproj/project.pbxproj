@@ -75,6 +75,9 @@
 		BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FB61BF5D7C20030DE5E /* Transito2.mp3 */; };
 		BE960FC11BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FC01BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 */; };
 		BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */; };
+		BE9FC13E1C4E66C600C74DD4 /* Tutorial.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC13D1C4E66C600C74DD4 /* Tutorial.plist */; };
+		BE9FC1401C4E720900C74DD4 /* arrastandobaixo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */; };
+		BE9FC1421C4E72F000C74DD4 /* arrastandocima.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */; };
 		BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF41C06B24F0013E3EB /* fogao.atlas */; };
 		BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF61C06B2550013E3EB /* panela.atlas */; };
 		BEA58CF91C06B2870013E3EB /* KitchenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA58CF81C06B2870013E3EB /* KitchenScene.swift */; };
@@ -183,6 +186,9 @@
 		BE960FB61BF5D7C20030DE5E /* Transito2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Transito2.mp3; sourceTree = "<group>"; };
 		BE960FC01BF5E7640030DE5E /* SelecaoDeFases-teste.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "SelecaoDeFases-teste.mp3"; sourceTree = "<group>"; };
 		BE9EA0D51BFCA2C10040EEB0 /* portaDireita.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaDireita.atlas; sourceTree = "<group>"; };
+		BE9FC13D1C4E66C600C74DD4 /* Tutorial.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tutorial.plist; sourceTree = "<group>"; };
+		BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = arrastandobaixo.atlas; sourceTree = "<group>"; };
+		BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = arrastandocima.atlas; sourceTree = "<group>"; };
 		BEA58CF41C06B24F0013E3EB /* fogao.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fogao.atlas; sourceTree = "<group>"; };
 		BEA58CF61C06B2550013E3EB /* panela.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = panela.atlas; sourceTree = "<group>"; };
 		BEA58CF81C06B2870013E3EB /* KitchenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenScene.swift; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 				BE760D551C14D0A800040264 /* TableNamesLevels.plist */,
 				3D11CC511C143FE800DEFDD6 /* StateGame.plist */,
 				3D11CC531C14402E00DEFDD6 /* Level0.plist */,
+				BE9FC13D1C4E66C600C74DD4 /* Tutorial.plist */,
 			);
 			name = Arquivos;
 			sourceTree = "<group>";
@@ -318,6 +325,8 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */,
+				BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */,
 				BE42E43F1C4D6E380065FD5E /* click.atlas */,
 				BE152AB41C1599FB00785BC9 /* finishedLevel.atlas */,
 				BE1FAE6F1C157CFB0016B077 /* viajanteFalando.atlas */,
@@ -551,12 +560,15 @@
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
 				BE8607211C14A12C00CFA32F /* Vaia.mp3 in Resources */,
 				BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */,
+				BE9FC1421C4E72F000C74DD4 /* arrastandocima.atlas in Resources */,
 				BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */,
 				BE1FAE6C1C157BA30016B077 /* idosaFalando.atlas in Resources */,
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
 				BE81EE681C13C2530022FC3E /* Princess_bubblegum_character.png in Resources */,
+				BE9FC1401C4E720900C74DD4 /* arrastandobaixo.atlas in Resources */,
 				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
 				3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */,
+				BE9FC13E1C4E66C600C74DD4 /* Tutorial.plist in Resources */,
 				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
 				BE1FAE641C14F4130016B077 /* viajantePiscando.atlas in Resources */,

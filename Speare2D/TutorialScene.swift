@@ -10,6 +10,8 @@ import SpriteKit
 
 class TutorialScene: SceneDefault {
     
+    var clickChao = false
+    
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
     var fireAnimation = SKAction()
@@ -57,13 +59,25 @@ class TutorialScene: SceneDefault {
         initArrayNPC()
         initNPC(self.childNodeWithName("velha")as! SKSpriteNode, travellerNode: self.childNodeWithName("viajante")as! SKSpriteNode)
         initClickTexture()
-        initClick(self.childNodeWithName("clique") as! SKSpriteNode)
-        initClick(self.childNodeWithName("clique2") as! SKSpriteNode)
-        //objShaking(self.childNodeWithName(" ") as! SKSpriteNode)
+        
+        
+        
+        
+        
+        if (clickChao == false){
+            clickChao = true
+            initClick(self.childNodeWithName("clique") as! SKSpriteNode)
+        } else {
+            self.childNodeWithName("clique")?.removeFromParent()
+        }
+        
+        self.childNodeWithName("cliqueViajante")?.hidden = true
+        self.childNodeWithName("cliqueChao")?.hidden = true
+        
+        
+        
         
         ballonIsPresentedCounter = 0
-        //imageViewBallon.frame = CGRect(x: 0, y: 0, width: 187.25, height: 107.75)
-        
         if (TutorialScene.firstPresented == 0){
             TutorialScene.firstPresented = 1
             TutorialScene.ballonTraveller = 0
@@ -100,9 +114,47 @@ class TutorialScene: SceneDefault {
                         
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: false, objectSize: sprite.size), completion: {
                             self.touchRuning = false
+                            let mao2 = self.theater.childNodeWithName("cliqueViajante")
+                            mao2!.runAction(SKAction.fadeAlphaTo(1, duration: 0.5), completion: {
+                                mao2?.hidden = false})
+                            self.initClick(mao2 as! SKSpriteNode)
+                            
+                            
+                            
+                            //initClick(self.childNodeWithName("cliqueViajante") as! SKSpriteNode)
+                            //se não:
+                            //self.childNodeWithName("clique")?.removeFromParent()
+
 
                             })
                         break
+                        
+                    case "cliqueViajante":
+                        
+                        //changes the scene for the garden
+                        theater.removeVisionButtonsScene()
+                        let mao = self.theater.childNodeWithName("cliqueViajante")
+                        mao!.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                            mao?.removeFromParent()
+                            let mao2 = self.theater.childNodeWithName("cliqueChao")
+                            mao2?.hidden = false})
+                        let sprite = nodeTouched as! SKSpriteNode
+                        theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
+                            self.touchRuning = false
+                            self.ballonIsPresented = true
+        
+                            //lê informação do arquivo
+                            if let dictionary = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                                let dictionaryBallonTraveller = dictionary["Characters"] as! NSDictionary
+                                TutorialScene.ballonTraveller = dictionaryBallonTraveller["Viajante"] as! Int
+                            }
+                            self.showBallon(TutorialScene.ballonTraveller)
+                            self.theater.showVisionButtonsScene()
+                            
+                        })
+                        
+                    break
+                        
                         
                     case "clique2":
                         
@@ -153,6 +205,13 @@ class TutorialScene: SceneDefault {
                     case "viajante":
                         //changes the scene for the garden
                         theater.removeVisionButtonsScene()
+                        
+                        let mao = self.theater.childNodeWithName("cliqueViajante")
+                        mao!.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                            mao?.removeFromParent()
+                            let mao2 = self.theater.childNodeWithName("cliqueChao")
+                            mao2?.hidden = false})
+                        
                         let sprite = nodeTouched as! SKSpriteNode
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
                             self.touchRuning = false
@@ -165,48 +224,9 @@ class TutorialScene: SceneDefault {
                                 TutorialScene.ballonTraveller = dictionaryBallonTraveller["Viajante"] as! Int
                             }
                             
-                            switch TutorialScene.ballonTraveller{
-                                
-                            case 0:
-                                
-                                /*      Me ajuda a fazer a sopa?
-                                            Sim ou Não?                 */
-                                
-                                self.setupBallonView("me ajuda a fazer a sopa.png")
-                                self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
-                                self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 32, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-                                break
-                                
-                            case 1:
-                                
-                                /*  Preciso de Pedras, Temperos e Legumes
-                                                    Ok                        */
-                                
-
-                                self.setupBallonView("preciso de tais coisas.png")
-                                self.setupButton(self.noButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-                                break
-
-                            case 2:
-                                
-                                
-                                /*      Vamos dividir com a velha?
-                                                    Sim ou Não?                 */
-                                self.setupBallonView("vamos-dividir-a-sopa-com-ela.png")
-                                self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
-                                self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-                                
-                                
-                                break
-                            default:
-                                /*      Tem certeza?           */
-                               
-                                self.setupBallonView("temctz.png")
-                                self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
-                                self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-                                break
-                                
-                            }
+                            self.showBallon(TutorialScene.ballonTraveller)
+                            
+                            
                             self.theater.showVisionButtonsScene()
                             
                         })
@@ -270,7 +290,14 @@ class TutorialScene: SceneDefault {
                             theater.removeVisionButtonsScene()
                             theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                 if let mao = self.theater.childNodeWithName("clique"){
-                                    mao.removeFromParent()
+                                    mao.runAction(SKAction.fadeAlphaTo(0, duration: 1), completion: {
+                                        mao.removeFromParent()})
+                                    let mao2 = self.theater.childNodeWithName("cliqueViajante")
+                                    mao2!.runAction(SKAction.fadeAlphaTo(1, duration: 1), completion: {
+                                        mao2?.hidden = false
+                                        self.initClick(mao2 as! SKSpriteNode)}
+                                    )
+                                    
                                 }
                                 self.theater.showVisionButtonsScene()
                                 self.touchRuning = false
@@ -549,6 +576,53 @@ class TutorialScene: SceneDefault {
         }
     }
     
+    func showBallon(valueInt: Int){
+        
+        switch TutorialScene.ballonTraveller{
+            
+        case 0:
+            
+            /*      Me ajuda a fazer a sopa?
+            Sim ou Não?                 */
+            
+            self.setupBallonView("me ajuda a fazer a sopa.png")
+            self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 31, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
+            self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 32, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+            break
+            
+        case 1:
+            
+            /*  Preciso de Pedras, Temperos e Legumes
+            Ok                        */
+            
+            
+            self.setupBallonView("preciso de tais coisas.png")
+            self.setupButton(self.noButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+            break
+            
+        case 2:
+            
+            
+            /*      Vamos dividir com a velha?
+            Sim ou Não?                 */
+            self.setupBallonView("vamos-dividir-a-sopa-com-ela.png")
+            self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
+            self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+            
+            
+            break
+        default:
+            /*      Tem certeza?           */
+            
+            self.setupBallonView("temctz.png")
+            self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
+            self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+            break
+            
+        }
+        
+    }
+    
     func acabouBebe(){
         TutorialScene.ballonTraveller = 3
         setupBallonView("balao-de-parabens.png")
@@ -557,5 +631,12 @@ class TutorialScene: SceneDefault {
         setupButton(exitButton, image: "botao-ok-parabens.png", tag: 100, locationCenter: CGPoint(x: (self.ballon.frame.width/2) - 5, y: self.ballon.frame.height-20))
         
     }
+    
+    override func update(currentTime: CFTimeInterval) {
+    
+        //verificador de cliques
+        
+    }
+    
     
 }
