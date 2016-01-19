@@ -10,8 +10,6 @@ import UIKit
 import SpriteKit
 
 class StartScene: SceneDefault {
-    var clickBanner = false
-    
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
@@ -21,14 +19,15 @@ class StartScene: SceneDefault {
         musicBgConfiguration(startBGmusic)
         
         //Colocar um if para arquivos, para apenas exibir essa mão na primeira vez:
-        initClickTexture()
-        if (clickBanner == false){
-            clickBanner = true
-            initClick(self.childNodeWithName("clique") as! SKSpriteNode)
-        } else {
-            self.childNodeWithName("clique")?.removeFromParent()
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+            let click = dictionary["cliqueCartaz"] as! Bool
+            if(!click){
+                initClickTexture()
+                initClick(self.childNodeWithName("clique") as! SKSpriteNode)
+            }else{
+                self.childNodeWithName("clique")?.removeFromParent()
+            }
         }
-        
     }
     
     /* Called when a touch begins */
@@ -41,11 +40,10 @@ class StartScene: SceneDefault {
                     guard let nome = nodeTouched.name else {continue ;}
                     switch nome{
                         
-                    case "maoTutorial":
-                        //let position = maoTutorial.position
-                        //remove o sprite
-                        //chama a função de mover a Alex até o ponto onde estava a mão
-                        
+                    case "clique":
+                        let click = self.childNodeWithName("clique")
+                        click?.removeFromParent()
+                        Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueCartaz", object: true)
                         break
                         
                     case "exitNode":
@@ -73,6 +71,7 @@ class StartScene: SceneDefault {
                                             mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: nodeTouched.position, tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                                 //Muda cena para Opção1
                                                 //effectConfiguration(selectionButtonSound, waitC: true)
+                                                Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueCartaz", object: true)
                                                 self.fileName = dictionaryLevel["currentScene"] as! String
                                                 self.numberLevel = numberLevelSelected
                                                 

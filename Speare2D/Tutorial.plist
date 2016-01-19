@@ -2,17 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>0cliqueCartaz</key>
+	<key>cliqueCartaz</key>
 	<false/>
-	<key>1cliqueChao</key>
+	<key>cliqueChao</key>
 	<false/>
-	<key>2cliqueViajante</key>
+	<key>cliqueViajante</key>
 	<false/>
-	<key>3cliquePedra</key>
+	<key>cliquePedra</key>
 	<false/>
-	<key>4swipeDown</key>
+	<key>swipeDown</key>
 	<false/>
-	<key>5swipeUp</key>
+	<key>swipeUp</key>
 	<false/>
 </dict>
 </plist>
