@@ -32,7 +32,7 @@ class Inventory: SKScene {
             }*/
             if (node.texture != nil){
                 SceneGameBase.itenFromInventory = SKSpriteNode(texture: node.texture, size: CGSize(width: node.texture!.size().width, height: node.texture!.size().height))
-                SceneGameBase.itenFromInventory.zPosition = node.zPosition
+                SceneGameBase.itenFromInventory.zPosition = 99
                 //manda pro arquivo do Inventario
                 self.addObjectInFile(node, state: false)
                 node.texture = nil
