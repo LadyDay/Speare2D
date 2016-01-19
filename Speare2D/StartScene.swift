@@ -13,6 +13,7 @@ class StartScene: SceneDefault {
     
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
+        self.userInteractionEnabled = true
         mainCharacter.setupAlex()
         addChild(mainCharacter)
         setCamera()

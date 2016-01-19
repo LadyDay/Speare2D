@@ -52,6 +52,8 @@ class TutorialScene: SceneDefault {
         self.fileName = "TutorialScene"
         self.numberLevel = 0
         
+        Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "currentScene", object: self.fileName)
+        
         setCamera()
         setPositionCamera()
         initTextureFire()
@@ -85,9 +87,6 @@ class TutorialScene: SceneDefault {
                 self.childNodeWithName("cliquePedras")?.removeFromParent()
             }
         }
-        
-        
-        
         
         
         ballonIsPresentedCounter = 0
@@ -194,7 +193,12 @@ class TutorialScene: SceneDefault {
                             self.theater!.sceneBackground = FarmScene(fileNamed: "FarmScene")
                             self.theater.fileName = "FarmScene"
                             self.theater!.flagCurtinsClosed = true
-                            self.theater!.transitionSceneBackground(false)
+                            self.theater!.transitionSceneBackground(false, completion: {
+                                self.theater!.mainCharacter.position.x = 1881
+                                if(self.theater!.mainCharacter.xScale>0){
+                                    self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
+                                }
+                            })
                             self.theater.showVisionButtonsScene()
                         })
                         break
@@ -207,7 +211,12 @@ class TutorialScene: SceneDefault {
                             self.theater!.sceneBackground = KitchenScene(fileNamed: "KitchenScene")
                             self.theater.fileName = "KitchenScene"
                             self.theater!.flagCurtinsClosed = true
-                            self.theater!.transitionSceneBackground(false)
+                            self.theater!.transitionSceneBackground(false, completion: {
+                                self.theater!.mainCharacter.position.x = 167
+                                if(self.theater!.mainCharacter.xScale<0){
+                                    self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
+                                }
+                            })
                             self.theater.showVisionButtonsScene()
                         })
                         break

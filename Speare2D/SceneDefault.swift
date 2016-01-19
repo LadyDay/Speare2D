@@ -148,6 +148,7 @@ class SceneDefault: SKScene {
         var fadeScene = SKTransition.fadeWithDuration(1.5)
         let scene = sceneTransition as! SceneDefault
         if(withTheater){
+            self.scene?.userInteractionEnabled = false
             let gameScene = TheaterBased(fileNamed: "TheaterBased")
             let viewBased = SKView(frame: self.view!.frame)
             viewBased.backgroundColor = UIColor.clearColor()
@@ -163,6 +164,7 @@ class SceneDefault: SKScene {
                 currentScene.theater.view?.removeFromSuperview()
                 fadeScene = SKTransition.fadeWithDuration(0.1)
             }
+            self.scene?.userInteractionEnabled = true
             currentScene.moveInfo(scene)
             scene.theater = currentScene.theater
             scene.mainCharacter.offsetAlexWalk = scene.offsetWalkScene
