@@ -211,11 +211,14 @@ class TutorialScene: SceneDefault {
                         //changes the scene for the garden
                         theater.removeVisionButtonsScene()
                         
-                        let mao = self.theater.childNodeWithName("cliqueViajante")
-                        mao!.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
-                            mao?.removeFromParent()
-                            let mao2 = self.theater.childNodeWithName("cliqueChao")
-                            mao2?.hidden = false})
+                        if let mao = self.theater.childNodeWithName("cliqueViajante"){
+                            mao.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                                mao.removeFromParent()
+                                if let mao2 = self.theater.childNodeWithName("cliqueChao"){
+                                    mao2.hidden = false
+                                }
+                            })
+                        }
                         
                         let sprite = nodeTouched as! SKSpriteNode
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
