@@ -94,7 +94,7 @@ class Alex: SKSpriteNode {
         var currentLocation: CGPoint
         
         if(objectPresent){
-            if(inicialLocation.x < touchLocation.x){
+            if(inicialLocation.x < touchLocation.x - self.frame.size.width/2){
                 currentLocation = CGPointMake(touchLocation.x - self.frame.size.width/2 - (objectSize?.width)!/2, touchLocation.y)
             }else{
                 currentLocation = CGPointMake(touchLocation.x + self.frame.size.width/2 + (objectSize?.width)!/2, touchLocation.y)
@@ -112,7 +112,7 @@ class Alex: SKSpriteNode {
         let duration : NSTimeInterval = makeDuration(currentLocation, pastLocation: pastLocation)/400
         let moveToPoint = SKAction.moveToX(currentLocation.x, duration: duration)
         let walkingAlexAction = SKAction.repeatActionForever(SKAction.animateWithTextures(self.alexSpriteArray, timePerFrame: 0.08, resize: true, restore: true))
-        let direction = SKAction.scaleXTo((directionCharacter(currentLocation, pastLocation: pastLocation)), duration: 0)
+        let direction = SKAction.scaleXTo((directionCharacter(touchLocation, pastLocation: pastLocation)), duration: 0)
         let sequence = SKAction.sequence([SKAction.group([direction, moveToPoint]), SKAction.runBlock({self.removeActionForKey("andando")})])
         let group = SKAction.group([sequence, SKAction.runBlock({self.runAction(walkingAlexAction, withKey: "andando")})])
         
@@ -132,7 +132,7 @@ class Alex: SKSpriteNode {
     
     //Function to determine which way Alex should point.
     func directionCharacter(currentLocation : CGPoint, pastLocation: CGPoint) -> CGFloat{
-        if (currentLocation.x - pastLocation.x) > 0 {
+        if(currentLocation.x > pastLocation.x){
             
             return scaleAlex
         } else {
