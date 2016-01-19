@@ -389,6 +389,7 @@ class TheaterBased: SceneGameBase {
         updateCameraSceneDefault()
         if(!flagCurtinsClosed){
             updateButtonsScene()
+
             if (inventoryPresent && SceneGameBase.itenComing){
                 SceneGameBase.itenComing = false
                 addItenFromInventory()

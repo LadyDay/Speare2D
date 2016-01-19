@@ -39,14 +39,7 @@ class StartScene: SceneDefault {
                 var location = touch.locationInNode(self)
                 for nodeTouched in self.nodesAtPoint(location){
                     guard let nome = nodeTouched.name else {continue ;}
-                    switch nome{
-                        
-                    case "clique":
-                        let click = self.childNodeWithName("clique")
-                        click?.removeFromParent()
-                        Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueCartaz", object: true)
-                        break
-                        
+                    switch nome{                        
                     case "exitNode":
                         effectConfiguration(backButtonSound, waitC: true)
                         //chama a animação para a bilheteria
@@ -59,6 +52,11 @@ class StartScene: SceneDefault {
                         break
                         
                     default:
+                        if (nome == "clique"){
+                            let click = self.childNodeWithName("clique")
+                            click?.removeFromParent()
+                            Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueCartaz", object: true)
+                        }
                         if let dictionaryStateGame = Dictionary<String, AnyObject>.loadGameData("StateGame"){
                             if let dictionaryTableLevels = Dictionary<String, AnyObject>.loadGameData("TableNamesLevels"){
                                 if dictionaryTableLevels.indexForKey(nome) != nil {
