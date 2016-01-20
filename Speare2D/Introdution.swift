@@ -21,7 +21,15 @@ class Introdution: SceneDefault {
         initSprites()
         let action = SKAction.animateWithTextures(introSpriteArray, timePerFrame: 1.5)
         image.runAction(action, completion: {
-            self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
+            if let dictionary = Dictionary<String,AnyObject>.loadGameData("Tutorial"){
+                let dict = dictionary["introdutionPresent"] as! Bool
+                if(!dict){
+                    Dictionary<String,AnyObject>.saveGameData("Tutorial", key: "introdutionPresent", object: true)
+                    self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
+                }else{
+                    self.transitionNextScene(self, sceneTransition: InfoScene(fileNamed: "InfoScene")!, withTheater: false)
+                }
+            }
         })
     }
     

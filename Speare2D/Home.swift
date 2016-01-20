@@ -19,11 +19,17 @@ class Home: SceneDefault {
     var doorHalfRightSpriteArray = Array<SKTexture>()
     let doorRightTextureAtlas = SKTextureAtlas(named: "portaDireita.atlas")
     
-    
+    let backTextureAtlas = SKTextureAtlas(named: "menuScene.atlas")
+    var backSpriteArray = Array<SKTexture>()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         /* Setup your scene here */
+        let background = self.childNodeWithName("background") as! SKSpriteNode
+        self.initSpriteArray()
+        let action = SKAction.animateWithTextures(backSpriteArray, timePerFrame: 0.5)
+        background.runAction(SKAction.repeatActionForever(action))
+        
         countDoorAnimation = 0
         
         if(SceneDefault.firstAcess){
@@ -38,6 +44,15 @@ class Home: SceneDefault {
         cameraHome = self.childNodeWithName("cameraHome") as! SKCameraNode
         
         self.initTexturesDoor()
+    }
+    
+    func initSpriteArray(){
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite1"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite2"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite3"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite4"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite5"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite6"))
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -62,7 +77,6 @@ class Home: SceneDefault {
                                 let info = dictionaryTutorial["introdutionPresent"] as! Bool
                                 if(!info){
                                     self.touchRuning = false
-                                    Dictionary<String,AnyObject>.saveGameData("Tutorial", key: "introdutionPresent", object: true)
                                     self.transitionNextScene(self, sceneTransition: Introdution(fileNamed: "Introdution")!, withTheater: false)
                                 }else{
                                     self.touchRuning = false
@@ -145,11 +159,11 @@ class Home: SceneDefault {
     
     func centerOnNode(node:SKNode) -> SKAction {
         var position : CGPoint = node.position
-        if(position.y/2 < 192){
-            position.y = 192
-        }
-        let moveCamera = SKAction.moveTo(position, duration: 1.5)
-        let zoomCamera = SKAction.scaleTo(0.5, duration: 1.5)
+        //if(position.y/2 < 384){
+        //    position.y = 384
+        //}
+        let moveCamera = SKAction.moveTo(position, duration: 2.5)
+        let zoomCamera = SKAction.scaleTo(0.25, duration: 2.5)
         return SKAction.group([moveCamera, zoomCamera])
     }
     

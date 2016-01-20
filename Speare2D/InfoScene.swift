@@ -31,7 +31,7 @@ class InfoScene: SceneDefault {
                     switch nome{
                     case "introButton":
                         effectConfiguration(selectionButtonSound, waitC: true)
-                        //self.transitionNextScene(IntroScene(fileNamed: "IntroScene")!, withTheater: true)
+                        self.transitionNextScene(self, sceneTransition: Introdution(fileNamed: "Introdution")!, withTheater: false)
                         break
                         
                     case "ticketBackButton":
