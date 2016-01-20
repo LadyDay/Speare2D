@@ -88,27 +88,27 @@ class Home: SceneDefault {
                         
                         break
                         
-                    case "options":
+                    case "info":
                         //chama a animação para a porta
                         self.animationDoor(self.childNodeWithName("leftDoorOptions") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorOptions") as! SKSpriteNode)
                         
                         //chama a transição
-                        let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
+                        let action1 = self.centerOnNode(self.childNodeWithName("viewInfo")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
-                            self.transitionNextScene(self, sceneTransition: OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
+                            self.transitionNextScene(self, sceneTransition: InfoScene(fileNamed: "InfoScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         
                         break
                         
-                    case "info":
+                    case "options":
                         //chama a animação para a bilheteria
                         effectConfiguration(ticketSound, waitC: true)
-                        let action1 = self.centerOnNode(self.childNodeWithName("viewInfo")!)
+                        let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
-                            self.transitionNextScene(self, sceneTransition: InfoScene(fileNamed: "InfoScene")!, withTheater: false)
+                            self.transitionNextScene(self, sceneTransition: OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
 

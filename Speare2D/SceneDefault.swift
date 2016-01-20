@@ -131,15 +131,20 @@ class SceneDefault: SKScene {
     }
     
     func effectConfiguration(fileString: String, waitC: Bool){
-        let effect = playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/)
-        if (waitC == true){
-            effect.duration = 10.0
-            //            self.runAction(playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/), completion: {
-            //                print("relou")
-            //            })
-            self.runAction(effect)
-        }else{
-            self.runAction(playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/))
+        if let dictionary = Dictionary<String,AnyObject>.loadGameData("Audios"){
+            let effectsBool = dictionary["effects"] as! Bool
+            if(effectsBool){
+                let effect = playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/)
+                if (waitC == true){
+                    effect.duration = 10.0
+                    //            self.runAction(playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/), completion: {
+                    //                print("relou")
+                    //            })
+                    self.runAction(effect)
+                }else{
+                    self.runAction(playSoundFileNamed(fileString, atVolume: SceneDefault.effectsVolume, waitForCompletion: true/*must be TRUE, dont know why*/))
+                }
+            }
         }
     }
     
