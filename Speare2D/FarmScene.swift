@@ -11,6 +11,10 @@ import SpriteKit
 
 class FarmScene: SceneDefault {
     
+    var countDoorAnimation: Int = 0
+    var doorArray = Array<SKTexture>()
+    let doorAtlas = SKTextureAtlas(named: "portaHorta.atlas")
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.fileName = "FarmScene"
@@ -20,6 +24,8 @@ class FarmScene: SceneDefault {
         
         setCamera()
         setPositionCamera()
+        initDoorTexture()
+
     }
     
     /*TOUCH's FUCTION */
@@ -92,6 +98,32 @@ class FarmScene: SceneDefault {
             }else{
                 self.touchRuning = false
             }
+        }
+    }
+    
+    func initDoorTexture(){
+        doorArray.append(doorAtlas.textureNamed("portaHorta1"))
+        doorArray.append(doorAtlas.textureNamed("portaHorta2"))
+        doorArray.append(doorAtlas.textureNamed("portaHorta3"))
+        doorArray.append(doorAtlas.textureNamed("portaHorta2"))
+        doorArray.append(doorAtlas.textureNamed("portaHorta1"))
+        
+
+    }
+    func animationDoor(doorNode: SKSpriteNode){
+        let doorAnimation = SKAction.repeatAction(SKAction.animateWithTextures(doorArray, timePerFrame: 0.1), count: 1)
+        doorNode.runAction(doorAnimation)
+    }
+    
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+        if(countDoorAnimation == 200){
+            countDoorAnimation = 0
+            if(!touchRuning){
+                self.animationDoor(self.theater.childNodeWithName("casaNode") as! SKSpriteNode)
+            }
+        }else{
+            countDoorAnimation++
         }
     }
 }

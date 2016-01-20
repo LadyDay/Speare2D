@@ -9,6 +9,11 @@
 import SpriteKit
 
 class KitchenScene: SceneDefault {
+    
+    var countDoorAnimation: Int = 0
+    var doorArray = Array<SKTexture>()
+    let doorAtlas = SKTextureAtlas(named: "portaCozinha.atlas")
+    
     var panelaArray = Array<SKTexture>()
     let panelaAtlas = SKTextureAtlas(named: "panela.atlas")
     var fogaoArray = Array<SKTexture>()
@@ -27,6 +32,7 @@ class KitchenScene: SceneDefault {
         setCamera()
         setPositionCamera()
         initTextureAnimation()
+        initDoorTexture()
     }
     
     /*TOUCH's FUCTION */
@@ -131,5 +137,29 @@ class KitchenScene: SceneDefault {
         panelaAnimation = SKAction.repeatAction(SKAction.animateWithTextures(panelaArray, timePerFrame: 0.08, resize: true, restore: true), count: 2)
         (theater.childNodeWithName("panela") as! SKSpriteNode).runAction(panelaAnimation)
     }
+    func initDoorTexture(){
+        doorArray.append(doorAtlas.textureNamed("portaCozinha1"))
+        doorArray.append(doorAtlas.textureNamed("portaCozinha2"))
+        //doorArray.append(doorAtlas.textureNamed("portaCozinha3"))
+        //doorArray.append(doorAtlas.textureNamed("portaCozinha2"))
+        doorArray.append(doorAtlas.textureNamed("portaCozinha1"))
+        
+        
+    }
+    func animationDoor(doorNode: SKSpriteNode){
+        let doorAnimation = SKAction.repeatAction(SKAction.animateWithTextures(doorArray, timePerFrame: 0.1), count: 1)
+        doorNode.runAction(doorAnimation)
+    }
     
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+        if(countDoorAnimation == 200){
+            countDoorAnimation = 0
+            if(!touchRuning){
+                self.animationDoor(self.theater.childNodeWithName("hortaNode") as! SKSpriteNode)
+            }
+        }else{
+            countDoorAnimation++
+        }
+    }
 }

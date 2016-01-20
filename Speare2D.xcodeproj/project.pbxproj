@@ -79,6 +79,9 @@
 		BE9FC13E1C4E66C600C74DD4 /* Tutorial.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC13D1C4E66C600C74DD4 /* Tutorial.plist */; };
 		BE9FC1401C4E720900C74DD4 /* arrastandobaixo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */; };
 		BE9FC1421C4E72F000C74DD4 /* arrastandocima.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */; };
+		BE9FC1441C4EEC8500C74DD4 /* portaCozinha.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1431C4EEC8500C74DD4 /* portaCozinha.atlas */; };
+		BE9FC1461C4EF04F00C74DD4 /* portaCasa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1451C4EF04F00C74DD4 /* portaCasa.atlas */; };
+		BE9FC1481C4EF10900C74DD4 /* portaHorta.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1471C4EF10900C74DD4 /* portaHorta.atlas */; };
 		BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF41C06B24F0013E3EB /* fogao.atlas */; };
 		BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF61C06B2550013E3EB /* panela.atlas */; };
 		BEA58CF91C06B2870013E3EB /* KitchenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA58CF81C06B2870013E3EB /* KitchenScene.swift */; };
@@ -191,6 +194,9 @@
 		BE9FC13D1C4E66C600C74DD4 /* Tutorial.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tutorial.plist; sourceTree = "<group>"; };
 		BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = arrastandobaixo.atlas; sourceTree = "<group>"; };
 		BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = arrastandocima.atlas; sourceTree = "<group>"; };
+		BE9FC1431C4EEC8500C74DD4 /* portaCozinha.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaCozinha.atlas; sourceTree = "<group>"; };
+		BE9FC1451C4EF04F00C74DD4 /* portaCasa.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaCasa.atlas; sourceTree = "<group>"; };
+		BE9FC1471C4EF10900C74DD4 /* portaHorta.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaHorta.atlas; sourceTree = "<group>"; };
 		BEA58CF41C06B24F0013E3EB /* fogao.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fogao.atlas; sourceTree = "<group>"; };
 		BEA58CF61C06B2550013E3EB /* panela.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = panela.atlas; sourceTree = "<group>"; };
 		BEA58CF81C06B2870013E3EB /* KitchenScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenScene.swift; sourceTree = "<group>"; };
@@ -327,6 +333,9 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BE9FC1471C4EF10900C74DD4 /* portaHorta.atlas */,
+				BE9FC1451C4EF04F00C74DD4 /* portaCasa.atlas */,
+				BE9FC1431C4EEC8500C74DD4 /* portaCozinha.atlas */,
 				BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */,
 				BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */,
 				BE42E43F1C4D6E380065FD5E /* click.atlas */,
@@ -568,6 +577,7 @@
 				BE1FAE6C1C157BA30016B077 /* idosaFalando.atlas in Resources */,
 				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
 				BE81EE681C13C2530022FC3E /* Princess_bubblegum_character.png in Resources */,
+				BE9FC1441C4EEC8500C74DD4 /* portaCozinha.atlas in Resources */,
 				BE9FC1401C4E720900C74DD4 /* arrastandobaixo.atlas in Resources */,
 				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
 				3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */,
@@ -585,7 +595,9 @@
 				BE1FAE681C1562DE0016B077 /* Boo curto.wav in Resources */,
 				BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */,
 				BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */,
+				BE9FC1481C4EF10900C74DD4 /* portaHorta.atlas in Resources */,
 				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
+				BE9FC1461C4EF04F00C74DD4 /* portaCasa.atlas in Resources */,
 				BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */,
 				BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */,
 				BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */,
@@ -815,6 +827,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -831,6 +844,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alenpereira.Speare2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

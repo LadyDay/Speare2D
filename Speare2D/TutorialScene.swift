@@ -12,6 +12,10 @@ class TutorialScene: SceneDefault {
     
     var clickChao = false
     
+    var countDoorAnimation: Int = 0
+    var doorArray = Array<SKTexture>()
+    let doorAtlas = SKTextureAtlas(named: "portaCasa.atlas")
+    
     var fireArray = Array<SKTexture>()
     let fireAtlas = SKTextureAtlas(named: "fogoCaldeira.atlas")
     var fireAnimation = SKAction()
@@ -61,6 +65,7 @@ class TutorialScene: SceneDefault {
         initArrayNPC()
         initNPC(self.childNodeWithName("velha")as! SKSpriteNode, travellerNode: self.childNodeWithName("viajante")as! SKSpriteNode)
         initClickTexture()
+        initDoorTexture()
         
         
         
@@ -324,6 +329,29 @@ class TutorialScene: SceneDefault {
         }
     }
     
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+        if(countDoorAnimation == 200){
+            countDoorAnimation = 0
+            if(!touchRuning){
+                self.animationDoor(self.theater.childNodeWithName("casaNode") as! SKSpriteNode)
+            }
+        }else{
+            countDoorAnimation++
+        }
+    }
+    
+    func initDoorTexture(){
+        doorArray.append(doorAtlas.textureNamed("portaCasa1"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa2"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa3"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa2"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa1"))
+    }
+    func animationDoor(doorNode: SKSpriteNode){
+        let doorAnimation = SKAction.repeatAction(SKAction.animateWithTextures(doorArray, timePerFrame: 0.1), count: 1)
+        doorNode.runAction(doorAnimation)
+    }
     
     
     func initTextureFire() {
@@ -642,12 +670,5 @@ class TutorialScene: SceneDefault {
         setupButton(exitButton, image: "botao-ok-parabens.png", tag: 100, locationCenter: CGPoint(x: (self.ballon.frame.width/2) - 5, y: self.ballon.frame.height-20))
         
     }
-    
-    override func update(currentTime: CFTimeInterval) {
-    
-        //verificador de cliques
-        
-    }
-    
     
 }
