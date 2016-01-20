@@ -28,6 +28,10 @@ class TutorialScene: SceneDefault {
     let oldieLadyTalkingAtlas = SKTextureAtlas(named: "idosaFalando.atlas")
     var oldieTalkingAnimation = SKAction()
     
+    var travellerMovingArray = Array<SKTexture>()
+    let travellerMovingAtlas = SKTextureAtlas(named: "viajanteMovendo.atlas")
+    var travellerMovingAnimation = SKAction()
+    
     var travellerTalkingArray = Array<SKTexture>()
     let travellerTalkingAtlas = SKTextureAtlas(named: "viajanteFalando.atlas")
     var travellerTalkingAnimation = SKAction()
@@ -287,7 +291,7 @@ class TutorialScene: SceneDefault {
                                 
                             default:
                                 self.setupBallonView("nunca tomei uma sopa tao boa.png")
-                                self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+                                self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 50, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
                                 break
                             }
                             
@@ -393,6 +397,13 @@ class TutorialScene: SceneDefault {
         travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando2.png"))
         travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando3.png"))
         
+        
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE1_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE2_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE3_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE4_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE5_480x548.png"))
+        
     }
     
     func initNPC(oldieNode: SKSpriteNode, travellerNode: SKSpriteNode){
@@ -415,6 +426,19 @@ class TutorialScene: SceneDefault {
         } else /*if (NPC.name == "viajante")*/{
             travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.travellerTalkingArray, timePerFrame: 0.1))
             return travellerAnimation
+        }
+    }
+    
+    func movingNPC(NPC: SKSpriteNode){
+        
+        /*if (NPC.name == "velha"){
+            oldieTalkingAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.oldieLadyTalkingArray, timePerFrame: 0.1))
+            return oldieTalkingAnimation
+            
+        }*/
+        if (NPC.name == "viajante"){
+            travellerAnimation = SKAction.repeatAction(SKAction.animateWithTextures(self.travellerMovingArray, timePerFrame: 0.1), count: 3)
+            NPC.runAction(travellerAnimation)
         }
     }
     
@@ -557,31 +581,56 @@ class TutorialScene: SceneDefault {
             if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
-                dict.setValue(4, forKey: "Viajante")
+                dict.setValue(3, forKey: "Viajante")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
             ballon.removeFromSuperview()
-            acabouBebe()
-            self.touchRuning = true
             break
             
-//        case 36:
-//            print("Button tapped tag 36: pegou chave")
-//            
-//            effectConfiguration(dialoguePopup, waitC: true)
-//            ballon.cheetah.scale(0.5).duration(2).run()
-//            ballonIsPresented = false
-//            //TutorialScene.ballonOldie = 1
-//            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
-//                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
-//                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
-//                dict.setValue(1, forKey: "Velha")
-//                
-//                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
-//            }
-//            ballon.removeFromSuperview()
-//            break
+        case 36:
+            print("Button tapped tag 36: TALVEZ vamos dividir a sopa")
+            effectConfiguration(applauseSound, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            //ballonIsPresentedCounter = 0
+            //TutorialScene.ballonTraveller = 4
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(2, forKey: "Viajante")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
+            ballon.removeFromSuperview()
+            break
+            
+        case 37:
+            print("Button tapped tag 37: Ainda NÃO quer dividir a sopa")
+            effectConfiguration(vaia2, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            //ballonIsPresentedCounter = 0
+            //TutorialScene.ballonTraveller = 4
+            if let dictionaryDataScene = Dictionary<String, AnyObject>.loadGameData("Level" + String(self.numberLevel)) {
+                let indexDataScene = dictionaryDataScene.indexForKey("Characters")
+                let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
+                dict.setValue(2, forKey: "Viajante")
+                
+                Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+            }
+            ballon.removeFromSuperview()
+            break
+            
+            
+        case 50:
+            print("Button tapped tag 30: exit")
+            effectConfiguration(dialoguePopup, waitC: true)
+            ballon.cheetah.scale(0.5).duration(2).run()
+            ballonIsPresented = false
+            ballon.removeFromSuperview()
+            acabouBebe()
+            break
             
         case 100:
             print("acabou")
@@ -643,19 +692,27 @@ class TutorialScene: SceneDefault {
             
             
             /*      Vamos dividir com a velha?
-            Sim ou Não?                 */
+                        Sim ou Não?                 */
             self.setupBallonView("vamos-dividir-a-sopa-com-ela.png")
             self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
             self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
             
             
             break
+            
+        case 3:
+            /*      Decidiu dividir a sopa com a velha      */
+
+            self.ballonIsPresented = false
+            self.movingNPC(self.theater.childNodeWithName("viajante") as! SKSpriteNode)
+
+            break
+            
         default:
             /*      Tem certeza?           */
-            
             self.setupBallonView("temctz.png")
-            self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
-            self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
+            self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 37, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
+            self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 36, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
             break
             
         }

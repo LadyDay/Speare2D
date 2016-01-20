@@ -95,6 +95,7 @@
 		BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */; };
 		BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178F1BDD4B7D009365CE /* InfoScene.sks */; };
 		BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE817911BDD4BA6009365CE /* InfoScene.swift */; };
+		BEFE48421C4F346D002F0855 /* viajanteMovendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEFE48411C4F346D002F0855 /* viajanteMovendo.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +211,7 @@
 		BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
 		BEE8178F1BDD4B7D009365CE /* InfoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InfoScene.sks; sourceTree = "<group>"; };
 		BEE817911BDD4BA6009365CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
+		BEFE48411C4F346D002F0855 /* viajanteMovendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = viajanteMovendo.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BEFE48411C4F346D002F0855 /* viajanteMovendo.atlas */,
 				BE9FC1471C4EF10900C74DD4 /* portaHorta.atlas */,
 				BE9FC1451C4EF04F00C74DD4 /* portaCasa.atlas */,
 				BE9FC1431C4EEC8500C74DD4 /* portaCozinha.atlas */,
@@ -569,6 +572,7 @@
 				BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */,
 				3DC44D0D1BD52E0400502BF0 /* Home.sks in Resources */,
 				BE1FAE661C14FDB30016B077 /* idosaPiscando.atlas in Resources */,
+				BEFE48421C4F346D002F0855 /* viajanteMovendo.atlas in Resources */,
 				3DC44D191BD52E0400502BF0 /* LaunchScreen.storyboard in Resources */,
 				BE8607211C14A12C00CFA32F /* Vaia.mp3 in Resources */,
 				BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */,
