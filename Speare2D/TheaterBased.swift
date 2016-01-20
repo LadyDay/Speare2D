@@ -18,6 +18,7 @@ class TheaterBased: SceneGameBase {
     var corda: SKSpriteNode!
     var sceneBackground: SceneDefault!
     var flagCurtinsClosed: Bool = false
+    var showViajante2: Bool = false
     let imageBackName = "tela-de-pause-sembotao.png"
     let imageExitButton = "tela-de-pause-botaomenu.png"
     let imageReturnButton = "tela-de-pause-botaovoltar.png"
@@ -33,6 +34,7 @@ class TheaterBased: SceneGameBase {
     var animationCurtainsOpen = Array<SKTexture>()
     var animationCurtainsClosed = Array<SKTexture>()
     var curtains: SKSpriteNode!
+    
     
     
     override func didMoveToView(view: SKView) {
@@ -208,6 +210,7 @@ class TheaterBased: SceneGameBase {
                             for object in arrayCaldeirao {
                                 if !(array.containsObject(object as! String)){
                                     completeLevel = false
+                                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "completedLevel", object: false)
                                 }
                             }
                             
@@ -217,8 +220,12 @@ class TheaterBased: SceneGameBase {
                                     let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                                     dict.setValue(2, forKey: "Viajante")
                                     dict.setValue(1, forKey: "Velha")
-                                    
                                     Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
+                                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "completedLevel", object: true)
+                                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueChao", object: true)
+                                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueViajante", object: true)
+                                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliquePedras", object: true)
+                                    showViajante2 = true
                                 }
                             }
                         }

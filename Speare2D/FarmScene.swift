@@ -113,6 +113,7 @@ class FarmScene: SceneDefault {
     func animationDoor(doorNode: SKSpriteNode){
         let doorAnimation = SKAction.repeatAction(SKAction.animateWithTextures(doorArray, timePerFrame: 0.1), count: 1)
         doorNode.runAction(doorAnimation)
+        self.touchRuning = false
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -120,10 +121,12 @@ class FarmScene: SceneDefault {
         if(countDoorAnimation == 200){
             countDoorAnimation = 0
             if(!touchRuning){
+                touchRuning = true
                 self.animationDoor(self.theater.childNodeWithName("casaNode") as! SKSpriteNode)
             }
         }else{
             countDoorAnimation++
         }
+        
     }
 }

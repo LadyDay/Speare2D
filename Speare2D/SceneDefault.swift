@@ -20,8 +20,9 @@ class SceneDefault: SKScene {
     //tuto
     var clickArray = Array<SKTexture>()
     let clickAtlas = SKTextureAtlas(named: "click.atlas")
+    var clickArrayLeft = Array<SKTexture>()
+    let clickAtlasLeft = SKTextureAtlas(named: "clickLeft.atlas")
     var clickAnimation = SKAction()
-
     
     //flag
     var touchRuning: Bool = false
@@ -225,17 +226,22 @@ class SceneDefault: SKScene {
         clickArray.append(clickAtlas.textureNamed("clique1"))
         clickArray.append(clickAtlas.textureNamed("clique2"))
     }
+    func initClickTextureLeft(){
+        clickArrayLeft.append(clickAtlasLeft.textureNamed("cliqueE1"))
+        clickArrayLeft.append(clickAtlasLeft.textureNamed("cliqueE2"))
+    }
     
     func initClick(clickNode: SKSpriteNode){
         clickAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(clickArray, timePerFrame: 0.3))
-        //clickFadingINAnimation = SKAction.repeatActionForever(SKAction.fadeInWithDuration(1))
-        //clickFadingOUTAnimation = SKAction.repeatActionForever(SKAction.fadeOutWithDuration(1))
-        //let sequenceClick = SKAction.sequence([clickFadingOUTAnimation, clickFadingINAnimation])
-        //let groupClick = SKAction.group([sequenceClick, clickAnimation])
-        //clickNode.runAction(groupClick, withKey: "clickTutorial")
         clickNode.runAction(clickAnimation, withKey: "clickTutorial")
         
     }
+    func initClick2(clickNode: SKSpriteNode){
+        clickAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(clickArrayLeft, timePerFrame: 0.3))
+        clickNode.runAction(clickAnimation, withKey: "clickTutorial")
+        
+    }
+
     
 }
 

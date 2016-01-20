@@ -12,6 +12,9 @@ class TutorialScene: SceneDefault {
     
     var clickChao = false
     
+    var ImageMao = UIImage(named: "clique1.png")
+    var TextureMao: SKTexture!
+    var SpriteMao: SKSpriteNode!
     var countDoorAnimation: Int = 0
     var doorArray = Array<SKTexture>()
     let doorAtlas = SKTextureAtlas(named: "portaCasa.atlas")
@@ -40,7 +43,7 @@ class TutorialScene: SceneDefault {
     let travellerAtlas = SKTextureAtlas(named: "viajantePiscando.atlas")
     var travellerAnimation = SKAction()
     
-
+    
     var ballon = UIView()//(frame: CGRectMake(0, 0, 187.25, 107.75))
     var ballonIsPresented: Bool = false
     static var ballonTraveller: Int = 0
@@ -52,7 +55,7 @@ class TutorialScene: SceneDefault {
     let exitButton = UIButton()
     let yesButton = UIButton()
     let noButton = UIButton()
-
+    
     let clickCounter: Int = 0
     
     override func didMoveToView(view: SKView) {
@@ -71,32 +74,8 @@ class TutorialScene: SceneDefault {
         initClickTexture()
         initDoorTexture()
         
-        
-        
-        //Colocar um if para arquivos, para apenas exibir essa mão na primeira vez:
-        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
-            let click = dictionary["cliqueChao"] as! Bool
-            let click2 = dictionary["cliqueViajante"] as! Bool
-            let click3 = dictionary["cliquePedras"] as! Bool
-            if(!click){
-                initClick(self.childNodeWithName("cliqueChao") as! SKSpriteNode)
-                self.childNodeWithName("cliqueViajante")?.hidden = true
-                self.childNodeWithName("cliquePedras")?.hidden = true
-            }else if (!click2){
-                self.childNodeWithName("cliqueChao")?.removeFromParent()
-                initClick(self.childNodeWithName("cliqueViajante") as! SKSpriteNode)
-                self.childNodeWithName("cliquePedras")?.hidden = true
-            }else if  (!click3){
-                self.childNodeWithName("cliqueChao")?.removeFromParent()
-                self.childNodeWithName("cliqueViajante")?.removeFromParent()
-                initClick(self.childNodeWithName("cliquePedras") as! SKSpriteNode)
-            }else{
-                self.childNodeWithName("cliqueChao")?.removeFromParent()
-                self.childNodeWithName("cliqueViajante")?.removeFromParent()
-                self.childNodeWithName("cliquePedras")?.removeFromParent()
-            }
-        }
-        
+        addMaoViajante()
+        tutorialTest()
         
         ballonIsPresentedCounter = 0
         if (TutorialScene.firstPresented == 0){
@@ -107,7 +86,88 @@ class TutorialScene: SceneDefault {
         //musicBgConfiguration(fireTuto)
     }
     
-/*TOUCH's FUCTION */
+    func initDoorTexture(){
+        doorArray.append(doorAtlas.textureNamed("portaCasa1"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa2"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa3"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa2"))
+        doorArray.append(doorAtlas.textureNamed("portaCasa1"))
+    }
+    func animationDoor(doorNode: SKSpriteNode){
+        let doorAnimation = SKAction.repeatAction(SKAction.animateWithTextures(doorArray, timePerFrame: 0.1), count: 1)
+        doorNode.runAction(doorAnimation)
+    }
+
+    func initTextureFire() {
+        fireArray.append(fireAtlas.textureNamed("fogo1"))
+        fireArray.append(fireAtlas.textureNamed("fogo2"))
+    }
+    
+    func initFire(fireNode: SKSpriteNode){
+        //let soundFire = SKAction.repeatActionForever(playSoundFileNamed(fireTuto, atVolume: SceneDefault.effectsVolume, waitForCompletion: true))
+        fireAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(fireArray, timePerFrame: 0.08))
+        //let group = SKAction.group([fireAnimation, soundFire])
+        fireNode.runAction(fireAnimation)
+        //fireNode.runAction(group, withKey: "actionFireSound")
+        //self.musicBgConfiguration(fireTuto)
+        
+    }
+    
+    func initArrayNPC() {
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0006_piscando1_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0005_piscando2_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
+        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0006_piscando1_360x476.png"))
+        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0003_falando1_360x476.png"))
+        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0002_falando2_360x476.png"))
+        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0001_falando3_360x476.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada1_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada1_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada2_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
+        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
+        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando1.png"))
+        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando2.png"))
+        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando3.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE1_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE2_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE3_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE4_480x548.png"))
+        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE5_480x548.png"))
+    }
+    
+    func initNPC(oldieNode: SKSpriteNode, travellerNode: SKSpriteNode){
+        oldieAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(oldieLadyArray, timePerFrame: 0.209))
+        oldieNode.runAction(oldieAnimation)
+        
+        travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(travellerArray, timePerFrame: 0.2))
+        travellerNode.runAction(travellerAnimation)
+    }
+    
+    func talkingNPC(NPC: SKSpriteNode) -> SKAction{
+        if (NPC.name == "velha"){
+            oldieTalkingAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.oldieLadyTalkingArray, timePerFrame: 0.1))
+            return oldieTalkingAnimation
+        } else /*if (NPC.name == "viajante")*/{
+            travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.travellerTalkingArray, timePerFrame: 0.1))
+            return travellerAnimation
+        }
+    }
+    
+    func movingNPC(NPC: SKSpriteNode){
+        if (NPC.name == "viajante"){
+            travellerAnimation = SKAction.repeatAction(SKAction.animateWithTextures(self.travellerMovingArray, timePerFrame: 0.1), count: 3)
+            NPC.runAction(travellerAnimation)
+        }
+    }
+    
+    
+    
+    
+    /*TOUCH's FUCTION */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
@@ -119,7 +179,7 @@ class TutorialScene: SceneDefault {
                 //for nodeTouched in self.nodesAtPoint(location){
                 let index = theater.nodesAtPoint(location).startIndex.advancedBy(1)
                 if let nodeTouched: SKNode = theater.nodesAtPoint(location)[index] {
-
+                    
                     switch nodeTouched.name!{
                         
                     case "cliqueChao":
@@ -134,7 +194,7 @@ class TutorialScene: SceneDefault {
                                 mao2.runAction(SKAction.fadeAlphaTo(1, duration: 0.5), completion: {
                                     mao2.hidden = false
                                     self.initClick(mao2 as! SKSpriteNode)
-                            })}
+                                })}
                         })
                         
                         Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueChao", object: true)
@@ -171,7 +231,7 @@ class TutorialScene: SceneDefault {
                             
                         })
                         
-                    break
+                        break
                         
                         
                     case "cliquePedras":
@@ -234,7 +294,7 @@ class TutorialScene: SceneDefault {
                         //changes the scene for the garden
                         
                         theater.removeVisionButtonsScene()
-
+                        
                         let sprite = nodeTouched as! SKSpriteNode
                         theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: location, tamSize: 2048, objectPresent: true, objectSize: sprite.size), completion: {
                             self.touchRuning = false
@@ -257,6 +317,7 @@ class TutorialScene: SceneDefault {
                                     }
                                 }
                             }
+                            
                             self.theater.showVisionButtonsScene()
                             
                         })
@@ -284,10 +345,10 @@ class TutorialScene: SceneDefault {
                                 
                                 self.setupBallonView("vamos ver se essa sopa vai ser boa.png")
                                 self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-//                                if (TutorialScene.ballonTraveller >= 2){
-//                                    TutorialScene.ballonOldie = 2
-//                                }
-                               
+                                //                                if (TutorialScene.ballonTraveller >= 2){
+                                //                                    TutorialScene.ballonOldie = 2
+                                //                                }
+                                
                                 break
                                 
                                 
@@ -337,6 +398,12 @@ class TutorialScene: SceneDefault {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        if (self.theater.showViajante2 == true){
+            self.theater.showViajante2 = false
+            showTutoViajante2()
+        }
+        
         if(countDoorAnimation == 200){
             countDoorAnimation = 0
             if(!touchRuning){
@@ -347,103 +414,111 @@ class TutorialScene: SceneDefault {
         }
     }
     
-    func initDoorTexture(){
-        doorArray.append(doorAtlas.textureNamed("portaCasa1"))
-        doorArray.append(doorAtlas.textureNamed("portaCasa2"))
-        doorArray.append(doorAtlas.textureNamed("portaCasa3"))
-        doorArray.append(doorAtlas.textureNamed("portaCasa2"))
-        doorArray.append(doorAtlas.textureNamed("portaCasa1"))
-    }
-    func animationDoor(doorNode: SKSpriteNode){
-        let doorAnimation = SKAction.repeatAction(SKAction.animateWithTextures(doorArray, timePerFrame: 0.1), count: 1)
-        doorNode.runAction(doorAnimation)
-    }
-    
-    
-    func initTextureFire() {
-        fireArray.append(fireAtlas.textureNamed("fogo1"))
-        fireArray.append(fireAtlas.textureNamed("fogo2"))
-    }
-    
-    func initFire(fireNode: SKSpriteNode){
-        //let soundFire = SKAction.repeatActionForever(playSoundFileNamed(fireTuto, atVolume: SceneDefault.effectsVolume, waitForCompletion: true))
-        fireAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(fireArray, timePerFrame: 0.08))
-        //let group = SKAction.group([fireAnimation, soundFire])
-        fireNode.runAction(fireAnimation)
-        //fireNode.runAction(group, withKey: "actionFireSound")
-        //self.musicBgConfiguration(fireTuto)
-        
-    }
-    
-    func initArrayNPC() {
-        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0006_piscando1_360x476.png"))
-        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
-        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
-        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0005_piscando2_360x476.png"))
-        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
-        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0004_piscando3_360x476.png"))
-        oldieLadyArray.append(oldieLadyAtlas.textureNamed("idosa_0006_piscando1_360x476.png"))
-        
-        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0003_falando1_360x476.png"))
-        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0002_falando2_360x476.png"))
-        oldieLadyTalkingArray.append(oldieLadyTalkingAtlas.textureNamed("idosa_0001_falando3_360x476.png"))
-        
-        
-        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada1_460x546.png"))
-        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada1_460x546.png"))
-        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada2_460x546.png"))
-        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
-        travellerArray.append(travellerAtlas.textureNamed("viajante_piscada3_460x546.png"))
-        
-        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando1.png"))
-        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando2.png"))
-        travellerTalkingArray.append(travellerTalkingAtlas.textureNamed("viajantegalho_SPRITE_falando3.png"))
-        
-        
-        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE1_480x548.png"))
-        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE2_480x548.png"))
-        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE3_480x548.png"))
-        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE4_480x548.png"))
-        travellerMovingArray.append(travellerMovingAtlas.textureNamed("viajantegalho_SPRITE5_480x548.png"))
-        
-    }
-    
-    func initNPC(oldieNode: SKSpriteNode, travellerNode: SKSpriteNode){
-        oldieAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(oldieLadyArray, timePerFrame: 0.209))
-        oldieNode.runAction(oldieAnimation)
-        
-        
-        travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(travellerArray, timePerFrame: 0.2))
-        travellerNode.runAction(travellerAnimation)
-        
-        
-    }
-    
-    func talkingNPC(NPC: SKSpriteNode) -> SKAction{
-        
-        if (NPC.name == "velha"){
-            oldieTalkingAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.oldieLadyTalkingArray, timePerFrame: 0.1))
-            return oldieTalkingAnimation
-            
-        } else /*if (NPC.name == "viajante")*/{
-            travellerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.travellerTalkingArray, timePerFrame: 0.1))
-            return travellerAnimation
+    func tutorialTest(){
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+            let completedLevel = dictionary["completedLevel"] as! Bool
+            let click = dictionary["cliqueChao"] as! Bool
+            let click2 = dictionary["cliqueViajante"] as! Bool
+            let click3 = dictionary["cliquePedras"] as! Bool
+            //let click4 = dictionary["cliqueViajante"] as! Bool
+            //let click5 = dictionary["cliquePedras"] as! Bool
+            let click6 = dictionary["cliqueViajante2"] as! Bool
+            let click7 = dictionary["cliqueVelha"] as! Bool
+            if(!click){
+                initClick(self.childNodeWithName("cliqueChao") as! SKSpriteNode)
+                self.childNodeWithName("cliqueViajante")?.hidden = true
+                self.childNodeWithName("cliquePedras")?.hidden = true
+                //self.childNodeWithName("swipeDown")?.hidden = true
+                //self.childNodeWithName("swipeUp")?.hidden = true
+                self.childNodeWithName("viajante2")?.hidden = true
+                self.childNodeWithName("cliqueVelha")?.hidden = true
+            }else if (!click2){
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                initClick(self.childNodeWithName("cliqueViajante") as! SKSpriteNode)
+                self.childNodeWithName("cliquePedras")?.hidden = true
+                //self.childNodeWithName("swipeDown")?.hidden = true
+                //self.childNodeWithName("swipeUp")?.hidden = true
+                self.childNodeWithName("viajante2")?.hidden = true
+                self.childNodeWithName("cliqueVelha")?.hidden = true
+            }else if  (!click3){
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                initClick(self.childNodeWithName("cliquePedras") as! SKSpriteNode)
+                //self.childNodeWithName("swipeDown")?.hidden = true
+                //self.childNodeWithName("swipeUp")?.hidden = true
+                self.childNodeWithName("viajante2")?.hidden = true
+                self.childNodeWithName("cliqueVelha")?.hidden = true
+                //            }else if  (!click4){
+                //                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                //                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                //                self.childNodeWithName("cliquePedras")?.removeFromParent()
+                //                initClick(self.childNodeWithName("swipeDown")as! SKSpriteNode)
+                //                self.childNodeWithName("swipeUp")?.hidden = true
+                //                self.childNodeWithName("viajante2")?.hidden = true
+                //                self.childNodeWithName("cliqueVelha")?.hidden = true
+                //            }else if  (!click5){
+                //                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                //                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                //                self.childNodeWithName("cliquePedras")?.removeFromParent()
+                //                self.childNodeWithName("swipeDown")?.removeFromParent()
+                //                initClick(self.childNodeWithName("swipeUp")as! SKSpriteNode)
+                //                self.childNodeWithName("viajante2")?.hidden = true
+                //                self.childNodeWithName("cliqueVelha")?.hidden = true
+            }else if  (!click6){
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                self.childNodeWithName("cliquePedras")?.removeFromParent()
+                //self.childNodeWithName("swipeDown")?.hidden = true
+                //self.childNodeWithName("swipeUp")?.hidden = true
+                self.childNodeWithName("cliqueVelha")?.hidden = true
+                if (completedLevel){
+                    initClick(self.childNodeWithName("viajante2") as! SKSpriteNode)
+                } else {
+                    let mao = self.childNodeWithName("viajante2") as! SKSpriteNode
+                    mao.hidden = true
+                }
+            }else if  (!click7){
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                self.childNodeWithName("cliquePedras")?.removeFromParent()
+                //self.childNodeWithName("swipeDown")?.removeFromParent()
+                //self.childNodeWithName("swipeUp")?.removeFromParent()
+                self.childNodeWithName("viajante2")?.removeFromParent()
+                initClick2(self.childNodeWithName("cliqueVelha") as! SKSpriteNode)
+            }else{
+                self.childNodeWithName("cliqueChao")?.removeFromParent()
+                self.childNodeWithName("cliqueViajante")?.removeFromParent()
+                self.childNodeWithName("cliquePedras")?.removeFromParent()
+                //self.childNodeWithName("swipeDown")?.removeFromParent()
+                //self.childNodeWithName("swipeUp")?.removeFromParent()
+                self.childNodeWithName("viajante2")?.removeFromParent()
+                self.childNodeWithName("cliqueVelha")?.removeFromParent()
+            }
         }
     }
     
-    func movingNPC(NPC: SKSpriteNode){
+    func addMaoViajante(){
+        //Mão problemática
+        SpriteMao = SKSpriteNode(imageNamed: "clique1")
+        SpriteMao.position = CGPointMake(861.068, 372.182)
+        SpriteMao.zPosition = CGFloat(95)
+        SpriteMao.name = "viajante2"
         
-        /*if (NPC.name == "velha"){
-            oldieTalkingAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(self.oldieLadyTalkingArray, timePerFrame: 0.1))
-            return oldieTalkingAnimation
-            
-        }*/
-        if (NPC.name == "viajante"){
-            travellerAnimation = SKAction.repeatAction(SKAction.animateWithTextures(self.travellerMovingArray, timePerFrame: 0.1), count: 3)
-            NPC.runAction(travellerAnimation)
-        }
+        self.addChild(SpriteMao)
     }
     
+    func showTutoViajante2(){
+        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+            let completedLevel = dictionary["completedLevel"] as! Bool
+            if (completedLevel){
+                if let mao = self.childNodeWithName("viajante2") {
+                    mao.removeFromParent()
+                }
+                self.addMaoViajante()
+                self.tutorialTest()
+            }
+        }
+    }
     
     func setupBallonView(image: String){
         effectConfiguration(dialoguePopup, waitC: true)
@@ -459,7 +534,7 @@ class TutorialScene: SceneDefault {
         } else {
             ballon.center = CGPointMake(512.0, 250.0) }
         ballon.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.0)
-
+        
         self.view?.addSubview(ballon as UIView)
         
         ballon.addSubview(imageView)
@@ -580,6 +655,19 @@ class TutorialScene: SceneDefault {
             
         case 35:
             print("Button tapped tag 35: VAMOS dividir a sopa")
+            
+            Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueViajante2", object: true)
+            
+            if let mao = self.SpriteMao{
+                self.SpriteMao.runAction(SKAction.fadeAlphaTo(0, duration: 1), completion: {
+                    self.SpriteMao.removeFromParent()})
+            }
+            if let mao2 = self.childNodeWithName("cliqueVelha") {
+                mao2.runAction(SKAction.fadeAlphaTo(1, duration: 0.5), completion: {
+                    mao2.hidden = false
+                    self.initClick2(mao2 as! SKSpriteNode)
+                })}
+            
             effectConfiguration(applauseSound, waitC: true)
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
@@ -661,9 +749,9 @@ class TutorialScene: SceneDefault {
             Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Finished", object: NSArray())
             Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Inventory", object: NSDictionary())
             
-//            theater!.flagCurtinsClosed = true
-//            theater!.transitionSceneBackground(true)
-//            theater.curtains.runAction(SKAction.animateWithTextures(theater.animationCurtainsClosed, timePerFrame: 0.1))
+            //            theater!.flagCurtinsClosed = true
+            //            theater!.transitionSceneBackground(true)
+            //            theater.curtains.runAction(SKAction.animateWithTextures(theater.animationCurtainsClosed, timePerFrame: 0.1))
             
             break
         default:
@@ -699,7 +787,7 @@ class TutorialScene: SceneDefault {
             
             
             /*      Vamos dividir com a velha?
-                        Sim ou Não?                 */
+            Sim ou Não?                 */
             self.setupBallonView("vamos-dividir-a-sopa-com-ela.png")
             self.setupButton(self.yesButton, image: "tela-de-pause-botaosim.png", tag: 35, locationCenter: CGPoint(x: self.ballon.frame.width/6.5, y: self.ballon.frame.height-17))
             self.setupButton(self.noButton, image: "tela-de-pause-botaonao.png", tag: 33, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
@@ -709,10 +797,10 @@ class TutorialScene: SceneDefault {
             
         case 3:
             /*      Decidiu dividir a sopa com a velha      */
-
+            
             self.ballonIsPresented = false
             self.movingNPC(self.theater.childNodeWithName("viajante") as! SKSpriteNode)
-
+            
             break
             
         default:
