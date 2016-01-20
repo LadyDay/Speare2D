@@ -251,9 +251,10 @@ class TutorialScene: SceneDefault {
                                         mao.removeFromParent()
                                         Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueViajante", object: true)
                                     })
-                                let mao2 = self.theater.childNodeWithName("cliquePedras")
-                                mao2?.hidden = false
-                                self.initClick(mao2 as! SKSpriteNode)
+                                    if let mao2 = self.theater.childNodeWithName("cliquePedras") {
+                                        mao2.hidden = false
+                                        self.initClick(mao2 as! SKSpriteNode)
+                                    }
                                 }
                             }
                             self.theater.showVisionButtonsScene()
@@ -283,11 +284,12 @@ class TutorialScene: SceneDefault {
                                 
                                 self.setupBallonView("vamos ver se essa sopa vai ser boa.png")
                                 self.setupButton(self.exitButton, image: "tela-de-pause-botaook.png", tag: 30, locationCenter: CGPoint(x: self.ballon.frame.width-101.6, y: self.ballon.frame.height-17))
-                                if (TutorialScene.ballonTraveller >= 2){
-                                    TutorialScene.ballonOldie = 2
-                                }
+//                                if (TutorialScene.ballonTraveller >= 2){
+//                                    TutorialScene.ballonOldie = 2
+//                                }
                                
                                 break
+                                
                                 
                             default:
                                 self.setupBallonView("nunca tomei uma sopa tao boa.png")
@@ -493,6 +495,11 @@ class TutorialScene: SceneDefault {
             ballon.cheetah.scale(0.5).duration(2).run()
             ballonIsPresented = false
             ballon.removeFromSuperview()
+            if let mao2 = self.theater.childNodeWithName("cliqueViajante"){
+                mao2.runAction(SKAction.fadeAlphaTo(0, duration: 1), completion: {
+                    mao2.removeFromParent()})
+                Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueViajante", object: true)
+            }
             break
             
         case 31:
