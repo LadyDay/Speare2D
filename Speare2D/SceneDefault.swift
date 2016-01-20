@@ -160,7 +160,6 @@ class SceneDefault: SKScene {
             viewBased.presentScene(gameScene!, transition: fadeScene)
         }else{
             if(currentScene.theater != nil){
-                saveCurrentScene(currentScene.theater, stringScene: currentScene.fileName)
                 currentScene.theater.view?.removeFromSuperview()
                 fadeScene = SKTransition.fadeWithDuration(0.1)
             }
@@ -170,10 +169,6 @@ class SceneDefault: SKScene {
             scene.mainCharacter.offsetAlexWalk = scene.offsetWalkScene
             currentScene.view?.presentScene(scene, transition: fadeScene)
         }
-    }
-    
-    func saveCurrentScene(gameScene: TheaterBased, stringScene: String){
-        Dictionary<String, AnyObject>.saveGameData("Level" + String(gameScene.numberLevel), key: "currentScene", object: stringScene)
     }
     
     func setCamera(){
