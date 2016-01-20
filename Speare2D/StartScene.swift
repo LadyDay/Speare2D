@@ -37,16 +37,15 @@ class StartScene: SceneDefault {
             touchRuning = true
             if let touch = touches.first{
                 var location = touch.locationInNode(self)
-                for nodeTouched in self.nodesAtPoint(location){
-                    guard let nome = nodeTouched.name else {continue ;}
-                    switch nome{                        
+                let nodeTouched = self.nodeAtPoint(location)
+                let nome = nodeTouched.name!
+                    switch nome{
                     case "exitNode":
                         effectConfiguration(backButtonSound, waitC: true)
                         //chama a animação para a bilheteria
                         location = CGPoint(x: -70, y: 300)
                         mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                             //Volta ao menu
-                            self.touchRuning = false
                             self.transitionNextScene(self, sceneTransition: Home(fileNamed: "Home")!, withTheater: false)
                         })
                         break
@@ -74,7 +73,6 @@ class StartScene: SceneDefault {
                                                 self.fileName = dictionaryLevel["currentScene"] as! String
                                                 self.numberLevel = numberLevelSelected
                                                 
-                                                self.touchRuning = false
                                                 let string = "Speare2D." + (dictionaryLevel[dictionaryLevel.indexForKey("currentScene")!].1 as! String)
                                                 print(string)
                                                 let anyobjectype : AnyObject.Type = NSClassFromString(string)!
@@ -102,7 +100,6 @@ class StartScene: SceneDefault {
                         }
                         break
                     }
-                }
             }
         }
     }

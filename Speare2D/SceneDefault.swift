@@ -147,6 +147,7 @@ class SceneDefault: SKScene {
     func transitionNextScene(currentScene: SceneDefault , sceneTransition: SKScene, withTheater: Bool){
         var fadeScene = SKTransition.fadeWithDuration(1.5)
         let scene = sceneTransition as! SceneDefault
+        scene.scaleMode = .AspectFill
         if(withTheater){
             self.scene?.userInteractionEnabled = false
             let gameScene = TheaterBased(fileNamed: "TheaterBased")
@@ -156,6 +157,7 @@ class SceneDefault: SKScene {
             gameScene?.sceneBackground = scene
             gameScene?.fileName = currentScene.fileName
             gameScene?.numberLevel = currentScene.numberLevel
+            gameScene?.scaleMode = .AspectFill
             moveInfo(gameScene!)
             viewBased.presentScene(gameScene!, transition: fadeScene)
         }else{

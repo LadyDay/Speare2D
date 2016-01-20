@@ -14,5 +14,7 @@
 	<false/>
 	<key>swipeUp</key>
 	<false/>
+	<key>introdutionPresent</key>
+	<false/>
 </dict>
 </plist>

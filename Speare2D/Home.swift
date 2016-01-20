@@ -58,8 +58,17 @@ class Home: SceneDefault {
                         //chama a transição
                         let action1 = self.centerOnNode(self.childNodeWithName("viewStart")!)
                         let action2 = SKAction.runBlock({
-                            self.touchRuning = false
-                            self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
+                            if let dictionaryTutorial = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+                                let info = dictionaryTutorial["introdutionPresent"] as! Bool
+                                if(!info){
+                                    self.touchRuning = false
+                                    Dictionary<String,AnyObject>.saveGameData("Tutorial", key: "introdutionPresent", object: true)
+                                    self.transitionNextScene(self, sceneTransition: Introdution(fileNamed: "Introdution")!, withTheater: false)
+                                }else{
+                                    self.touchRuning = false
+                                    self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
+                                }
+                            }
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         
