@@ -19,11 +19,17 @@ class Home: SceneDefault {
     var doorHalfRightSpriteArray = Array<SKTexture>()
     let doorRightTextureAtlas = SKTextureAtlas(named: "portaDireita.atlas")
     
-    
+    let backTextureAtlas = SKTextureAtlas(named: "menuScene.atlas")
+    var backSpriteArray = Array<SKTexture>()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         /* Setup your scene here */
+        let background = self.childNodeWithName("background") as! SKSpriteNode
+        self.initSpriteArray()
+        let action = SKAction.animateWithTextures(backSpriteArray, timePerFrame: 0.5)
+        background.runAction(SKAction.repeatActionForever(action))
+        
         countDoorAnimation = 0
         
         if(SceneDefault.firstAcess){
@@ -38,6 +44,15 @@ class Home: SceneDefault {
         cameraHome = self.childNodeWithName("cameraHome") as! SKCameraNode
         
         self.initTexturesDoor()
+    }
+    
+    func initSpriteArray(){
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite1"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite2"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite3"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite4"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite5"))
+        backSpriteArray.append(backTextureAtlas.textureNamed("menuSprite6"))
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -58,34 +73,42 @@ class Home: SceneDefault {
                         //chama a transição
                         let action1 = self.centerOnNode(self.childNodeWithName("viewStart")!)
                         let action2 = SKAction.runBlock({
-                            self.touchRuning = false
-                            self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
-                        })
-                        cameraHome.runAction(SKAction.sequence([action1,action2]))
-                        
-                        break
-                        
-                    case "options":
-                        //chama a animação para a porta
-                        self.animationDoor(self.childNodeWithName("leftDoorOptions") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorOptions") as! SKSpriteNode)
-                        
-                        //chama a transição
-                        let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
-                        let action2 = SKAction.runBlock({
-                            self.touchRuning = false
-                            self.transitionNextScene(self, sceneTransition: OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
+                            if let dictionaryTutorial = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+                                let info = dictionaryTutorial["introdutionPresent"] as! Bool
+                                if(!info){
+                                    self.touchRuning = false
+                                    self.transitionNextScene(self, sceneTransition: Introdution(fileNamed: "Introdution")!, withTheater: false)
+                                }else{
+                                    self.touchRuning = false
+                                    self.transitionNextScene(self, sceneTransition: StartScene(fileNamed: "StartScene")!, withTheater: false)
+                                }
+                            }
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
                         
                         break
                         
                     case "info":
-                        //chama a animação para a bilheteria
-                        effectConfiguration(ticketSound, waitC: true)
+                        //chama a animação para a porta
+                        self.animationDoor(self.childNodeWithName("leftDoorOptions") as! SKSpriteNode, rightDoor: self.childNodeWithName("rightDoorOptions") as! SKSpriteNode)
+                        
+                        //chama a transição
                         let action1 = self.centerOnNode(self.childNodeWithName("viewInfo")!)
                         let action2 = SKAction.runBlock({
                             self.touchRuning = false
                             self.transitionNextScene(self, sceneTransition: InfoScene(fileNamed: "InfoScene")!, withTheater: false)
+                        })
+                        cameraHome.runAction(SKAction.sequence([action1,action2]))
+                        
+                        break
+                        
+                    case "options":
+                        //chama a animação para a bilheteria
+                        effectConfiguration(ticketSound, waitC: true)
+                        let action1 = self.centerOnNode(self.childNodeWithName("viewOptions")!)
+                        let action2 = SKAction.runBlock({
+                            self.touchRuning = false
+                            self.transitionNextScene(self, sceneTransition: OptionsScene(fileNamed: "OptionsScene")!, withTheater: false)
                         })
                         cameraHome.runAction(SKAction.sequence([action1,action2]))
 
@@ -136,11 +159,11 @@ class Home: SceneDefault {
     
     func centerOnNode(node:SKNode) -> SKAction {
         var position : CGPoint = node.position
-        if(position.y/2 < 192){
-            position.y = 192
-        }
-        let moveCamera = SKAction.moveTo(position, duration: 1.5)
-        let zoomCamera = SKAction.scaleTo(0.5, duration: 1.5)
+        //if(position.y/2 < 384){
+        //    position.y = 384
+        //}
+        let moveCamera = SKAction.moveTo(position, duration: 2.5)
+        let zoomCamera = SKAction.scaleTo(0.25, duration: 2.5)
         return SKAction.group([moveCamera, zoomCamera])
     }
     

@@ -10,132 +10,111 @@ import UIKit
 import SpriteKit
 
 class OptionsScene: SceneDefault {
-    var optionView: SKView!
-    
-    let imageBackName = "optionScreen.png"
-    let switchSubtitles = UISwitch(frame:CGRectMake(880, 422, 0, 0))
-    let bgMusicSlider = UISlider(frame:CGRectMake(250, 350, 280, 20))
-    let effectsSlider = UISlider(frame:CGRectMake(250, 425, 280, 20))
-    let voiceSlider = UISlider(frame:CGRectMake(250, 500, 280, 20))
-    let backButton = UIButton(frame: CGRectMake(140, 135, 177, 55))
-    
+    var countTicketAnimation: Int = 0
+    var ticketTurn: Bool = true
+
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
-        setUpView()
-        
         musicBgConfiguration(optionsBGmusic)
+        countTicketAnimation = 0
+        ticketTurn = true
         
-        addSlider(bgMusicSlider, volume: SceneDefault.bgMusicVolume)
-        addSlider(effectsSlider, volume: SceneDefault.effectsVolume)
-        addSlider(voiceSlider, volume: SceneDefault.voiceVolume)
-        addSwitch(switchSubtitles, beginsOn: SceneDefault.subtitlesSwitch)
-        addButton(backButton)
+        let musicButton = self.childNodeWithName("musicButton") as! SKSpriteNode
+        let effectsButton = self.childNodeWithName("effectsButton") as! SKSpriteNode
         
+        if let dictionary = Dictionary<String,AnyObject>.loadGameData("Audios"){
+            let music = dictionary["music"] as! Bool
+            let effects = dictionary["effects"] as! Bool
+            
+            if(music){
+                self.backgroundMusic.runAction(SKAction.play())
+                musicButton.texture = SKTexture(imageNamed: "musicButton")
+            }else{
+                self.backgroundMusic.runAction(SKAction.pause())
+                musicButton.texture = SKTexture(imageNamed: "withoutMusicButton")
+            }
+            
+            if(effects){
+                effectsButton.texture = SKTexture(imageNamed: "effectsButton")
+            }else{
+                effectsButton.texture = SKTexture(imageNamed: "withoutEffectsButton")
+            }
+        }
     }
     
     /* Called when a touch begins */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        //viewInit()
+        if(!self.touchRuning){
+            touchRuning = true
+            if let touch = touches.first{
+                let location = touch.locationInNode(self)
+                let nodeTouched = self.nodeAtPoint(location)
+                let nome = nodeTouched.name!
+                switch nome{
+                case "musicButton":
+                    effectConfiguration(selectionButtonSound, waitC: true)
+                    if(SKTexture.returnNameTexture((nodeTouched as! SKSpriteNode).texture!) == "withoutMusicButton"){
+                        self.backgroundMusic.runAction(SKAction.play())
+                        (nodeTouched as! SKSpriteNode).texture = SKTexture(imageNamed: "musicButton")
+                        Dictionary<String,AnyObject>.saveGameData("Audios", key: "music", object: true)
+                    }else{
+                        self.backgroundMusic.runAction(SKAction.pause())
+                        (nodeTouched as! SKSpriteNode).texture = SKTexture(imageNamed: "withoutMusicButton")
+                        Dictionary<String,AnyObject>.saveGameData("Audios", key: "music", object: false)
+                    }
+                    self.touchRuning = false
+                    break
+                    
+                case "ticketBackButton":
+                    effectConfiguration(backButtonSound, waitC: true)
+                    self.transitionNextScene(self, sceneTransition: Home(fileNamed: "Home")!, withTheater: false)
+                    break
+                    
+                case "effectsButton":
+                    effectConfiguration(selectionButtonSound, waitC: true)
+                    if(SKTexture.returnNameTexture((nodeTouched as! SKSpriteNode).texture!) == "withoutEffectsButton"){
+                        (nodeTouched as! SKSpriteNode).texture = SKTexture(imageNamed: "effectsButton")
+                        Dictionary<String,AnyObject>.saveGameData("Audios", key: "effects", object: true)
+                    }else{
+                        (nodeTouched as! SKSpriteNode).texture = SKTexture(imageNamed: "withoutEffectsButton")
+                        Dictionary<String,AnyObject>.saveGameData("Audios", key: "effects", object: false)
+                    }
+                    self.touchRuning = false
+                    break
+                    
+                default:
+                    self.touchRuning = false
+                    break
+                }
+            }
+        }
     }
     
-    /* Called before each frame is rendered */
     override func update(currentTime: CFTimeInterval) {
-        
+        /* Called before each frame is rendered */
+        if(countTicketAnimation==300){
+            countTicketAnimation = 0
+            ticketTurn = !ticketTurn
+            if(!touchRuning){
+                if(ticketTurn){
+                   animationTicket(self.childNodeWithName("musicButton") as! SKSpriteNode)
+                } else {
+                    animationTicket(self.childNodeWithName("effectsButton") as! SKSpriteNode)
+                }
+            }
+        }else{
+            countTicketAnimation++
+        }
     }
     
-    func setUpView(){
+    func animationTicket(Object: SKSpriteNode){
+        let spin1 = SKAction.rotateToAngle(CGFloat(0.2), duration: 0.2)
+        let spin2 = SKAction.rotateToAngle(CGFloat(-0.2), duration: 0.2)
+        let spin3 = SKAction.rotateToAngle(CGFloat(0), duration: 0.2)
+        let group = SKAction.sequence([spin1, spin2, spin3])
+        Object.runAction(group)
+        
+        
+    }
 
-        self.optionView = SKView(frame: CGRectMake(0, 0, 1024, 768))
-        self.view?.addSubview(optionView as UIView)
-        
-        let imageBG = UIImage(named: imageBackName)
-        let imageView = UIImageView(image: imageBG)
-        imageView.frame = CGRectMake(0, 0, 1024, 768)
-        self.optionView.addSubview(imageView)
-        self.optionView.sendSubviewToBack(imageView)
-        
-        //self.optionView.backgroundColor = UIColor.whiteColor()
-        //self.view?.backgroundColor = UIColor.whiteColor()
-        //view = self.optionView
-    }
-    
-    func addSlider(Slider: UISlider, volume: Float){
-        let sliderDemo = Slider
-        
-        sliderDemo.minimumValue = 0
-        sliderDemo.maximumValue = 1
-        sliderDemo.continuous = true
-        sliderDemo.tintColor = UIColor.redColor()
-        sliderDemo.value = volume
-        sliderDemo.addTarget(self, action: "sliderValueDidChange:", forControlEvents: .ValueChanged)
-        sliderDemo.backgroundColor = UIColor.clearColor()
-        self.optionView.addSubview(sliderDemo)
-    }
-    
-    func sliderValueDidChange(sender:UISlider!)
-    {
-        if sender.layer == bgMusicSlider.layer {
-            effectConfiguration(metalEffectSound, waitC: false)
-            backgroundMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            SceneDefault.bgMusicVolume = sender.value
-        } else if sender.layer == effectsSlider.layer {
-            effectConfiguration(metalEffectSound, waitC: false)
-            
-            SceneDefault.effectsVolume = sender.value
-        } else if sender.layer == voiceSlider.layer {
-            effectConfiguration(metalEffectSound, waitC: false)
-            //effectsMusic.runAction(SKAction.changeVolumeTo(sender.value, duration: 0))
-            SceneDefault.voiceVolume = sender.value
-        }
-        
-    }
-    
-    func addSwitch(Switch: UISwitch, beginsOn: Bool){
-        let switchDemo = Switch
-        let onOff = beginsOn
-        
-        switchDemo.on = onOff
-        switchDemo.setOn(true, animated: false)
-        switchDemo.addTarget(self, action: "switchValueDidChange:", forControlEvents: .ValueChanged)
-        switchDemo.backgroundColor = UIColor.clearColor()
-        self.optionView.addSubview(switchDemo)
-    }
-    
-    func switchValueDidChange(sender:UISwitch!)
-    {
-        if (sender.on == true){
-            print("on")
-            SceneDefault.subtitlesSwitch = true
-            effectConfiguration(sliderSound, waitC: false)
-        }
-        else{
-            print("off")
-            SceneDefault.subtitlesSwitch = false
-            effectConfiguration(sliderSound, waitC: false)
-        }
-    }
-    
-    func addButton(Button: UIButton){
-        let buttonDemo = Button
-        buttonDemo.backgroundColor = UIColor.blackColor()
-        buttonDemo.setTitle("", forState: UIControlState.Normal)
-        buttonDemo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        buttonDemo.tag = 22;
-        buttonDemo.setImage(UIImage(named: "exitButton.png"), forState: UIControlState.Normal)
-        self.optionView!.addSubview(buttonDemo)
-    }
-    
-    func buttonAction(sender:UIButton!)
-    {
-        //var btnsendtag:UIButton = sender
-        if sender.tag == 22 {
-            print("Button tapped tag 22")
-            effectConfiguration(backButtonSound, waitC: true)
-            let fadeScene = SKTransition.fadeWithDuration(0.7)
-            let gameScene = Home(fileNamed: "Home")
-            self.view?.presentScene(gameScene!, transition: fadeScene)
-            optionView.removeFromSuperview()
-        }
-    }
-    
 }

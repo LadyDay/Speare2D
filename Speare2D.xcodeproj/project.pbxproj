@@ -12,7 +12,11 @@
 		3D11CC501C143AA800DEFDD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */; };
 		3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC511C143FE800DEFDD6 /* StateGame.plist */; };
 		3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC531C14402E00DEFDD6 /* Level0.plist */; };
+		3D1649B51C5018C70075F428 /* Audios.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649B41C5018C70075F428 /* Audios.plist */; };
+		3D1649B71C501D6C0075F428 /* menuScene.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649B61C501D6C0075F428 /* menuScene.atlas */; };
 		3D3C85F61C4EDC7400D3FA63 /* Introdution.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */; };
+		3D3C85F81C4FCEF300D3FA63 /* Introdution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C85F71C4FCEF200D3FA63 /* Introdution.swift */; };
+		3D3C85FA1C4FD87F00D3FA63 /* Introdution.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */; };
 		3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94C1BFD1DAF0022511E /* Bezier.swift */; };
 		3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */; };
 		3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC94F1BFD1DAF0022511E /* CheetahConstraintProperties.swift */; };
@@ -90,10 +94,10 @@
 		BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4D90D1BE10E6800F8B35A /* Alex.swift */; };
 		BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */; };
 		BED4D9121BEB665A00F8B35A /* applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = BED4D9101BEB665A00F8B35A /* applause.wav */; };
-		BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178B1BDD4B28009365CE /* OptionsScene.sks */; };
-		BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */; };
-		BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178F1BDD4B7D009365CE /* InfoScene.sks */; };
-		BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE817911BDD4BA6009365CE /* InfoScene.swift */; };
+		BEE8178C1BDD4B28009365CE /* InfoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178B1BDD4B28009365CE /* InfoScene.sks */; };
+		BEE8178E1BDD4B3A009365CE /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8178D1BDD4B3A009365CE /* InfoScene.swift */; };
+		BEE817901BDD4B7D009365CE /* OptionsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BEE8178F1BDD4B7D009365CE /* OptionsScene.sks */; };
+		BEE817921BDD4BA6009365CE /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE817911BDD4BA6009365CE /* OptionsScene.swift */; };
 		BEFE48421C4F346D002F0855 /* viajanteMovendo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEFE48411C4F346D002F0855 /* viajanteMovendo.atlas */; };
 		BEFE48441C4FFC88002F0855 /* clickLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEFE48431C4FFC88002F0855 /* clickLeft.atlas */; };
 /* End PBXBuildFile section */
@@ -121,7 +125,11 @@
 		3D11CC4F1C143AA800DEFDD6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3D11CC511C143FE800DEFDD6 /* StateGame.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StateGame.plist; sourceTree = "<group>"; };
 		3D11CC531C14402E00DEFDD6 /* Level0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level0.plist; sourceTree = "<group>"; };
+		3D1649B41C5018C70075F428 /* Audios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Audios.plist; sourceTree = "<group>"; };
+		3D1649B61C501D6C0075F428 /* menuScene.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = menuScene.atlas; sourceTree = "<group>"; };
 		3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Introdution.sks; sourceTree = "<group>"; };
+		3D3C85F71C4FCEF200D3FA63 /* Introdution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Introdution.swift; sourceTree = "<group>"; };
+		3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Introdution.atlas; sourceTree = "<group>"; };
 		3D4CC94C1BFD1DAF0022511E /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
 		3D4CC94D1BFD1DAF0022511E /* Cheetah.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cheetah.h; sourceTree = "<group>"; };
 		3D4CC94E1BFD1DAF0022511E /* Cheetah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cheetah.swift; sourceTree = "<group>"; };
@@ -206,10 +214,10 @@
 		BED4D90D1BE10E6800F8B35A /* Alex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alex.swift; sourceTree = "<group>"; };
 		BED4D90F1BEB665A00F8B35A /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backgroundMusic.mp3; path = ../backgroundMusic.mp3; sourceTree = "<group>"; };
 		BED4D9101BEB665A00F8B35A /* applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = applause.wav; path = ../applause.wav; sourceTree = "<group>"; };
-		BEE8178B1BDD4B28009365CE /* OptionsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionsScene.sks; sourceTree = "<group>"; };
-		BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
-		BEE8178F1BDD4B7D009365CE /* InfoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InfoScene.sks; sourceTree = "<group>"; };
-		BEE817911BDD4BA6009365CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
+		BEE8178B1BDD4B28009365CE /* InfoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InfoScene.sks; sourceTree = "<group>"; };
+		BEE8178D1BDD4B3A009365CE /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
+		BEE8178F1BDD4B7D009365CE /* OptionsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionsScene.sks; sourceTree = "<group>"; };
+		BEE817911BDD4BA6009365CE /* OptionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
 		BEFE48411C4F346D002F0855 /* viajanteMovendo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = viajanteMovendo.atlas; sourceTree = "<group>"; };
 		BEFE48431C4FFC88002F0855 /* clickLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = clickLeft.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +254,7 @@
 				3D11CC511C143FE800DEFDD6 /* StateGame.plist */,
 				3D11CC531C14402E00DEFDD6 /* Level0.plist */,
 				BE9FC13D1C4E66C600C74DD4 /* Tutorial.plist */,
+				3D1649B41C5018C70075F428 /* Audios.plist */,
 			);
 			name = Arquivos;
 			sourceTree = "<group>";
@@ -399,12 +408,13 @@
 			isa = PBXGroup;
 			children = (
 				3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */,
+				3D3C85F71C4FCEF200D3FA63 /* Introdution.swift */,
 				BE7597E81BD73683005608E1 /* StartScene.sks */,
 				BE7597E61BD73661005608E1 /* StartScene.swift */,
-				BEE8178F1BDD4B7D009365CE /* InfoScene.sks */,
-				BEE817911BDD4BA6009365CE /* InfoScene.swift */,
-				BEE8178B1BDD4B28009365CE /* OptionsScene.sks */,
-				BEE8178D1BDD4B3A009365CE /* OptionsScene.swift */,
+				BEE8178F1BDD4B7D009365CE /* OptionsScene.sks */,
+				BEE817911BDD4BA6009365CE /* OptionsScene.swift */,
+				BEE8178B1BDD4B28009365CE /* InfoScene.sks */,
+				BEE8178D1BDD4B3A009365CE /* InfoScene.swift */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -579,12 +589,13 @@
 				BE9FC1421C4E72F000C74DD4 /* arrastandocima.atlas in Resources */,
 				BE960FBA1BF5D7C20030DE5E /* Porta abrindo.mp3 in Resources */,
 				BE1FAE6C1C157BA30016B077 /* idosaFalando.atlas in Resources */,
-				BEE817901BDD4B7D009365CE /* InfoScene.sks in Resources */,
+				BEE817901BDD4B7D009365CE /* OptionsScene.sks in Resources */,
 				BE81EE681C13C2530022FC3E /* Princess_bubblegum_character.png in Resources */,
 				BE9FC1441C4EEC8500C74DD4 /* portaCozinha.atlas in Resources */,
 				BE9FC1401C4E720900C74DD4 /* arrastandobaixo.atlas in Resources */,
 				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
 				3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */,
+				3D1649B51C5018C70075F428 /* Audios.plist in Resources */,
 				BE9FC13E1C4E66C600C74DD4 /* Tutorial.plist in Resources */,
 				BE960FB81BF5D7C20030DE5E /* Botaovoltar.mp3 in Resources */,
 				3DC44D161BD52E0400502BF0 /* Assets.xcassets in Resources */,
@@ -593,9 +604,11 @@
 				BEA58CFB1C06B2920013E3EB /* KitchenScene.sks in Resources */,
 				BE960FBD1BF5D7C20030DE5E /* Transito1.mp3 in Resources */,
 				BE86071F1C14A12C00CFA32F /* Pegarumitemchave.mp3 in Resources */,
-				BEE8178C1BDD4B28009365CE /* OptionsScene.sks in Resources */,
+				BEE8178C1BDD4B28009365CE /* InfoScene.sks in Resources */,
 				BE960FBC1BF5D7C20030DE5E /* Transicao.wav in Resources */,
 				BE005A221BF4C39B00C0B265 /* effectsound.aiff in Resources */,
+				3D3C85FA1C4FD87F00D3FA63 /* Introdution.atlas in Resources */,
+				3D1649B71C501D6C0075F428 /* menuScene.atlas in Resources */,
 				BE1FAE681C1562DE0016B077 /* Boo curto.wav in Resources */,
 				BE0F46A81BF0D90F00F801B6 /* AlexCorrendo.atlas in Resources */,
 				BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */,
@@ -657,18 +670,19 @@
 				3D0545361BD7C45500D1DC0A /* Inventory.swift in Sources */,
 				3D4CC9621BFD1DAF0022511E /* Easings.swift in Sources */,
 				3D4CC95E1BFD1DAF0022511E /* CheetahLayerProperties.swift in Sources */,
-				BEE8178E1BDD4B3A009365CE /* OptionsScene.swift in Sources */,
+				BEE8178E1BDD4B3A009365CE /* InfoScene.swift in Sources */,
 				3DC44D0F1BD52E0400502BF0 /* Home.swift in Sources */,
 				3D4CC9591BFD1DAF0022511E /* Bezier.swift in Sources */,
 				3D4CC9611BFD1DAF0022511E /* CheetahViewProperties.swift in Sources */,
 				BED4D90E1BE10E6800F8B35A /* Alex.swift in Sources */,
 				3D4CC95A1BFD1DAF0022511E /* Cheetah.swift in Sources */,
+				3D3C85F81C4FCEF300D3FA63 /* Introdution.swift in Sources */,
 				3D4CC9601BFD1DAF0022511E /* CheetahProperties.swift in Sources */,
 				3DC44D111BD52E0400502BF0 /* GameViewController.swift in Sources */,
 				3D64A9AB1BF625BD006D4F4B /* TheaterBased.swift in Sources */,
 				3D4CC95F1BFD1DAF0022511E /* CheetahManager.swift in Sources */,
 				BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */,
-				BEE817921BDD4BA6009365CE /* InfoScene.swift in Sources */,
+				BEE817921BDD4BA6009365CE /* OptionsScene.swift in Sources */,
 				3D4CC95C1BFD1DAF0022511E /* CheetahGroup.swift in Sources */,
 				BEA58CF91C06B2870013E3EB /* KitchenScene.swift in Sources */,
 				3D5E38591BF0D7B100D59321 /* SceneGameBase.swift in Sources */,
@@ -774,6 +788,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
+				"Texture Atlas Maximum Size" = 4096x4096;
 			};
 			name = Debug;
 		};
@@ -814,6 +829,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				"Texture Atlas Maximum Size" = 4096x4096;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -832,6 +848,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
+				"Texture Atlas Maximum Size" = 4096x4096;
 			};
 			name = Debug;
 		};
@@ -849,6 +866,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
+				"Texture Atlas Maximum Size" = 4096x4096;
 			};
 			name = Release;
 		};

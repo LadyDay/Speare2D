@@ -10,14 +10,16 @@ import UIKit
 import SpriteKit
 
 class InfoScene: SceneDefault {
-    var countTicketAnimation: Int = 0
-    var ticketTurn: Bool = true
-
+    
     /* Setup your scene here */
     override func didMoveToView(view: SKView) {
-        musicBgConfiguration(optionsBGmusic)
-        countTicketAnimation = 0
-        ticketTurn = true
+        self.userInteractionEnabled = true
+        mainCharacter.setupAlex()
+        mainCharacter.name = "Alex"
+        addChild(mainCharacter)
+        setCamera()
+        setPositionCamera()
+        musicBgConfiguration(startBGmusic)
     }
     
     /* Called when a touch begins */
@@ -26,58 +28,56 @@ class InfoScene: SceneDefault {
             touchRuning = true
             if let touch = touches.first{
                 var location = touch.locationInNode(self)
-                for nodeTouched in self.nodesAtPoint(location){
-                    guard let nome = nodeTouched.name else {continue ;}
-                    switch nome{
-                    case "introButton":
-                        effectConfiguration(selectionButtonSound, waitC: true)
-                        //self.transitionNextScene(IntroScene(fileNamed: "IntroScene")!, withTheater: true)
-                        break
-                        
-                    case "ticketBackButton":
-                        effectConfiguration(backButtonSound, waitC: true)
+                let nodeTouched = self.nodeAtPoint(location) as! SKSpriteNode
+                let nome = nodeTouched.name!
+                switch nome{
+                case "exitNode":
+                    effectConfiguration(backButtonSound, waitC: true)
+                    //chama a animação para a bilheteria
+                    location = CGPoint(x: -70, y: 300)
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                        //Volta ao menu
                         self.transitionNextScene(self, sceneTransition: Home(fileNamed: "Home")!, withTheater: false)
-                        break
-                        
-                    case "teamButton":
-                        effectConfiguration(selectionButtonSound, waitC: true)
-                        //self.transitionNextScene(TeamScene(fileNamed: "TeamScene")!, withTheater: false)
-                        break
-                        
-                    default:
+                    })
+                    break
+                    
+                case "introdution":
+                    effectConfiguration(backButtonSound, waitC: true)
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                        self.transitionNextScene(self, sceneTransition: Introdution(fileNamed: "Introdution")!, withTheater: false)
+                    })
+                    break
+                    
+                case "creditos":
+                    effectConfiguration(backButtonSound, waitC: true)
+                    mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                        //self.transitionNextScene(self, sceneTransition: Home(fileNamed: "Home")!, withTheater: false)
+                    })
+                    self.touchRuning = false
+                    break
+                    
+                default:
+                    if location.y<200 {
+                        if(location.x>950){
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: CGPoint(x: 950, y: touch.locationInNode(self).y), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                self.touchRuning = false
+                            })
+                        }else{
+                            mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
+                                self.touchRuning = false
+                            })
+                        }
+                    }else{
                         self.touchRuning = false
-                        break
                     }
+                    break
                 }
             }
         }
-    }
-    
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
-        if(countTicketAnimation==300){
-            countTicketAnimation = 0
-            ticketTurn = !ticketTurn
-            if(!touchRuning){
-                if(ticketTurn){
-                   animationTicket(self.childNodeWithName("introButton") as! SKSpriteNode)
-                } else {
-                    animationTicket(self.childNodeWithName("teamButton") as! SKSpriteNode)
-                }
-            }
-        }else{
-            countTicketAnimation++
-        }
-    }
-    
-    func animationTicket(Object: SKSpriteNode){
-        let spin1 = SKAction.rotateToAngle(CGFloat(0.2), duration: 0.2)
-        let spin2 = SKAction.rotateToAngle(CGFloat(-0.2), duration: 0.2)
-        let spin3 = SKAction.rotateToAngle(CGFloat(0), duration: 0.2)
-        let group = SKAction.sequence([spin1, spin2, spin3])
-        Object.runAction(group)
-        
-        
     }
 
+    /* Called before each frame is rendered */
+    override func update(currentTime: CFTimeInterval) {
+        
+    }
 }
