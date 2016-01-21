@@ -16,6 +16,7 @@
 		3D1649B71C501D6C0075F428 /* menuScene.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649B61C501D6C0075F428 /* menuScene.atlas */; };
 		3D1649B91C5113390075F428 /* CreditosScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649B81C5113390075F428 /* CreditosScene.sks */; };
 		3D1649BB1C5113820075F428 /* CreditosScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1649BA1C5113820075F428 /* CreditosScene.swift */; };
+		3D1649BD1C51588D0075F428 /* portaCasa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649BC1C51588D0075F428 /* portaCasa.atlas */; };
 		3D3C85F61C4EDC7400D3FA63 /* Introdution.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */; };
 		3D3C85F81C4FCEF300D3FA63 /* Introdution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C85F71C4FCEF200D3FA63 /* Introdution.swift */; };
 		3D3C85FA1C4FD87F00D3FA63 /* Introdution.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */; };
@@ -87,7 +88,6 @@
 		BE9FC1401C4E720900C74DD4 /* arrastandobaixo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */; };
 		BE9FC1421C4E72F000C74DD4 /* arrastandocima.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */; };
 		BE9FC1441C4EEC8500C74DD4 /* portaCozinha.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1431C4EEC8500C74DD4 /* portaCozinha.atlas */; };
-		BE9FC1461C4EF04F00C74DD4 /* portaCasa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1451C4EF04F00C74DD4 /* portaCasa.atlas */; };
 		BE9FC1481C4EF10900C74DD4 /* portaHorta.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE9FC1471C4EF10900C74DD4 /* portaHorta.atlas */; };
 		BEA58CF51C06B24F0013E3EB /* fogao.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF41C06B24F0013E3EB /* fogao.atlas */; };
 		BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BEA58CF61C06B2550013E3EB /* panela.atlas */; };
@@ -131,6 +131,7 @@
 		3D1649B61C501D6C0075F428 /* menuScene.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = menuScene.atlas; sourceTree = "<group>"; };
 		3D1649B81C5113390075F428 /* CreditosScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CreditosScene.sks; sourceTree = "<group>"; };
 		3D1649BA1C5113820075F428 /* CreditosScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditosScene.swift; sourceTree = "<group>"; };
+		3D1649BC1C51588D0075F428 /* portaCasa.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaCasa.atlas; sourceTree = "<group>"; };
 		3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Introdution.sks; sourceTree = "<group>"; };
 		3D3C85F71C4FCEF200D3FA63 /* Introdution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Introdution.swift; sourceTree = "<group>"; };
 		3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Introdution.atlas; sourceTree = "<group>"; };
@@ -209,7 +210,6 @@
 		BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = arrastandobaixo.atlas; sourceTree = "<group>"; };
 		BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = arrastandocima.atlas; sourceTree = "<group>"; };
 		BE9FC1431C4EEC8500C74DD4 /* portaCozinha.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaCozinha.atlas; sourceTree = "<group>"; };
-		BE9FC1451C4EF04F00C74DD4 /* portaCasa.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaCasa.atlas; sourceTree = "<group>"; };
 		BE9FC1471C4EF10900C74DD4 /* portaHorta.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portaHorta.atlas; sourceTree = "<group>"; };
 		BEA58CF41C06B24F0013E3EB /* fogao.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fogao.atlas; sourceTree = "<group>"; };
 		BEA58CF61C06B2550013E3EB /* panela.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = panela.atlas; sourceTree = "<group>"; };
@@ -346,12 +346,12 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3D1649BC1C51588D0075F428 /* portaCasa.atlas */,
 				BE8978BA1C508029001D62E1 /* clickLeft.atlas */,
 				3D1649B61C501D6C0075F428 /* menuScene.atlas */,
 				3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */,
 				BEFE48411C4F346D002F0855 /* viajanteMovendo.atlas */,
 				BE9FC1471C4EF10900C74DD4 /* portaHorta.atlas */,
-				BE9FC1451C4EF04F00C74DD4 /* portaCasa.atlas */,
 				BE9FC1431C4EEC8500C74DD4 /* portaCozinha.atlas */,
 				BE9FC1411C4E72F000C74DD4 /* arrastandocima.atlas */,
 				BE9FC13F1C4E720900C74DD4 /* arrastandobaixo.atlas */,
@@ -623,7 +623,6 @@
 				BE960FBE1BF5D7C20030DE5E /* Transito2.mp3 in Resources */,
 				BE9FC1481C4EF10900C74DD4 /* portaHorta.atlas in Resources */,
 				BED4D9121BEB665A00F8B35A /* applause.wav in Resources */,
-				BE9FC1461C4EF04F00C74DD4 /* portaCasa.atlas in Resources */,
 				BED4D9111BEB665A00F8B35A /* backgroundMusic.mp3 in Resources */,
 				BE123A4E1C04A608007B0856 /* Passos na madeira.mp3 in Resources */,
 				BE9EA0D61BFCA2C10040EEB0 /* portaDireita.atlas in Resources */,
@@ -631,6 +630,7 @@
 				BE1FAE701C157CFB0016B077 /* viajanteFalando.atlas in Resources */,
 				BE8607201C14A12C00CFA32F /* AparecerDialogo.mp3 in Resources */,
 				BE20BF0D1BFA09B60027C4BB /* optionsMusic.wav in Resources */,
+				3D1649BD1C51588D0075F428 /* portaCasa.atlas in Resources */,
 				BE20BF0F1BFA0E1E0027C4BB /* slider.aiff in Resources */,
 				BE81EE6A1C13C25B0022FC3E /* traveller.png in Resources */,
 				BE152AB51C1599FB00785BC9 /* finishedLevel.atlas in Resources */,
