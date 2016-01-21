@@ -71,6 +71,7 @@
 		BE86071F1C14A12C00CFA32F /* Pegarumitemchave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE86071A1C14A12C00CFA32F /* Pegarumitemchave.mp3 */; };
 		BE8607201C14A12C00CFA32F /* AparecerDialogo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE86071B1C14A12C00CFA32F /* AparecerDialogo.mp3 */; };
 		BE8607211C14A12C00CFA32F /* Vaia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE86071C1C14A12C00CFA32F /* Vaia.mp3 */; };
+		BE8978BB1C508029001D62E1 /* clickLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BE8978BA1C508029001D62E1 /* clickLeft.atlas */; };
 		BE89CC501BDE4EA90063B3A9 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */; };
 		BE89CC521BDE4EC10063B3A9 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */; };
 		BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */; };
@@ -192,6 +193,7 @@
 		BE86071A1C14A12C00CFA32F /* Pegarumitemchave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pegarumitemchave.mp3; sourceTree = "<group>"; };
 		BE86071B1C14A12C00CFA32F /* AparecerDialogo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AparecerDialogo.mp3; sourceTree = "<group>"; };
 		BE86071C1C14A12C00CFA32F /* Vaia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Vaia.mp3; sourceTree = "<group>"; };
+		BE8978BA1C508029001D62E1 /* clickLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = clickLeft.atlas; sourceTree = "<group>"; };
 		BE89CC4F1BDE4EA90063B3A9 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		BE89CC511BDE4EC10063B3A9 /* FarmScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		BE960FAF1BF5D7C20030DE5E /* BotaoSelecionar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BotaoSelecionar.mp3; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		BE7597F41BD736C8005608E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BE8978BA1C508029001D62E1 /* clickLeft.atlas */,
 				3D1649B61C501D6C0075F428 /* menuScene.atlas */,
 				3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */,
 				BEFE48411C4F346D002F0855 /* viajanteMovendo.atlas */,
@@ -598,6 +601,7 @@
 				BE81EE681C13C2530022FC3E /* Princess_bubblegum_character.png in Resources */,
 				BE9FC1441C4EEC8500C74DD4 /* portaCozinha.atlas in Resources */,
 				BE9FC1401C4E720900C74DD4 /* arrastandobaixo.atlas in Resources */,
+				BE8978BB1C508029001D62E1 /* clickLeft.atlas in Resources */,
 				BE960FB71BF5D7C20030DE5E /* BotaoSelecionar.mp3 in Resources */,
 				3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */,
 				3D1649B51C5018C70075F428 /* Audios.plist in Resources */,

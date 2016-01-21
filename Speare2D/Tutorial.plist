@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>completedLevel</key>
+	<false/>
 	<key>cliqueCartaz</key>
 	<false/>
 	<key>cliqueChao</key>
@@ -15,6 +17,10 @@
 	<key>swipeUp</key>
 	<false/>
 	<key>introdutionPresent</key>
+	<false/>
+	<key>cliqueViajante2</key>
+	<false/>
+	<key>cliqueVelha</key>
 	<false/>
 </dict>
 </plist>
