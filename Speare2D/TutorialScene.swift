@@ -13,10 +13,9 @@ class TutorialScene: SceneDefault {
     var clickChao = false
     var clickV2 = false
     var clickVelha = false
-    
-    var ImageMao = UIImage(named: "clique1.png")
-    var TextureMao: SKTexture!
+
     var SpriteMao: SKSpriteNode!
+    var SpriteMaoV: SKSpriteNode!
     var countDoorAnimation: Int = 0
     var doorArray = Array<SKTexture>()
     let doorAtlas = SKTextureAtlas(named: "portaCasa.atlas")
@@ -77,6 +76,7 @@ class TutorialScene: SceneDefault {
         initDoorTexture()
         
         addMaoViajante()
+        addMaoVelha()
         tutorialTest()
         
         ballonIsPresentedCounter = 0
@@ -443,14 +443,16 @@ class TutorialScene: SceneDefault {
         if (clickV2){
             clickV2 = false
             if let mao = self.theater.childNodeWithName("viajante2"){
-                mao.runAction(SKAction.fadeAlphaTo(0, duration: 1), completion: {
+                mao.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
                     mao.removeFromParent()})
             }
+            
             if let mao2 = self.theater.childNodeWithName("cliqueVelha") {
                 mao2.runAction(SKAction.fadeAlphaTo(1, duration: 0.5), completion: {
                     mao2.hidden = false
                     self.initClick2(mao2 as! SKSpriteNode)
-                })}
+                })
+            }
         }
         
         if (self.theater.showViajante2 == true){
@@ -561,18 +563,30 @@ class TutorialScene: SceneDefault {
         self.addChild(SpriteMao)
     }
     
+    func addMaoVelha(){
+        //Mão problemática
+        SpriteMaoV = SKSpriteNode(imageNamed: "cliqueE1")
+        SpriteMaoV.position = CGPointMake(355.607, 321.569)
+        SpriteMaoV.zPosition = CGFloat(95)
+        SpriteMaoV.name = "cliqueVelha"
+        
+        self.addChild(SpriteMaoV)
+    }
+    
     func showTutoViajante2(){
         if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
             let completedLevel = dictionary["completedLevel"] as! Bool
             if (completedLevel){
                 if let mao = self.theater.childNodeWithName("viajante2") {
-                    mao.removeFromParent()
+                    mao.runAction(SKAction.fadeAlphaTo(1, duration: 0.5), completion: {
+                        mao.hidden = false
+                        self.initClick(mao as! SKSpriteNode)
+                    })
                 }
-                self.addMaoViajante()
-                self.tutorialTest()
             }
         }
     }
+    
     
     func setupBallonView(image: String){
         effectConfiguration(dialoguePopup, waitC: true)
