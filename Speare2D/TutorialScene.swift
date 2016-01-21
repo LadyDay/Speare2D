@@ -272,6 +272,23 @@ class TutorialScene: SceneDefault {
                         let object = self.theater.nodesAtPoint(location)[theater.nodesAtPoint(location).startIndex.advancedBy(2)] as! SKSpriteNode
                         if(SKTexture.returnNameTexture(object.texture!) == "pedras"){
                             self.theater.catchObject(self.theater, location: location, object: self.theater.nodesAtPoint(location)[theater.nodesAtPoint(location).startIndex.advancedBy(2)])
+                            if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+                                let click = dictionary["swipeDown"] as! Bool
+                                if (!click) {
+                                    if let mao = self.theater.childNodeWithName("swipeDownTutorial"){
+                                        // do nothing
+                                    } else {
+                                        self.theater.setupSwipe(true)
+                                        self.theater.initAnimationSwipe(self.theater.swipeDSprite, Down: true)
+                                    }
+                                }
+                            }
+                            
+//                        } else {
+//                            for iten in self.theater.children{
+//                                if (iten.name == "pedras")
+//                                
+//                            } //quero tirar as pedras mesmo quando não clicar nelas.
                         }
                         
                         self.touchRuning = false
@@ -674,6 +691,7 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(1, forKey: "Viajante")
+                dict.setValue(0, forKey: "Velha")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
@@ -695,6 +713,7 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(0, forKey: "Viajante")
+                dict.setValue(0, forKey: "Velha")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
@@ -712,6 +731,7 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(-1, forKey: "Viajante")
+                dict.setValue(0, forKey: "Velha")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
@@ -729,6 +749,7 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(1, forKey: "Viajante")
+                dict.setValue(0, forKey: "Velha")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
@@ -750,6 +771,8 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(3, forKey: "Viajante")
+                dict.setValue(1, forKey: "Velha")
+                
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
@@ -767,6 +790,7 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(2, forKey: "Viajante")
+                dict.setValue(0, forKey: "Velha")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }
@@ -784,6 +808,7 @@ class TutorialScene: SceneDefault {
                 let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                 let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                 dict.setValue(2, forKey: "Viajante")
+                dict.setValue(0, forKey: "Velha")
                 
                 Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
             }

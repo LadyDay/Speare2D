@@ -16,6 +16,7 @@ class SceneGameBase: SceneDefault {
     var inventoryPresent: Bool = false
     static var itenComing: Bool = false
     static var itenFromInventory: SKSpriteNode!
+    static var flagSwipe: Bool = false
     
     /*SWIPE's FUNCTION */
     func addSwipes(view: UIView){
@@ -33,11 +34,25 @@ class SceneGameBase: SceneDefault {
         /* Function to display the inventory */
         if(!touchRuning){
             touchRuning = true
+            Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "swipeDown", object: true)
+            if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+                let click2 = dictionary["swipeUp"] as! Bool
+                if (!click2) {
+                    SceneGameBase.flagSwipe = true
+                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "swipeDown", object: true)
+                    
+                }
+            } 
             print(sender.locationInView(self.view))
             let location = CGPointMake(sender.locationInView(self.view).x, 768 - sender.locationInView(self.view).y)
             print(location)
-            if location.x > 950 && location.x < 1100 && location.y > 400 && location.y < 700 && inventoryPresent==false {
+            var removeSwipe = false
+            if let touchSwipe = self.childNodeWithName("swipeDownTutorial") {
+                removeSwipe = true
+            }
+            if removeSwipe || (location.x > 950 && location.x < 1100 && location.y > 400 && location.y < 700 && inventoryPresent==false) {
                 //limits the recognition area swipe
+                removeSwipe = false
                 self.viewInventory = SKView(frame: CGRectMake(0, -150, 1024, 150))
                 self.view?.addSubview(viewInventory as UIView)
                 self.viewInventory.backgroundColor = UIColor.clearColor()

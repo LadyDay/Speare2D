@@ -248,8 +248,8 @@ class SceneDefault: SKScene {
         clickArray.append(clickAtlas.textureNamed("clique2"))
     }
     func initClickTextureLeft(){
-        clickArrayLeft.append(clickAtlasLeft.textureNamed("cliqueE1"))
-        clickArrayLeft.append(clickAtlasLeft.textureNamed("cliqueE2"))
+        clickArrayLeft.append(clickAtlasLeft.textureNamed("cliqueE1.png"))
+        clickArrayLeft.append(clickAtlasLeft.textureNamed("cliqueE2.png"))
     }
     
     func initClick(clickNode: SKSpriteNode){

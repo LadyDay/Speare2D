@@ -34,6 +34,15 @@ class TheaterBased: SceneGameBase {
     var animationCurtainsClosed = Array<SKTexture>()
     var curtains: SKSpriteNode!
     
+    var swipeDownArray = Array<SKTexture>()
+    let swipeDownAtlas = SKTextureAtlas(named: "arrastandobaixo.atlas")
+    var swipeAnimation = SKAction()
+    var swipeUpArray = Array<SKTexture>()
+    let swipeUpAtlas = SKTextureAtlas(named: "arrastandocima.atlas")
+    var swipeDSprite: SKSpriteNode!
+    var swipeUSprite: SKSpriteNode!
+    //var swipeUpAnimation = SKAction()
+    
     
     
     override func didMoveToView(view: SKView) {
@@ -71,12 +80,70 @@ class TheaterBased: SceneGameBase {
         self.flagStartTouchedBeganTheater = false
         
         print("Touch: \(pauseMenuPresent)")
+        
+        initSwipesTexture()
     }
+    
+    func setupSwipe(Down: Bool){
+        if (Down){
+            swipeDSprite = SKSpriteNode(imageNamed: "arrastar_baixo1")
+            swipeDSprite.position = CGPointMake(1000 + self.camera!.position.x - 512, 635)
+            swipeDSprite.zPosition = CGFloat(103)
+            swipeDSprite.name = "swipeDownTutorial"
+            
+            self.addChild(swipeDSprite)
+        } else {
+            swipeUSprite = SKSpriteNode(imageNamed: "arrastar_cima1")
+            swipeUSprite.position = CGPointMake(1000 + self.camera!.position.x - 512, 635)
+            swipeUSprite.zPosition = CGFloat(103)
+            swipeUSprite.name = "swipeUpTutorial"
+            
+            self.addChild(swipeUSprite)
+        }
+
+    }
+    
+    func initSwipesTexture(){
+        swipeDownArray.append(swipeDownAtlas.textureNamed("arrastar_baixo1"))
+        swipeDownArray.append(swipeDownAtlas.textureNamed("arrastar_baixo2"))
+        swipeDownArray.append(swipeDownAtlas.textureNamed("arrastar_baixo3"))
+        swipeDownArray.append(swipeDownAtlas.textureNamed("arrastar_baixo4"))
+        swipeDownArray.append(swipeDownAtlas.textureNamed("arrastar_baixo5"))
+        
+        swipeUpArray.append(swipeUpAtlas.textureNamed("arrastar_cima1"))
+        swipeUpArray.append(swipeUpAtlas.textureNamed("arrastar_cima2"))
+        swipeUpArray.append(swipeUpAtlas.textureNamed("arrastar_cima3"))
+        swipeUpArray.append(swipeUpAtlas.textureNamed("arrastar_cima4"))
+        swipeUpArray.append(swipeUpAtlas.textureNamed("arrastar_cima5"))
+    }
+    
+    func initAnimationSwipe(swipeNode: SKSpriteNode, Down: Bool){
+        if (Down){
+            let animation1 = SKAction.repeatActionForever(SKAction.animateWithTextures(swipeDownArray, timePerFrame: 0.3))
+            let delay = SKAction.waitForDuration(2)
+            let sequence = SKAction.sequence([animation1, delay])
+            swipeAnimation = SKAction.repeatActionForever(sequence)
+            swipeNode.runAction(swipeAnimation)
+        } else {
+            let animation1 = SKAction.repeatActionForever(SKAction.animateWithTextures(swipeUpArray, timePerFrame: 0.3))
+            let delay = SKAction.waitForDuration(2)
+            let sequence = SKAction.sequence([animation1, delay])
+            swipeAnimation = SKAction.repeatActionForever(sequence)
+            swipeNode.runAction(swipeAnimation)
+        }
+    }
+    
     
     func transitionSceneBackground(backgroundBlack: Bool, completion: (Void) -> Void){
         eCenoura = false
         if(inventoryPresent==true){
             swipeUp()
+            if let swipeTest = self.childNodeWithName("swipeUpTutorial"){
+                Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "swipeUp", object: true)
+                swipeTest.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                    swipeTest.removeFromParent()})
+            }
+            
         }
         self.removeVisionButtonsScene()
         
@@ -117,6 +184,11 @@ class TheaterBased: SceneGameBase {
             
             if(inventoryPresent==true){
                 swipeUp()
+                if let swipeTest = self.childNodeWithName("swipeUpTutorial"){
+                    Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "swipeUp", object: true)
+                    swipeTest.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                        swipeTest.removeFromParent()})
+                }
             }
             //Selecting pause menu
             if let touch = touches.first {
@@ -166,14 +238,6 @@ class TheaterBased: SceneGameBase {
         }
     }
     
-    func removeVerduras(){
-        for object in self.sceneBackground.children{
-            if(object.name == nil && !object.isKindOfClass(SKAudioNode)){
-                object.runAction(SKAction.fadeAlphaTo(0, duration: 0.2))
-                object.removeFromParent()
-            }
-        }
-    }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if(!self.flagStartTouchedBeganTheater){
@@ -192,9 +256,21 @@ class TheaterBased: SceneGameBase {
                     }
                     if (!eCenoura) {
                         self.catchObject(self, location: location, object: nodeTouched)
+                        if let dictionary = Dictionary<String, AnyObject>.loadGameData("Tutorial"){
+                            let click = dictionary["swipeDown"] as! Bool
+                            if (!click) {
+                                if let mao = self.childNodeWithName("swipeDownTutorial"){
+                                // do nothing
+                                } else {
+                                    setupSwipe(true)
+                                    initAnimationSwipe(swipeDSprite, Down: true)
+                                }
+                            }
+                        }
                     }else{
                         self.flagStartTouchedBeganTheater = false
                     }
+                    
                     if (SKTexture.returnNameTexture(nodeTouched.texture!) == "verduras"){
                         eCenoura = true
                         //self.removeVerduras()
@@ -429,11 +505,38 @@ class TheaterBased: SceneGameBase {
         corda.position.x = 1000 + self.camera!.position.x - 512
     }
     
+    func updateSwipes(){
+        if ((swipeDSprite) != nil){
+            swipeDSprite.position.x = 1020 + self.camera!.position.x - 512
+        }
+        if ((swipeUSprite) != nil){
+            swipeUSprite.position.x = 1020 + self.camera!.position.x - 512
+        }
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        if (SceneGameBase.flagSwipe){
+            SceneGameBase.flagSwipe = false
+            if let swipeTest = self.childNodeWithName("swipeUpTutorial"){
+                Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "swipeUp", object: true)
+                swipeTest.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                    swipeTest.removeFromParent()})
+            }
+            if let swipeTest = self.childNodeWithName("swipeDownTutorial"){
+                Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "swipeDown", object: true)
+                swipeTest.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                    swipeTest.removeFromParent()})
+            }
+            setupSwipe(false)
+            initAnimationSwipe(swipeUSprite, Down: false)
+        }
+        
         updateCameraSceneDefault()
         if(!flagCurtinsClosed){
             updateButtonsScene()
+            updateSwipes()
 
             if (inventoryPresent && SceneGameBase.itenComing){
                 SceneGameBase.itenComing = false
