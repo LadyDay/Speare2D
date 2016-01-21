@@ -176,6 +176,7 @@ class TutorialScene: SceneDefault {
         /* Called when a touch begins */
         
         if(self.touchRuning == false && theater.pauseMenuPresent == false && theater.flagStartTouchedBeganTheater == false && self.ballonIsPresented == false){
+            self.theater.flagStartTouchedBeganTheater = true
             self.touchRuning = true
             if let touch = touches.first {
                 let location = touch.locationInNode(theater)
@@ -199,8 +200,9 @@ class TutorialScene: SceneDefault {
                                     mao2.hidden = false
                                     self.initClick(mao2 as! SKSpriteNode)
                                 })}
+                            self.theater.flagStartTouchedBeganTheater = false
                         })
-                        
+
                         Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueChao", object: true)
                         
                         break
@@ -232,9 +234,9 @@ class TutorialScene: SceneDefault {
                                 self.initClick(mao2 as! SKSpriteNode)
                                 self.theater.showVisionButtonsScene()
                             }
-                            
+                            self.theater.flagStartTouchedBeganTheater = false
                         })
-                        
+
                         break
                         
                     case "viajante2":
@@ -251,6 +253,7 @@ class TutorialScene: SceneDefault {
                                 TutorialScene.ballonTraveller = dictionaryBallonTraveller["Viajante"] as! Int
                             }
                             self.showBallon(TutorialScene.ballonTraveller)
+                            self.theater.flagStartTouchedBeganTheater = false
                         })
                         break
                         
@@ -272,6 +275,7 @@ class TutorialScene: SceneDefault {
                         }
                         
                         self.touchRuning = false
+                        self.theater.flagStartTouchedBeganTheater = false
                         break
                         
                     case "hortaNode":
@@ -288,6 +292,7 @@ class TutorialScene: SceneDefault {
                                 if(self.theater!.mainCharacter.xScale>0){
                                     self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
                                 }
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                             self.theater.showVisionButtonsScene()
                         })
@@ -306,6 +311,7 @@ class TutorialScene: SceneDefault {
                                 if(self.theater!.mainCharacter.xScale<0){
                                     self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
                                 }
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                             self.theater.showVisionButtonsScene()
                         })
@@ -340,7 +346,7 @@ class TutorialScene: SceneDefault {
                             }
                             
                             self.theater.showVisionButtonsScene()
-                            
+                            self.theater.flagStartTouchedBeganTheater = false
                         })
                         break
                         
@@ -372,6 +378,7 @@ class TutorialScene: SceneDefault {
                             
                             //
                             self.theater.showVisionButtonsScene()
+                            self.theater.flagStartTouchedBeganTheater = false
                         })
                         break
                         
@@ -403,6 +410,7 @@ class TutorialScene: SceneDefault {
                             
                             //
                             self.theater.showVisionButtonsScene()
+                            self.theater.flagStartTouchedBeganTheater = false
                         })
                         break
                         
@@ -424,17 +432,21 @@ class TutorialScene: SceneDefault {
                                 }
                                 self.theater.showVisionButtonsScene()
                                 self.touchRuning = false
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                         }else{
                             self.touchRuning = false
+                            self.theater.flagStartTouchedBeganTheater = false
                         }
                         break
                     }
                 }else{
                     self.touchRuning = false
+                    self.theater.flagStartTouchedBeganTheater = false
                 }
             }else{
                 self.touchRuning = false
+                self.theater.flagStartTouchedBeganTheater = false
             }
         }
     }

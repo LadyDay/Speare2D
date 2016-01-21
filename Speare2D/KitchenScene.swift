@@ -40,6 +40,7 @@ class KitchenScene: SceneDefault {
         /* Called when a touch begins */
         
         if(self.touchRuning == false && theater.pauseMenuPresent == false && theater.flagStartTouchedBeganTheater == false){
+            self.theater.flagStartTouchedBeganTheater = true
             self.touchRuning = true
             if let touch = touches.first {
                 let location = touch.locationInNode(theater)
@@ -53,12 +54,14 @@ class KitchenScene: SceneDefault {
                         //mexer a panela
                         animationPanela()
                         self.touchRuning = false
+                        self.theater.flagStartTouchedBeganTheater = false
                         break
                         
                     case "fogao":
                         //acender o fogão
                         animationFogao()
                         self.touchRuning = false
+                        self.theater.flagStartTouchedBeganTheater = false
                         break
                         
                     case "hortaNode":
@@ -73,6 +76,7 @@ class KitchenScene: SceneDefault {
                                 if(self.theater!.mainCharacter.xScale<0){
                                     self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
                                 }
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                             self.theater.showVisionButtonsScene()
                         })
@@ -90,6 +94,7 @@ class KitchenScene: SceneDefault {
                                 if(self.theater!.mainCharacter.xScale>0){
                                     self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
                                 }
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                             self.theater.showVisionButtonsScene()
                         })
@@ -102,17 +107,21 @@ class KitchenScene: SceneDefault {
                             theater!.mainCharacter.runAction(theater!.mainCharacter.walk(theater!.mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
                                 self.theater.showVisionButtonsScene()
                                 self.touchRuning = false
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                         }else{
                             self.touchRuning = false
+                            self.theater.flagStartTouchedBeganTheater = false
                         }
                         break
                     }
                 }else{
                     self.touchRuning = false
+                    self.theater.flagStartTouchedBeganTheater = false
                 }
             }else{
                 self.touchRuning = false
+                self.theater.flagStartTouchedBeganTheater = false
             }
         }
     }

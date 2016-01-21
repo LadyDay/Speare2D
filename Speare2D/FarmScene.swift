@@ -33,6 +33,7 @@ class FarmScene: SceneDefault {
         /* Called when a touch begins */
         
         if(self.touchRuning == false && theater.pauseMenuPresent == false && theater.flagStartTouchedBeganTheater == false){
+            self.theater.flagStartTouchedBeganTheater = true
             self.touchRuning = true
             if let touch = touches.first {
                 let location = touch.locationInNode(self)
@@ -56,6 +57,7 @@ class FarmScene: SceneDefault {
                                 if(self.theater!.mainCharacter.xScale>0){
                                     self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
                                 }
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                             self.theater.showVisionButtonsScene()
                         })
@@ -73,6 +75,7 @@ class FarmScene: SceneDefault {
                                 if(self.theater!.mainCharacter.xScale>0){
                                     self.theater!.mainCharacter.xScale = self.theater!.mainCharacter.xScale * (-1)
                                 }
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                             self.theater.showVisionButtonsScene()
                         })
@@ -86,17 +89,21 @@ class FarmScene: SceneDefault {
                                 self.theater.showVisionButtonsScene()
                                 self.touchRuning = false
                                 self.theater.showVisionButtonsScene()
+                                self.theater.flagStartTouchedBeganTheater = false
                             })
                         }else{
                             self.touchRuning = false
+                            self.theater.flagStartTouchedBeganTheater = false
                         }
                         break
                     }
                 }else{
                     self.touchRuning = false
+                    self.theater.flagStartTouchedBeganTheater = false
                 }
             }else{
                 self.touchRuning = false
+                self.theater.flagStartTouchedBeganTheater = false
             }
         }
     }
