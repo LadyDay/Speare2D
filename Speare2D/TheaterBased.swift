@@ -269,7 +269,10 @@ class TheaterBased: SceneGameBase {
                                 }
                             }
                         }
+                    }else{
+                        self.flagStartTouchedBeganTheater = false
                     }
+                    
                     if (SKTexture.returnNameTexture(nodeTouched.texture!) == "verduras"){
                         eCenoura = true
                         //self.removeVerduras()
