@@ -51,7 +51,7 @@ class InfoScene: SceneDefault {
                 case "creditos":
                     effectConfiguration(backButtonSound, waitC: true)
                     mainCharacter.runAction(mainCharacter.walk(mainCharacter.position, touchLocation: touch.locationInNode(self), tamSize: 2048, objectPresent: false, objectSize: nil), completion: {
-                        //self.transitionNextScene(self, sceneTransition: Home(fileNamed: "Home")!, withTheater: false)
+                        self.transitionNextScene(self, sceneTransition: CreditosScene(fileNamed: "CreditosScene")!, withTheater: false)
                     })
                     self.touchRuning = false
                     break

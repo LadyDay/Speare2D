@@ -86,8 +86,19 @@ class SceneDefault: SKScene {
             let goUpAction = SKAction.moveTo(CGPoint(x: object.position.x, y: 1000), duration: 1)
             let fadeAction = SKAction.fadeOutWithDuration(0.5)
             let groupActions = SKAction.group([spinAction, goUpAction, fadeAction])
-            object.runAction(groupActions, completion: {object.removeFromParent()})
-//            object.removeFromParent()
+            object.runAction(groupActions, completion: {
+                object.removeFromParent()
+                for objectScene in gameScene.children{
+                    if(objectScene.name == nil){
+                        if(SKTexture.returnNameTexture((objectScene as! SKSpriteNode).texture!) == SKTexture.returnNameTexture((object as! SKSpriteNode).texture!)){
+                            objectScene.runAction(SKAction.fadeAlphaTo(0, duration: 0.5), completion: {
+                                objectScene.removeFromParent()
+                            })
+                        }
+                    }
+                }
+            })
+
             self.touchRuning = false
         })
     }
