@@ -14,6 +14,8 @@
 		3D11CC541C14402F00DEFDD6 /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D11CC531C14402E00DEFDD6 /* Level0.plist */; };
 		3D1649B51C5018C70075F428 /* Audios.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649B41C5018C70075F428 /* Audios.plist */; };
 		3D1649B71C501D6C0075F428 /* menuScene.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649B61C501D6C0075F428 /* menuScene.atlas */; };
+		3D1649B91C5113390075F428 /* CreditosScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D1649B81C5113390075F428 /* CreditosScene.sks */; };
+		3D1649BB1C5113820075F428 /* CreditosScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1649BA1C5113820075F428 /* CreditosScene.swift */; };
 		3D3C85F61C4EDC7400D3FA63 /* Introdution.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */; };
 		3D3C85F81C4FCEF300D3FA63 /* Introdution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3C85F71C4FCEF200D3FA63 /* Introdution.swift */; };
 		3D3C85FA1C4FD87F00D3FA63 /* Introdution.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */; };
@@ -127,6 +129,8 @@
 		3D11CC531C14402E00DEFDD6 /* Level0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level0.plist; sourceTree = "<group>"; };
 		3D1649B41C5018C70075F428 /* Audios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Audios.plist; sourceTree = "<group>"; };
 		3D1649B61C501D6C0075F428 /* menuScene.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = menuScene.atlas; sourceTree = "<group>"; };
+		3D1649B81C5113390075F428 /* CreditosScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CreditosScene.sks; sourceTree = "<group>"; };
+		3D1649BA1C5113820075F428 /* CreditosScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditosScene.swift; sourceTree = "<group>"; };
 		3D3C85F51C4EDC7400D3FA63 /* Introdution.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Introdution.sks; sourceTree = "<group>"; };
 		3D3C85F71C4FCEF200D3FA63 /* Introdution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Introdution.swift; sourceTree = "<group>"; };
 		3D3C85F91C4FD87F00D3FA63 /* Introdution.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Introdution.atlas; sourceTree = "<group>"; };
@@ -417,6 +421,8 @@
 				BEE817911BDD4BA6009365CE /* OptionsScene.swift */,
 				BEE8178B1BDD4B28009365CE /* InfoScene.sks */,
 				BEE8178D1BDD4B3A009365CE /* InfoScene.swift */,
+				3D1649B81C5113390075F428 /* CreditosScene.sks */,
+				3D1649BA1C5113820075F428 /* CreditosScene.swift */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE86071D1C14A12C00CFA32F /* Colocaritemnasopa.mp3 in Resources */,
+				3D1649B91C5113390075F428 /* CreditosScene.sks in Resources */,
 				BEA58CF71C06B2550013E3EB /* panela.atlas in Resources */,
 				BE3DC66E1BFF56B800A20C3A /* ticketSound.wav in Resources */,
 				3D11CC521C143FE800DEFDD6 /* StateGame.plist in Resources */,
@@ -664,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4CC95B1BFD1DAF0022511E /* CheetahConstraintProperties.swift in Sources */,
+				3D1649BB1C5113820075F428 /* CreditosScene.swift in Sources */,
 				3D11CC501C143AA800DEFDD6 /* Extensions.swift in Sources */,
 				3D5E385B1BF1279A00D59321 /* SceneDefault.swift in Sources */,
 				3D4CC9631BFD1DAF0022511E /* Spring.swift in Sources */,

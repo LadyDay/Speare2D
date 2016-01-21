@@ -66,6 +66,7 @@ class TutorialScene: SceneDefault {
         
         Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "currentScene", object: self.fileName)
         
+        self.offsetWalkScene = 100
         setCamera()
         setPositionCamera()
         initTextureFire()

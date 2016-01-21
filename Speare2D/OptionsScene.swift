@@ -113,8 +113,6 @@ class OptionsScene: SceneDefault {
         let spin3 = SKAction.rotateToAngle(CGFloat(0), duration: 0.2)
         let group = SKAction.sequence([spin1, spin2, spin3])
         Object.runAction(group)
-        
-        
     }
 
 }

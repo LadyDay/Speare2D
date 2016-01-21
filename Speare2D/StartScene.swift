@@ -51,9 +51,8 @@ class StartScene: SceneDefault {
                         break
                         
                     default:
-                        if (nome == "clique"){
-                            let click = self.childNodeWithName("clique")
-                            click?.removeFromParent()
+                        if let click = self.childNodeWithName("clique"){
+                            click.removeFromParent()
                             Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueCartaz", object: true)
                         }
                         if let dictionaryStateGame = Dictionary<String, AnyObject>.loadGameData("StateGame"){
