@@ -62,9 +62,9 @@ class SceneDefault: SKScene {
     //Sounds
     var audioPlayer: AVAudioPlayer!
     var backgroundMusic: SKAudioNode!
-    static var bgMusicVolume: Float!
+    static var bgMusicVolume: Float! = 0.7
     var effectsMusic: SKAudioNode!
-    static var effectsVolume: Float!
+    static var effectsVolume: Float! = 0.7
     var voiceSound: SKAudioNode!
     static var voiceVolume: Float!
     let pauseAction = SKAction.pause()
@@ -140,9 +140,15 @@ class SceneDefault: SKScene {
     func musicBgConfiguration(fileString: String) {
         backgroundMusic = SKAudioNode(fileNamed: fileString)
         backgroundMusic.autoplayLooped = true
-        backgroundMusic.runAction(SKAction.changeVolumeTo(SceneDefault.bgMusicVolume, duration: 0))
-        self.addChild(backgroundMusic)
-        
+        if let dictionary = Dictionary<String,AnyObject>.loadGameData("Audios"){
+            let music = dictionary["music"] as! Bool
+            if(music){
+                backgroundMusic.runAction(SKAction.changeVolumeTo(SceneDefault.bgMusicVolume, duration: 0))
+                self.addChild(backgroundMusic)
+            }else{
+                
+            }
+        }
     }
     
     func effectConfiguration(fileString: String, waitC: Bool){

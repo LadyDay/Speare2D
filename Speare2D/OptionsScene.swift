@@ -54,11 +54,11 @@ class OptionsScene: SceneDefault {
                 case "musicButton":
                     effectConfiguration(selectionButtonSound, waitC: true)
                     if(SKTexture.returnNameTexture((nodeTouched as! SKSpriteNode).texture!) == "withoutMusicButton"){
-                        self.backgroundMusic.runAction(SKAction.play())
+                        self.backgroundMusic.runAction(SKAction.changeVolumeTo(SceneDefault.bgMusicVolume, duration: 0))
                         (nodeTouched as! SKSpriteNode).texture = SKTexture(imageNamed: "musicButton")
                         Dictionary<String,AnyObject>.saveGameData("Audios", key: "music", object: true)
                     }else{
-                        self.backgroundMusic.runAction(SKAction.pause())
+                        self.backgroundMusic.runAction(SKAction.changeVolumeTo(0, duration: 0))
                         (nodeTouched as! SKSpriteNode).texture = SKTexture(imageNamed: "withoutMusicButton")
                         Dictionary<String,AnyObject>.saveGameData("Audios", key: "music", object: false)
                     }
