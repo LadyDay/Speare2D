@@ -245,7 +245,7 @@ class TheaterBased: SceneGameBase {
                                     let indexDataScene = dictionaryDataScene.indexForKey("Characters")
                                     let dict = dictionaryDataScene[indexDataScene!].1 as! NSDictionary
                                     dict.setValue(2, forKey: "Viajante")
-                                    dict.setValue(1, forKey: "Velha")
+                                    dict.setValue(0, forKey: "Velha")
                                     Dictionary<String, AnyObject>.saveGameData("Level" + String(self.numberLevel), key: "Characters", object: dict)
                                     Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "completedLevel", object: true)
                                     Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliqueChao", object: true)

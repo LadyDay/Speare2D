@@ -73,6 +73,7 @@ class TutorialScene: SceneDefault {
         initArrayNPC()
         initNPC(self.childNodeWithName("velha")as! SKSpriteNode, travellerNode: self.childNodeWithName("viajante")as! SKSpriteNode)
         initClickTexture()
+        initClickTextureLeft()
         initDoorTexture()
         
         addMaoViajante()
