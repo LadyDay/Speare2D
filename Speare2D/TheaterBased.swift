@@ -14,6 +14,7 @@ class TheaterBased: SceneGameBase {
     //flags
     var flagStartTouchedBeganTheater: Bool!
     //
+    var eCenoura: Bool = false
     var saco: SKSpriteNode!
     var corda: SKSpriteNode!
     var sceneBackground: SceneDefault!
@@ -75,7 +76,7 @@ class TheaterBased: SceneGameBase {
     }
     
     func transitionSceneBackground(backgroundBlack: Bool, completion: (Void) -> Void){
-        
+        eCenoura = false
         if(inventoryPresent==true){
             swipeUp()
         }
@@ -94,12 +95,14 @@ class TheaterBased: SceneGameBase {
                 //self.removeFromParent()
                 //self.sceneBackground.backgroundMusic.removeFromParent()
                 self.addObjects()
+                self.inventoryPresent = false
                 
                 completion()
                 
                 self.curtains.runAction(SKAction.animateWithTextures(self.animationCurtainsOpen, timePerFrame: 0.1), completion: {
                     self.userInteractionEnabled = true
                     self.flagCurtinsClosed = false
+                    self.inventoryPresent = false
                     self.showVisionButtonsScene()
                 })
             })
@@ -165,6 +168,15 @@ class TheaterBased: SceneGameBase {
         }
     }
     
+    func removeVerduras(){
+        for object in self.sceneBackground.children{
+            if(object.name == nil && !object.isKindOfClass(SKAudioNode)){
+                object.runAction(SKAction.fadeAlphaTo(0, duration: 0.2))
+                object.removeFromParent()
+            }
+        }
+    }
+    
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if(!self.flagStartTouchedBeganTheater){
             self.flagStartTouchedBeganTheater = true
@@ -178,8 +190,22 @@ class TheaterBased: SceneGameBase {
                 if(nodeTouched.name == nil && itenHasMoved == false){
                     if let click = self.childNodeWithName("cliquePedras"){
                         click.removeFromParent()
+                        Dictionary<String, AnyObject>.saveGameData("Tutorial", key: "cliquePedras", object: true)
                     }
-                    self.catchObject(self, location: location, object: nodeTouched)
+                    if (!eCenoura) {
+                        self.catchObject(self, location: location, object: nodeTouched)
+                    }
+                    if (SKTexture.returnNameTexture(nodeTouched.texture!) == "verduras"){
+                        eCenoura = true
+                        //self.removeVerduras()
+                        
+//                        self.sceneBackground.enumerateChildNodesWithName("", usingBlock: {
+//                            node, stop in
+//                            node.runAction(SKAction.fadeAlphaTo(0, duration: 0.2))
+//                            node.removeFromParent()
+//                        })
+                    }
+                    
                     self.flagStartTouchedBeganTheater = false
                 }else if (nodeTouched.name == nil && itenHasMoved == true) {
                     itenHasMoved = false
@@ -353,6 +379,7 @@ class TheaterBased: SceneGameBase {
     }
     
     private func nopeObjectTheater(object: SKNode){
+        self.inventoryPresent = false
         if(object.name != nil){
             switch object.name!{
             case "corSeletiva":
