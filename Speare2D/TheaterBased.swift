@@ -11,8 +11,6 @@ import SpriteKit
 
 class TheaterBased: SceneGameBase {
     
-    //flags
-    var flagStartTouchedBeganTheater: Bool!
     //
     var eCenoura: Bool = false
     var saco: SKSpriteNode!
@@ -194,6 +192,8 @@ class TheaterBased: SceneGameBase {
                     }
                     if (!eCenoura) {
                         self.catchObject(self, location: location, object: nodeTouched)
+                    }else{
+                        self.flagStartTouchedBeganTheater = false
                     }
                     if (SKTexture.returnNameTexture(nodeTouched.texture!) == "verduras"){
                         eCenoura = true
@@ -205,8 +205,6 @@ class TheaterBased: SceneGameBase {
 //                            node.removeFromParent()
 //                        })
                     }
-                    
-                    self.flagStartTouchedBeganTheater = false
                 }else if (nodeTouched.name == nil && itenHasMoved == true) {
                     itenHasMoved = false
                     //Quando soltar o item que estava sendo movido:

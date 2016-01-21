@@ -12,6 +12,9 @@ import SpriteKit
 
 class SceneDefault: SKScene {
     
+    //flags
+    var flagStartTouchedBeganTheater: Bool!
+    
     var fileName: String!
     var numberLevel: NSNumber!
     
@@ -98,9 +101,9 @@ class SceneDefault: SKScene {
                         }
                     }
                 }
+                self.flagStartTouchedBeganTheater = false
+                self.touchRuning = false
             })
-
-            self.touchRuning = false
         })
     }
     
