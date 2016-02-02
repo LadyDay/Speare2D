@@ -48,7 +48,7 @@ class TutorialScene: SceneDefault {
     var ballon = UIView()//(frame: CGRectMake(0, 0, 187.25, 107.75))
     var ballonIsPresented: Bool = false
     static var ballonTraveller: Int = 0
-    static var ballonOldie: Int = 1
+    static var ballonOldie: Int = 0
     static var firstPresented = 0
     var imageBallon: UIImage!
     var imageViewBallon: UIImageView!
